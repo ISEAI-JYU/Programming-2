@@ -26,3 +26,23 @@ Taulukko
 | static    | staattinen — kuuluu luokalle      |
 | void      | ei palauta arvoa                  |
 
+
+Huomautus
+
+> [!NOTE]
+> Huomautus!
+
+Mermaid-tuki
+
+```mermaid
+---
+config:
+  flowchart:
+    curve: linear
+---
+flowchart TD
+    Aloitus --> EHTO{EHTO?}
+    EHTO -->|tosi| LAUSE
+    EHTO -->|epätosi| MUU[Muu koodi]
+    LAUSE --> MUU
+```

@@ -12,3 +12,11 @@ additional-css = [
 ]
 default-theme = "jyu-light"
 preferred-dark-theme = "jyu-dark"
+additional-js = [
+  "mermaid/mermaid.min.js", 
+  "mermaid/mermaid-init.js"
+]
+
+[preprocessor.alerts]
+
+[preprocessor.mermaid]
