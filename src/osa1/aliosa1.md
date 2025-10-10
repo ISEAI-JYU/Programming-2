@@ -6,7 +6,7 @@
 
 Koodiesimerkki
 
-```java
+```java,editable
 public class Main {
     public static void main(String[] args) {
         System.out.println("""It’s the job that’s never started as takes longest to finish, as my old Gaffer used to say.
@@ -16,6 +16,10 @@ public class Main {
 — J.R.R. Tolkien""");
     }
 }
+```
+
+```rust,editable
+println!("wew");
 ```
 
 Taulukko
