@@ -1,6 +1,6 @@
 # Aliosan 1 otsikko
 
-> 📖 Osaamistavoitteet
+> [!Osaamistavoitteet]
 >
 > - TODO
 
@@ -55,6 +55,20 @@ Huomautus
 
 > [!NOTE]
 > Huomautus!
+
+Toinen
+
+> [!HUOMAUTUS]
+> Huom!
+
+> [!VINKKI]
+> Tässä voit tehdä myös näin:
+> 
+> ```java
+> void main() {
+>    IO.readln("Lue rivi >");
+> }
+> ```
 
 Mermaid-tuki
 
