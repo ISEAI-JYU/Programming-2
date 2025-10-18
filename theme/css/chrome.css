@@ -232,7 +232,7 @@ html:not(.js) .left-buttons button {
 }
 
 a:hover > .hljs {
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 pre {
