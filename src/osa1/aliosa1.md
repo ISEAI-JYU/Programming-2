@@ -1,6 +1,6 @@
 # Aliosan 1 otsikko
 
-> 📖 Osaamistavoitteet
+> [!Osaamistavoitteet]
 >
 > - TODO
 
@@ -8,13 +8,14 @@ Koodiesimerkki
 
 ```java
 void main() {
-    IO.println("Hei, maailma!");
+    var feature =  Runtime.version().feature();
+    IO.println("Hei, maailma! Tässä on Java " + feature);
 }
 ```
 
 ```java
 //-void main() {
-//-   IO.println("summa(1, 2) => " + summa(1 , 2));
+//-   IO.println("summa(2, 2) => " + summa(2, 2));
 //-}
 //-
 /**
@@ -54,6 +55,20 @@ Huomautus
 
 > [!NOTE]
 > Huomautus!
+
+Toinen
+
+> [!HUOMAUTUS]
+> Huom!
+
+> [!VINKKI]
+> Tässä voit tehdä myös näin:
+> 
+> ```java
+> void main() {
+>    IO.readln("Lue rivi >");
+> }
+> ```
 
 Mermaid-tuki
 

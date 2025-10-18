@@ -8,7 +8,8 @@ title = "Ohjelmointi 2"
 additional-css = [
   "highlight/atelier-forest-light.css",
   "highlight/twilight.css", 
-  "highlight/apprentice.css", 
+  "highlight/apprentice.css",
+  "theme/alerts-style.css",
 ]
 default-theme = "jyu-light"
 preferred-dark-theme = "jyu-dark"
