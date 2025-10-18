@@ -152,7 +152,7 @@ html:not(.js) .left-buttons button {
 }
 
 .nav-chapters:hover {
-    text-decoration: none !important;
+    text-decoration: none;
     background-color: var(--theme-hover);
     transition: background-color 0.15s, color 0.15s;
 }
