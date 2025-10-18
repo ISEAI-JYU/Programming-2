@@ -1,3 +1,5 @@
+/* This partially overwrites the mdbook-alerts style that is imported inline and is not layered (hence the !important tags) */
+
 .mdbook-alerts {
   padding: 0 16px !important;
   padding-block-end: 16px !important;
