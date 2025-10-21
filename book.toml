@@ -5,6 +5,7 @@ src = "src"
 title = "Ohjelmointi 2"
 
 [output.html]
+site-url = "/ohj2/"
 additional-css = [
   "highlight/atelier-forest-light.css",
   "highlight/twilight.css", 
