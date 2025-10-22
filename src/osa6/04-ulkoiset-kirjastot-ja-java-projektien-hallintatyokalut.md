@@ -2,5 +2,6 @@
 
 > [!Osaamistavoitteet]
 >
-> - Java-kielen perusteet
-> - Tiedät miten Java-ohjelma käännetään ja ajetaan (komentorivioohjelmat javac, java ja jshell, IDE-säädöt)
+> - Build-työkalut (Gradle/Maven)
+> - Kolmannen osapuolen riippuvuuksia (miten etsitään ja lisätään kirjasto)
+> - Pakkaukset Javassa

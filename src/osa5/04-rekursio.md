@@ -2,5 +2,7 @@
 
 > [!Osaamistavoitteet]
 >
-> - Java-kielen perusteet
-> - Tiedät miten Java-ohjelma käännetään ja ajetaan (komentorivioohjelmat javac, java ja jshell, IDE-säädöt)
+> - Ymmärrät miten rekursio toimii
+> - Ymmärrät, miten rekursio voi mallintaa pinon avulla
+> - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
+> - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)

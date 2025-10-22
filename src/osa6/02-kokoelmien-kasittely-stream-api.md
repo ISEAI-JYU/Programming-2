@@ -2,5 +2,6 @@
 
 > [!Osaamistavoitteet]
 >
-> - Java-kielen perusteet
-> - Tiedät miten Java-ohjelma käännetään ja ajetaan (komentorivioohjelmat javac, java ja jshell, IDE-säädöt)
+> - Ainakin map, filter, reduce
+> - lambda-lausekkeiden käyttö Stream API:ssa
+> - `Stream`, `IntStream`, ero iteraattoreihin
