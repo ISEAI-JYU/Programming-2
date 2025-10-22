@@ -3,7 +3,7 @@
 > [!Osaamistavoitteet]
 >
 > - Kerrataan lyhyesti rakenteisen ohjelmoinnin perusteet
-> - Muuttujat ja vakiot (perustyypit, final, String)
+> - Muuttujat ja vakiot (perustyypit, `final`, String)
 
 ![Tämä on kissa](./images/kissa.png)
 
