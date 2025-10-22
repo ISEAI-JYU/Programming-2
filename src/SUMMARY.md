@@ -35,4 +35,9 @@
   - [Poikkeusten hallinta](./osa6/03-poikkeusten-hallinta.md)
   - [Ulkoiset kirjastot ja Java-projektien hallintatyökalut](./osa6/04-ulkoiset-kirjastot-ja-java-projektien-hallintatyokalut.md)
   - [Tiedostojen käsittely](./osa6/05-tiedostojen-kasittely.md)
-  
+- [Viikko 7 (WIP)]()
+- [Viikko 8 (WIP)]()
+- [Viikko 9 (WIP)]()
+- [Viikko 10 (WIP)]()
+- [Viikko 11 (WIP)]()
+- [Viikko 12 (WIP)]()
