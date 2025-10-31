@@ -2,8 +2,6 @@
 
 > [!Osaamistavoitteet]
 >
-> - Ymmärtää, että kaikki Javan luokat perivät `Object`-luokasta
-> - Tuntee hyödylliset ylikirjoitettavat metodit `Object`-luokassa: `equals`, `toString`, (ehkä `hashCode`?)
 > - Tuntee hyödyllisiä Java-kielen rajapintoja
 >    - Vertailurajapintoja (Comparable<T>) -> mahdollistaa Javan järjestämismetodien käytön (Arrays.sort jne.)
 >    - Cloneable -> mahdollistaa olion todellisen kopioinnin (vrt. viite)

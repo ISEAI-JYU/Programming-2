@@ -23,7 +23,7 @@
 - [Hyödyllisiä menetelmiä olio-ohjelmoinnissa](./osa4/index.md)
   - [Geneeriset luokat](./osa4/02-geneeriset-luokat.md)
   - [Tyyppitarkistukset ja tyyppimuunnokset](./osa4/04-tyyppitarkistukset-ja-tyyppimuunnokset.md)
-  - [Object ja muita hyödyllisiä rajapintoja Javassa](./osa4/05-object-ja-muita-hyodyllisia-rajapintoja-javassa.md)
+  - [Muita hyödyllisiä rajapintoja Javassa](./osa4/05-object-ja-muita-hyodyllisia-rajapintoja-javassa.md)
 - [Tietorakenteita ja algoritmeja](./osa5/index.md)
   - [Kokoelmarajapinnat](./osa5/01-kokoelmarajapinnat.md)
   - [Valmiit kokoelmat Javassa](./osa5/02-valmiit-kokoelmat-javassa.md)
