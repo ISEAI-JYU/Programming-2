@@ -14,7 +14,6 @@
   - [Kohti olio-ohjelmointia](./osa2/01-kohti-olio-ohjelmointia.md)
   - [Luokka ja olio](./osa2/02-luokka-ja-olio.md)
   - [Kapselointi](./osa2/03-kapselointi.md)
-  - [Olioviite](./osa2/04-olioviite.md)
 - [Perintä ja rajapinnat](./osa3/index.md)
   - [Perintä](./osa3/01-perinta.md)
   - [Rajapinnat ja abstraktit luokat](./osa3/02-abstraktit-luokat.md)
