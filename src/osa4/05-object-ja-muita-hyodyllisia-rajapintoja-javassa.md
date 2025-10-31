@@ -1,4 +1,4 @@
-# Object ja muita hyödyllisiä rajapintoja Javassa
+# Muita hyödyllisiä rajapintoja Javassa
 
 > [!Osaamistavoitteet]
 >
