@@ -18,7 +18,7 @@ mdbook serve --hostname 0.0.0.0 --port 3000 --open
 
 ## License
 
-Ohjelmointi 2 oppimateriaali © 2025 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski is licensed under
+Ohjelmointi 2 oppimateriaali © 2025 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski, Karri Sormunen is licensed under
 [Creative Commons Attribution-ShareAlike 4.0 International][cc-by-sa].
 
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
