@@ -1,10 +1,15 @@
 # Kontribuutioehdotus
 
 ## Aseta autentikointi
-- Onko tähän jotain suositeltua standardia? SSH vs. PAT vai joku muu?
+- SSH vs. PAT?
+    - Voi käyttää molempia, mutta suositellaan turvallisuussyistä SSH:ta
+- Tästä löytyy tarkemmat ohjeet asettamiseen: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
 ## Kloonaa repositorio
-- git clone [repositorion nimi]
+- **SSH:ta käytettäessä:**
+    - git clone git@github.com:ohj-perus-jy/ohj2.git
+        - Osoite löytyy projektin juuresta oikealla ylhäällä olevasta "code" painikkeesta ja sieltä kohdasta SSH
+- CLI ohjeistus?
 
 ## Konttisysteemi devausta varten
 - Millainen?
