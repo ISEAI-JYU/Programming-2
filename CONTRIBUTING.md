@@ -14,6 +14,7 @@
 ## Konttisysteemi devausta varten
 - Asenna Rust (mukana tulee myös automaattisesti Cargo)
 - Asenna mdbook
+- Asenna mdbookkiin mermaid tuki: https://github.com/badboy/mdbook-mermaid
 - Mene komentorivillä projektin juureen ja aja komento: mdbook serve --hostname 0.0.0.0 --port 3000 --open
 
 ## Tee branch
