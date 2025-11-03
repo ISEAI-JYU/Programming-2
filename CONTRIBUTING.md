@@ -3,7 +3,7 @@
 ## Aseta autentikointi
 - SSH vs. PAT?
     - Voi käyttää molempia, mutta suositellaan turvallisuussyistä SSH:ta
-- Tästä löytyy tarkemmat ohjeet asettamiseen: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+- Tarkemmat ohjeet SSH:n käyttöönottoon: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
 ## Kloonaa repositorio
 - **SSH:ta käytettäessä:**
