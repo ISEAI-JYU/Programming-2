@@ -19,6 +19,11 @@
     - Luo uuden branchin [branchin nimi] ja vaihtaa siihen
 - Voit katsella lisää osoitteesta: https://git-scm.com/docs/git-switch
 
+## Puske branch etävarastoon
+- git push -u origin [branchin nimi]
+
+## Tee muutoksia branchiin
+
 ## Tee pull request
 #### Halutaanko hyödyntää tuota issuen automaattista linkkausta vai miten PR ja issuet keskustelevat keskenään?
 git commit -m "[haluamasi teksti] #[issuen numero]"
