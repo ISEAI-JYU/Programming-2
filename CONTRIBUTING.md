@@ -12,7 +12,9 @@
 - CLI ohjeistus?
 
 ## Konttisysteemi devausta varten
-- Millainen?
+- Asenna Rust (mukana tulee myös automaattisesti Cargo)
+- Asenna mdbook
+- Mene komentorivillä projektin juureen ja aja komento: mdbook serve --hostname 0.0.0.0 --port 3000 --open
 
 ## Tee branch
 - git switch -c [branchin nimi]
