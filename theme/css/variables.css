@@ -280,7 +280,7 @@
 }
 
 .jyu-light, html:not(.js) {
-    --bg: hsl(0, 0%, 98%);
+    --bg: hsl(0, 0%, 96%);
     --fg: hsl(0, 0%, 0%);
 
     --sidebar-bg: #fff;
@@ -303,7 +303,7 @@
     --theme-popup-border: #cccccc;
     --theme-hover: #dadada;
 
-    --quote-bg: #fafafa;
+    --quote-bg: #ffffff;
     --quote-border: #eeeeee;
 
     --warning-border: #ff8e00;
