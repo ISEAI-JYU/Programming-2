@@ -19,4 +19,4 @@ cargo binstall -y --disable-telemetry mdbook \
               mdbook-alerts \
               mdbook-katex
 
-cargo install --path ./preprocessors/rust/mdbook-codeblock-tabs
+cargo install --locked --path ./preprocessors/rust/mdbook-codeblock-tabs
