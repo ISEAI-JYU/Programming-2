@@ -7,7 +7,14 @@ then
     exit 1
 fi
 
-cargo install mdbook \
+# check if cargo-binstall is installed; if not, install it
+if ! command -v cargo-binstall &> /dev/null
+then
+    echo "cargo-binstall could not be found, installing it..."
+    curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+fi
+
+cargo binstall -y --disable-telemetry mdbook \
               mdbook-mermaid \
               mdbook-alerts \
               mdbook-katex
