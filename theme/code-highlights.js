@@ -1,4 +1,16 @@
 (function javaCodeHighlights() {
+    /**
+     * Java code highlighter for mdBook.
+     *
+     * Searches every rendered `pre > code.language-java` block for custom markers
+     * (`// HIGHLIGHT_<COLOR>_BEGIN` ... `// HIGHLIGHT_<COLOR>_END`) and replaces the
+     * enclosed lines with full-width highlight spans. Marker lines themselves are
+     * removed so the final code looks clean, and overlapping/multiple highlights are
+     * supported. Highlight colors are controlled via CSS variables in
+     * `theme/code-highlights.css`.
+     *
+     * The code was almost entirely written by ChatGPT/GPT-5.1-Codex.
+     */
     const MARKER_REGEX = /[ \t]*\/\/\s*HIGHLIGHT_([A-Z0-9]+)_(BEGIN|END)\s*(?:\r?\n)?/g;
     const COLOR_MAP = {
         GREEN: 'var(--code-highlight-green)',
@@ -7,6 +19,11 @@
         BLUE: 'var(--code-highlight-blue)',
     };
 
+    /**
+     * Wraps a DOM range in a span configured with the highlight styles.
+     * @param {Range} range
+     * @param {string} color
+     */
     function wrapRange(range, color) {
         if (range.collapsed) {
             range.detach?.();
@@ -30,6 +47,9 @@
         range.detach?.();
     }
 
+    /**
+     * Advance the caret forward until a non-whitespace character is found.
+     */
     function moveForwardPastBreaks(textNodes, indexMap, node, offset) {
         let idx = indexMap.get(node);
         let currentNode = node;
@@ -53,6 +73,9 @@
         return { node: currentNode || node, offset: currentOffset };
     }
 
+    /**
+     * Move the caret backward until the previous visible character.
+     */
     function moveBackwardPastBreaks(textNodes, indexMap, node, offset) {
         let idx = indexMap.get(node);
         let currentNode = node;
@@ -82,6 +105,9 @@
         };
     }
 
+    /**
+     * Locate the start-of-line boundary for a node/offset pair.
+     */
     function findLineStart(textNodes, indexMap, node, offset) {
         let idx = indexMap.get(node);
         let currentNode = node;
@@ -109,6 +135,9 @@
         return { node: fallbackNode, offset: 0 };
     }
 
+    /**
+     * Locate the end-of-line boundary for a node/offset pair.
+     */
     function findLineEnd(textNodes, indexMap, node, offset) {
         let idx = indexMap.get(node);
         let currentNode = node;
@@ -134,6 +163,10 @@
         return { node: fallbackNode, offset: fallbackOffset };
     }
 
+    /**
+     * Removes indentation directly preceding a marker in-place so the entire line
+     * vanishes once the marker comment is deleted.
+     */
     function removeLeadingWhitespace(textNodes, indexMap, node, offset) {
         let idx = indexMap.get(node);
         let currentNode = node;
@@ -161,6 +194,9 @@
         }
     }
 
+    /**
+     * Remove trailing newline characters after a marker to avoid leaving blank rows.
+     */
     function removeFollowingLineBreaks(textNodes, indexMap, node, offset) {
         let idx = indexMap.get(node);
         let currentNode = node;
@@ -184,6 +220,10 @@
         }
     }
 
+    /**
+     * Process a single code element, applying highlights and removing marker lines.
+     * @param {HTMLElement} code
+     */
     function processCodeBlock(code) {
         const walker = document.createTreeWalker(code, NodeFilter.SHOW_TEXT, null);
         const textNodes = [];
