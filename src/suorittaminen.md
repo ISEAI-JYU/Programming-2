@@ -8,9 +8,9 @@ Suoritustapojen yksityiskohdat eroavat aikaisemmista toteutuksista jonkin verran
 
 *Tentti, harjoitustehtävät, harjoitustyö aikataulussa*
 
-Suoritus koostuu seuraavista osista (kaikista osista on saatava hyväksytty suoritus):
+Suoritus koostuu seuraavista osasuorituksista (kaikista on saatava hyväksytty):
 
- 1. Keräät yhteensä vähintään 50% siitä pistemäärästä mitä harjoitustehtävien perustehtävistä voi saada<sup>1</sup>
+ 1. Keräät jokaisesta osasta vähintään 50% siitä pistemäärästä mitä harjoitustehtävien perustehtävistä voi saada<sup>1</sup>
  2. Teet harjoitustyön aikataulussa
  3. Teet tentin hyväksytysti
 
@@ -22,17 +22,20 @@ Harjoitustehtävien pisterajat:
 
 | Kerättyjä pisteitä enintään | Harjoitustehtävien arvosana |
 | --------------------------- | --------------------------- |
+| <50%                        | 0                           |
 | 50%                         | 1                           |
 | 60%                         | 2                           |
 | 70%                         | 3                           |
 | 80%                         | 4                           |
 | >=90%                       | 5                           |
 
-Ensimmäisen kuuden osan kohdalla on mahdollista saada myös ns. DL-BONUS-pisteitä: Jos teet osasta *vähintään 3 pistettä* osan takarajaan mennessä, lisätään kyseisen osan harjoitustehtävien pistemäärään 0,5 pistettä. Niinpä DL-BONUS-pisteitä voi saada maksimissaan 6 * 0,5 = 3 pistettä. Karkeasti ottaen, kun teet yhden osan takarajaan mennessä, se vaikuttaa noin 1%-yksikön verran kokonaisprosenttiisi. 
+Ensimmäisen kuuden osan kohdalla on mahdollista saada myös ns. DL-BONUS-pisteitä: Jos teet osasta *vähintään 50%*<sup>2</sup> osan takarajaan mennessä, lisätään kyseisen osan harjoitustehtävien pistemäärään 0,5 pistettä. Niinpä DL-BONUS-pisteitä voi saada maksimissaan 6 * 0,5 = 3 pistettä. Karkeasti ottaen, kun teet yhden osan takarajaan mennessä, se vaikuttaa noin 1%-yksikön verran kokonaisprosenttiisi. 
 
-Näet etenemissivulla kerättyjen tehtäväpisteidän määrän ja prosenttiosuuden sekä DL-BONUS-pisteet erikseen. (TODO!)
+<sup>2</sup> Edelleen, "50%" tarkoittaa tässä yhteydessä puolet siitä pistemäärästä, mitä kyseisen osan perustehtävistä voi saada.
 
-Arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan painotettuna keskiarvona. Harjoitustehtävistä saatua arvosanaa painotetaan 40% ja tentistä saatua arvosanaa painotetaan 60%. Sekä harjoitustehtävistä että tentistä täytyy saada vähintään arvosana 1, jotta kurssista voi saada hyväksytyn arvosanan.
+Näet [etenemissivulla]() kerättyjen tehtäväpisteidän määrän ja prosenttiosuuden sekä DL-BONUS-pisteet erikseen. (Linkki TODO!)
+
+Lopullinen arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan painotettuna keskiarvona. Harjoitustehtävistä saatua arvosanaa painotetaan 40% ja tentistä saatua arvosanaa painotetaan 60%. Sekä harjoitustehtävistä että tentistä täytyy saada vähintään arvosana 1, jotta kurssista voi saada hyväksytyn arvosanan.
 
 |                                          | Esim1 | Esim2 | Esim3 |
 | ---------------------------------------- | ----- | ----- | ----- |
