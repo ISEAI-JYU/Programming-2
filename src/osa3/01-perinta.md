@@ -12,7 +12,7 @@
 > - Ymmärtää, että kaikki Javan luokat perivät `Object`-luokasta
 > - Tuntee hyödylliset korvattavat metodit `Object`-luokassa: `equals`, `toString`, (ehkä `hashCode`?)
 
-*Perintä* tarkoittaa mekanismia, jossa luokkaan voidaan sisällyttää toisen luokan ominaisuuksia ja toiminnallisuuksia. Tämä mahdollistaa koodin uudelleenkäytön ja luokkien välisen hierarkian luomisen. 
+*Perintä* tarkoittaa mekanismia, jossa luokka sisällyttää itseensä toisen luokan ominaisuudet (attribuutit) ja toiminnallisuudet (metodit). Tämä mahdollistaa koodin uudelleenkäytön ja luokkien välisen hierarkian luomisen. 
 
 ## Esimerkki
 
