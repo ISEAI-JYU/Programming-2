@@ -6,7 +6,7 @@
 
 - **Git** - *versiohallintaohjelma* (engl. Version Control Software, VCS), joka mahdollistaa koodin versioinnin ja yhteistyön koodaajien välillä.
 
-- **IntelliJ IDEA** - *integroitu kehitysympäristö* (engl. Integrated Development Environment, IDE), jolla voi kehittää ja debugata muun muassa Java-ohjelmia. (koodin muokkaus, kääntäminen, ajaminen, virheenjäljitys). Käytämme IntelliJ IDEAn ilmaista Community Edition -versiota.
+- **IntelliJ IDEA** - *integroitu kehitysympäristö* (engl. Integrated Development Environment, IDE), jolla voi kehittää ja debugata muun muassa Java-ohjelmia. Käytämme IntelliJ IDEAn ilmaista Community Edition -versiota.
 
 - **ComTest** - työkalu *dokumentaatiotestien* kirjoittamiselle ja ajamiselle.
 
