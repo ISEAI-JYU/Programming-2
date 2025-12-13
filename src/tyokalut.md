@@ -67,7 +67,7 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 
 ### [Windows](#tab/win)
 
-Varmista, että tietokoneesi on ajan tasalla (Windows Update:ssa ei uusia päivityksiä).
+Jos Windows Updatessa on saatavilla käyttöjärjestelmäpäivityksiä, asenna ne.
 
 Varmista sen jälkeen, että tietokoneellasi on `winget`-pakkaushallintaohjelma asennettuna:
 
