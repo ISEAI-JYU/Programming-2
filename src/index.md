@@ -10,11 +10,11 @@ Tämä on Jyväskylän yliopiston järjestämän **TIEP111 Ohjelmointi 2** -opin
 
 Opintojaksolla opit
 
-- tuottamaan pieniä ja keskisuuria ohjelmia käyttäen oliopohjaisen ohjelmoinnin periaatteita
-- ohjelmistosuunnittelun periaatteita
-- ohjelman automaattista testaamista
-- graafisen käyttöliittymän suunnittelua ja kehittämistä
-- ohjelmoijan työkaluja ja tekniikoita, kuten rekursio, geneeriset tyypit, ja funktionaalisen ohjelmoinnin alkeita
+ - oliopohjaisen ohjelmoinnin perusteita ja periaatteita,
+ - tuottamaan pieniä ja keskisuuria oliopohjaisia ohjelmia,
+ - graafisen käyttöliittymän suunnittelua ja kehittämistä,
+ - ohjelman testaamista,
+ - erilaisia ohjelmoijan työkaluja ja tekniikoita.
 
 Tarkemmat tiedot löydät opintojakson [Sisu-esitteestä](https://sisu.jyu.fi/student/courseunit/otm-4bc61fed-4013-4982-9158-48a4a198a4f2/brochure). 
 
