@@ -31,7 +31,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"stkb.rewrap"
+				"dnut.rewrap-revived",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	},
