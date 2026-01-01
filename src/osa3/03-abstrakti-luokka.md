@@ -160,7 +160,7 @@ public class Kahvinkeitin extends Laite {
     @Override
     public void raportoiTila() {
         String tila = kiehumassa ? "päällä" : "pois";
-        System.out.println("Kahvinkeittimen pannu on " + tila + ".");
+        IO.println("Kahvinkeittimen pannu on " + tila + ".");
     }
 }
 // FILE_END
@@ -249,7 +249,7 @@ public class Kahvinkeitin extends Laite {
     @Override
     public void raportoiTila() {
         String tila = kiehumassa ? "päällä" : "pois";
-        System.out.println("Kahvinkeittimen pannu on " + tila + ".");
+        IO.println("Kahvinkeittimen pannu on " + tila + ".");
     }
 }
 // FILE_END
@@ -347,14 +347,14 @@ public abstract class Laite {
     public void kytkePaalle() {
         if (!kytketty) {
             kytketty = true;
-            System.out.println(nimi + " käynnistyy.");
+            IO.println(nimi + " käynnistyy.");
         }
     }
 
     public void kytkePois() {
         if (kytketty) {
             kytketty = false;
-            System.out.println(nimi + " sammuu.");
+            IO.println(nimi + " sammuu.");
         }
     }
     // HIGHLIGHT_GREEN_END
@@ -411,14 +411,14 @@ public abstract class Laite {
     public void kytkePaalle() {
         if (!kytketty) {
             kytketty = true;
-            System.out.println(nimi + " käynnistyy.");
+            IO.println(nimi + " käynnistyy.");
         }
     }
 
     public void kytkePois() {
         if (kytketty) {
             kytketty = false;
-            System.out.println(nimi + " sammuu.");
+            IO.println(nimi + " sammuu.");
         }
     }
 
@@ -446,7 +446,7 @@ public class Valo extends Laite {
     }
     @Override
     public void raportoiTila() {
-        System.out.println("Valon kirkkaus on " + kirkkaus + "%.");
+        IO.println("Valon kirkkaus on " + kirkkaus + "%.");
     }
 }
 // FILE_END
@@ -467,7 +467,7 @@ public class Turvakamera extends Laite {
     @Override
     public void raportoiTila() {
         String tila = tallennusPaalla ? "päällä" : "pois";
-        System.out.println("Turvakameran tallennus on " + tila + ".");
+        IO.println("Turvakameran tallennus on " + tila + ".");
     }
 }
 // FILE_END
@@ -488,7 +488,7 @@ public class Kahvinkeitin extends Laite {
     @Override
     public void raportoiTila() {
         String tila = kiehumassa ? "päällä" : "pois";
-        System.out.println("Kahvinkeittimen pannu on " + tila + ".");
+        IO.println("Kahvinkeittimen pannu on " + tila + ".");
     }
 }
 // FILE_END
@@ -539,14 +539,14 @@ public abstract class Laite {
 //-    public void kytkePaalle() {
 //-        if (!kytketty) {
 //-            kytketty = true;
-//-            System.out.println(nimi + " käynnistyy.");
+//-            IO.println(nimi + " käynnistyy.");
 //-        }
 //-    }
 //-
 //-    public void kytkePois() {
 //-        if (kytketty) {
 //-            kytketty = false;
-//-            System.out.println(nimi + " sammuu.");
+//-            IO.println(nimi + " sammuu.");
 //-        }
 //-    }
 //-
@@ -607,7 +607,7 @@ public class Kahvinkeitin extends Laite {
 //-    @Override
 //-    public void raportoiTila() {
 //-        String tila = kiehumassa ? "päällä" : "pois";
-//-        System.out.println("Kahvinkeittimen pannu on " + tila + ".");
+//-        IO.println("Kahvinkeittimen pannu on " + tila + ".");
 //-    }
 }
 // FILE_END
