@@ -1,5 +1,10 @@
 # Java-kielen perusteet
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 12. tammikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
+
 
 > [!Osaamistavoitteet]
 > - Tutustut Java-kielen perussyntaksiin, muuttujiin, ja ohjausrakenteisiin.
