@@ -1,5 +1,9 @@
 ## Rajapinta
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 26. tammikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 > [!Osaamistavoitteet]
 > - Ymmärrät, mitä rajapinta (interface) tarkoittaa olio-ohjelmoinnissa.
 > - Osaat määritellä ja käyttää rajapintoja Javassa.

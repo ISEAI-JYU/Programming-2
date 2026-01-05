@@ -1,5 +1,9 @@
 # Abstrakti luokka
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 26. tammikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 > [!Osaamistavoitteet]
 > 
 > - Osaat tehdä abstraktin luokan ja abstrakteja metodeja Javassa.

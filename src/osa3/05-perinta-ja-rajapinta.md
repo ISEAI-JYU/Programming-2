@@ -1,5 +1,9 @@
 # Perintä ja rajapinnat olioiden yhteistyössä
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 26. tammikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 > [!Osaamistavoitteet]
 > - Osaat hyödyntää rajapintoja ja abstrakteja luokkia luokkien välisen
 >   riippuvuuden välttämiseksi 
