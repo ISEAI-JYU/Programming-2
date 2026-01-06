@@ -237,7 +237,9 @@ void main() {
 Tämä toimii kuten while, mutta yhdellä merkittävällä erolla: silmukan runko
 suoritetaan aina vähintään kerran, koska ehto tarkistetaan vasta lopussa.
 
-Do-while on ainoa silmukka, jonka lopettavaan sulkeeseen tulee puolipiste. Alla
+Do-while on ainoa silmukka, jonka lopettavaan sulkeeseen tulee puolipiste. 
+
+Alla
 pseudokoodina esimerkki, jossa omenan sijainti arvotaan uudestaan, jos se on
 liian lähellä pelaajaa.
 
