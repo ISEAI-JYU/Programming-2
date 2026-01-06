@@ -11,26 +11,26 @@
 > - Tunnet Javan alkeistietotyypit
 > - Tunnet, miten merkkijonoja, taulukoita ja listoja käytetään Javassa
 
-Ohjelmat käsittelevät muistiin tallennettua tietoa. Konekielessä tietoon
-viitataan numeerisilla muistiosoitteilla, mutta korkean tason kielissä, kuten
-Javassa käytetään selkokielisiä nimiä. Tällaista nimeä, joka viittaa muistissa
+Ohjelmat käsittelevät muistiin tallennettua tietoa. Korkean tason kielissä, kuten
+Javassa käytetään selkokielisiä nimiä viitattaessa muistiin tallennettuun tietoon. Tällaista nimeä, joka viittaa muistissa
 olevaan tietoon, kutsutaan muuttujaksi (engl. *variable*). Ohjelmoijan tarvitsee
-muistaa vain nimi; tietokone huolehtii tiedon todellisesta sijainnista
+muistaa vain nimi; käyttöjärjestelmä ja tietokoneen sisäinen logiikka huolehtivat tiedon todellisesta sijainnista
 muistissa.
 
-Javassa muuttuja tulee ensin *määritellä* ennen kuin sitä voi käyttää:
+Ennen käyttämistä muuttuja tulee *määritellä*.
 
 ```java,ignore
 tyyppi muuttujanNimi;
 ```
 
 Muuttujan tyyppi määritellään muuttujan nimen edessä, ja se kertoo, millaista
-tietoa muuttuja voi sisältää.
-Muuttujan nimi voi sisältää kirjaimia ja alaviivoja. Muuttujan nimi
+tietoa muuttuja voi sisältää, esimerkiksi kokonaisluvun, desimaaliluvun tai
+totuusarvon. 
+Muuttujan nimi on ohjelmoijan valitsema tunniste, jonka avulla muuttujaan
+viitataan. 
+Nimi voi sisältää kirjaimia ja alaviivoja. Muuttujan nimi
 ei kuitenkaan voi olla Java-kielessä varattu avainsana
 eikä muuttujan nimi saa alkaa numerolla.
-Javassa useasta osasta koostuvat muuttujien nimet kirjoitetaan
-yhteen `camelCase`-kirjoitustyylillä.
 
 Muuttujan määrittelyn jälkeen muuttujaan voi *sijoittaa* lausekkeiden
 arvoja:

@@ -52,24 +52,23 @@ graafisten käyttöliittymien parissa työskentelyyn.
 
 ## Javan koodauskäytänteistä
 
-Kuten eri kielissä on tapana, Javassa on oma joukko vakiintuneita
-koodauskäytänteitä. Tutustumme erilaisiin käytänteisiin tämän materiaalin
+Monesti ohjelmointikielessä on joukko kyseiseen kieleen vakiintuneita
+koodauskäytänteitä. Näin on myös Javassa. Tutustumme erilaisiin käytänteisiin tämän materiaalin
 edetessä. Mainittakoon, että Javan koodauskäytänteet poikkeavat hieman C#-kielen
-käytänteistä aliohjelmien nimeämisessä ja aaltosulkujen asettamisessa.
+käytänteistä muun muassa nimeämisessä ja koodin muotoilussa.
 
 Tässä olennaisimmat Javan koodauskäytänteet, joita on tässä vaiheessa hyvä pitää
 mielessä:
 
-- Aliohjelman runkoa aloittava aaltosulku `{` laitetaan yleensä samalle riville
+ - Aliohjelman runkoa aloittava aaltosulku `{` laitetaan yleensä samalle riville
   kuin aliohjelman määrittely. Sama pätee muihin rakenteisiin, joissa käytetään
   aaltosulkuja, kuten `if`-, `for`-, `while`- ja `do-while`-rakenteille.
 
-- Aliohjelmien nimeämisessä käytetään camelCasing-tyyliä, eli ensimmäinen
+ - Muuttujien ja aliohjelmien nimeämisessä käytetään camelCasing-tyyliä, eli ensimmäinen
   kirjain on pienaakkonen ja seuraavat sanat aloitetaan suuraakkosella.
-  Esimerkiksi `tamaOnFunktionNimi`. Samaa tyyliä käytetään myös muuttujien
-  nimeämisessä.
+  Esimerkiksi `tamaOnFunktionNimi`. 
 
-- Tiedostojen ja luokkien nimeämisessä käytetään PascalCasing-tyyliä, eli
+ - Tiedostojen ja luokkien nimeämisessä käytetään PascalCasing-tyyliä, eli
   ensimmäinen kirjain on suuraakkonen ja seuraavat sanat aloitetaan isolla
   kirjaimella: `HeiMaailma.java`, `public class Opiskelija`, jne. Samoin monissa
   muissa myöhemmin opittavissa rakenteissa, kuten rajapinnoissa ja

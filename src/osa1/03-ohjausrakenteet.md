@@ -8,7 +8,7 @@
 >
 > - Ehtolauseet (`if`, `switch`)
 > - Toistolauseet (`for`, `while`, `do-while`), ja listatyyppiset tietorakenteet
-> - Tiedostat, että Javassa merkkijonoja verrataan `equals`-aliohjelmalla eikä `==`
+> - Tiedostat, että Javassa merkkijonoja verrataan `equals`-aliohjelmalla eikä `==`-operaattorilla
 
 Ohjelmointi on harvoin pelkkää koodirivien suorittamista peräkkäin. Jotta
 ohjelmista saadaan hyödyllisiä, niiden täytyy pystyä tekemään päätöksiä,
