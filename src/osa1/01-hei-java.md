@@ -4,8 +4,6 @@
 > Tämä osio julkaistaan 12. tammikuuta 2026.
 > {{#include ../ei-julkaistu.md}}
 
-
-
 > [!Osaamistavoitteet]
 >
 > - Tutustut Java-kielen perusteisiin
@@ -38,13 +36,19 @@ Käydään läpi ohjelma rivi riviltä:
 
 1. Java-ohjelman suoritus alkaa `main`-nimisestä aliohjelmasta. `void`
    tarkoittaa, että aliohjelma ei palauta mitään arvoja. Koska pääohjelma ei ota
-   parametreja, sulut voidaan jättää tyhjäksi. Javassa samalla rivillä
-   aloitetaan myös aliohjelman runko aaltosululla `{`.
+   parametreja, `main`-sanan perässä olevat kaarisulkeet voidaan jättää
+   tyhjäksi. Aliohjelman runko alkaa avaavalla aaltosululla `{`.
 
 2. Tekstin tulostaminen komentorivi-ikkunaan onnistuu `IO.println`-metodilla.
-   Javassa lause loppuu yleensä puolipisteeseen `;`. 
+   Javassa lause loppuu yleensä puolipisteeseen `;`, kuten tässäkin.  
 
-3. Aliohjelman runko lopetetaan aaltosululla `}`.
+3. Aliohjelman runko lopetetaan aaltosululla `}`. Ohjelman suoritus päättyy
+   automaattisesti, kun `main`-aliohjelma on suoritettu loppuun.
+
+Vaikka ohjelma on hyvin yksinkertainen, se on silti aivan toimiva Java-ohjelma.
+Opintojakson aikana teemme paljon juuri komentorivi-ikkunaan kirjoittavia ja
+sieltä lukevia ohjelmia. Opintojakson loppupuoliskolla painopiste siirtyy
+graafisten käyttöliittymien parissa työskentelyyn. 
 
 ## Javan koodauskäytänteistä
 
@@ -78,8 +82,10 @@ mielessä:
 > Tässä osiossa tarvitset opintojakson työkaluja. Käy ensin asentamassa kaikki
 > työkalut [Työkaluohjeesta](../tyokalut.md).
 
+Vaikka monet yllä olevan tapaiset pienet ohjelmat voidaan periaatteessa tehdä
+nettiselaimessa, on ohjelmia kehittäessä varsin käytännöllistä käyttää erillistä kehitysympäristöä. 
 Tässä materiaalissa käytämme IntelliJ IDEA -kehitysympäristöä Java-ohjelmien
-luomiseen, ajamiseen ja virheenjäljitykseen.
+luomiseen, ajamiseen ja virheenjäljitykseen. 
 
 ### Luo uusi projekti
 
