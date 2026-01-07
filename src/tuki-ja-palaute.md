@@ -6,7 +6,7 @@ Kevään 2026 ohjauskauden (10.1.-30.4.) aikana on tarjolla seuraavat tukikanava
 | ---------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Lähiohjaus                                           | ke 10-16, to 10-16, pe 10-16 | Agoralla luokat [Ag B213.1 Lakes](https://navi.jyu.fi/space/m118990) ja [Ag B212.2 Mountains](https://navi.jyu.fi/space/m118989) |
 | Etäohjaus                                            | ke 10-16, to 8-18, pe 10-16  | [Ohjelmointi 2 Teams-kanava](#ohjeet-teams-ohjauksiin-liittymiseksi-tutkinto-opiskelijat)                                        |
-| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                      | ohj2-opet@tim.jyu.fi                                                                                                             |
+| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                      | ohj2-opet@jyu.onmicrosoft.com                                                                                                             |
 
 Ohjaukset ovat yhteisiä ITKP102 Ohjelmointi 1- ja ITKA2004 Tietokannat ja tiedonhallinta -opintojaksojen kanssa. Ohjaajat auttavat kummankin kurssin opiskelijoita.
 
@@ -51,7 +51,7 @@ tarvittaessa sallia oikeudet käyttöjärjestelmäsi asetuksista.
 
 ## Ohjeet Teams-ohjauksiin liittymiseksi (avoin yliopisto, erilliset opinto-oikeudet)
 
-Lähetä sähköpostilla alla oleva pyyntö osoitteeseen `ohj2-opet@tim.jyu.fi`.
+Lähetä sähköpostilla alla oleva pyyntö osoitteeseen `ohj2-opet@jyu.onmicrosoft.com`.
 
 ```plain
 Hei,
@@ -87,7 +87,7 @@ Voit antaa palautetta ja kehitysehdotuksia opintojaksosta kolmella tavalla:
  1. Keräämme jatkuvaa palautetta opintojakson aikana. Nyt, kun olemme kehittämässä opintojakson sisältöjä ja toteutusta, tämä jatkuva palaute on erityisen tärkeää. Voit antaa palautetta anonyymisti alla olevan linkin kautta: **TODO:** Norppa-linkki tähän.
 
  2. Mikäli havaitset materiaalissa virheen, epäselvyyden, tai muun ongelman, voit raportoida siitä
-    GitHubissa klikkaamalla kunkin sivun alareunassa olevia linkkejä. Voit myös ilmoittaa puutteista suoraan opettajille sähköpostitse osoitteeseen `ohj2-opet@tim.jyu.fi`.
+    GitHubissa klikkaamalla kunkin sivun alareunassa olevia linkkejä. Voit myös ilmoittaa puutteista suoraan opettajille sähköpostitse osoitteeseen `ohj2-opet@jyu.onmicrosoft.com`.
  
  3. Opintojakson lopuksi jokainen Sisussa (tai Ilpo-portaalissa) ilmoittautunut saa henkilökohtaisen linkin kurssipalautekyselyyn, jossa voit antaa anonyymisti palautetta koko opintojaksosta.
 

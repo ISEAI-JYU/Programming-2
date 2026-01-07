@@ -29,7 +29,7 @@ aikana. Osa materiaalista julkaistaan kurssin edetessä. Uudistamisesta johtuen
 sisällössä voi olla myös keskeneräisyyksiä ja virheitä. Pahoittelemme tästä
 mahdollisesti aiheutuvaa haittaa. Pyydämme, että ilmoitat virheistä tai
 parannusehdotuksista GitHubin kautta (katso tämän sivun alareuna) tai suoraan
-opettajien sähköpostiin <opet@TODO>.
+opettajien sähköpostiin <ohj2-opet@jyu.onmicrosoft.com>.
 
 </details>
 
@@ -43,14 +43,15 @@ ilmestyvät tähän kurssin alettua.
 | ---------------------------------------------------- | ------- | --------------------------------------- |
 | Lähiohjaus                                           | TBD     | Agoralla, TBD                           |
 | Etäohjaus                                            | TBD     | [Ohjelmointi 2 Teams-kanava](#teams-jy) |
-| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva | ohj1-opet@tim.jyu.fi                    |
+| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva | ohj2-opet@jyu.onmicrosoft.com                    |
 
 <!--
 | Tukikanava                                           | Aika                         | Paikka/Linkki                                                                                                                    |
 | ---------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | Lähiohjaus                                           | ke 10-16, to 10-16, pe 10-16 | Agoralla luokat [Ag B213.1 Lakes](https://navi.jyu.fi/space/m118990) ja [Ag B212.2 Mountains](https://navi.jyu.fi/space/m118989) |
 | Etäohjaus                                            | ke 10-16, to 8-18, pe 10-16  | [Ohjelmointi 2 Teams-kanava](#teams-jy)                                                                                          |
-| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                      | ohj2-opet@tim.jyu.fi                                                                                                             | --> |
+| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                      | ohj2-opet@jyu.onmicrosoft.com                                                                                                             | 
+--> 
 
 Ohjaukset ovat yhteisiä ITKP102 Ohjelmointi 1- ja ITKA2004 Tietokannat ja
 tiedonhallinta -opintojaksojen kanssa. Ohjaajat auttavat kummankin kurssin
@@ -103,7 +104,7 @@ tarvittaessa sallia oikeudet käyttöjärjestelmäsi asetuksista.
 
 ## Ohjeet Teams-ohjauksiin liittymiseksi (JY Avoin yliopisto, erilliset opinto-oikeudet) {#teams-avoin}
 
-Lähetä sähköpostilla alla oleva pyyntö osoitteeseen `ohj2-opet@tim.jyu.fi`.
+Lähetä sähköpostilla alla oleva pyyntö osoitteeseen `ohj2-opet@jyu.onmicrosoft.com`.
 
 ```plain
 Hei,
@@ -169,7 +170,7 @@ kolmella tavalla:
     epäselvyyksistä, tai muista ongelmista tässä oppimateriaalissa. Raportoi
     havaintosi GitHubissa klikkaamalla kunkin sivun alareunassa olevia linkkejä.
     Voit myös ilmoittaa puutteista suoraan opettajille sähköpostitse
-    osoitteeseen `opet@TODO`.
+    osoitteeseen `ohj2-opet@jyu.onmicrosoft.com`.
  
  3. Opintojakson lopuksi kaikki **Sisussa** (tai **Ilpo-portaalissa**)
     ilmoittautuneet (tutkinto, avoin, erilliset opinto-oikeudet, lukiolinjat)
