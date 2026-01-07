@@ -4,6 +4,7 @@
 > Tämä osio julkaistaan 12. tammikuuta 2026.
 > {{#include ../ei-julkaistu.md}}
 
+Ennen kuin aloitat tehtävien tekemisen, on syytä tutustua [opintojakson eettisiin ohjeisiin](../suorittaminen.md#eettiset-ohjeet).
 
 <task>
 <task-title>Tehtävä 1.1: Oma ohjelma Javalla <points>1 p.</points> </task-title>
