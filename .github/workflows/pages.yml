@@ -35,6 +35,7 @@ jobs:
         with:
           path: |
             ~/.cargo
+            ~/.cargo-target-cache
             preprocessors/rust/**/target
 
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}
