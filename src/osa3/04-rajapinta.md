@@ -431,7 +431,7 @@ public class Main {
 Jos haluat testata tätä koodia omalla koneellasi, voit ladata tämänkin esimerkin
 [GitHubista](https://github.com/ohj-perus-jy/ohj2/tree/main/src/examples/osa3/E32_Rajapinnat2/src).
 
-<details closed><summary>✨ Valinnaista lisätietoa: Piirtämisvastuun siirtäminen pois komponenteista </summary>
+<details closed><summary><i class="bi bi-stars jyu-gold"></i> Valinnaista lisätietoa: Piirtämisvastuun siirtäminen pois komponenteista </summary>
 
 Yllä oleva esimerkkimme on siinä mielessä aavistuksen epätodellinen, että
 käyttöliittymäkomponentit eivät yleensä huolehdi itse itsensä piirtämisestä,
@@ -649,7 +649,7 @@ Löydät kaikki tällä sivulla esitellyt esimerkit
 
 ## Huomautuksia
 
-✨ Valinnaista lisätietoa: Javan versiosta 8 alkaen rajapinnat voivat sisältää
+<i class="bi bi-stars jyu-gold"></i> Valinnaista lisätietoa: Javan versiosta 8 alkaen rajapinnat voivat sisältää
 myös metodien oletustoteutuksia. Ominaisuus saattaa olla hyödyllinen esimerkiksi
 tilanteissa, jossa halutaan lisätä uusi metodi olemassa olevaan rajapintaan
 rikkomatta vanhoja toteutuksia. Lue aiheesta lisää [Javan

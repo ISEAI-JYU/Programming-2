@@ -558,7 +558,7 @@ keskeiset erot syntaktin ja käyttötarkoituksen osalta.
 ## Tehtävät
 
 <task>
-  <task-title>✨ Bonus: Tehtävä 3.9: Kotityörobotti. <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 3.9: Kotityörobotti. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/3-9-kotityorobotti/handout.md}}

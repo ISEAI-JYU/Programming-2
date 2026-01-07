@@ -68,7 +68,7 @@ Ennen kuin aloitat tehtävien tekemisen, on syytä tutustua [opintojakson eettis
 </task>
 
 <task>
-<task-title>✨ Bonus: Tehtävä 1.7: Numerolaskuri
+<task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 1.7: Numerolaskuri
 <points>1 p.</points> </task-title>
 <handout>
 
@@ -79,7 +79,7 @@ Ennen kuin aloitat tehtävien tekemisen, on syytä tutustua [opintojakson eettis
 </task>
 
 <task>
-<task-title>✨ Bonus: Tehtävä 1.8: Puuttuva luku <points>1 p.</points> </task-title>
+<task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 1.8: Puuttuva luku <points>1 p.</points> </task-title>
 <handout>
 
 {{#include ../exercises/1-8-puuttuva-luku/handout.md}}
@@ -89,7 +89,7 @@ Ennen kuin aloitat tehtävien tekemisen, on syytä tutustua [opintojakson eettis
 </task>
 
 <task>
-<task-title>✨ Bonus: Tehtävä 1.9: Alkuluvut <points>1 p.</points> </task-title>
+<task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 1.9: Alkuluvut <points>1 p.</points> </task-title>
 <handout>
 
 {{#include ../exercises/1-9-alkuluvut/handout.md}}

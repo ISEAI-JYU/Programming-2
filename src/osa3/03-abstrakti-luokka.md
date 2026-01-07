@@ -510,7 +510,7 @@ Abstraktia metodia ei voi määritellä `private`-määreellä.
 
 ## Huomautuksia
 
-<details closed><summary>✨ Valinnaista lisätietoa: Abstraktit metodit ja operaatiorunko-malli </summary>
+<details closed><summary><i class="bi bi-stars jyu-gold"></i> Valinnaista lisätietoa: Abstraktit metodit ja operaatiorunko-malli </summary>
 
 Abstraktissa luokassa voi olla myös konkreettinen metodi, jonka toteutuksessa kutsutaan abstraktia metodia. Tällaista toteutusta kutsutaan ohjelmistosuunnittelussa *operaatiorunko*-suunnittelumalliksi. Abstrakti luokka määrittelee toimenpiteelle "kaavan", mutta delegoi osan vaiheista aliluokkien toteutettavaksi.
 

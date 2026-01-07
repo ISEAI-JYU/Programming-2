@@ -25,7 +25,7 @@
 </task>
 
 <task>
-  <task-title>✨ Bonus: Tehtävä 3.3: Luokkahierarkia, osa 3. <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 3.3: Luokkahierarkia, osa 3. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/3-3-bonus-luokkahierarkia/handout.md}}
