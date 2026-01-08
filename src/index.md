@@ -3,6 +3,11 @@
 Tämä on Jyväskylän yliopiston järjestämän **TIEP111 Ohjelmointi 2**
 -opintojakson oppimateriaali. 
 
+Jos olet ilmoittautunut opintojaksolle Sisu- tai Ilpo-järjestelmässä, näet oman
+etenemisesi tilanteen (harjoitustehtävien pisteet, harjoitustyön hyväksyminen,
+tenttitulokset) näet
+[TIM-järjestelmästä](https://tim.jyu.fi/view/kurssit/tie/tiep111/koti).
+
 ## Tietoja opintojaksosta
 
 <!-- OPS:sta -->
@@ -53,9 +58,9 @@ ilmestyvät tähän kurssin alettua.
 | Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                      | ohj2-opet@jyu.onmicrosoft.com                                                                                                             | 
 --> 
 
-Ohjaukset ovat yhteisiä ITKP102 Ohjelmointi 1- ja ITKA2004 Tietokannat ja
-tiedonhallinta -opintojaksojen kanssa. Ohjaajat auttavat kummankin kurssin
-opiskelijoita.
+Ohjaukset ovat yhteisiä TIEP111 Ohjelmointi 2, ITKP102 Ohjelmointi 1- ja
+ITKA2004 Tietokannat ja tiedonhallinta -opintojaksojen kanssa. Ohjaajat auttavat
+kaikkien kolmen kurssin opiskelijoita.
 
 Ohjausaikoja saatetaan lisätä tai poistaa kysynnän mukaan; kerro aikatoiveistasi
 opettajille sähköpostitse. 
