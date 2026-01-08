@@ -731,9 +731,9 @@ void main() {
 }
 ```
 
-Javan rajoituksista johtuen listojen **alkioiden tyypin on aina oltava
-viitetyyppi.** Täten esimerkiksi `int`-alkioita sisältävän listan ei voi
-kirjoittaa muodossa `ArrayList<int>`:
+Javan rajoituksista johtuen listan alkioiden tyypin on aina oltava viitetyyppi.
+Niinpä esimerkiksi `int`-alkioita sisältävää listaa ei voi kirjoittaa muodossa
+`ArrayList<int>`:
  
 ```java,ignore
 List<int> lista = new ArrayList<int>();
