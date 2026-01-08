@@ -381,10 +381,10 @@ muutu. Katsotaan tästä esimerkki:
 ```java
 //-void main() {
 String muuttumaton = "Tämä on muuttumaton.";
-//-IO.println("muuttumaton = " + muuttumaton);
+IO.println("muuttumaton = " + muuttumaton);
 
 muuttumaton.concat("Vai onko sittenkään?");
-//-IO.println("muuttumaton = " + muuttumaton);
+IO.println("muuttumaton = " + muuttumaton);
 //-}
 ```
 
