@@ -9,13 +9,13 @@ fi
 
 export CARGO_TARGET_DIR="$HOME/.cargo-target-cache"
 
-cargo install --locked mdbook@0.4.52 \
+cargo install mdbook@0.4.52 \
               mdbook-mermaid@0.16.2 \
               mdbook-alerts@0.8.0 \
               mdbook-katex@0.9.4 \
               mdbook-plantuml@0.8.0 \
               mdbook-inline-highlighting@1.0.0
 
-cargo install --locked --git https://github.com/boozook/mdbook-svgbob.git#3431f100c08eeca8b132241d0c372ec0f4aed85b
+cargo install --git https://github.com/boozook/mdbook-svgbob.git#3431f100c08eeca8b132241d0c372ec0f4aed85b
 
-cargo install --locked --path ./preprocessors/rust/mdbook-codeblock-tabs
+cargo install --path ./preprocessors/rust/mdbook-codeblock-tabs
