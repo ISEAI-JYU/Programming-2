@@ -6,7 +6,6 @@
 [Harjoitustyö](./harjoitustyo.md)
 [Tentti](./tentti.md)
 [Usein kysyttyä](./ukk.md)
-[](./tenttiohjeet.md)
 
 ---
 
