@@ -11,8 +11,8 @@ body:
   - type: input
     id: url
     attributes:
-      label: Sivun osoite
-      description: Kopioi tähän sen sivun URL-osoite, jossa ongelma esiintyy
+      label: Sivun osoite tai polku
+      description: Kopioi tähän sen sivun URL-osoite tai polku, jossa ongelma esiintyy
       placeholder: "https://ohjelmointi2.it.jyu.fi/..."
     validations:
       required: true
