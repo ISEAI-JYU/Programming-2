@@ -36,7 +36,7 @@ Ensimmäisen kuuden osan kohdalla on mahdollista saada myös ns. DL-BONUS-pistei
 
 <sup>2</sup> Edelleen, "50%" tarkoittaa tässä yhteydessä puolet siitä pistemäärästä, mitä kyseisen osan perustehtävistä voi saada.
 
-Näet [etenemissivulla]() kerättyjen tehtäväpisteidän määrän ja prosenttiosuuden sekä DL-BONUS-pisteet erikseen. (Linkki TODO!)
+Näet [etenemissivulla](https://tim.jyu.fi/view/kurssit/tie/tiep111/koti) kerättyjen tehtäväpisteidän määrän ja prosenttiosuuden sekä DL-BONUS-pisteet erikseen.
 
 Lopullinen arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan painotettuna keskiarvona. Harjoitustehtävistä saatua arvosanaa painotetaan 40% ja tentistä saatua arvosanaa painotetaan 60%. Sekä harjoitustehtävistä että tentistä täytyy saada vähintään arvosana 1, jotta kurssista voi saada hyväksytyn arvosanan.
 
