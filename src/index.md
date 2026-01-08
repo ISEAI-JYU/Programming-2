@@ -3,9 +3,9 @@
 Tämä on Jyväskylän yliopiston järjestämän **TIEP111 Ohjelmointi 2**
 -opintojakson oppimateriaali. 
 
-Jos olet ilmoittautunut opintojaksolle Sisu- tai Ilpo-järjestelmässä, näet oman
-etenemisesi tilanteen (harjoitustehtävien pisteet, harjoitustyön hyväksyminen,
-tenttitulokset) näet
+Voit palauttaa tehtäviä vain, jos olet ilmoittautunut opintojaksolle Sisu- tai
+Ilpo-järjestelmässä. Oman etenemisesi tilanteen (harjoitustehtävien pisteet,
+harjoitustyön hyväksyminen, tenttitulokset) näet
 [TIM-järjestelmästä](https://tim.jyu.fi/view/kurssit/tie/tiep111/koti).
 
 ## Tietoja opintojaksosta
