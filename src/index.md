@@ -44,6 +44,10 @@ Kevään 2026 ohjauskauden (12.1.-31.5.) aikana on tarjolla lähiohjausta Agoral
 etäohjausta Teamsin kautta, sekä sähköpostitukea. Tarkat aika- ja paikkatiedot
 ilmestyvät tähän kurssin alettua.
 
+Sisu vaatii ilmoittautumisen yhteydessä valitsemaan ohjausryhmän. Voit kuitenkin
+täysin vapaasti käyttää kaikkia ohjausaikoja ja -kanavia riippumatta siitä,
+mihin ohjausryhmään olet ilmoittautunut. 
+
 | Tukikanava                                           | Aika    | Paikka/Linkki                           |
 | ---------------------------------------------------- | ------- | --------------------------------------- |
 | Lähiohjaus                                           | TBD     | Agoralla, TBD                           |
@@ -65,7 +69,7 @@ kaikkien kolmen kurssin opiskelijoita.
 Ohjausaikoja saatetaan lisätä tai poistaa kysynnän mukaan; kerro aikatoiveistasi
 opettajille sähköpostitse. 
 
-<details closed><summary>Haluatko Sisun kalenteriin ohjausaikoja näkyviin? (Avaa ohje klikkaamalla) </summary>
+<details closed><summary>Haluatko Sisun opintokalenteriin ohjausaikoja näkyviin? (Avaa ohje klikkaamalla) </summary>
 
 1. Kirjaudu Sisuun
 2. Jos olet jo ilmoittautunut kurssille, klikkaa ylhäällä välilehteä
