@@ -13,7 +13,7 @@ body:
     attributes:
       label: Sivun osoite
       description: Kopioi tähän sen sivun URL-osoite, jossa ongelma esiintyy
-      placeholder: ""
+      placeholder: "https://ohjelmointi2.it.jyu.fi/..."
     validations:
       required: true
   
