@@ -323,13 +323,14 @@ boolean totuusarvo = true;
 //-}
 ```
 
-## Käärijäluokat
+## Käärijäluokat {#kaarijaluokat}
 
 Javassa kullekin alkeistietotyypille on olemassa niin sanottu käärijäluokka
-(engl. *wrapper class*). Käärijäluokasta löytyy hyödyllisiä metodeja, kuten
-`toString()` sekä vakioita, kuten `MAX_VALUE` alkeistietotyyppien käsittelyyn.
-Alkeistietotyypit ja niitä vastaavat käärijäluokat on esitetty alla olevassa
-taulukossa. 
+(engl. *wrapper class*). Käärijäluokka "käärii" alkeistietotyypin arvon olion
+sisään, jolloin alkeistietotyypin arvoa voidaan käsitellä oliona. Esimerkiksi
+`int`-tyypin käärijäluokka on `Integer`. Käärijäluokista löytyy hyödyllisiä
+metodeja, kuten `toString()` sekä vakioita, kuten `MAX_VALUE`. Alkeistietotyypit
+ja niitä vastaavat käärijäluokat on esitetty alla olevassa taulukossa. 
 
 | Alkeistietotyyppi | Käärijäluokka |
 | ----------------- | ------------- |
@@ -343,8 +344,8 @@ taulukossa.
 | boolean           | Boolean       |
 
 Alla olevassa esimerkissä käytetään käärijäluokkien `MAX_VALUE`-vakioita,
-tulostetaan niiden arvoja, sekä havainnollistetaan kokonaisluvun lukualueen
-ylitystä.
+tulostetaan primitiivityyppien käärittyjä arvoja, sekä havainnollistetaan
+kokonaisluvun lukualueen ylitystä.
 
 ```java
 void main() {
@@ -419,7 +420,7 @@ niistä.
 | `jono.substring(mistä, mihin)` | Palauttaa osan jonosta alkaen indeksistä `mistä` päättyen indeksiin `mihin`.                           |
 | `String.join(merkki, jonot)`   | Palauttaa jonon, jossa taulukossa `jonot` olevat jonot ovat peräkkäin yhdistettynä merkillä `merkki`). |
 
-Kaikki toiminnot ja niiden tarkat selitykset löytyvät JavaDocs-sivulta (ks. [Class
+Kaikki metodit ja niiden tarkat selitykset löytyvät JavaDocs-sivulta (ks. [Class
 `String`](https://docs.oracle.com/en/java/javase/25/docs/api//java.base/java/lang/String.html)).
 Katsotaan vielä, miten yllä olevia esimerkkejä voi käyttää:
 
@@ -444,7 +445,7 @@ void main() {
 
     // "Pilkkoo" jonon kahteen osajonoon viivan kohdalla
     // HUOM: split-metodissa merkit \^$.|?*+()[]{}
-    // vaativat, että niiden eteen laitetaan kenoviiva \\
+    // vaativat, että niiden eteen laitetaan kaksi kenoviivaa \\
     // Eli jos haluttaisiin pilkkoa pisteen kohdalla, tulisi kirjoittaa
     // mjono.split("\\.") eikä mjono.split(".");
     // jälkimmäinen versio on ns. säännöllinen lauseke (regular expression),
@@ -472,9 +473,9 @@ void main() {
 
 ### Luvun parsiminen merkkijonosta
 
-Merkkijono voidaan muuntaa luvuksi käyttämällä käärijäluokkien
-`parse`-alkuisia metodeja. Esimerkiksi `Integer.parseInt` muuntaa merkkijonon
-kokonaisluvuksi ja `Double.parseDouble` muuntaa merkkijonon desimaaliluvuksi.
+Merkkijono voidaan muuntaa luvuksi käyttämällä käärijäluokkien `parse`-alkuisia
+metodeja. Esimerkiksi `Integer.parseInt` muuntaa merkkijonon kokonaisluvuksi ja
+`Double.parseDouble` muuntaa merkkijonon desimaaliluvuksi.
 
 ```java,ignore
 void main() {
@@ -529,18 +530,17 @@ void main() {
 ## Taulukot
 
 Taulukkoja (engl. *array*) käytetään tallentamaan joukkoa samantyyppisiä
-alkioita muuttujaan. Tämä helpottaa datan tehokasta hallintaa ja organisointia.  
+alkioita muuttujaan. Tämä helpottaa datan organisointia.  
 
 Uuden taulukon määrittely ja luominen Javassa onnistuu seuraavasti:
 
 ```java,ignore
-tyyppi[] nimi = new tyyppi[koko];
+Tyyppi[] nimi = new Tyyppi[koko];
 ```
 
-Tässä `new tyyppi[koko]` luo taulukon, joka sisältää `koko` kappaletta
-alkioita, joiden tyyppi on `tyyppi`.
-Taulukon luomisen jälkeen alkioiden arvoja voi asettaa käyttäen sijoituslausetta
-seuraavasti:
+Tässä `new Tyyppi[koko]` luo taulukon, joka sisältää `koko` kappaletta alkioita,
+joiden tyyppi on `Tyyppi`. Taulukon luomisen jälkeen alkioiden arvoja voi
+asettaa käyttäen sijoituslausetta seuraavasti:
 
 ```java
 //-void main() {
@@ -554,12 +554,11 @@ arvosanat[3] = 5;
 ```
 
 Sijoituslauseessa `\[numero]` tarkoittaa alkion paikkaa eli *indeksiä*
-taulukossa.
-Javassa indeksointi alkaa nollasta, eli ensimmäinen alkio on indeksissä 0, toinen
-indeksissä 1, ja niin edelleen. Taulukon viimeisen alkion indeksi on aina
-`taulukko.length - 1`.
+taulukossa. Javassa indeksointi alkaa nollasta, eli ensimmäinen alkio on
+indeksissä 0, toinen indeksissä 1, ja niin edelleen. Taulukon viimeisen alkion
+indeksi on aina `taulukko.length - 1`.
 
-Jos alkioiden arvot tunnetaan etukäteen, taulukon voi myös luoda seuraavasti
+Jos alkioiden arvot tunnetaan etukäteen, taulukon voi myös luoda seuraavasti.
 
 ```java
 //-void main () {
@@ -568,8 +567,8 @@ int[] arvosanat = new int[] {4, 2, 2, 5};
 //-}
 ```
 
-Yhdistetyssä muuttujan määrittely- ja sijoituslauseessa `new T[]` osa
-on myös sallittua pudottaa pois, jolloin yllä oleva voi tiivistää lisää:
+Yhdistetyssä muuttujan määrittely- ja sijoituslauseessa `new Tyyppi[]`-osa
+on myös sallittua pudottaa pois, jolloin yllä olevaa voi vielä hieman tiivistää.
 
 ```java
 //-void main () {
@@ -578,9 +577,9 @@ int[] arvosanat = {4, 2, 2, 5};
 //-}
 ```
 
-Javassa taulukkojen kokoa ei voi muuttaa taulukon luomisen jälkeen.
-Sijoittaminen paikkaan, jota ei ole taulukossa, aiheuttaa virheen
-ohjelman ajon aikana:
+Javassa taulukkojen kokoa ei voi muuttaa taulukon luomisen jälkeen. Arvon
+sijoittaminen indeksiin, jota ei ole taulukossa, aiheuttaa ajonaikaisen
+virheen. 
 
 ```java,ignore
 int[] arvosanat = new int[] {4, 2, 2, 5};
@@ -592,7 +591,8 @@ java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 4
 ```
 
 Javassa taulukon pituuden voi aina tarkistaa `length`-attribuutilla.
-Lisäksi taulukon voi tulostaa käyttämällä `Arrays.toString`-metodia (ks. [JavaDocs](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Arrays.html#toString(java.lang.Object[])))
+Lisäksi taulukon voi tulostaa käyttämällä `Arrays.toString`-metodia (ks.
+[JavaDocs](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Arrays.html#toString(java.lang.Object[])))
 
 ```java
 //-void main() {
@@ -606,7 +606,7 @@ IO.println("Taulukon sisältö: " + Arrays.toString(arvosanat));
 
 Toisin kuin esimerkiksi C#-kielessä, Javassa ei ole erillisiä moniulotteisia
 taulukkoja. Sen sijaan Javassa voi luoda taulukon, jonka alkioina
-ovat taulukot, eli `T[][]`:
+ovat taulukot, eli `Tyyppi[][]`:
 
 ```java
 //-void main() {
@@ -731,28 +731,27 @@ void main() {
 }
 ```
 
-> [!HUOMAUTUS]
->
-> Javan rajoituksista johtuen listojen **alkioiden tyypin on aina oltava
-> viitetyyppi.** Täten esimerkiksi `int`-alkioita sisältävän listan
-> ei voi kirjoittaa muodossa `ArrayList<int>`:
-> 
-> ```java,ignore
-> List<int> lista = new ArrayList<int>();
-> ```
-> ```
-> error: unexpected type
-> List<int> lista = new ArrayList<int>();
->      ^
->   required: reference
->   found:    int
-> ```
->
-> Jos tarvitset listoja, jonka alkioina ovat alkeistietotyypit, käytä
-> alkioiden tyyppinä [alkeistietotyyppien käärijäluokat](#käärijäluokat),
-> jotka ovat viitetyyppejä, mutta toimivat kuten niitä vastaavat alkeistietotyypit.
-> Toisin sanoen, `ArrayList<Integer>` on sallittu, kun taas `ArrayList<int>` ei ole.
-> Puolestaan `ArrayList<String>` on sallittu, koska merkkijono on viitetietotyyppi.
+Javan rajoituksista johtuen listojen **alkioiden tyypin on aina oltava
+viitetyyppi.** Täten esimerkiksi `int`-alkioita sisältävän listan ei voi
+kirjoittaa muodossa `ArrayList<int>`:
+ 
+```java,ignore
+List<int> lista = new ArrayList<int>();
+```
+```
+error: unexpected type
+List<int> lista = new ArrayList<int>();
+     ^
+  required: reference
+  found:    int
+```
+
+Jos tarvitset listoja, jonka alkioina ovat alkeistietotyypit, käytä alkioiden
+tyyppinä [alkeistietotyyppien käärijäluokat](#kaarijaluokat), jotka ovat
+viitetyyppejä, mutta toimivat kuten niitä vastaavat alkeistietotyypit. Toisin
+sanoen, `ArrayList<Integer>` on sallittu, kun taas `ArrayList<int>` ei ole.
+Puolestaan `ArrayList<String>` on sallittu, koska merkkijono on
+viitetietotyyppi.
 
 > [!HUOMAUTUS]
 >
