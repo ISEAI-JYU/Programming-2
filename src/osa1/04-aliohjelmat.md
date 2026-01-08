@@ -147,7 +147,7 @@ void nollaaTaulukko(int[] taulukko) {
     }
 }
 
-void main(String[] args) {
+void main() {
     int[] luvut = {1, 2, 3};
     
     nollaaTaulukko(luvut);
@@ -165,7 +165,7 @@ esimerkki tästä
 tilanteesta:
 
 ```java
-void main(String[] args) {
+void main() {
     int[] luvut = {1, 2, 3};
     
     muutaViite(luvut);

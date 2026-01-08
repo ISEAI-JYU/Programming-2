@@ -477,7 +477,7 @@ Merkkijono voidaan muuntaa luvuksi käyttämällä käärijäluokkien `parse`-al
 metodeja. Esimerkiksi `Integer.parseInt` muuntaa merkkijonon kokonaisluvuksi ja
 `Double.parseDouble` muuntaa merkkijonon desimaaliluvuksi.
 
-```java,ignore
+```java
 void main() {
     String kokonaislukuJono = "42";
     int kokonaisluku = Integer.parseInt(kokonaislukuJono);
