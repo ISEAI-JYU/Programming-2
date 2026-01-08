@@ -342,9 +342,9 @@ taulukossa.
 | char              | Character     |
 | boolean           | Boolean       |
 
-Tässä käytetään tietotyypin käärijäluokassa olevaa vakiota MAX_VALUE ja
-muunnetaan käärijäluokan avulla muuttujan `kaksiTavua` ensin merkkijonoksi ja
-sen jälkeen tulostetaan merkkijonon ensimmäinen merkki.
+Alla olevassa esimerkissä käytetään käärijäluokkien `MAX_VALUE`-vakioita,
+tulostetaan niiden arvoja, sekä havainnollistetaan kokonaisluvun lukualueen
+ylitystä.
 
 ```java
 void main() {
@@ -361,8 +361,6 @@ void main() {
     IO.println(ylivuoto);
 }
 ```
-
-
 
 ## Merkkijonot
 
