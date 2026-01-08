@@ -33,7 +33,6 @@ Teknisissä ongelmissa käytä jotakin seuraavista yhteydenottotavoista:
 
  - **Salissa:** Nosta kätesi ylös ja odota, että valvoja tulee luoksesi.
  - **Etänä:** Jätä avunpyyntö lomakkeella: Avunpyyntö etätentissä (linkki tulee tähän hyvissä ajoin ennen tenttiä)
- - Laita viesti osoitteeseen `teacher_email`
- - Soita numeroon `teacher_phone_number`
- - Muista, että ongelman sattuessa ei ole kiirettä tai syytä paniikkiin. Vastuuopettaja voi tarvittaessa myöntää lisäaikaa tenttiin.
+    - Vaihtoehtoisesti laita viesti osoitteeseen <ohj2-opet@jyu.onmicrosoft.com>
+    - Muista, että ongelman sattuessa ei ole kiirettä tai syytä paniikkiin. Vastuuopettaja voi tarvittaessa myöntää lisäaikaa tenttiin.
 
