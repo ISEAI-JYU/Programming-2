@@ -7,7 +7,7 @@ Suoritustapojen yksityiskohdat eroavat aikaisemmista toteutuksista jonkin
 verran, joten jos olet aiemmin yrittänyt suorittaa kurssia, lue tämä osio
 huolellisesti läpi.
 
-## Suoritustapa 1
+## Suoritustapa 1 {#suoritustapa-1}
 
 *Tentti, harjoitustehtävät, harjoitustyö aikataulussa*
 
@@ -36,6 +36,17 @@ Ensimmäisen kuuden osan kohdalla on mahdollista saada myös ns. DL-BONUS-pistei
 
 <sup>2</sup> Edelleen, "50%" tarkoittaa tässä yhteydessä puolet siitä pistemäärästä, mitä kyseisen osan perustehtävistä voi saada.
 
+Osien takarajat DL-BONUS-pisteiden saamiseksi ovat seuraavat:
+
+| Osa | Takaraja DL-BONUS-pisteille |
+| --- | --------------------------- |
+| 1   |{{#include ./takarajat.md:1}}|
+| 2   |{{#include ./takarajat.md:2}}|
+| 3   |{{#include ./takarajat.md:3}}|
+| 4   |{{#include ./takarajat.md:4}}|
+| 5   |{{#include ./takarajat.md:5}}|
+| 6   |{{#include ./takarajat.md:6}}|
+
 Näet [etenemissivulla](https://tim.jyu.fi/view/kurssit/tie/tiep111/koti) kerättyjen tehtäväpisteidän määrän ja prosenttiosuuden sekä DL-BONUS-pisteet erikseen.
 
 Lopullinen arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan painotettuna keskiarvona. Harjoitustehtävistä saatua arvosanaa painotetaan 40% ja tentistä saatua arvosanaa painotetaan 60%. Sekä harjoitustehtävistä että tentistä täytyy saada vähintään arvosana 1, jotta kurssista voi saada hyväksytyn arvosanan.
@@ -50,7 +61,7 @@ Lopullinen arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan 
 
 Harjoitustehtävistä saatu arvosana otetaan lukuun **kolmeen ensimmäiseen tenttiin**, jotka opiskelija suorittaa, ja enintään yhden vuoden sisällä opintojakson viimeisestä suorituspäivästä. 
 
-## Suoritustapa 2
+## Suoritustapa 2 {#suoritustapa-2}
 
 *105% harjoitustehtävistä, suullinen kuulustelu harjoitustyöstä, harjoitustyö aikataulussa*
 
