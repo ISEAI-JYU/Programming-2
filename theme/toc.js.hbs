@@ -5,6 +5,22 @@ class MDBookSidebarScrollbox extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `{{#toc}}{{/toc}}`;
 
+        // 0. Custom External Link Resolution
+        this.querySelectorAll("li.chapter-item > div").forEach(div => {
+            if (div.querySelector("a")) return;
+            const text = div.textContent;
+            // Match pattern like "Titlehttps://..."
+            const match = text.match(/^(.*)(https?:\/\/.*)$/);
+            if (match) {
+                const title = match[1];
+                const url = match[2];
+                const a = document.createElement("a");
+                a.href = url;
+                a.textContent = title;
+                div.replaceWith(a);
+            }
+        });
+
         // 1. Path Resolution & Active Link Identification
         let current_page = document.location.href.toString().split("#")[0].split("?")[0];
         if (current_page.endsWith("/")) {
