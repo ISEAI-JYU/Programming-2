@@ -48,18 +48,17 @@ Sisu vaatii ilmoittautumisen yhteydessä valitsemaan ohjausryhmän. Voit kuitenk
 täysin vapaasti käyttää kaikkia ohjausaikoja ja -kanavia riippumatta siitä,
 mihin ohjausryhmään olet ilmoittautunut. 
 
-| Tukikanava                                           | Aika    | Paikka/Linkki                           |
-| ---------------------------------------------------- | ------- | --------------------------------------- |
-| Lähiohjaus                                           | TBD     | Agoralla, TBD                           |
-| Etäohjaus                                            | TBD     | [Ohjelmointi 2 Teams-kanava](#teams-jy) |
-| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva | ohj2-opet@jyu.onmicrosoft.com                    |
+| Tukikanava                                           | Aika                      | Paikka/Linkki                                                                                                                   |
+| ---------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Lähiohjaus                                           | ke 8-18, to 8-18, pe 8-14 | Agoralla luokat [Ag B212.1 Finland](https://navi.jyu.fi/space/m118988) ja [Ag B211.1 Sovjet](https://navi.jyu.fi/space/m118987) |
+| Etäohjaus                                            | ke 8-18, to 8-18, pe 8-14 | [Ohjelmointi 2 Teams-kanava](#teams-jy)                                                                                         |
+| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                   | ohj2-opet@jyu.onmicrosoft.com                                                                                                   |
 
 <!--
-| Tukikanava                                           | Aika                         | Paikka/Linkki                                                                                                                    |
-| ---------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Lähiohjaus                                           | ke 10-16, to 10-16, pe 10-16 | Agoralla luokat [Ag B213.1 Lakes](https://navi.jyu.fi/space/m118990) ja [Ag B212.2 Mountains](https://navi.jyu.fi/space/m118989) |
-| Etäohjaus                                            | ke 10-16, to 8-18, pe 10-16  | [Ohjelmointi 2 Teams-kanava](#teams-jy)                                                                                          |
-| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                      | ohj2-opet@jyu.onmicrosoft.com                                                                                                             | 
+| Tukikanava                                           | Aika                        | Paikka/Linkki                           |
+| ---------------------------------------------------- | --------------------------- | --------------------------------------- |
+| Etäohjaus                                            | ke 10-16, to 8-18, pe 10-16 | [Ohjelmointi 2 Teams-kanava](#teams-jy) |
+| Vastuuopettajien ja tuntiopettajien sähköpostiosoite | Jatkuva                     | ohj2-opet@jyu.onmicrosoft.com           |
 --> 
 
 Ohjaukset ovat yhteisiä TIEP111 Ohjelmointi 2, ITKP102 Ohjelmointi 1- ja
@@ -77,15 +76,15 @@ opettajille sähköpostitse.
 3. Selaa oikealla oikea kurssi näkyville, eli tässä tapauksessa Ohjelmointi 2
 4. Klikkaa oikealla olevaa oikealle osoittavaa väkästä Ohjelmointi 2 -kurssin
    kohdalla
-1. Skrollaa alaspäin, kunnes tulee alaotsikko *Pääteohjaus*
-2. Jos ei vielä näy, niin skrollaa alaspäin, kunnes näkyy *Muiden ryhmien
+5. Skrollaa alaspäin, kunnes tulee alaotsikko *Pääteohjaus*
+6. Jos ei vielä näy, niin skrollaa alaspäin, kunnes näkyy *Muiden ryhmien
    tiedot* ja klikkaa sitä
-3. Nyt voit skrollaamalla alaspäin haluamiesi pääteohjauksien kohdalta klikata
+7. Nyt voit skrollaamalla alaspäin haluamiesi pääteohjauksien kohdalta klikata
    nappulaa *Näytä tapahtumat kalenterissa*. 
 
    ![Näytä Sisu-tapahtumat kalenterissa](images/tapahtumat.jpg)
 
-1. Nyt kyseisen ryhmän ohjausajat näkyvät sinulla automaattisesti. Tarvittaessa
+8. Nyt kyseisen ryhmän ohjausajat näkyvät sinulla automaattisesti. Tarvittaessa
    voit poistaa ryhmän tapahtumia viikkokohtaisesti Tapahtumakalenterista. 
 
 </details>
