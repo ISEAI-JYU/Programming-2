@@ -6,7 +6,7 @@ Luentonauhoitteet julkaistaan YouTubessa ja Moniviestimessä.
 
 | Luento                                               | Päivämäärä             | Sijainti                                            | Striimi ja nauhoite                                                        | Materiaalit |
 | ---------------------------------------------------- | ---------------------- | --------------------------------------------------- | -------------------------------------------------------------------------- | ----------- |
-| Luento 1: Java-kielen perusteet                      | ma 12.1.2026 klo 12.15 | [Ag Auditorio 3](https://navi.jyu.fi/space/m119006) | [YouTube](https://youtube.com/live/fbvrw_-BWjY?feature=share), Moniviestin |             |
+| Luento 1: Java-kielen perusteet                      | ma 12.1.2026 klo 10.15 | [Ag Auditorio 3](https://navi.jyu.fi/space/m119006) | [YouTube](https://youtube.com/live/fbvrw_-BWjY?feature=share), Moniviestin |             |
 | Luento 2: Olio-ohjelmoinnin perusteet                | ma 19.1.2026 klo 14.15 | [Ag Auditorio 3](https://navi.jyu.fi/space/m119006) | YouTube, Moniviestin                                                       |             |
 | Luento 3: Perintä ja rajapinnat                      | ma 26.1.2026 klo 14.15 | [Ag Auditorio 3](https://navi.jyu.fi/space/m119006) | YouTube, Moniviestin                                                       |             |
 | Luento 4: Hyödyllisiä menetelmiä olio-ohjelmoinnissa | ma 2.2.2026 klo 14.15  | [Ag Auditorio 3](https://navi.jyu.fi/space/m119006) | YouTube, Moniviestin                                                       |             |
