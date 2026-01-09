@@ -40,9 +40,11 @@ opettajien sähköpostiin <ohj2-opet@jyu.onmicrosoft.com>.
 
 ## Ohjaukset ja tuki
 
-Kevään 2026 on 12. tammikuuta &ndash; 24. huhtikuuta välisenä aikana tarjolla lähiohjausta Agoralla,
-etäohjausta Teamsin kautta, sekä sähköpostitukea. Tarkat aika- ja paikkatiedot
-ilmestyvät tähän kurssin alettua.
+Kevään 2026 on 12. tammikuuta &ndash; 24. huhtikuuta välisenä aikana tarjolla
+lähiohjausta Agoralla, etäohjausta Teamsin kautta, sekä sähköpostitukea. Tarkat
+aika- ja paikkatiedot ilmestyvät tähän kurssin alettua.
+
+Pääsiäistauon aikana (30.3.-6.4.) ei kuitenkaan ole ohjausta tarjolla.
 
 Sisu vaatii ilmoittautumisen yhteydessä valitsemaan ohjausryhmän. Voit kuitenkin
 täysin vapaasti käyttää kaikkia ohjausaikoja ja -kanavia riippumatta siitä,
