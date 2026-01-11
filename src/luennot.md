@@ -21,10 +21,15 @@ Luentonauhoitteet julkaistaan YouTubessa ja Moniviestimessä.
 
 ## Kyselytunnit
 
-Kyselytunnilla vastuuopettajat päivystävät aktiivisesti sekä luentosalissa että
-opintojakson Teams-kanavalla. Kyselytunnilla voit esittää kysymyksiä
-vastuuopettajille kurssiin liittyvistä asioista. 
-**Kyselytunti ei ole ohjaustilaisuus**, eli et voi saada harjoitustyötäsi hyväksytetyksi kyselytunnilla.
+Kyselytunti järjestetään joka viikko luentojen jälkeen klo 16.00–17.00 alkaen
+maanantaista 19.1.2026. 
 
-Kyselytunti järjestetään joka viikko luentojen jälkeen klo 16.00–17.00. 
-Keväällä 2026 ensimmäinen kyselytunti järjestetään poikkeuksellisesti maanantaina 19.1.
+Kyselytunnilla vastuuopettajat päivystävät luentosalissa ja opintojakson
+Teams-kanavalla ja vastaavat opiskelijoiden kysymyksiin. Tilaisuus on
+luonteeltaan vapaamuotoinen, eli ennalta määrättyä ohjelmaa ei ole, eikä
+tilaisuutta nauhoiteta. Voit tulla paikalle kysyäksesi mieltäsi askarruttavista
+asioista liittyen luentoihin, harjoitustehtäviin tai harjoitustyöhön.
+Kyselytunti ei ole kuitenkaan tarkoitettu harjoitustyön hyväksymiseen tai
+harjoitustehtävien pistekorjauksiin. Näissä kysymyksissä ota yhteyttä opettajiin
+sähköpostitse. 
+
