@@ -7,7 +7,14 @@
 > - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
 > - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
+WIP: rajuruoho
+Jos haluat muokata tätä jo nyt, lähetä viestiä.
+
+Käytä induktiota selvittääksesi, onko ongelmalla optimaalinen alistruktuuri (engl. *optimal substructure*)(eli aina valitsemalla lokaalin optimin päädytään globaaliin optimiin). Jos tosi --> Käytä ahnetta algoritmia (engl. *greedy algorithm*). Jos taasen ongelmassa on päällekkäisiä osaongelmia käytä hajoita ja hallitse-menetelmiä tai dynaamista ohjelmointia (Memoisaatiota molemmissa)(hjh dynaamisen osajoukko). Muutoin käytä suoraviivaista menetelmää ratkaisujen läpikäymiseen.
+
 # Rekursio
+Mitä rekursio tarkoittaa yleisellä tasolla
+
 Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
 
 1) Perustapaus:
@@ -20,7 +27,29 @@ Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
 1. Voinko ratkaista tämän nyt?
 2. Jos en, miten teen ongelmasta helpomman ja lähetän sen eteenpäin?
 
+- Ongelman määrittely itseään pienempien aliongelmien avulla
+- Rekursiivisen funktion rakenne
+    - Funktion kutsuminen itseään
+    - Parametrien muuttuminen kutsujen välillä
+
+- Esimerkkitehtäviä:
+   - Faktoriaali
+   - Fibonacci
+   - Puun tai listan läpikäynti
+
 ## Rekursio pinon avulla
+Kutsupino (call stack)
+- Miten funktiokutsut tallentuvat pinoon
+- Paikallisten muuttujien elinkaari
+
+Rekursion eteneminen pinossa
+- Kutsuvaihe (push)
+- Paluuvaihe (pop)
+
+Rekursion ja iteratiivisen ratkaisun vertailu
+- Rekursio vs. silmukat
+
+Muistin käyttö
 
 ```java
 void lahtolaskenta(int n) {
@@ -34,11 +63,81 @@ void main() {
 }
 ```
 
-## Induktiotapaus
+- Milloin rekursio pysähtyy
+- Tyypilliset virheet (puuttuva tai väärä perustapaus)
+    - Ääretön rekursio --> Liian suuret kutsusyvyydet
+    - Virheellinen perustapaus
+
+Induktiotapaus (rekursiivinen askel)
+- Ongelman pienentäminen
+- Oikean etenemissuunnan valinta
+
+## Rekursiiviset tietorakenteet
+"Itsensä sisältävää" tietorakennetta voidaan kutsua rekursiiviseksi tietorakenteeksi. Esimerkkejä tällaisista ovat linkitetty lista, puut ja graafit.
+
+- Rekursiiviset algoritmit tietorakenteille
+    - Haku
+    - Läpikäynti (DFS, preorder, inorder, postorder)
 
 ### Hajota ja hallitse
+- Periaatteen idea
+    - Ongelman jakaminen osiin
+    - Osaongelmien yhdistäminen
+- Rekursion rooli hajota ja hallitse -menetelmässä
+- Esimerkkejä algoritmeista
+    - Merge sort
+    - Quick sort
+    - Puolitushaku (engl. *binary search*)
 
-## Rekursio = Kieli käyttää pinoa puolestasi
+## Pinon käyttö rekursiossa
 Rekursiossa pinoa hallinnoi ohjelmointikieli. Iteratiivisessa ratkaisussa sinä itse huolehdit pinon käytöstä.
 
+- Implisiittinen pino (kutsupino)
+- Eksplisiittinen pino
+    - Rekursion simulointi itse toteutetulla pinolla
+- Milloin pinon käyttö on ongelma
+    - Stack overflow
+    - Suuret syvyydet
+
+
 ## Dynaaminen ohjelmointi?
+Dynaaminen ohjelmointi on sekä matemaattinen optimointimetodi ja algoritminen paradigma. 
+- Yhteys rekursioon
+    - Rekursiivinen määrittely + muistin käyttö
+- Päällekkäiset aliongelmat
+- Muistitekniikat
+    - Memoisaatio
+    - Taulukointi (bottom-up)
+- Esimerkkejä
+    - Fibonacci optimoituna
+    - Kapsäkkiongelma (engl. *knapsack problem*) (koliket)
+
+
+Ahne algoritmi on mikä tahansa algoritmi, joka noudattaa heuristiikkaa, jossa jokaisessa tilanteessa valitaan lokaali optimi. Katsotaan seuraavaksi esimerkki ahneesta algoritmista eurovaluutalle
+
+```java
+void main() {
+    int[] tulos = ahneMenetelma(new int[]{1,2,5,10,20,50}, 4);
+    IO.println(Arrays.toString(tulos));
+}
+
+// Oletetaan, että yksiköt ovat jo nousevassa järjestyksessä
+private int[] ahneMenetelma(int[] valuuttaVaihtoehdot, int tavoite) {
+    List<Integer> tulos = new ArrayList<>();
+    int jaljella = tavoite;
+
+    for (int i = valuutat.length - 1; i >= 0; i--) {
+        int valuutta = valuutat[i];
+
+        int maara = jaljella / valuutta; //Otetaan niin monta kuin mahdollista
+        for (int j = 0; j < maara; j++) {
+            tulos.add(valuutta);
+        }
+        jaljella -= maara * valuutta;
+    }
+    // Tavoite ei mahdollinen
+    if(jaljella != 0) return new int[0];
+    return tulos.stream().mapToInt(Integer::intValue).toArray();
+}
+```
+Useimmat nykyiset rahayksiköt ovat tarkoituksella suunniteltu siten (kuten euro), että ahne algoritmi antaa optimaalisen tuloksen. 
