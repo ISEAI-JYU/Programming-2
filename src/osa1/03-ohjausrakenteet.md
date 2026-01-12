@@ -1,9 +1,5 @@
 # Ohjausrakenteet ja perustietorakenteet
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 12. tammikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ehtolauseet (`if`, `switch`)
