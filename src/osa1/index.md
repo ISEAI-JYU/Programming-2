@@ -7,10 +7,6 @@
 ## Materiaalin käytöstä
 
 Materiaali on jaettu 12 osaan, jotka sisältävät tekstiä, esimerkkejä ja tehtäviä. 
-Voit liikkua materiaalissa kahdella tavalla:
-
-- Käyttämällä sivun oikealla ja vasemmalla puolella olevia nuolipainikkeita.
-- Käyttämällä sivun sisällysluetteloa.
 
 Yläpalkista löydät seuraavat toiminnot:
 
@@ -21,22 +17,22 @@ Yläpalkista löydät seuraavat toiminnot:
 
 ### Koodiesimerkit
 
-Materiaali sisältää erilaisia koodiesimerkkejä, jotka voit tarkastella ja ajaa. 
-
 Ajettavissa koodiesimerkeissä on käytössä seuraavat painikkeet:
 
-*   <i class="fa fa-play"></i> **Aja koodi**: Suorittaa koodiesimerkin ja näyttää tulosteen.
-*   <i class="fa fa-eye"></i> **Näytä koko koodi**: Paljastaa piilotetut rivit, jotka eivät ole esimerkin ymmärtämisen kannalta keskeisiä, mutta vaaditaan koodin suorittamiseen.
+* <i class="fa fa-play"></i> **Aja koodi**: Suorittaa koodiesimerkin ja näyttää tulosteen.
+* <i class="fa fa-eye"></i> **Näytä koko koodi**: Paljastaa piilotetut rivit,
+  jotka eivät ole esimerkin ymmärtämisen kannalta keskeisiä, mutta vaaditaan
+  koodin suorittamiseen.
 
-Jotkin koodiesimerkit saattavat olla muokattavia. 
-Voit tarvittaessa palauttaa esimerkin alkuperäiseen tilaan
-**Peruuta muutokset**-painikkeella (<i class="fa fa-history"></i>).
+Jotkin koodiesimerkit saattavat olla muokattavia. Voit tarvittaessa palauttaa
+esimerkin alkuperäiseen tilaan **Peruuta muutokset**-painikkeella (<i class="fa
+fa-history"></i>).
 
 ### Tehtävät
 
 Jokainen osa sisältää joukon harjoitustehtäviä. Löydät kuhunkin alalukuun
-liittyvät tehtävät alaluvun lopusta.
-Löydät kaikki osan tehtävät koostettuna myös "Osan kaikki tehtävät" -alaluvusta.
+liittyvät tehtävät alaluvun lopusta. Löydät kaikki osan tehtävät koostettuna
+myös "Osan kaikki tehtävät" -alaluvusta.
 
 Tehtävät palautetaan TIM-järjestelmään.
 Linkki kunkin tehtävän palautuslaatikkoon löytyy aina tehtävänannon
