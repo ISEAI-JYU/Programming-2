@@ -10,7 +10,7 @@
 
 ---
 
-[Luennot](./luennot.md)
+[Luennot](./luennot.md) 
 [Eteneminen (TIM)<https://tim.jyu.fi/view/kurssit/tie/tiep111/koti>]()
 
 --- 
