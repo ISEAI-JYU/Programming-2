@@ -504,13 +504,13 @@ Jatkossa voi olla hyödyllistä tulostaa erilaisia asioita komentorivin avulla j
 toisaalta lukea tietoa sieltä. Javan `IO`-luokka tarjoaa kolme perustoimintoa
 tekstin tulostamiseen ja lukemiseen komentorivillä:
 
-| Aliohjelma | Esimerkki                              | Selitys                                                                            |
-| ---------- | -------------------------------------- | ---------------------------------------------------------------------------------- |
-| `println`  | `[java] IO.println("Moi!");`           | Tulostaa parametrina annetun arvon ja lisää loppuun rivinvaihdon                   |
-|            | `[java] IO.println();`                 | Tulostaa rivin rivinvaihdolla                                                      |
-| `print`    | `[java] IO.print("Samalla rivillä!");` | Tulostaa parametrina annetun arvon ilman rivinvaihtoa                              |
-| `readln`   | `[java] IO.readln();`                  | Lukee syöterivin käyttäjältä (ts. Enterin painallukseen saakka)                    |
-|            | `[java] IO.readln("Anna sana > ");`    | Sama kuin `readln`, mutta tulostaa ensin annetun tekstin ennen syötteen lukemista. |
+| Aliohjelma | Esimerkki                              | Selitys                                                                                                                                                                                            |
+| ---------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `println`  | `[java] IO.println("Moi!");`           | Tulostaa parametrina annetun arvon ja lisää loppuun rivinvaihdon                                                                                                                                   |
+|            | `[java] IO.println();`                 | Tulostaa rivin rivinvaihdolla                                                                                                                                                                      |
+| `print`    | `[java] IO.print("Samalla rivillä!");` | Tulostaa parametrina annetun arvon ilman rivinvaihtoa                                                                                                                                              |
+| `readln`   | `[java] IO.readln();`                  | Lukee syöterivin käyttäjältä (ts. Enterin painallukseen saakka). Jos käyttäjä lopettaa ohjelman antamatta syötettä, palauttaa ns. [null-viitteen](02-muuttujat-ja-tietotyypit.md#viitetietotyypit) |
+|            | `[java] IO.readln("Anna sana > ");`    | Sama kuin `readln`, mutta tulostaa ensin annetun tekstin ennen syötteen lukemista.                                                                                                                 |
 
 
 Katsotaan vielä näiden yhteistoimintaa. Voit muokata alla olevaa esimerkkiä
