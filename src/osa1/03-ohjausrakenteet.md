@@ -65,13 +65,37 @@ void main() {
 }
 ```
 
-Kuitenkin null-viitteen tarkistus voidaan tehdä `==`-operaattorilla, koska
-kyseessä on juuri viitteiden vertailu:
+### Vertailu null-viitteeseen
+
+Kuitenkin null-viitteen tarkistus voidaan tehdä `==`-operaattorilla, koska kyseessä on juuri viitteiden vertailu:
 
 ```java
 void main() {
     String mjono = null;
     IO.println(mjono == null);
+}
+```
+
+Aliohjelmat usein käyttävät `null`-viitettä esittämään arvon puuttumista.
+Esimerkiksi `IO.readln()` voi
+[JavaDoc-dokumentaation](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/IO.html#readln())
+perusteella palauttaa `null`, jos syötettä ei voitu lukea. Näin voi käydä, jos
+esimerkiksi käyttäjä lopettaa ohjelman suorituksen kesken. Silloin voi olla
+järkevää tarkistaa, että muuttujan arvo ei ole `null` ennen muuttujan käyttöä:
+
+
+```java,ignore
+void main() {
+    String syote = IO.readln("Anna syöte");
+
+    if (syote == null) {
+        // Tehdään jotain, jos syötettä ei olekaan annettu
+        // Esimerkiksi: poistutaan ohjelmasta
+        return;
+    }
+
+    // Tässä ollaan varmoja, että syote-muuttujassa on edes jokin merkkijono
+    IO.println("Teksti huudettuna: " + syote.toUpperCase());
 }
 ```
 
