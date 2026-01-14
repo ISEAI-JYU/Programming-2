@@ -81,7 +81,7 @@ Jos Windows Updatessa on saatavilla käyttöjärjestelmäpäivityksiä, asenna n
 
 Varmista sen jälkeen, että tietokoneellasi on `winget`-pakkaushallintaohjelma asennettuna:
 
-1. Avaa PowerShell-komentorivi (*Haku-ikoni* > *Kirjoita PowerShell* > *Windows PowerShell*).
+1. Avaa PowerShell-komentorivi (*Haku-ikoni* <i class="bi bi-chevron-right"></i> *Kirjoita PowerShell* <i class="bi bi-chevron-right"></i> *Windows PowerShell*).
 2. Anna seuraava komento:
 
     ```bash
@@ -105,7 +105,7 @@ Varmista ensin, että tietokoneesi on ajan tasalla.
 
 Varmista sen jälkeen, että tietokoneellasi on Homebrew-pakkaushallintaohjelma asennettuna:
 
-1. Avaa Pääte tai Termimal (*Launchpad* > *Pääte/Terminal*)
+1. Avaa Pääte tai Termimal (*Launchpad* <i class="bi bi-chevron-right"></i> *Pääte/Terminal*)
 2. Anna seuraava komento:
 
     ```bash
@@ -118,7 +118,7 @@ sinun tulee asentaa Homebrew alla olevilla ohjeilla:
 <details>
 <summary>Homebrew-työkalun asennusohjeet (Avaa klikkaamalla)</summary>
 
-1. Avaa Pääte tai Termimal (*Launchpad* > *Pääte/Terminal*)
+1. Avaa Pääte tai Termimal (*Launchpad* <i class="bi bi-chevron-right"></i> *Pääte/Terminal*)
 2. Asenna ensin macOS:n kehitystyökalut suorittamalla alla oleva komento:
 
     ```bash
@@ -262,7 +262,7 @@ Jos saat tuloksena virheen, että komentoa ei löydy, jatka alla olevilla ohjeil
     
     Tekstin `X.XX.XX` tilalla näkyy git-työkalun tarkka versio.
 
-5. Testaa, vielä, että Git Bash on asennettu. Mene *Haku-ikoni* > Kirjoita *Git Bash* > Valitse *Git Bash*.
+5. Testaa, vielä, että Git Bash on asennettu. Mene *Haku-ikoni* <i class="bi bi-chevron-right"></i> Kirjoita *Git Bash* <i class="bi bi-chevron-right"></i> Valitse *Git Bash*.
 
     Jos kaikki toimii, pitäisi avautua Git Bash -komentorivi:
 
@@ -517,9 +517,9 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 
 > 1. Avaa IntelliJ IDEA ja odota, kunnes pääset *Welcome to IntelliJ IDEA* -näkymään.
 >
->    **Jos sinulle avautui jokin vanha projekti**, klikkaa yläpalkista tai hampurilaisvalikosta *File* > *Close project*. Tämä vie sinut takaisin *Welcome to IntelliJ IDEA* -näkymään.
+>    **Jos sinulle avautui jokin vanha projekti**, klikkaa yläpalkista tai hampurilaisvalikosta *File* <i class="bi bi-chevron-right"></i> *Close project*. Tämä vie sinut takaisin *Welcome to IntelliJ IDEA* -näkymään.
 >
-> 2. Klikkaa ikkunan vasemmassa alalaidassa oleva *Configure* (Ratas-ikoni) > *Settings*.
+> 2. Klikkaa ikkunan vasemmassa alalaidassa oleva *Configure* (Ratas-ikoni) <i class="bi bi-chevron-right"></i> *Settings*.
 >
 > 3. Valitse vasemmalla puolella olevista asetusnäkymistä *Plugins*
 >
