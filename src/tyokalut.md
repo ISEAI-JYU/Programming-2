@@ -451,7 +451,7 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 4. Jos sinulla on muu kehitysympäristö asennettuja (JetBrains Rider tai Visual Studio Code),
    IntelliJ IDEA voi kysyä, haluatko tuoda (engl. *import*) asetuksia niistä.
 
-   Voit siinä tapauksessa painaa *Skip Import*. IDEAan asetetaan erilliset asetukset myöhemmin.
+   Paina siinä tapauksessa *Skip Import*. IDEAan asetetaan erilliset asetukset myöhemmin.
 
 5. Kun olet valmis ja pääset *Welcome to IntelliJ IDEA* -ikkunaan, voit sulkea sen.
    Ohjelman asennus on valmis!
@@ -468,6 +468,7 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 
 
 > 1. Avaa IntelliJ IDEA ja odota, kunnes pääset *Welcome to IntelliJ IDEA* -näkymään.
+>
 > 
 > 2. Klikkaa ikkunan keskellä tai ylädassa olevaa *New Project* -painiketta:
 > 
@@ -537,3 +538,31 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 ## Mitä seuraavaksi?
 
 Onneksi olkoon! Sinulla on seuraavaksi kaikki tarvittavat kurssityökalut. Voit jatkaa tästä varsinaisiin materiaaleihin.
+
+## Yleiset ongelmat ja ratkaisut
+
+<details>
+<summary>Saan IDEAssa Java-projektia ajaessa virheen <code>error: illegal character: '\ufeff'</code> </summary>
+
+Virhe voi mahdollisesti johtua siitä, että toit Rider-työkalun asetukset
+IDEAan. Riderin asetukset eivät ole täysin yhteensopivia Javan kehityksen kanssa
+eikä IDEA osaa korjata ongelmaa.
+
+Tee seuraavasti:
+
+1. Avaa IntelliJ IDEA ja odota, kunnes pääset *Welcome to IntelliJ IDEA* -näkymään.
+  
+   **Jos sinulle avautui jokin vanha projekti**, klikkaa yläpalkista tai hampurilaisvalikosta *File* <i class="bi bi-chevron-right"></i> *Close project*. Tämä vie sinut takaisin *Welcome to IntelliJ IDEA* -näkymään.
+
+2. Klikkaa ikkunan vasemmassa alalaidassa oleva *Configure* (Ratas-ikoni) <i class="bi bi-chevron-right"></i> *Settings*.
+
+3. Valitse vasemmalla puolella olevista asetusnäkymistä *Editor* <i class="bi
+   bi-chevron-right"></i> *File Encodings*
+
+4. Aseta *Create UTF-8 files* -asetuksen arvoksi **with no BOM**.
+
+6. Paina *Save*.
+
+7. Tee *uusi* projekti ja kokeile ajaa yksinkertainen ohjelma.
+
+</details>
