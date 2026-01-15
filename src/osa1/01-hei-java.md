@@ -353,7 +353,7 @@ mukaisesti.
 
 Sen jälkeen avaa IDEA:n vasemmasta näkymäpalkista komentorivi painamalla
 komentorivipainikkeesta (<i class="bi bi-terminal"></i>). Tämä avaa
-käyttöjärjestelmän komentorivin (zsh macOS:lla, Powershell Windowsilla,
+käyttöjärjestelmän komentorivin (zsh macOS:lla, PowerShell Windowsilla,
 oletuskomentorivi Linuxilla).
 
 Jos latasit Java-kehitysympäristön seuraamalla [työkaluohjeita](../tyokalut.md#java-development-kit-jdk),
@@ -389,6 +389,10 @@ export JAVA_HOME=$(printf "%s\n" ~/.jdks/* | sort -V | tail -n 1) && export PATH
 Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 
 ***
+
+Yllä oleva komento mahdollistaa JDK:n työkalujen käyttöä komentoriviltä
+*väliaikaisesti*. Komentorivi palautuu ennalleen, kun suljet ja avaat
+komentorivin uudelleen.
 
 </details>
 
