@@ -2,10 +2,12 @@
 
 > [!Osaamistavoitteet]
 >
-> - Näkyvyysmääreet `public` ja `private`, getterit ja setterit, metodi pääasiallisena tapana olioille "viestiä"
-> - Ymmärrät kapseloinnin ja sen hyödyt
-> - Kutsuja ei tiedä (eikä voi riippua siitä) miten olion tila on toteutettu. Toteutusta voi muuttaa ilman että kutsujan tarvitsee muuttaa koodiaan. 
-> - Toteutetaan olioiden yhteistyö pienessä olioverkossa. Olioiden välinen riippuvuus on vain rajapinnan (metodien) varassa, ei sisäisen toteutuksen varassa. 
+> - Tiedät, mitä näkyvyysmääreet kuten `public` ja `private` tarkoittavat.
+> - Ymmärrät, että metodit ovat olioiden pääasiallinen tapa viestiä.
+> - Ymmärrät kapseloinnin periaateet ja hyödyt, ja miten olion sisäinen toteutus
+>   eroaa sen ulkoisesta käytöstä. 
+> - Osaat toteuttaa ohjelman, jossa oliot toimivat yhdessä niin, että ne
+>   eivät ole riippuvaisia toistensa sisäisestä toteutuksesta.
 
 ![Autoa ajetaan, vaikka emme tiedä miten moottori toimii](images/auto.png)
 

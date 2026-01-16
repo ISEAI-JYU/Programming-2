@@ -2,9 +2,11 @@
 
 > [!Osaamistavoitteet]
 >
-> - Eteneminen "data+funktio"-ajatuksesta (Ohj1) kohti "tila+metodi"-ajatusta (Ohj2)
-> - Proseduraalisesta ohjelmoinnista ("data+funktio") olio-ohjelmointiin ("tila+metodi+viestit")
-> - Ymmärrät luokkien ja olioiden roolin olio-ohjelmoinnissa (Tieto ja toiminnallisuus yhdessä paketissa)
+> - Otat askeleen proseduraalisen ohjelmoinnin *data ja funktio*
+>   -ajattelumallista kohti olio-ohjelmoinnin *tila ja metodi* -ajattelumallia.
+> - Ymmärrät olion käsitteen; tieto ja toiminnallisuus yhdessä paketissa.
+> - Ymmärrät, miten käsitteiden mallintaminen olioina voi helpottaa ohjelman
+>   rakentamista.
 
 Tähän mennessä olemme tehneet enimmäkseen ohjelmia, joissa dataa tallennetaan
 ohjelman muuttujiin ja käsitellään funktioiden avulla. Tällaista

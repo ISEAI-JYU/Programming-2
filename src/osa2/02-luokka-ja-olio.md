@@ -2,10 +2,11 @@
 
 > [!Osaamistavoitteet]
 >
-> - Luokka ja olio
-> - Konstruktori, metodi, attribuutti
-> - Luokan rakenne ja suhde olioon (konstruktori, attribuutti, metodi, this-viite, "luokka blueprintina oliolle")
-> - Osaat määritellä ja hyödyntää omia luokkia Javalla
+> - Ymmärrät luokan ja olion suhteen, ja miten luokka toimii mallina olioiden luomisessa.
+> - Osaat määritellä oman luokan ja sen jäsenet, eli attribuutit, metodit ja konstruktorit.
+> - Ymmärrät olioiden elinkaaren ja osaat käyttää olioita ohjelman osina.
+> - Ymmärrät, miten `this`-viite toimii olion metodeissa.
+> - Tiedät, mitä `static`-määrite merkitsee luokan jäsenten osalta.
 
 ## Luokka
 
