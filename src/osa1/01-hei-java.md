@@ -340,11 +340,15 @@ Tee seuraavasti:
 > Coden, näppäinasetuksia laajennoskaupasta kohdassa **File** <i class="bi
 > bi-chevron-right"></i> **Plugins**.
 
-## Miten Java-ohjelmat ajetaan?
+## Kääntäminen ja ajaminen komentoriviltä
 
 Ennen kuin IDEA varsinaisesti ajaa ohjelman, se käännetään ajettavaan muotoon.
-Tutkitaan seuraavaksi, mitä tämä käytännössä tarkoittaa kääntämällä ja ajamalla
-ohjelma suoraan komentoriviltä.
+IDEAssa tämä tapahtuu taustalla automaattisesti klikkaamalla ajopainiketta,
+debuggauspainiketta tai Build-valikon kautta. Java-lähdekoodin voi kuitenkin
+tarvittaessa myös kääntää ja ajaa itse komentoriviltä. On hyvä tietää, miten
+tämä tapahtuu, jotta ymmärrät paremmin, mitä IDEA taustalla tekee. 
+
+Tutkitaan nyt, miten ohjelma käännetään ja ajetaan komentoriviltä.
 
 <details closed><summary>Miten voin seurata mukana?</summary>
 
@@ -424,10 +428,10 @@ Siirrytään vastaavasti kansioon `src` ja tarkastellaan sen sisältö:
 *lähdekooditiedostoja*. Ne sisältävät ohjelman lähdekoodia tekstinä eivätkä ne
 ole vielä suoraan ajettavissa.
 
-Jotta ohjelma voidaan ajaa, se pitää kääntää. IDEA tekee tämän automaattisesti
-kun käynnistämme tekemämme ohjelman, mutta Java-lähdekoodin kääntäminen onnistuu
-myös komentoriviltä käyttäen Java-kehitysympäristön mukana tullutta
-`javac`-kääntäjäohjelmaa. Kokeillaan kääntää `Ohjelma.java`:
+Jotta ohjelma voidaan ajaa, se pitää kääntää. Kuten mainitsimme, IDEA tekee
+tämän automaattisesti kun käynnistämme tekemämme ohjelman, mutta lähdekoodin
+kääntäminen onnistuu myös komentoriviltä käyttäen Java-kehitysympäristön mukana
+tullutta `javac`-kääntäjäohjelmaa. Kokeillaan kääntää `Ohjelma.java`:
 
 <asciinema src="images/rec_javac.cast" rows="2" poster="npt:5"></asciinema>
 
