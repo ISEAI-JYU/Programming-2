@@ -1,5 +1,5 @@
 Tee luokka `Ajastin`, jolla on attribuutit `minuutit` ja `sekunnit`
-kokonaislukuina. Morjesta vaan! Toinen testi.
+kokonaislukuina. 
 
 Lisää luokkaan metodit `lisaaMinuutteja` ja `lisaaSekunteja`, jotka ottavat
 parametrina ajastimeen lisättävät minuutit ja sekunnit. Lisää myös metodi
