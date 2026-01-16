@@ -10,4 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Execute Curl Call
-        run: curl -X GET https://tim.jyu.fi/cs/refresh
+        # -f to catch errors and -sS to keep logs clean but show errors
+        run: curl -f -sS -X GET https://tim.jyu.fi/cs/refresh
