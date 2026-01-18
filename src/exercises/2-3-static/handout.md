@@ -13,6 +13,7 @@ kokonaislukuna. Muita metodeja ei tarvitse lisätä.
 Tarvitset tässä tehtävässä staattisia luokan jäseniä.
 
 Mieti aluksi seuraavia kysymyksiä: 
+
 - Milloin olio saa numeron? 
 - Mistä olio tietää, mikä sen numeron pitäisi olla?
 - Mikä tieto on jaettua olioiden kesken ja mikä on oliokohtaista?
