@@ -2,6 +2,7 @@ Valitse jokin tosimaailman esine tai käsite ja tee siitä oma yksinkertainen
 luokka.
 
 Lisää luokkaan seuraavat:
+
 - Vähintään kaksi sille sopivaa attribuuttia.
 - Vähintään kaksi metodia, jotka muuttavat tai tarkastelevat olion tilaa jollain 
   tavalla.
