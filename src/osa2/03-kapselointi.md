@@ -815,7 +815,7 @@ osassa.
 </task>
 
 <task>
-  <task-title><i class="bi bi-stars jyu-gold"></i>Tehtävä 2.9: Varaukset<points>1 p.</points></task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i>Bonus: Tehtävä 2.9: Varaukset<points>1 p.</points></task-title>
   <handout>
 
 {{#include ../exercises/2-9-varaukset/handout.md}}
