@@ -1,6 +1,5 @@
 Tässä tehtävässä rakennat järjestelmän, joka valvoo rakennusten sähkönkulutusta
-ja estää sulakkeiden palamisen. Tehtävä koostuu vaiheista. Kukin vaihe on 0,25
-pisteen arvoinen.
+ja estää sulakkeiden palamisen. Tehtävä koostuu vaiheista.
 
 <details><summary>Vaihe 1: Sähkölaite</summary>
 
