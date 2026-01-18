@@ -49,7 +49,11 @@ Osien takarajat DL-BONUS-pisteiden saamiseksi ovat seuraavat:
 
 Näet [etenemissivulla](https://tim.jyu.fi/view/kurssit/tie/tiep111/koti) kerättyjen tehtäväpisteidän määrän ja prosenttiosuuden sekä DL-BONUS-pisteet erikseen.
 
-Lopullinen arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan painotettuna keskiarvona. Harjoitustehtävistä saatua arvosanaa painotetaan 40% ja tentistä saatua arvosanaa painotetaan 60%. Sekä harjoitustehtävistä että tentistä täytyy saada vähintään arvosana 1, jotta kurssista voi saada hyväksytyn arvosanan.
+Lopullinen arvosana muodostuu harjoitustehtävien arvosanan ja tentin arvosanan
+painotettuna keskiarvona, pyöristäen lähimpään kokonaislukuun.
+Harjoitustehtävistä saatua arvosanaa painotetaan 40% ja tentistä saatua
+arvosanaa painotetaan 60%. Sekä harjoitustehtävistä että tentistä täytyy saada
+vähintään arvosana 1, jotta kurssista voi saada hyväksytyn arvosanan. 
 
 |                                          | Esim1 | Esim2 | Esim3 |
 | ---------------------------------------- | ----- | ----- | ----- |
