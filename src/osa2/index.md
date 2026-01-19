@@ -1,9 +1,5 @@
 # Olio-ohjelmoinnin perusteet
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 19. tammikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 > - Ymmärrät olio-ohjelmoinnin perusidean ja kuinka se eroaa proseduraalisesta ohjelmoinnista. 
 > - Osaat hahmottaa olion kokonaisuutena, jossa tieto ja toiminta yhdistyvät.
