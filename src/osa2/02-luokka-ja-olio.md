@@ -507,10 +507,10 @@ public class Rakennus {
 </task>
 
 <task>
-  <task-title>Tehtävä 2.2: Luokkia ja olioita, osa 1<points>1 p.</points></task-title>
+  <task-title>Tehtävä 2.2: Ajastin<points>1 p.</points></task-title>
   <handout>
 
-{{#include ../exercises/2-2-luokkia-ja-olioita1/handout.md}}
+{{#include ../exercises/2-2-ajastin/handout.md}}
   
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava2">Tee tehtävä TIMissä</a></task-link>
@@ -675,7 +675,6 @@ kerta luoda IO-oliota ja kutsua sen `println`-metodia.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava4">Tee tehtävä TIMissä</a></task-link>
 </task>
-
 
 ## Olion elinkaari
 
@@ -850,21 +849,21 @@ roskienkeräyksestä suhteellisen helposti lähestyttävässä muodossa.
 ## Tehtävät
 
 <task>
-  <task-title>Tehtävä 2.4: Luokkia ja olioita, osa 2<points>1 p.</points></task-title>
+  <task-title>Tehtävä 2.5: Puhelin<points>1 p.</points></task-title>
   <handout>
 
-{{#include ../exercises/2-4-luokkia-ja-olioita2/handout.md}}
-
-  </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava4">Tee tehtävä TIMissä</a></task-link>
-</task>
-
-<task>
-  <task-title>Tehtävä 2.5: Kirjasto<points>1 p.</points></task-title>
-  <handout>
-
-{{#include ../exercises/2-5-kirjasto/handout.md}}
+{{#include ../exercises/2-5-puhelin/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava5">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title>Tehtävä 2.6: Kirjasto<points>1 p.</points></task-title>
+  <handout>
+
+{{#include ../exercises/2-6-kirjasto/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava6">Tee tehtävä TIMissä</a></task-link>
 </task>
