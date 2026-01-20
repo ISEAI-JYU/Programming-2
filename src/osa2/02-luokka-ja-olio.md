@@ -497,23 +497,33 @@ public class Rakennus {
 ```
 
 <task>
-  <task-title>Tehtävä 2.1: Luokkia ja olioita, osa 1<points>1 p.</points></task-title>
+  <task-title>Tehtävä 2.1: Kello<points>1 p.</points></task-title>
   <handout>
 
-{{#include ../exercises/2-1-luokkia-ja-olioita1/handout.md}}
+{{#include ../exercises/2-1-kello/handout.md}}
   
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava1">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 <task>
-  <task-title>Tehtävä 2.2: Oma luokka<points>1 p.</points></task-title>
+  <task-title>Tehtävä 2.2: Luokkia ja olioita, osa 1<points>1 p.</points></task-title>
   <handout>
 
-{{#include ../exercises/2-2-oma-luokka/handout.md}}
+{{#include ../exercises/2-2-luokkia-ja-olioita1/handout.md}}
   
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava2">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title>Tehtävä 2.3: Oma luokka<points>1 p.</points></task-title>
+  <handout>
+
+{{#include ../exercises/2-3-oma-luokka/handout.md}}
+  
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava3">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 
@@ -657,14 +667,15 @@ staattinen metodi. Sen käyttäminen on helpompaa, kun meidän ei tarvitse joka
 kerta luoda IO-oliota ja kutsua sen `println`-metodia.
 
 <task>
-  <task-title>Tehtävä 2.3: Static<points>1 p.</points></task-title>
+  <task-title>Tehtävä 2.4: Static<points>1 p.</points></task-title>
   <handout>
 
-{{#include ../exercises/2-3-static/handout.md}}
+{{#include ../exercises/2-4-static/handout.md}}
 
   </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava3">Tee tehtävä TIMissä</a></task-link>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava4">Tee tehtävä TIMissä</a></task-link>
 </task>
+
 
 ## Olion elinkaari
 
