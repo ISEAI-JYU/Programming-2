@@ -12,7 +12,7 @@
 {{#include ../exercises/2-1-kello/handout.md}}
   
   </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava1_2">Tee tehtävä TIMissä</a></task-link>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava1">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 
@@ -23,7 +23,7 @@
 {{#include ../exercises/2-2-luokkia-ja-olioita1/handout.md}}
   
   </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava1">Tee tehtävä TIMissä</a></task-link>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava2">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 <task>
