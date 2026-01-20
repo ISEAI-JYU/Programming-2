@@ -6,6 +6,17 @@
 > [suorittaminen-sivulta](../suorittaminen.md#suoritustapa-1).
 
 <task>
+  <task-title>Tehtävä 2.1: Kello<points>1 p.</points></task-title>
+  <handout>
+
+{{#include ../exercises/2-1-kello/handout.md}}
+  
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa2/tehtava1_2">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+
+<task>
   <task-title>Tehtävä 2.1: Luokkia ja olioita, osa 1<points>1 p.</points></task-title>
   <handout>
 
