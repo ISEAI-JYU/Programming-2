@@ -508,9 +508,7 @@ Konkreettiset metodit voivat olla myös `private`: tällöin kyseessä on vain a
 
 Abstraktia metodia ei voi määritellä `private`-määreellä. 
 
-## Huomautuksia
-
-<details closed><summary><i class="bi bi-stars jyu-gold"></i> Valinnaista lisätietoa: Abstraktit metodit ja operaatiorunko-malli </summary>
+## Operaatiorunko-malli
 
 Abstraktissa luokassa voi olla myös konkreettinen metodi, jonka toteutuksessa kutsutaan abstraktia metodia. Tällaista toteutusta kutsutaan ohjelmistosuunnittelussa *operaatiorunko*-suunnittelumalliksi. Abstrakti luokka määrittelee toimenpiteelle "kaavan", mutta delegoi osan vaiheista aliluokkien toteutettavaksi.
 
@@ -632,15 +630,3 @@ public class Main {
 `suoritaPaivitys()` on nyt ikään kuin valmis resep­ti, jota aliluokat eivät voi muuttaa (`final`). Sen sijaan ne täydentävät reseptin tarvitsemansa tavoilla toteuttamalla abstraktit metodit.
 
 🤔 Pohdittavaksi: Missä tilanteissa haluaisit estää aliluokkaa ylikirjoittamasta tiettyä metodia? 
-
-</details>
-
-<task>
-  <task-title>Tehtävä 3.5: Abstraktit luokat. <points>1 p.</points> </task-title>
-  <handout>
-
-  {{#include ../exercises/3-5-abstrakti-luokka-1/handout.md}}
-
-  </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava5">Tee tehtävä TIMissä</a></task-link>
-</task>

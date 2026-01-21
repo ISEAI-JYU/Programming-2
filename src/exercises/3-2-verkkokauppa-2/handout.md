@@ -1,8 +1,4 @@
-Tee luokkahierarkia verkkokaupalle. Yliluokasta `Tuote` periytyvät aliluokat
-`Elektroniikka`, `Vaate` ja `Ruoka`. 
-
-Määrittele `Tuote`-luokkaan yhteiset ominaisuudet `nimi`, `hinta` sekä metodi
-`tulostaPerustiedot()`.
+Jatketaan edellistä tehtävää. Peri `Tuote`-luokasta myös luokka `Elektroniikka`.
 
 Lisää erityispiirteitä kuhunkin aliluokkaan:
 
@@ -16,8 +12,8 @@ Lisää erityispiirteitä kuhunkin aliluokkaan:
    `syo()`, joka tulostaa "Nautit ruoan, jonka viimeinen käyttöpäivä on
    YYYY-MM-DD." (korvaa YYYY-MM-DD `parastaEnnen`-arvolla).
 
-Kokeile luokkia luomalla olioita ja kutsumalla metodeja. Dokumentoi luokat ja
-metodit huolellisesti.
+Huomaa, että perivien luokkien konstruktoreissa tulee nyt kutsua yläluokan
+konstruktoria oikeilla arvoilla, sekä asettaa omat attribuutit.
 
 Tehtäväsivulla on valmiiksi annettuna pääohjelma. Käytä sitä luokkiesi
 testaamiseen. Se ei saa tuottaa käännös- tai ajonaikaisia virheitä. Voit

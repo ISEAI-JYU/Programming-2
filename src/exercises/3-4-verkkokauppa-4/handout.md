@@ -13,3 +13,4 @@ sähköauto voi kulkea yhdellä latauksella.
        yliluokan metodia), ja sitten laskee ja tulostaa akun kunnon ja sen
        perusteella toimintasäteen.
 
+--- 
