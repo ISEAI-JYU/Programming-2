@@ -6,4 +6,6 @@
 
 > [!Osaamistavoitteet]
 >
-
+> - Osaat käyttää rajapintoja määrittääksesi luokan toimintaa määrittävän sopimuksen
+> - Ymmärrät geneeristen luokkien ja tyyppiparametrien käsitteet
+> - Osaat tehdä geneerisen luokan ja hyödyntää sitä ohjelmassasi
