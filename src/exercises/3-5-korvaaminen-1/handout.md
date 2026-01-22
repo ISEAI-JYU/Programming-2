@@ -7,5 +7,5 @@ Peri `Kulkuneuvo`-luokasta luokat `Auto` ja `Lentokone`. `Auto` ja
 tulostavat "Auto \<merkki\> ajaa maantiellä renkaat vinkuen." ja "Lentokone
 \<merkki\> nousee kiitotieltä ja lentää pilvien päällä.".
 
-Tee pääohjelma, jossa luot auton ja lentokoneen, ja kutsut kummankin
-`liiku()`-metodia.
+Tee pääohjelma, jossa luot kaksi `Ajoneuvo`-muuttujaa, ja sijoitat niihin
+`Auto`-olion ja `Lentokone`-olion. Kutsut kummankin olion `liiku()`-metodia.
