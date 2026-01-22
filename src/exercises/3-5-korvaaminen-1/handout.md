@@ -1,4 +1,4 @@
-Tee luokka `Kulkuneuvo`, jolla on attribuutti `String merkki` ja konstruktori
+Tee luokka `Ajoneuvo`, jolla on attribuutti `String merkki` ja konstruktori
 joka asettaa tämän arvon. Lisää myös metodi `liiku()`, joka
 tulostaa "Ajoneuvo \<merkki\> liikkuu.".
 
