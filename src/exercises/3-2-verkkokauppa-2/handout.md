@@ -10,7 +10,7 @@ Lisää erityispiirteitä kuhunkin aliluokkaan:
    takuuta on jäljellä (tai 0, jos takuu on umpeutunut).
  * `Ruoka`: attribuutti `String parastaEnnen` (esim. "2026-01-31"), ja metodi
    `void syo()`, joka tulostaa "Nautit ruoan, jonka viimeinen käyttöpäivä on
-   YYYY-MM-DD." (korvaa YYYY-MM-DD `parastaEnnen`-arvolla).
+   DD-MM-YYYY." (korvaa DD-MM-YYYY `parastaEnnen`-arvolla).
 
 Huomaa, että perivien luokkien konstruktoreissa tulee nyt kutsua yläluokan
 konstruktoria oikeilla arvoilla, sekä asettaa omat attribuutit.
