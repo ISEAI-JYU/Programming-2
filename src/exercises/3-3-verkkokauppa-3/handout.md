@@ -50,7 +50,8 @@ Parasta ennen oli 31.5.2026, toivottavasti on hyvää.
 
 <details><summary>Tehtävän kuvaus sanallisessa muodossa</summary>
 
-Tässä on kuvaus luokista ja niiden vaadituista ominaisuuksista (vastaavat kuin UML-kaaviossa):
+Tässä on kuvaus uusista luokista ja niiden vaadituista ominaisuuksista. Löydät
+vastaavat tiedot UML-kaaviosta.
 
  1. `Puhelin` (perii `Elektroniikka`)
     * Lisää attribuutit:
