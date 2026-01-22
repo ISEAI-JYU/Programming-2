@@ -60,7 +60,7 @@ Tässä on kuvaus luokista ja niiden vaadituista ominaisuuksista (vastaavat kuin
         * `public void soita(String numero)`. Metodi tulostaa esimerkiksi:
           `Soitetaan numeroon 0401234567 (Appleroid, 4G)`
         * `public void tulostaPuhelimenTiedot()`. Metodin tulee kutsua ensin
-          perittyä metodia (`tulostaPerustiedot();`), ja sitten tulostaa
+          perittyä metodia (`tulostaPerustiedot()`), ja sitten tulostaa
           puhelimeen liittyvät lisätiedot (takuu, käyttöjärjestelmä ja 5G-tuki).
 
  2. `Pakaste` (perii `Ruoka`)
