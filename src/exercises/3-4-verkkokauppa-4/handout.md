@@ -1,5 +1,5 @@
 Laajenna luokkahierarkiaa edelleen. Lisää `SahkoAuto`-luokka, joka perii
-`Tuote`-luokan. 
+`Elektroniikka`-luokan. 
 
 Lisää luokkaan 
 
@@ -9,8 +9,9 @@ sähköauto voi kulkea yhdellä latauksella.
      * `private double akunKunto` (prosentteina; väliltä 0-100)
  * metodit
      * `lataa()`, joka heikentää akun kuntoa 0.1%:lla jokaisella latauskerralla.
-     * `tulostaAutonTiedot()`, joka tulostaa ensin tuotteen perustiedot (kutsu
-       yliluokan metodia), ja sitten laskee ja tulostaa akun kunnon ja sen
-       perusteella toimintasäteen.
-
+     * `tulostaAutonTiedot()`, joka kutsuu ensin yliluokan
+       `tulostaPerustiedot()`, sitten kutsuu yliluokan `testaaLaite()`, jonka
+       jälkeen laskee nykyisen toimintasäteen (kaava: akunkunto / 100 *
+       TOIMINTASADE_MAX), tulostaa akun kunnon prosentteina ja sitten
+       toimintasäteen kilometreinä.
 --- 
