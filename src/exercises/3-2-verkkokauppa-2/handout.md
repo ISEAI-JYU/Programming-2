@@ -6,8 +6,8 @@ Lisää erityispiirteitä kuhunkin aliluokkaan:
    `sovita(String sovittajanKoko)`, joka tulostaa, onko vaate sopiva
    sovittajalle.
  * `Elektroniikka`: attribuutti `int takuuKuukausina` (esim. 24), metodi
-   `testaaLaite()`, joka tulostaa "Laite toimii moitteettomasti vielä X
-   kuukautta." (X on `takuuKuukausina`-arvo).
+   `int takuutaJaljella(int kuukausiaKulunut)` palauttaa montako kuukautta
+   takuuta on jäljellä (tai 0, jos takuu on umpeutunut).
  * `Ruoka`: attribuutti `String parastaEnnen` (esim. "2026-01-31"), ja metodi
    `syo()`, joka tulostaa "Nautit ruoan, jonka viimeinen käyttöpäivä on
    YYYY-MM-DD." (korvaa YYYY-MM-DD `parastaEnnen`-arvolla).
