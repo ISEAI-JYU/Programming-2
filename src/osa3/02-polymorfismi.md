@@ -242,18 +242,44 @@ class A {
 // FILE_END
 // FILE: B.java
 class B extends A {  
+    @Override
     public void moikka() { IO.println("B-olio huutaa moikka!"); }  
+    @Override
     public void huhhuh() { IO.println("B-olio huutaa huh huh!!"); }  
 }  
 // FILE_END
 // FILE: C.java
 class C extends B {  
+    @Override
     public void huhhuh() { IO.println("C-olio huhuilee...."); }  
 }  
 // FILE_END
 ```
 
-TODO: Tarvitaanko tähän väliin UML-kaavio?
+Tämän esimerkin UML-kaavio näyttäisi seuraavalta.
+
+```plantuml
+@startuml
+class A {
+  +hei()
+  +moikka()
+  +huhhuh()
+}
+
+class B {
+  +moikka()
+  +huhhuh()
+}
+
+class C {
+  +huhhuh()
+}
+
+A <|-- B
+B <|-- C
+@enduml
+```
+
 
 ## Esimerkki: Muoto-luokka
 
