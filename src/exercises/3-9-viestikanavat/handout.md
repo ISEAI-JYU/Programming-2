@@ -1,4 +1,4 @@
-1. Tee abstrakti luokka `Ilmoituskanava`. Sillä on attribuutti `String
+1. Tee abstrakti luokka `Viestikanava`. Sillä on attribuutti `String
 vastaanottaja`, joka asetetaan konstruktorissa. Lisää abstrakti metodi
 `lahetaSisaisesti(String viesti)`, joka ei palauta mitään. 
 
@@ -9,7 +9,7 @@ vastaanottaja`, joka asetetaan konstruktorissa. Lisää abstrakti metodi
 (`return`), jos viesti on tyhjä tai `null`. Muuten metodi kutsuu abstraktia
 metodia `lahetaSisaisesti(String viesti)`.
 
-4. Peri `Ilmoituskanava`-luokasta `Sahkoposti` ja `Tekstiviesti`. Molemmissa
+4. Peri `Viestikanava`-luokasta `Sahkoposti` ja `Tekstiviesti`. Molemmissa
 luokissa ylikirjoita abstrakti metodi `lahetaSisaisesti(String viesti)`, joka
 tulostaa konsoliin viestin muodossa "Lähetetään \<kanava\> \<osoite/numero\>:
 \<viesti\>", esim. "Lähetetään sähköposti osoitteeseen antti-jussi@lakanen.com: Hei,
