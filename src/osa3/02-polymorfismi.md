@@ -570,12 +570,21 @@ Ehkä hieman hämäävästi `final`-avainsanaa voidaan käyttää myös muuttuji
 ## Tehtävät {#tehtavat}
 
 <task>
-  <task-title>Tehtävä 3.4: Korvaaminen, osa 1. <points>1 p.</points> </task-title>
+  <task-title>Tehtävä 3.5: Korvaaminen, osa 1. <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/3-4-korvaaminen/handout.md}}
+  {{#include ../exercises/3-5-korvaaminen-1/handout.md}}
 
   </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava4">Tee tehtävä TIMissä</a></task-link>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava5">Tee tehtävä TIMissä</a></task-link>
 </task>
 
+<task>
+  <task-title>Tehtävä 3.6: Korvaaminen, osa 2. <points>1 p.</points> </task-title>
+  <handout>
+
+  {{#include ../exercises/3-6-korvaaminen-2/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava6">Tee tehtävä TIMissä</a></task-link>
+</task>
