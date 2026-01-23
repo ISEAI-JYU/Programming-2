@@ -8,9 +8,10 @@
 > - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
 WIP: rajuruoho
+
 Jos haluat muokata tätä jo nyt, lähetä viestiä.
 
-Käytä induktiota selvittääksesi, onko ongelmalla optimaalinen alistruktuuri (engl. *optimal substructure*)(eli aina valitsemalla lokaalin optimin päädytään globaaliin optimiin). Jos tosi --> Käytä ahnetta algoritmia (engl. *greedy algorithm*). Jos taasen ongelmassa on päällekkäisiä osaongelmia käytä hajoita ja hallitse-menetelmiä tai dynaamista ohjelmointia (Memoisaatiota molemmissa)(hjh dynaamisen osajoukko). Muutoin käytä suoraviivaista menetelmää ratkaisujen läpikäymiseen.
+Käytä induktiota selvittääksesi, onko ongelmalla optimaalinen alistruktuuri, (engl. *optimal substructure*), jossa ahne valintaominaisuus(engl. *greedy choice property*)(eli aina valitsemalla lokaalin optimin päädytään globaaliin optimiin). Jos tosi --> Käytä ahnetta algoritmia (engl. *greedy algorithm*). Jos taasen ongelmassa on päällekkäisiä osaongelmia käytä hajoita ja hallitse-menetelmiä tai dynaamista ohjelmointia (Memoisaatiota molemmissa)(hjh dynaamisen osajoukko). Muutoin käytä suoraviivaista menetelmää ratkaisujen läpikäymiseen.
 
 # Rekursio
 Mitä rekursio tarkoittaa yleisellä tasolla
@@ -80,6 +81,7 @@ Induktiotapaus (rekursiivinen askel)
     - Läpikäynti (DFS, preorder, inorder, postorder)
 
 ### Hajota ja hallitse
+Sopii erityisen hyvin, jos ongelma jakaantuu riippumattomiin aliongelmiin.
 - Periaatteen idea
     - Ongelman jakaminen osiin
     - Osaongelmien yhdistäminen
@@ -95,10 +97,6 @@ Rekursiossa pinoa hallinnoi ohjelmointikieli. Iteratiivisessa ratkaisussa sinä 
 - Implisiittinen pino (kutsupino)
 - Eksplisiittinen pino
     - Rekursion simulointi itse toteutetulla pinolla
-- Milloin pinon käyttö on ongelma
-    - Stack overflow
-    - Suuret syvyydet
-
 
 ## Dynaaminen ohjelmointi?
 Dynaaminen ohjelmointi on sekä matemaattinen optimointimetodi ja algoritminen paradigma. 
@@ -122,7 +120,7 @@ void main() {
 }
 
 // Oletetaan, että yksiköt ovat jo nousevassa järjestyksessä
-private int[] ahneMenetelma(int[] valuuttaVaihtoehdot, int tavoite) {
+private int[] ahneMenetelma(int[] valuutat, int tavoite) {
     List<Integer> tulos = new ArrayList<>();
     int jaljella = tavoite;
 
@@ -140,4 +138,29 @@ private int[] ahneMenetelma(int[] valuuttaVaihtoehdot, int tavoite) {
     return tulos.stream().mapToInt(Integer::intValue).toArray();
 }
 ```
-Useimmat nykyiset rahayksiköt ovat tarkoituksella suunniteltu siten (kuten euro), että ahne algoritmi antaa optimaalisen tuloksen. 
+Useimmat nykyiset rahayksiköt ovat tarkoituksella suunniteltu siten (kuten euro), että ahne algoritmi antaa optimaalisen tuloksen. Esimerkiksi, jos meillä olisi yksiköt `1,3,4` ahne algoritmi antaa tavoitteelle 6 tuloksen `4+1+1`, eikä globaalia optimia `3+3`:
+
+```java
+void main() {
+    int[] tulos = ahneMenetelma(new int[]{1,3,4}, 6);
+    IO.println(Arrays.toString(tulos));
+}
+
+//-private int[] ahneMenetelma(int[] valuutat, int tavoite) {
+//-    List<Integer> tulos = new ArrayList<>();
+//-    int jaljella = tavoite;
+
+//-    for (int i = valuutat.length - 1; i >= 0; i--) {
+//-        int valuutta = valuutat[i];
+
+//-        int maara = jaljella / valuutta; //Otetaan niin monta kuin mahdollista
+//-        for (int j = 0; j < maara; j++) {
+//-            tulos.add(valuutta);
+//-        }
+//-        jaljella -= maara * valuutta;
+//-    }
+//-    // Tavoite ei mahdollinen
+//-    if(jaljella != 0) return new int[0];
+//-    return tulos.stream().mapToInt(Integer::intValue).toArray();
+//-}
+```
