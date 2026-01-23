@@ -69,9 +69,6 @@
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava6">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-
-
-
 <task>
   <task-title>Tehtävä 3.7: Viestit. <points>1 p.</points> </task-title>
   <handout>
@@ -83,10 +80,10 @@
 </task>
 
 <task>
-  <task-title>Tehtävä 3.8: Auto abstraktiksi luokaksi. <points>1 p.</points> </task-title>
+  <task-title>Tehtävä 3.8: Abstrakti ajoneuvo. <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/3-8-abstrakti-auto/handout.md}}
+{{#include ../exercises/3-8-abstrakti-ajoneuvo/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava8">Tee tehtävä TIMissä</a></task-link>
