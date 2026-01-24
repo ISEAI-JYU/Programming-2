@@ -498,7 +498,7 @@ mene syvemmälle moniperinnän käsitteeseen, mutta mainittakoon, moniperinnän
 käyttö voi joissain tilanteissa olla ongelmallista (esim.
 [Timanttiongelma](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)). 
 
-Usein kirjallisuudessa mainitaan, että Javassa moniperintää muistuttaa hieman *rajapinnan* käsite (engl. *interface*). Kysymys on kuitenkin monin tavoin eri asiasta. Rajapintoja käsitellään osassa [3.4 Rajapinta](04-rajapinta.md)
+Usein kirjallisuudessa mainitaan, että Javassa moniperintää muistuttaa hieman *rajapinnan* käsite (engl. *interface*). Kysymys on kuitenkin monin tavoin eri asiasta. Rajapintoja käsitellään osassa 4 (TODO: linkki kuntoon)
 
 ## Tehtävät
 
@@ -530,15 +530,5 @@ Usein kirjallisuudessa mainitaan, että Javassa moniperintää muistuttaa hieman
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava3">Tee tehtävä TIMissä</a></task-link>
-</task>
-
-<task>
-  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 3.4: Luokkahierarkia, osa 4. <points>1 p.</points> </task-title>
-  <handout>
-
-{{#include ../exercises/3-4-verkkokauppa-4/handout.md}}
-
-  </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava4">Tee tehtävä TIMissä</a></task-link>
 </task>
 
