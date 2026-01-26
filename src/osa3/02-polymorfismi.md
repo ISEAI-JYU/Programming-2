@@ -1,15 +1,11 @@
 # Polymorfismi
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 26. tammikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät polymorfismin perusajatuksen 
 > - Osaat korvata yliluokan metodin aliluokassa sekä estää korvaamisen `final`-avainsanalla
 > - Osaat kirjoittaa pienen ohjelman, jossa hyödynnetään polymorfismia
-> - Tunnistat Object-luokan korvattavat metodit: `toString()`, `equals()`, `hashCode()`
+> - Tunnistat Object-luokan korvattavia metodeja, kuten `toString()`
 
 ![Bändi](images/band.png)
 
