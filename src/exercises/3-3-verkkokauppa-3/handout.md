@@ -99,7 +99,7 @@ class Puhelin {
     -boolean onko5G
     +Puhelin(String nimi, double hinta, int takuuKuukaudet, String kayttojarjestelma, boolean onko5G)
     +void soita(String numero)
-    +void tulostaPerustiedot(int kuukausiaKulunut)
+    +void tulostaPuhelimenTiedot(int kuukausiaKulunut)
 }
 class Pakaste {
     -int lampotilaSuositus
