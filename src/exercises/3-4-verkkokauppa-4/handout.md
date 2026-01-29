@@ -1,3 +1,6 @@
+EDIT 29.1.2026: Luokan `SahkoAuto` nimi muutettu `Sahkoauto`-muotoon, kuten
+TIMissäkin oli.
+
 Tulostimme aiemmissa tehtävissä olion tietoja luomalla omia metodeita, kuten `tulostaPuhelimenTiedot(int kuukausiaKulunut)`, joka ei kuitenkaan pidemmän päälle ole kovin järkevää. Olemme nyt tutustuneet `toString()` metodiin, joka on Javan standardin mukaista, jonka jälkeen esimerkiksi aiemmin luodun puhelimen tulostuksen voisi hoitaa näin: `IO.println(puhelin)`
 
 Korvaa tai lisää luokkiin `Tuote`, `Elektroniikka` ja `Puhelin` metodi `toString()`, jossa kutsut ensimmäisenä yliluokan `toString()` metodia ja lisää merkkijonoon luokan omista attribuuteista tietoja.
@@ -41,7 +44,7 @@ Toimintasäde: 401.98 km
 
 <br />
 
-Laajenna luokkahierarkiaa edelleen. Lisää `SahkoAuto`-luokka, joka perii
+Laajenna luokkahierarkiaa edelleen. Lisää `Sahkoauto`-luokka, joka perii
 `Elektroniikka`-luokan. 
 
 Lisää luokkaan 
