@@ -79,10 +79,10 @@ vastaavat tiedot UML-kaaviosta.
 ```plantuml
 @startuml
 class Tuote {
-    -String nimi
-    -double hinta
+    #String nimi
+    #double hinta
     +Tuote(String nimi, double hinta)
-    +void tulostaPerustiedot()
+    +void tulostaTiedot()
 }
 class Elektroniikka {
     -int takuuKuukaudet
