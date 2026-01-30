@@ -1,3 +1,5 @@
+EDIT 30.1.2026: UML-kaavio korjattu vastaamaan tehtävänantoa
+
 EDIT 29.1.2026: UML päivitetty vastaamaan tehtävänantoa
 
 Laajenna aiemmin tekemääsi verkkokaupan luokkahierarkiaa alla olevan UML-kaavion
@@ -87,9 +89,9 @@ class Tuote {
     +void tulostaTiedot()
 }
 class Elektroniikka {
-    -int takuuKuukaudet
-    +Elektroniikka(String nimi, double hinta, int takuuKuukaudet)
-    +void testaaLaite()
+    -int takuuKuukausina
+    +Elektroniikka(String nimi, double hinta, int takuuKuukausina)
+    +int takuutaJaljella(int kuukausiaKulunut)
 }
 class Ruoka {
     -String parastaEnnen
@@ -99,7 +101,7 @@ class Ruoka {
 class Puhelin {
     -String kayttojarjestelma
     -boolean onko5G
-    +Puhelin(String nimi, double hinta, int takuuKuukaudet, String kayttojarjestelma, boolean onko5G)
+    +Puhelin(String nimi, double hinta, int takuuKuukausina, String kayttojarjestelma, boolean onko5G)
     +void soita(String numero)
     +void tulostaPuhelimenTiedot(int kuukausiaKulunut)
 }
@@ -112,6 +114,6 @@ class Pakaste {
 Tuote <|-- Elektroniikka
 Tuote <|-- Ruoka
 Elektroniikka <|-- Puhelin
-Ruoka <|-- Pakaste
+Ruoka <|-- Pakaste 
 @enduml
 ```
