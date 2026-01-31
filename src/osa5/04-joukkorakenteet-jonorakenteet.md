@@ -1,5 +1,9 @@
 # Joukko- ja jonorakenteet
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 9. helmikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 > [!WIP]
 > - Otetaan pohjaa seuraavista lähteistä
 >    - <https://docs.oracle.com/javase/tutorial/collections/>

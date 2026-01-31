@@ -1,5 +1,9 @@
 # Kokoelmat
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 9. helmikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät, mitä kokoelma tarkoittaa ja miksi niitä käytetään ohjelmoinnissa.

@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
+
 class Opettaja extends Henkilo {
     private String tehtavanimike;
-    ArrayList<String> opetettavatKurssit = new ArrayList<>();
+    List<String> opetettavatKurssit = new ArrayList<>();
 
-    public Opettaja(String nimi, String kayttajatunnus)
-    {
+    public Opettaja(String nimi, String kayttajatunnus) {
         super(nimi, kayttajatunnus);
         this.opetettavatKurssit = new ArrayList<>();
     }
