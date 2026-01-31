@@ -1,4 +1,4 @@
-1. Luo uusi rajapinta nimeltään `Muunnin`.
+1. Luo rajapinta nimeltään `Muunnin`.
 Määrittele rajapintaan yksi metodi: `String muunna(String syote)`.
 Muista, että rajapinnassa metodilla ei ole runkoa (ei aaltosulkeita `{}`).
 
