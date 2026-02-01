@@ -105,7 +105,7 @@
 </task>
 
 <task>
-  <task-title>Tehtävä 4.10. <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.10. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/4-10-iso-kontti/handout.md}}
@@ -115,7 +115,7 @@
 </task>
 
 <task>
-  <task-title>Tehtävä 4.11. <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.11. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/4-11-tyyppirajoitukset-1/handout.md}}
@@ -125,7 +125,7 @@
 </task>
 
 <task>
-  <task-title>Tehtävä 4.12. <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.12. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/4-12-tyyppirajoitukset-2/handout.md}}
