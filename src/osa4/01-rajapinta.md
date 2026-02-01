@@ -609,7 +609,7 @@ public class Main {
 ## Esimerkit
 
 Löydät kaikki tällä sivulla esitellyt esimerkit
-[GitHubista](https://github.com/ohj-perus-jy/ohj2-mdbook-esimerkit)
+[GitHubista](https://github.com/ohj-perus-jy/ohj2/tree/main/src/examples/osa3)
 (E34-alkuiset kansiot).
 
 ## Huomautuksia
