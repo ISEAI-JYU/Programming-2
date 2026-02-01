@@ -9,13 +9,15 @@
 >   riippuvuuden välttämiseksi 
 > - Tunnistaa milloin perintää kannattaa käyttää, ja milloin koostaminen on parempi vaihtoehto. ("Composition over inheritance")
 
+![alt text](images/interfaces.png)
+
 Perintä ja rajapinnat voivat toimia, ja usein toimivatkin yhdessä. Perintä
 määrittelee luokkien välisen hierarkian ja jakaa yhteistä toiminnallisuutta, kun
 taas rajapinnat määrittelevät kyvykkyyksiä, joita eri luokat voivat toteuttaa
 riippumatta niiden sijainnista luokkahierarkiassa. 
 
 Itse asiassa käytimme jo
-[Älykoti](04-rajapinta.md#alykoti-saadettava)-esimerkissämme sekä perintää
+[Älykoti](01-rajapinta.md#alykoti-saadettava)-esimerkissämme sekä perintää
 (`Laite` abstraktina luokkana) että rajapintaa (`Saadettava`-rajapinta).
 Laajennetaan kuitenkin perinnän ja rajapintojen yhteistyötä hieman eteenpäin.
 Tarkastellaan tilannetta, jossa meillä on ohjelmassamme luokkia, jotka eivät jaa
@@ -557,14 +559,3 @@ keskeiset erot syntaktin ja käyttötarkoituksen osalta.
 
 
 ## Tehtävät
-
-<task>
-  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 3.9: Kotityörobotti. <points>1 p.</points> </task-title>
-  <handout>
-
-{{#include ../exercises/3-9-kotityorobotti/handout.md}}
-
-  </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa3/tehtava9">Tee tehtävä TIMissä</a></task-link>
-</task>
-
