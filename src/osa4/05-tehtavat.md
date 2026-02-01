@@ -67,7 +67,7 @@
   <task-title>Tehtävä 4.6: Henkilöt järjestykseen, osa 1. <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/4-6-henkilöt-järjestykseen-1/handout.md}}
+{{#include ../exercises/4-6-henkilot-jarjestykseen-1/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava6">Tee tehtävä TIMissä</a></task-link>
@@ -77,7 +77,7 @@
   <task-title>Tehtävä 4.7: Henkilöt järjestykseen, osa 2. <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/4-7-henkilöt-järjestykseen-2/handout.md}}
+{{#include ../exercises/4-7-henkilot-jarjestykseen-2/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava7">Tee tehtävä TIMissä</a></task-link>
