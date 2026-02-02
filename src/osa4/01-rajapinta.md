@@ -1,9 +1,5 @@
 # Rajapinta
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 2. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 > - Ymmärrät, mitä rajapinta (interface) tarkoittaa olio-ohjelmoinnissa.
 > - Osaat määritellä ja käyttää rajapintoja Javassa.
@@ -622,4 +618,28 @@ dokumentaatiosta](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmeth
 
 <!-- Tehtäväidea tulevaisuutta varten -->
 <!-- Suunnittele `Hälytettävä`-rajapinta, jossa on metodit `trigger()` ja `reset()`. Toteuta rajapintaa hyödyntävä abstrakti `HälytinLaite`, joka pitää kirjaa siitä, montako kertaa hälytys on aktivoitu. Luo kaksi konkreettista laitetta (esim. `SavuHälytin` ja `VesivuotoHälytin`). Mieti, missä kohtaa sijoitat yhteisen lokituksen: rajapintaan (ei mahdollista) vai abstraktiin luokkaan? -->
- 
+
+## Tehtävät
+
+
+<task>
+  <task-title>Tehtävä 4.1: Muunnin. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-1-muunnin/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava1">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+
+<task>
+  <task-title>Tehtävä 4.2: Vakoojien viestijärjestelmä.<points>1 p.</points></task-title>
+  <handout>
+
+{{#include ../exercises/4-2-salakirjoitus/handout.md}}
+
+  </handout>
+    <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava2">Tee tehtävä TIMissä </a></task-link>
+</task>
+

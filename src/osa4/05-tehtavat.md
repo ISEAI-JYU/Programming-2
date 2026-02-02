@@ -1,9 +1,5 @@
 # Osan kaikki tehtävät
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 2. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!HUOMAUTUS]
 > Jos palautat tehtävät ennen osion takarajaa ({{#include ../takarajat.md:4}}), voit saada DL-BONUS-pisteitä
 > harjoitustehtäviin. Lue lisää

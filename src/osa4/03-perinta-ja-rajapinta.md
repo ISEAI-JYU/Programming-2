@@ -1,9 +1,5 @@
 # Perintä ja rajapinnat olioiden yhteistyössä
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 2. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 > - Osaat hyödyntää rajapintoja ja abstrakteja luokkia luokkien välisen
 >   riippuvuuden välttämiseksi 
@@ -559,3 +555,25 @@ keskeiset erot syntaktin ja käyttötarkoituksen osalta.
 
 
 ## Tehtävät
+
+
+<task>
+  <task-title>Tehtävä 4.3: Seikkailupeli. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-3-seikkailupeli/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava3">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.4: Kotityörobotti. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-4-kotityorobotti/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava4">Tee tehtävä TIMissä</a></task-link>
+</task>

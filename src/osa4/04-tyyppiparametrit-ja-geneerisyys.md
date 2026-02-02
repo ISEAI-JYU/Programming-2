@@ -1,9 +1,5 @@
 # Tyyppiparametrit ja geneerisyys
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 2. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
- 
 > [!Osaamistavoitteet]
 >
 > - Osaat hyödyntää tyyppiparametreja toteuttaaksesi yleiskäyttöisiä eli
@@ -624,3 +620,54 @@ for (Number n : luvut) {
     IO.println(n); // Toimii
 }
 ```
+
+<task>
+  <task-title>Tehtävä 4.8: Etsi suurin. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-8-etsi-suurin/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava8">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title>Tehtävä 4.9: Kontti. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-9-kontti/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava9">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.10: Iso kontti. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-10-iso-kontti/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava10">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.11:
+  Tyyppirajoitukset, osa 1. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-11-tyyppirajoitukset-1/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava11">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 4.12: Tyyppirajoitukset, osa 2. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/4-12-tyyppirajoitukset-2/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa4/tehtava12">Tee tehtävä TIMissä</a></task-link>
+</task>
