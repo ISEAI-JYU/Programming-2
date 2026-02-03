@@ -32,7 +32,8 @@ Alla muutamia esimerkkejä erilaisista kokoelmista ja niiden erityispiirteistä.
  - Soittaessasi asiakaspalveluun uudet soittajat lisätään käsittelyjonon
    loppuun, ja soittajia palvellaan aina jonon alusta lähtien. Rakennetta, jossa
    uudet alkiot lisätään loppuun ja poistetaan alusta, kutsutaan *jonoksi*
-   (engl. *queue*).
+   (engl. *queue*). Sen sijaan *pinossa* (engl. *stack*) poistetaan alkiot
+   lopusta, eli viimeisimpänä lisätty poistetaan ensimmäiseksi.
  - Sisuun viedään arvosanat aina pareina (opiskelijanumero, arvosana) **ja**
    jokaista opiskelijaa tulee vastata korkeintaan yksi arvosana samassa
    toteutuksessa. Rakennetta, jossa jokaista yksikäsitteistä avainta
@@ -72,12 +73,16 @@ taulukkoja. Muita valmiita listan toteutuksia käsitellään [osassa 5.2](02-lis
 
 Javan kokoelmakehyksen oleellisin rajapinta on `Collection` ([Java
 Doc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collection.html)),
-joka on yleinen, korkean tason rajapinta. Esimerkiksi edellä mainittu
-`ArrayList` voidaan sijoittaa `Collection`-tyyppiseen muuttujaan:
+joka on yleinen, korkean tason rajapinta. `List`-rajapinta periytyy 
+`Collection`-rajapinnasta, joten esimerkiksi edellä mainittu `ArrayList` voidaan 
+sijoittaa `Collection`-tyyppiseen muuttujaan:
 
 ```java
 //-void main() {
-Collection<String> marjat = new ArrayList<>(List.of("mansikka", "mustikka", "puolukka", "lakka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mansikka", "mustikka", "puolukka", "lakka")
+);
+
 IO.println(marjat);
 //-}
 ```
@@ -94,7 +99,10 @@ Alkioiden lisääminen onnistuu `add` ja `remove`-metodeilla.
 
 ```java
 //-void main() {
-Collection<String> marjat = new ArrayList<>(List.of("mansikka", "mustikka", "puolukka", "lakka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mansikka", "mustikka", "puolukka", "lakka")
+);
+
 marjat.add("kirsikka");
 IO.println(marjat);
 
@@ -108,6 +116,20 @@ eikä `remove`-metodi poista alkioita indeksin perusteella.
 `Collection`-rajapinta ei edellytä, että sen toteuttava luokka säilyttäisi
 alkioitaan missään tietyssä järjestyksessä.
 
+Yksittäisen alkion poistamisen lisäksi koko kokoelman voi tyhjentää 
+`clear`-metodilla.
+
+```java
+//-void main() {
+Collection<String> marjat = new ArrayList<>(
+  List.of("mansikka", "mustikka", "puolukka", "lakka")
+);
+
+marjat.clear();
+IO.println(marjat);
+//-}
+```
+
 ## Tietyn alkion löytyminen kokoelmasta
 
 `Collection`-rajapinta määrittelee myös `contains`-metodin, jolla voi tarkistaa,
@@ -115,7 +137,10 @@ löytyykö kokoelmasta jokin alkio.
 
 ```java
 //-void main() {
-Collection<String> marjat = new ArrayList<>(List.of("mustikka", "puolukka", "lakka", "kirsikka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mustikka", "puolukka", "lakka", "kirsikka")
+);
+
 IO.println("Löytyykö mustikka: " + marjat.contains("mustikka"));
 
 // Mansikka poistettiin yllä, eli ei löydy
@@ -130,7 +155,10 @@ selvittää, kuinka monta alkiota kokoelmassa on ja onko kokoelma tyhjä.
 
 ```java
 //-void main() {
-Collection<String> marjat = new ArrayList<>(List.of("mustikka", "puolukka", "lakka", "kirsikka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mustikka", "puolukka", "lakka", "kirsikka")
+);
+
 IO.println("Marjoja on: " + marjat.size());
 IO.println("Onko marjakokoelma tyhjä: " + marjat.isEmpty());  
 //-}
@@ -143,7 +171,10 @@ kokoelman alkioita voi käydä läpi `for each`-silmukalla.
 
 ```java
 //-void main() {
-Collection<String> marjat = new ArrayList<>(List.of("mustikka", "puolukka", "lakka", "kirsikka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mustikka", "puolukka", "lakka", "kirsikka")
+);
+
 for (String marja : marjat) {
     IO.println("Marja: " + marja);
 }
