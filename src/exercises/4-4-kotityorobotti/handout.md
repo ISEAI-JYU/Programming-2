@@ -26,17 +26,20 @@ class Imuri {
     +void tyhjennaSailio()
 }
 
-class KasteluKannu {
+
+class Kastelukannu {
     -vedenMaara : int
     -kielletytKohteet : List<String>
-    +KasteluKannu()
+    +Kastelukannu()
     +boolean kayta(String kohde)
     +void taytaVesi()
 }
 
-Robotti ..> KayttoEsine
-Imuri ..|> KayttoEsine
-KasteluKannu ..|> KayttoEsine
+
+KayttoEsine <|.. Imuri
+KayttoEsine <|.. Kastelukannu
+KayttoEsine <.. Robotti
+
 @enduml
 ```
 
@@ -50,7 +53,7 @@ Robotilla on seuraavat metodit:
    (esim. imuri tai kastelukannu).
  * `void teeTyota(String kohde)`: Suorittaa kotityön. Jos `kohde` on
    sillä listalla, jotka kyseiseltä käyttöesineeltä on kielletty (esim.
-   `KasteluKannu`-oliolla ei saa kastella `"Tietokone"`-kohdetta), robotin tulee
+   `Kastelukannu`-oliolla ei saa kastella `"Tietokone"`-kohdetta), robotin tulee
    tulostaa virheilmoitus. Kielletyt käyttökohteet määritellään käyttöesineen
    attribuuttina merkkijonolistana. 
  * `Kastelukannu`-olio ei kastele jos vettä ei ole riittävästi. Sen voi täyttää
