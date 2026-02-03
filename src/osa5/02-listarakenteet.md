@@ -18,81 +18,53 @@
 > Vrt. myös [HY](https://java-programming.mooc.fi/part-12/2-arraylist-and-hashtable)
 > 
 
-- Kokoelma, jossa alkiot pysyvät siinä järjestyksessä, jossa niitä on lisätty kokoelmaan
+`List`-rajapinta kuvaa kokoelmaa, jossa alkiot ovat tietyssä järjestyksessä ja
+niihin voidaan viitata indeksin avulla. Tämä vastaa monella tapaa taulukkoa,
+mutta tarjoaa huomattavasti joustavamman rajapinnan. Sivuhuomautus: Oikeampaa
+olisi sanoa, että kyseessä on `List<E>`-rajapinta, jossa `E` on listan alkioiden
+(*element*) tyyppi, mutta tässä yhteydessä jätämme generiikan mainitsematta,
+jotta kirjoitusasu pysyy yksinkertaisena. 
 
-## Listan perusominaisuudet ja soveltuvuuskohteet
+Kuvitellaan, että ohjelma tallentaa opiskelijoiden nimet siinä järjestyksessä
+kuin he ovat ilmoittautuneet kurssille. Tässä tilanteessa järjestyksellä on
+merkitystä, ja sama nimi voi esiintyä useammin kuin kerran.
 
-- Javassa
-  - `List`-rajapinta
-  - Yleisin käytetty toteutus: `ArrayList`
+```java
+//-void main() {
+List<String> opiskelijat = new ArrayList<>();
+opiskelijat.add("Aino");
+opiskelijat.add("Ville");
+opiskelijat.add("Aino");
 
-- Ensimmäinen alkio listassa on aina ensimmäiseksi lisätty, sitten on toiseksi lisätty jne.
+System.out.println(opiskelijat.get(1)); // Ville
+//-}
+```
 
-    ```java
-    //-void main() {
-    List<String> marjat = new ArrayList<>();
-    marjat.add("mustikka");
-    marjat.add("puolukka");
-    marjat.add("mansikka");
-    IO.println(marjat);
-    //-}
-    ```
+Listan käyttäminen tuntuu luontevalta, koska ajattelet tietoa nimenomaan jonona:
+ensimmäinen, toinen, kolmas. `ArrayList` on tässä yleisin valinta, sillä se
+tarjoaa nopean pääsyn alkioihin indeksin avulla. Kurssin tässä vaiheessa voit
+huoletta ajatella, että `List` tarkoittaa käytännössä `ArrayList`-luokkaa, ellei
+ole hyvää syytä valita toisin.
 
-- Alkioiden suhteellinen järjestys pysyy vaikka alkioita poistaisi listan jostain kohtaa
-
-    ```java
-    //-void main() {
-    //-List<String> marjat = new ArrayList<>();
-    //-marjat.add("mustikka");
-    //-marjat.add("puolukka");
-    //-marjat.add("mansikka");
-    marjat.remove("puolukka");
-    IO.println(marjat);
-    //-}
-    ```
-
-- Jokaisella alkiolla on siten *paikka* eli indeksi, jonka perusteella alkioita voi hakea
+Listan alkioiden suhteellinen järjestys pysyy vaikka alkioita poistaisi välistä.
 
     ```java
     //-void main() {
-    //-List<String> marjat = new ArrayList<>();
-    //-marjat.add("mustikka");
-    //-marjat.add("puolukka");
-    //-marjat.add("mansikka");
-    //-marjat.remove("puolukka");
-    IO.println("Listassa on " + marjat.size() + " alkiota");
-    for (int i = 0; i < marjat.size(); i++) {
-       IO.println("Paikassa " + i + " on alkio " + marjat.get(i));
-    }
+List<String> opiskelijat = new ArrayList<>();
+opiskelijat.add("Aino");
+opiskelijat.add("Ville");
+opiskelijat.add("Aino");
+opiskelijat.remove("Ville");
+IO.println(opiskelijat);
     //-}
     ```
 
-- Alkiot käydään läpi aina samassa järjestyksessä
+Jokaisella alkiolla on siten *paikka* eli indeksi, jonka perusteella alkioita
+voi hakea. Tästä seuraa, että alkiot käydään läpi aina samassa järjestyksessä.
 
-    ```java
-    //-void main() {
-    //-List<String> marjat = new ArrayList<>();
-    //-marjat.add("mustikka");
-    //-marjat.add("puolukka");
-    //-marjat.add("mansikka");
-    //-marjat.remove("puolukka");
-    IO.println("Ensimmäinen iteraatio: ");
-    for (String marja : marjat) {
-       IO.println(marja);
-    }
-
-    marjat.add("lakka");
-
-    IO.println("Toinen iteraatio: ");
-    for (String marja : marjat) {
-       IO.println(marja);
-    }
-    //-}
-    ```
-
-- Listat soveltuu tilanteisiin, jossa jokaiselle alkiolle halutaan kiinteä paikka ja kiinteä järjestys
-  - Tilanteet, jossa järjestystä halutaan muokata tai säilyttää (esim. järjestäminen, haku paikan perusteella)
-  - Samaa alkio saa esiintyä listassa useaan kertaan
+ - Lista soveltuu tilanteisiin, jossa jokaiselle alkiolle halutaan kiinteä paikka ja kiinteä järjestys
+ - Tilanteet, jossa järjestystä halutaan muokata tai säilyttää (esim. järjestäminen, haku paikan perusteella)
+ - Samaa alkio saa esiintyä listassa useaan kertaan
 
 ## Listat ja taulukot
 
