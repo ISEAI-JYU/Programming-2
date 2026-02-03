@@ -10,7 +10,7 @@ String pura(String salattuViesti);
 2. Toteuta kolme erilaista luokkaa: `Kaantaja`, `Hakkeri` ja `SeuraavaKirjain`, jotka toteuttavat `Salaaja`-rajapinnan seuraavilla logiikoilla:
 
   * `Kaantaja` (Peilikuvakirjoitus). Kääntää sanan väärinpäin.
-    Esimerkki: "Agentti" &rarr; negA". Vihje: Voit käyttää
+    Esimerkki: "Agentti" &rarr; ittnegA". Vihje: Voit käyttää
     `StringBuilder`-luokan `reverse()`-komentoa tai silmukkaa, joka käy sanan
     läpi lopusta alkuun.
 
