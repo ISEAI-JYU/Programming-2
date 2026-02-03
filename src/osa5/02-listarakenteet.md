@@ -98,8 +98,8 @@ public class Lista<T> {
 ```
 
 
-Tässä välissä on tarpeen selittää, miksi `@SuppressWarnings("unchecked")` on
-tarpeen. Javassa ei voi suoraan luoda geneeristä `T`-tyyppistä taulukkoa.
+Tässä välissä on tarpeen selittää, miksi `@SuppressWarnings("unchecked")`
+tarvitaan. Javassa ei voi suoraan luoda geneeristä `T`-tyyppistä taulukkoa.
 Tyyppiparametri `T` on olemassa vain käännösaikana. Ajonaikaisesti Java ei
 tiedä, mikä `T` oikeasti on. Tätä kutsutaan tyyppien häviämiseksi (type
 erasure). Taulukot sen sijaan ovat ajonaikaisesti tyyppitietoisia; kun luot
@@ -130,8 +130,9 @@ samalla tavalla, mutta kääntäjä tulostaa varoituksen.
 <details><summary>Lisätietoa: Missä tilanteessa tyyppimuunnos voisi aiheuttaa ongelmia?</summary>
 
 Oletetaan, että luot `Lista<String>`-olion. Tällöin `T` on `String`. Sisäisesti
-taulukko on kuitenkin `Object[]`. Niin kauan kuin listaa käytetään oikein,
-ongelmaa ei synny. Mutta Java sallii tämän: 
+taustalla luotu taulukko alkioiden säilyttämistä varten on kuitenkin `Object[]`.
+Niin kauan kuin listaa käytetään oikein, ongelmaa ei synny. Mutta Java sallii
+tämän: 
 
 ```java,ignore
 Lista<String> nimet = new Lista<>(10); // Lista, jossa T on String, pituus 10
