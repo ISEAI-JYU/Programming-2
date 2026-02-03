@@ -97,7 +97,6 @@ public class Lista<T> {
 }
 ```
 
-
 Tässä välissä on tarpeen selittää, miksi `@SuppressWarnings("unchecked")`
 tarvitaan. Javassa ei voi suoraan luoda geneeristä `T`-tyyppistä taulukkoa.
 Tyyppiparametri `T` on olemassa vain käännösaikana. Ajonaikaisesti Java ei
@@ -169,15 +168,42 @@ ei käytännössä tapahdu normaalissa käytössä.
 
 </details>
 
-Lisätään seuraavaksi listaan metodit `get` ja `size`, joilla pääsee käsiksi
-listan alkioihin ja saadaan selville listan koko.
+## Lisääminen
+
+Ensimmäisenä toteutetaan metodi `add(element)`, joka lisää alkion listan
+loppuun. Emme vielä murehdi sitä, mitä tapahtuu, jos taulukko on täynnä. Jos taulukossa
+on tilaa, lisääminen on yksinkertaista: asetetaan alkio taulukon seuraavaan vapaaseen
+kohtaan ja kasvatetaan kokoa yhdellä. Jos taulukko on täynnä, palataan vain
+`return`-lauseella tekemättä mitään -- korjataan tämä myöhemmin.
+
+<task>
+  <task-title>Tehtävä 5.1: Listaan lisääminen. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-1-lista-1/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava1">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+Tehdään seuraavaksi metodi `get(index)`, joka palauttaa listan tietyn indeksin
+alkion, sekä metodi `set(index, element)`, joka asettaa tietyn alkion tiettyyn
+indeksiin. Lopuksi vielä `size()`, jolla saadaan listan koko.
+
 
 ```java,ignore
-public T get(int index) {
+public void get(int index) {
   if (index < 0 || index >= koko) {
     throw new IndexOutOfBoundsException("Indeksi " + index + " ei ole välillä 0.." + (koko - 1));
   }
   return alkiot[index];
+}
+
+public void set(int index, T element) {
+  if (index < 0 || index >= koko) {
+    throw new IndexOutOfBoundsException("Indeksi " + index + " ei ole välillä 0.." + (koko - 1));
+  }
+  alkiot[index] = element;
 }
 
 public int size() {
@@ -193,6 +219,7 @@ kyseinen indeksi on listan ulkopuolella. Tämä on yleinen käytäntö Javan
 kokoelmissa, ja varmasti sinulle myös tuttu aivan ohjelmoinnin alkeista asti.
 Nyt pääsemme itse heittämään kyseisen poikkeuksen!
 
+
 > [!WIP]
 > Tehdään esimerkkien kautta
 > - Tehdään `Lista<T>`-luokka ja sille attribuutiksi taulukko
@@ -205,11 +232,30 @@ Nyt pääsemme itse heittämään kyseisen poikkeuksen!
 >     - `indexOf(object)` -> tehtävänä
 >     - `iterator()` -> suoraan tai tehtävänä
 
-### Dynaamisuus listoissa
+## Dynaamisuus
 
-- Javassa `List` ei periaatteessa tarvitse sallia uusien alkioiden lisäämisen
-- Kuitenkin on yleinen olettamus, että listarakenteet ovat dynaamisia, eli alkioita voidaan lisätä ja poistaa
-- Miten dynaamisuus voitaisiin toteuttaa taulukkojen kanssa, kun taulukkojen kokoa ei voi muuttaa
+Vaikka Javassa `List`-rajapinta ei periaatteessa vaadi dynaamisuutta, eli
+alkioiden lisäämistä ja poistamista, niin käytännössä listojen odotetaan tukevan
+sitä. Tämä tarkoittaa, että listan koko voi muuttua ajon aikana. Tämä on
+merkittävä ero taulukkoon verrattuna, jossa koko on kiinteä. 
+
+Listan dynaamisuuden toteuttaminen taulukon päälle vaatii hieman lisälogiikkaa. Kun
+yritämme lisätä alkion listaan, meidän on tarkistettava, onko taulukossa tilaa.
+Jos tilaa on, lisäämme alkion normaalisti. Jos taulukko on täynnä, meidän on
+luotava uusi, suurempi taulukko, kopioitava vanhan taulukon alkiot uuteen
+taulukkoon, ja sitten lisättävä uusi alkio uuteen taulukkoon. Tämä prosessi
+varmistaa, että lista voi kasvaa tarpeen mukaan.
+
+<task>
+  <task-title>Tehtävä 5.2: Dynaaminen lista, osa 1. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-2-dynaaminen-lista-1/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava2">Tee tehtävä TIMissä</a></task-link>
+</task>
+
   - `add`: taulukkoa ei voi kasvattaa, mutta voidaan aina tehdä uusi taulukko ja kopioida alkioita siihen
   - `remove`: voidaan tehdä uusi taulukko TAI tehdään apumuuttuja, joka kertoo, mihin indeksiin asti taulukko on täytetty
 
