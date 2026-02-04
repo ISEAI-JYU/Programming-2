@@ -69,17 +69,10 @@ tai säilyttää, tai sama alkio saa esiintyä useita kertoja.
 
 ## Oma listarakenne
 
-Seuraavaksi rakennetaan itse yksinkertainen listarakenne taulukon päälle. Tämän
-tarkoituksena on havainnollistaa, miten `ArrayList` toimii sisäisesti
-perusperiaatteiden tasolla. Toteutus ei ole täydellinen eikä kata koko
-`List`‑rajapintaa, mutta riittää ymmärtämään keskeiset ideat.
-
-Kuten muistamme, listoilla ja taulukoilla on paljon yhteistä. Molemmissa alkiot
-ovat järjestyksessä ja niihin viitataan indeksin avulla. Suurin ero on siinä,
-että taulukon koko on kiinteä, kun taas lista on dynaaminen ja voi kasvaa tai
-pienentyä tarpeen mukaan. Käytämme tässä taulukkoa alkioiden tallentamiseen, ja
-lisäämme rakenteeseen logiikan, joka mahdollistaa alkioiden lisäämisen ja poistamisen
-dynaamisesti.
+Seuraavaksi rakennetaan itse yksinkertainen dynaaminen listarakenne taulukon
+päälle. Tämän tarkoituksena on havainnollistaa, miten `ArrayList` toimii
+sisäisesti perusperiaatteiden tasolla. Toteutus ei ole täydellinen eikä kata
+koko `List`‑rajapintaa, mutta riittää ymmärtämään keskeiset ideat.
 
 Aloitetaan luomalla oma luokka `Lista<T>`, joka sisältää taulukon alkioiden
 tallentamista varten. Alla oleva koodi on annettu valmiiksi.
@@ -96,6 +89,9 @@ public class Lista<T> {
   }
 }
 ```
+
+Tämän seurauksena `alkiot`-taulukko alustuu niin, että se sisältää
+`kapasiteetti`-parametrin verran `null`-arvoja. 
 
 Tässä välissä on tarpeen selittää, miksi `@SuppressWarnings("unchecked")`
 tarvitaan. Javassa ei voi suoraan luoda geneeristä `T`-tyyppistä taulukkoa.
@@ -175,6 +171,26 @@ loppuun. Emme vielä murehdi sitä, mitä tapahtuu, jos taulukko on täynnä. Jo
 on tilaa, lisääminen on yksinkertaista: asetetaan alkio taulukon seuraavaan vapaaseen
 kohtaan ja kasvatetaan kokoa yhdellä. Jos taulukko on täynnä, palataan vain
 `return`-lauseella tekemättä mitään -- korjataan tämä myöhemmin.
+
+Koska emme voi vielä lukea alkioita listasta, emme voi ohjelmallisesti tarkistaa,
+että lisäys onnistui. Voimme kuitenkin käyttää debuggeria. Kutsutaan 
+`add`-metodia pääohjelmasta ja asetetaan sen jälkeen keskeytyskohta.
+
+```java,ignore
+void main() {
+  Lista<String> lista = new Lista<>(10);
+  lista.add("Aino");
+  lista.add("Ville");
+  lista.add("Matti");
+  // Aseta keskeytyskohta loppusulun kohdalle
+}
+```
+
+Käynnistä IDEAn debuggeri, ja tarkista `lista`-olion `alkiot`-taulukko. Sen pitäisi sisältää
+lisätyt nimet alusta alkaen. IDEA ei näytä `null`-arvoja taulukon lopussa
+oletuksena. Jos haluat, saat ne esille klikkaamalla `alkiot`-taulukon kohdalla
+hiiren oikeaa painiketta, valitse "Customize data view", ja poista valinta
+kohdasta "Hide null elements". 
 
 <task>
   <task-title>Tehtävä 5.1: Listaan lisääminen. <points>1 p.</points> </task-title>
