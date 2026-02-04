@@ -164,7 +164,7 @@ ei käytännössä tapahdu normaalissa käytössä.
 
 </details>
 
-## Lisääminen
+## Listan perustoiminnot
 
 Ensimmäisenä toteutetaan metodi `add(element)`, joka lisää alkion listan
 loppuun. Emme vielä murehdi sitä, mitä tapahtuu, jos taulukko on täynnä. Jos taulukossa
@@ -202,13 +202,12 @@ kohdasta "Hide null elements".
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava1">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-Tehdään seuraavaksi metodi `get(index)`, joka palauttaa listan tietyn indeksin
-alkion, sekä metodi `set(index, element)`, joka asettaa tietyn alkion tiettyyn
+Tehdään seuraavaksi metodi `get(int index)`, joka palauttaa listan tietyn indeksin
+alkion, sekä metodi `set(int index, T element)`, joka asettaa tietyn alkion tiettyyn
 indeksiin. Lopuksi vielä `size()`, jolla saadaan listan koko.
 
-
 ```java,ignore
-public void get(int index) {
+public T get(int index) {
   if (index < 0 || index >= koko) {
     throw new IndexOutOfBoundsException("Indeksi " + index + " ei ole välillä 0.." + (koko - 1));
   }
@@ -235,7 +234,6 @@ kyseinen indeksi on listan ulkopuolella. Tämä on yleinen käytäntö Javan
 kokoelmissa, ja varmasti sinulle myös tuttu aivan ohjelmoinnin alkeista asti.
 Nyt pääsemme itse heittämään kyseisen poikkeuksen!
 
-
 > [!WIP]
 > Tehdään esimerkkien kautta
 > - Tehdään `Lista<T>`-luokka ja sille attribuutiksi taulukko
@@ -255,12 +253,13 @@ alkioiden lisäämistä ja poistamista, niin käytännössä listojen odotetaan 
 sitä. Tämä tarkoittaa, että listan koko voi muuttua ajon aikana. Tämä on
 merkittävä ero taulukkoon verrattuna, jossa koko on kiinteä. 
 
-Listan dynaamisuuden toteuttaminen taulukon päälle vaatii hieman lisälogiikkaa. Kun
-yritämme lisätä alkion listaan, meidän on tarkistettava, onko taulukossa tilaa.
-Jos tilaa on, lisäämme alkion normaalisti. Jos taulukko on täynnä, meidän on
-luotava uusi, suurempi taulukko, kopioitava vanhan taulukon alkiot uuteen
-taulukkoon, ja sitten lisättävä uusi alkio uuteen taulukkoon. Tämä prosessi
-varmistaa, että lista voi kasvaa tarpeen mukaan.
+Listan dynaamisuuden toteuttaminen taulukon päälle vaatii hieman lisälogiikkaa.
+Jos taulukossa on tilaa, ts. koko on pienempi kuin taulukon pituus, niin uuden
+alkion lisääminen on helppoa: asetetaan alkio taulukon seuraavaan vapaaseen
+kohtaan ja kasvatetaan kokoa yhdellä. Jos taulukko on täynnä, yleinen käytäntö
+on, että luodaan uusi, yleensä kaksinkertainen, taulukko, kopioidaan vanhan
+taulukon alkiot uuteen taulukkoon, ja sitten lisätään uusi alkio uuteen
+taulukkoon. Tämä prosessi varmistaa, että lista voi kasvaa tarpeen mukaan.
 
 <task>
   <task-title>Tehtävä 5.2: Dynaaminen lista, osa 1. <points>1 p.</points> </task-title>
@@ -272,8 +271,208 @@ varmistaa, että lista voi kasvaa tarpeen mukaan.
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava2">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-  - `add`: taulukkoa ei voi kasvattaa, mutta voidaan aina tehdä uusi taulukko ja kopioida alkioita siihen
-  - `remove`: voidaan tehdä uusi taulukko TAI tehdään apumuuttuja, joka kertoo, mihin indeksiin asti taulukko on täytetty
+Alkioiden poistaminen listasta on hieman monimutkaisempaa, koska poistettu alkio
+jätetään tyhjäksi paikaksi taulukkoon. Yksi vaihtoehto olisi jättää kohta
+`null`-arvoksi. Tämä aiheuttaisi kuitenkin ongelmia, alkioiden järjestys ja
+indeksi eivät enää täsmäisi. 
+
+Toinen vaihtoehto olisi kopioida kaikki alkiot paitsi poistettu uuteen
+taulukkoon. Tämä olisi melko tehotonta, koska jokainen poisto vaatisi koko
+taulukon kopioimisen.
+
+Yleensä poistaminen toteutetaan siten, että poistettua alkiota seuraavat alkiot
+siirretään yhden askeleen taaksepäin. Näin lista pysyy ehyenä, eikä uutta
+taulukkoa tarvita. 
+
+<task>
+  <task-title>Tehtävä 5.3: Dynaaminen lista, osa 2. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-3-dynaaminen-lista-2/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava3">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+Poistaminen voi tapahtua myös alkion yhtäsuuruuden perusteella. Tällöin
+etsitään ensimmäinen alkio, joka on yhtä suuri kuin annettu alkio, ja poistetaan
+se.
+
+Jotta `remove(T element)`-metodi toimisi oikein, on tärkeää käyttää
+`equals`-metodia yhtäsuuruuden tarkistamiseen. Tämä varmistaa, että vertailu
+toimii oikein myös silloin, kun listassa on geneerisiä tyyppejä. Toteutetaan
+tämä metodi seuraavaksi. Olemme tähän asti laittaneet listan alkioiksi lähinnä
+lukuja ja merkkijonoja, mutta käyttäessämme geneeristä `T`-tyyppiä, metodi
+toimii kaikilla olioilla, jotka toteuttavat `equals`-metodin.  Toteutuksen
+näet alempana kohdassa **Poistaminen alkion perusteella**.
+
+## Equals-metodi
+
+Otetaan tässä yhteydessä pieni tangentti `equals`- ja `hashCode`-metodeista,
+koska niiden oikea käyttö on olennaista kokoelmien kanssa työskennellessä.
+Aloitetaan `equals`-metodista. 
+
+Javassa `==`-operaattori toimii luotettavana sisällön vertailuna vain
+primitiivityyppien kanssa. Tämä on tietysti aivan hyvä tapa vertailla vaikkapa
+lukuja tai `String`-merkkijonoja. Olioviitteiden osalta `==`-operaattori
+vertailee viitteitä. Esimerkiksi `Integer a = new Integer(42);` ja `Integer b =
+new Integer(42);` eivät ole `a == b`, vaikka niiden sisällöt ovatkin samat.
+
+`equals`-metodin tarkoitus on vertailla olioiden *sisältöä* eli sitä, ovatko ne
+samat sovelluksen näkökulmasta.
+
+Kaikki luokat perivät `equals`-metodin luokasta `Object`. Oletustoteutus
+`Object.equals` käyttäytyy kuten `==`, eli se vertailee viitteitä. Siksi
+sisältövertailu vaatii usein oman `equals`-toteutuksen.
+
+`equals`-metodilla on selkeä sopimus, jota pitää noudattaa:
+- Refleksiivisyys: `x.equals(x)` on aina `true`.
+- Symmetrisyys: jos `x.equals(y)` on `true`, niin `y.equals(x)` on `true`.
+- Transitiivisuus: jos `x.equals(y)` ja `y.equals(z)`, niin `x.equals(z)`.
+- Johdonmukaisuus: useat kutsut samalla datalla antavat saman tuloksen.
+- `x.equals(null)` on aina `false`.
+
+Tyypillinen `equals`-toteutus etenee seuraavasti:
+1. Jos viitteet ovat samat, palauta `true`.
+2. Jos toinen on `null` tai tyyppi ei täsmää, palauta `false`.
+3. Muunna tyyppi ja vertaile niitä kenttiä, jotka määrittelevät "saman".
+
+Esimerkki luokasta, joka vertailee henkilön nimeä ja opiskelijanumeroa. Vain
+siinä tilanteessa että molemmat kentät ovat yhtä suuret, olioiden katsotaan
+olevan yhtä suuret.
+
+```java
+public class Opiskelija {
+  private String nimi;
+  private String opiskelijanumero;
+
+  public Opiskelija(String nimi, String opiskelijanumero) {
+    this.nimi = nimi;
+    this.opiskelijanumero = opiskelijanumero;
+  }
+
+  @Override
+  public boolean equals(Object toinen) {
+    if (this == toinen) {
+      return true;
+    }
+    if (toinen == null || getClass() != toinen.getClass()) {
+      return false;
+    }
+    // Tämä tyyppimuunnos on nyt turvallinen
+    Opiskelija toinenOpiskelija = (Opiskelija) toinen;
+    return this.opiskelijanumero.equals(toinenOpiskelija.opiskelijanumero)
+        && this.nimi.equals(toinenOpiskelija.nimi);
+  }
+}
+```
+
+Jos opiskelijanumero tai nimi voi olla `null`, käytä `Objects.equals(a, b)`,
+joka toimii *null-turvallisesti*. 
+
+```java
+import java.util.Objects;
+
+@Override
+public boolean equals(Object toinen) {
+  
+  // ...
+  
+  Opiskelija toinenOpiskelija = (Opiskelija) toinen;
+  return Objects.equals(this.opiskelijanumero, toinenOpiskelija.opiskelijanumero)
+      && Objects.equals(this.nimi, toinenOpiskelija.nimi);
+}
+```
+
+## HashCode-metodi
+
+Kun luokka toteuttaa `equals`-metodin, on ehdottoman tärkeää toteuttaa myös
+`hashCode`-metodi. Nämä kaksi kulkevat käsi kädessä, ja toisen unohtaminen
+johtaa vaikeasti jäljitettäviin virheisiin. Jotta ymmärrämme miksi, on
+sukellettava hetkeksi hajautustaulujen (kuten `HashSet` ja `HashMap`)
+toimintaperiaatteeseen.
+
+**Miten hajautus toimii?** Kuvittele kirjasto, jossa on tuhansia kirjoja. Jos haluat
+löytää tietyn kirjan, et käy jokaista kirjaa läpi yksi kerrallaan alusta loppuun
+(kuten lista tekisi). Sen sijaan katsot kirjastojärjestelmästä hyllyluokan
+(esim. 800–899). Javassa `hashCode` toimii kuten tämä hyllyluokka:
+
+ 1. Lokerointi: `hashCode`-metodi tiivistää olion tiedot yhdeksi
+    kokonaisluvuksi, jota kutsutaan *hajautusarvoksi*. Kokoelma käyttää tätä
+lukua päättääkseen, mihin lokeroon olio tallennetaan.
+ 2. Nopeus: Kun etsit oliota kokoelmasta, Java laskee etsittävän olion
+hajautusarvon ja hyppää suoraan oikeaan lokeroon.
+ 3. Tarkistus: Lopuksi Java käy läpi vain kyseisessä lokerossa olevat oliot
+käyttäen `equals`-metodia varmistaakseen, onko etsitty olio todella siellä.
+
+Javan kokoelmat luottavat sokeasti siihen, että jos `equals` sanoo, että kaksi
+oliota on samat, niiden hajautusarvojen on oltava samat. 
+
+ * Pakollinen suunta: `x.equals(y) == true` $\rightarrow$ `x.hashCode() == y.hashCode()`.
+
+ * Ei-pakollinen suunta: Vaikka hajautusarvot olisivat samat, oliot voivat olla
+eri sisältöisiä, jolloin syntyy niin sanottu *törmäys*. Tämä tarkoittaa, että ne
+vain päätyvät samaan lokeroon, mutta `equals` erottelee ne kuitenkin toisistaan.
+
+**Toteutus:** Helpoin ja turvallisin tapa toteuttaa `hashCode` on käyttää Javan
+valmista apumetodia `Objects.hash`. **Tärkeää**: `hashCode`-metodin on käytettävä
+laskennassa tismalleen samoja kenttiä kuin `equals`-metodin. Jos `equals` vertailee
+nimeä ja opiskelijanumeroa, `hashCode` ei voi jättää toista pois.
+
+```java,ignore
+@Override
+public int hashCode() {
+    // Luodaan tunnusluku (hash) samoista kentistä kuin equals-vertailussa
+    return Objects.hash(nimi, opiskelijanumero);
+}
+```
+
+<details><summary><i class="bi bi-stars jyu-gold"></i>Valinnaista lisätietoa: Älä muuta avaimia!</summary>
+
+Hajauttavien rakenteiden kanssa on yksi vaaranpaikka: olioiden muuttaminen.
+
+Jos lisäät olion HashSet-kokoelmaan ja sen jälkeen muutat olion kenttiä (esim.
+opiskelijanumeroa), olion laskennallinen hashCode muuttuu. Olio on kuitenkin
+edelleen alkuperäisen hajautusarvon mukaisessa lokerossa. Kun yrität etsiä sitä
+uudella arvolla, Java katsoo uuteen lokeroon – eikä löydä mitään.
+
+Nyrkkisääntö: Jos käytät oliota HashMapin avaimena tai HashSetin jäsenenä, pyri
+pitämään kyseinen olio muuttumattomana (immutable).
+
+Vinkki: Jos käytät Javan uudempia record-tietueita, sinun ei tarvitse huolehtia
+tästä. Java generoi automaattisesti oikeaoppiset `equals`- ja
+`hashCode`-metodit, jotka ottavat huomioon kaikki tietueen kentät.
+
+</details>
+
+Vaikka juuri oman dynaamisen listan rakentelussa sinun ei tarvitsekaan itse
+toteuttaa `equals`- tai `hashCode`-metodeja, on jatkon kannalta tärkeää ymmärtää
+näiden metodien merkitys kokoelmien, kuten `HashSet` ja `HashMap`, taustalla. 
+
+## Poistaminen alkion perusteella
+
+Kuten edellä opimme, poistaminen alkion perusteella edellyttää, että listan
+alkioiden tyypillä on toimiva `equals`-metodi. Tämän jälkeen poistaminen voidaan
+tehdä luotettavasti käymällä lista läpi ja vertaamalla jokaista alkiota
+haluttuun alkioon `equals`-metodilla. 
+
+Jos listassa voi olla useita samanlaisia alkioita, tämä toteutus poistaa vain
+ensimmäisen; muiden poistaminen vaatii uuden läpikäynnin.
+
+<task>
+  <task-title>Tehtävä 5.4: Dynaaminen lista, osa 3. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-4-dynaaminen-lista-3/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava4">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+
+
+
+## Vanhaa tekstiä...
 
 > [!WIP]
 > Tehdään esimerkkien kautta
