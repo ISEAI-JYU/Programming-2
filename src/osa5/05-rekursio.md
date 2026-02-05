@@ -11,14 +11,93 @@
 > - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
 > - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
-WIP: rajuruoho
+## Yleisempi tapa ratkaista rekursiivisia ongelmia:
+Käytä induktiota selvittääksesi, onko ongelmalla optimaalinen alistruktuuri, (engl. *optimal substructure*), jossa ahne valintaominaisuus(engl. *greedy choice property*)(eli aina valitsemalla lokaalin optimin päädytään globaaliin optimiin). Jos tosi --> Käytä ahnetta algoritmia (engl. *greedy algorithm*). Jos taasen ongelmassa on päällekkäisiä osaongelmia käytä hajoita ja hallitse-menetelmiä tai dynaamista ohjelmointia (Memoisaatiota molemmissa)(hajoita ja hallitse dynaamisen osajoukko). Muutoin käytä suoraviivaista menetelmää ratkaisujen läpikäymiseen.
 
-Jos haluat muokata tätä jo nyt, lähetä viestiä.
-
-Käytä induktiota selvittääksesi, onko ongelmalla optimaalinen alistruktuuri, (engl. *optimal substructure*), jossa ahne valintaominaisuus(engl. *greedy choice property*)(eli aina valitsemalla lokaalin optimin päädytään globaaliin optimiin). Jos tosi --> Käytä ahnetta algoritmia (engl. *greedy algorithm*). Jos taasen ongelmassa on päällekkäisiä osaongelmia käytä hajoita ja hallitse-menetelmiä tai dynaamista ohjelmointia (Memoisaatiota molemmissa)(hjh dynaamisen osajoukko). Muutoin käytä suoraviivaista menetelmää ratkaisujen läpikäymiseen.
+(Tällä kurssilla käydään kuitenkin asiat x ja y)
 
 # Rekursio
-Mitä rekursio tarkoittaa yleisellä tasolla
+Rekursion voidaan ajatella olevan yksi ohjelmoijan työkaluista. Vaikka teoreettisesti ei ole olemassa ongelmia, jotka voidaan ratkaista vain rekursiolla, on ongelmia, jotka ovat valmiiksi rekursiivisessa muodossa, kuten puurakenteet. Tällöin rekursio voi olla helpoin tapa saattaa ratkaisu luettavaan muotoon, josta katsotaan seuraavaksi esimerkki:
+
+```java
+public class Solmu {
+    int arvo;
+    Solmu vasen;
+    Solmu oikea;
+
+    Solmu(int arvo) {
+        this.arvo = arvo;
+    }
+}
+
+public static int korkeus(Solmu juuri) {
+    if (juuri == null) {
+        return 0;
+    }
+
+    return 1 + Math.max(korkeus(juuri.vasen), korkeus(juuri.oikea));
+}
+
+void main() {
+    //Muodostetaan binääripuu
+    Solmu juuri = new Solmu(1);
+    juuri.vasen = new Solmu(2);
+    juuri.oikea = new Solmu(3);
+    juuri.vasen.vasen = new Solmu(4);
+
+    IO.println(korkeus(juuri));
+}
+```
+
+Tarkastellaan seuraavaksi esimerkkiä, jossa lasketaan binääripuun korkeus iteratiivisesti, eli käyttämättä rekursiota:
+
+
+```java
+//-public class Solmu {
+//-    int arvo;
+//-    Solmu vasen;
+//-    Solmu oikea;
+//-
+//-    Solmu(int arvo) {
+//-        this.arvo = arvo;
+//-    }
+//-}
+
+public static int puunKorkeusIteratiivisesti(Solmu juuri) {
+    if (juuri == null) return 0;
+
+    Queue<Solmu> jono = new LinkedList<>();
+    jono.add(juuri);
+    int korkeus = 0;
+
+    while (!jono.isEmpty()) {
+        int tasonKoko = jono.size();
+        korkeus++;
+
+        for (int i = 0; i < tasonKoko; i++) {
+            Solmu nykyinen = jono.poll();
+            if (nykyinen.vasen != null) jono.add(nykyinen.vasen);
+            if (nykyinen.oikea != null) jono.add(nykyinen.oikea);
+        }
+    }
+
+    return korkeus;
+}
+//-
+//-void main() {
+//-    //Muodostetaan binääripuu
+//-    Solmu juuri = new Solmu(1);
+//-    juuri.vasen = new Solmu(2);
+//-    juuri.oikea = new Solmu(3);
+//-    juuri.vasen.vasen = new Solmu(4);
+//-
+//-    IO.println(puunKorkeusIteratiivisesti(juuri));
+//-}
+```
+
+Vaikka ongelma voitiin ratkaista iteratiivisesti, on iteratiivinen ratkaisu huomattavasti vaikeampi ymmärtää nopealla vilkaisulla.
+
+## Mitä rekursio tarkoittaa yleisellä tasolla
 
 Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
 
@@ -114,6 +193,7 @@ Dynaaminen ohjelmointi on sekä matemaattinen optimointimetodi ja algoritminen p
     - Fibonacci optimoituna
     - Kapsäkkiongelma (engl. *knapsack problem*) (koliket)
 
+# Ahne algoritmi
 
 Ahne algoritmi on mikä tahansa algoritmi, joka noudattaa heuristiikkaa, jossa jokaisessa tilanteessa valitaan lokaali optimi. Katsotaan seuraavaksi esimerkki ahneesta algoritmista eurovaluutalle
 
