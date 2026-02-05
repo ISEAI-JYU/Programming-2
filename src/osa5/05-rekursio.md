@@ -11,18 +11,132 @@
 > - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
 > - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
-## Yleisempi tapa ratkaista rekursiivisia ongelmia:
-Käytä induktiota selvittääksesi, onko ongelmalla optimaalinen alistruktuuri, (engl. *optimal substructure*), jossa ahne valintaominaisuus(engl. *greedy choice property*)(eli aina valitsemalla lokaalin optimin päädytään globaaliin optimiin). Jos tosi --> Käytä ahnetta algoritmia (engl. *greedy algorithm*). Jos taasen ongelmassa on päällekkäisiä osaongelmia käytä hajoita ja hallitse-menetelmiä tai dynaamista ohjelmointia (Memoisaatiota molemmissa)(hajoita ja hallitse dynaamisen osajoukko). Muutoin käytä suoraviivaista menetelmää ratkaisujen läpikäymiseen.
+## Johdanto
 
-(Tällä kurssilla käydään kuitenkin asiat x ja y)
+Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla. Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja kun rekursiivinen askel pienentää ongelmaa siten, että perustapaukseen päädytään varmasti. 
 
-# Rekursio
-Rekursion voidaan ajatella olevan yksi ohjelmoijan työkaluista. Vaikka teoreettisesti ei ole olemassa ongelmia, jotka voidaan ratkaista vain rekursiolla, on ongelmia, jotka ovat valmiiksi rekursiivisessa muodossa, kuten puurakenteet. Tällöin rekursio voi olla helpoin tapa saattaa ratkaisu luettavaan muotoon, josta katsotaan seuraavaksi esimerkki:
+Rekursio on erityisen luonteva toteuttaa algoritmeja silloin, kun käsitellään rekursiivisia tietorakenteita. Rekursiivinen tietorakenne on rakenne, jonka määritelmä viittaa itseensä.
+
+Eräs esimerkki rekursiivisesta tietorakenteesta on linkitetty lista, jossa
+jokainen solmu sisältää viitteen seuraavaan solmuun tai null-arvon, joka
+merkitsee listan loppua. Linkitettyihin listoihin törmää käytännössä esimerkiksi
+soittolistan toistossa (seuraava kappale), sovellusten "takaisin/eteenpäin"-
+historiassa sekä käyttöjärjestelmien ja ohjelmistokirjastojen (eli valmiiden
+ohjelmakokoelmien) sisäisissä tietorakenteissa. Seuraava Java-esimerkki näyttää
+kokonaislukuja sisältävän linkitetyn listan rakenteen ja listan pituuden
+laskemisen rekursiivisesti.
+
+```java,ignore
+class Solmu {
+    int arvo;
+    Solmu seuraava;
+
+    Solmu(int arvo) {
+        this.arvo = arvo;
+    }
+}
+```
+
+Tällä tavalla määritellyn listan pituuden laskemiseksi voidaan käyttää rekursiota:
+
+```java,ignore
+int pituus(Solmu solmu) {
+    if (solmu == null) return 0;           // perustapaus
+    return 1 + pituus(solmu.seuraava);     // rekursiivinen tapaus
+}
+```
+
+Listan rakentelu "käsin" näyttäisi seuraavalta.
+
+```java
+//-class Solmu {
+//-    int arvo;
+//-    Solmu seuraava;
+//-
+//-    Solmu(int arvo) {
+//-        this.arvo = arvo;
+//-    }
+//-}
+//- 
+//- int pituus(Solmu solmu) {
+//-     if (solmu == null) return 0;           // perustapaus
+//-     return 1 + pituus(solmu.seuraava);     // rekursiivinen tapaus
+//- }
+//-void main() {
+Solmu eka = new Solmu(10);
+eka.seuraava = new Solmu(20);
+eka.seuraava.seuraava = new Solmu(30);
+
+int n = pituus(eka); // n == 3
+IO.println(n);
+//-}
+```
+
+Tämä on kuitenkin hieman kömpelöä. Tyypillisessä käytössä listalla olisi oma
+luokka, joka kapseloi `alku`-viitteen ja lisäämisen:
+
+```java,ignore
+class Lista {
+    Solmu alku;
+
+    void lisaaLoppuun(int arvo) {
+        if (alku == null) {
+            alku = new Solmu(arvo);
+            return;
+        }
+
+        Solmu nykyinen = alku;
+        while (nykyinen.seuraava != null) {
+            nykyinen = nykyinen.seuraava;
+        }
+        nykyinen.seuraava = new Solmu(arvo);
+    }
+
+    int pituus() {
+        return pituus(alku);
+    }
+}
+```
+
+Nyt listan käyttö näyttäisi seuraavalta:
+
+```java
+Lista lista = new Lista();
+lista.lisaaLoppuun(10);
+lista.lisaaLoppuun(20);
+lista.lisaaLoppuun(30);
+
+int n = lista.pituus(); // n == 3
+```
+
+## Rekursio käytännössä
+
+Listat ovat lineaarisia: jokaisella solmulla on korkeintaan yksi seuraava solmu. Monissa ongelmissa rakenne kuitenkin haarautuu. Puu on tällainen haarautuva tietorakenne: se koostuu solmuista ja niiden lapsisolmuista, ja sillä on yksi juurisolmu. Puu ei sisällä syklejä, joten solmulle ei päästä takaisin kulkemalla lapsista ylöspäin.
+
+Yleinen erikoistapaus on binääripuu, jossa jokaisella solmulla on korkeintaan kaksi lasta: vasen ja oikea. Rekursio sopii puiden käsittelyyn, koska puu koostuu alipuista: jokainen lapsi on itsekin puu.
+
+Esimerkki binääripuusta:
+
+```mermaid
+graph TD
+A((5))
+A --> B((3))
+A --> C((8))
+B --> D((1))
+B --> E((3))
+C --> F((7))
+C --> G((9))
+```
+
+Seuraava esimerkki laskee binääripuun korkeuden rekursion avulla. Ajatus seuraa suoraan korkeuden määritelmästä: tyhjän puun korkeus on 0, ja ei-tyhjän puun korkeus on 1 + suurimman alipuun korkeus. Jokainen polku juuresta lehteen kulkee ensin vasempaan tai oikeaan alipuuhun, joten pisin polku saadaan valitsemalla näistä kahdesta suurempi. Rekursio pysähtyy, kun alipuuta ei ole (`juuri == null`), jolloin perustapaus palauttaa 0.
 
 ```java
 public class Solmu {
+    // Solmun tallettama arvo.
     int arvo;
+    // Viite vasempaan lapseen (null jos ei ole).
     Solmu vasen;
+    // Viite oikeaan lapseen (null jos ei ole).
     Solmu oikea;
 
     Solmu(int arvo) {
@@ -39,7 +153,7 @@ public static int korkeus(Solmu juuri) {
 }
 
 void main() {
-    //Muodostetaan binääripuu
+    // Muodostetaan binääripuu
     Solmu juuri = new Solmu(1);
     juuri.vasen = new Solmu(2);
     juuri.oikea = new Solmu(3);
@@ -49,8 +163,22 @@ void main() {
 }
 ```
 
-Tarkastellaan seuraavaksi esimerkkiä, jossa lasketaan binääripuun korkeus iteratiivisesti, eli käyttämättä rekursiota:
+Kun `korkeus`-metodia kutsutaan juurisolmulle, laskenta etenee luonnollisesti
+alaspäin puussa. Metodi kutsuu itseään vasemmalle ja oikealle alipuulle ja
+jatkaa näin, kunnes vastaan tulee null, eli tyhjä puu. Tämä on rekursion
+perustapaus: tyhjän puun korkeudeksi määritellään 0. 
 
+Kun perustapaukseen on päästy, laskenta alkaa palautua takaisin päin kutsupinoa
+pitkin. Jokainen solmu saa alipuittensa korkeudet ja määrittää oman korkeutensa
+niiden perusteella arvona 1 + suuremman alipuun korkeus. Näin puun korkeus
+rakentuu askel askeleelta lehdistä kohti juurta, pelkkien palautusarvojen
+avulla. 
+
+Tällainen ratkaisu intuitiivisesti selkeä, koska se vastaa suoraan puun matemaattista määritelmää: solmun korkeus riippuu sen alipuista. Siksi koodi on usein helppo lukea ja perustella oikeaksi. Haittapuolena on se, että rekursio käyttää kutsupinoa. Jos puu on hyvin syvä, tämä voi johtaa pinon ylivuotoon, ja lisäksi rekursiiviset kutsut aiheuttavat yleensä hieman enemmän suorituskykykustannuksia kuin vastaava silmukkaratkaisu.
+
+Tarkastellaan seuraavaksi esimerkkiä, jossa lasketaan binääripuun korkeus iteratiivisesti, eli ilman rekursiota.
+
+Tähän jäin 5.2. t. A-J
 
 ```java
 //-public class Solmu {
