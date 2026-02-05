@@ -393,6 +393,15 @@ Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
    - Fibonacci
    - Puun tai listan läpikäynti
 
+## Rekursio pinon avulla
+Kutsupino (call stack)
+- Miten funktiokutsut tallentuvat pinoon
+- Paikallisten muuttujien elinkaari
+
+Rekursion eteneminen pinossa
+- Kutsuvaihe (push)
+- Paluuvaihe (pop)
+
 Rekursion ja iteratiivisen ratkaisun vertailu
 - Rekursio vs. silmukat
 
