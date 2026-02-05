@@ -225,6 +225,150 @@ public static int puunKorkeusIteratiivisesti(Solmu juuri) {
 
 Vaikka ongelma voitiin ratkaista iteratiivisesti, on iteratiivinen ratkaisu huomattavasti vaikeampi ymmärtää nopealla vilkaisulla.
 
+## Rekursion mallintaminen pinon avulla
+
+Kutsupino on ohjelman käyttämä pino, johon talletetaan aktiivisten
+funktiokutsujen tilat. Kun funktiota kutsutaan, ohjelma tekee kutsupinoon (call
+stack) uuden *pinokehyksen*. Pinokehys sisältää ainakin parametrit, paikalliset
+muuttujat ja tiedon siitä, mihin kohtaan suoritusta palataan, kun kutsuttu
+funktio palauttaa arvon. Tämä on mekanismi, joka tekee rekursiosta mahdollisen:
+jokainen rekursiivinen kutsu keskeyttää nykyisen laskennan, tallentaa sen tilan
+pinoon ja siirtää ohjauksen seuraavalle, pienemmälle aliongelmalle.
+
+Rekursio etenee kahdessa vaiheessa:
+
+1. Kutsuvaihe: jokainen rekursiivinen kutsu työntää uuden pinokehyksen pinoon.
+2. Paluuvaihe: kun perustapaus saavutetaan, arvot palautuvat takaisin ja
+   pinokehyksiä poistetaan yksi kerrallaan.
+
+Seuraava pinokuvio havainnollistaa pinoa rekursiivisessa summassa, joka laskee
+lukujen 1 + 2 + ... + n summan:
+
+```java,ignore
+int summa(int n) {
+    if (n == 0) return 0;   // perustapaus
+    return n + summa(n - 1);
+}
+```
+
+Oletetaan, että kutsutaan `summa(3)`. Jokainen kehys sisältää parametrin `n`
+ja keskeneräisen laskun "n + summa(n - 1)". Toisin sanoen kehys odottaa
+alikutsun tulosta, jotta se voi lisätä oman lukunsa.
+
+| Vaihe | Pino (alhaalta → ylös) | Mitä tapahtuu |
+| --- | --- | --- |
+| 1 | `summa(3)` | Odottaa `summa(2)` |
+| 2 | `summa(3)`, `summa(2)` | Odottaa `summa(1)` |
+| 3 | `summa(3)`, `summa(2)`, `summa(1)` | Odottaa `summa(0)` |
+| 4 | `summa(3)`, `summa(2)`, `summa(1)`, `summa(0)` | Perustapaus: palauttaa 0 |
+| 5 | `summa(3)`, `summa(2)`, `summa(1)` | Paluu: `summa(1) = 1 + 0 = 1` |
+| 6 | `summa(3)`, `summa(2)` | Paluu: `summa(2) = 2 + 1 = 3` |
+| 7 | `summa(3)` | Paluu: `summa(3) = 3 + 3 = 6` |
+| 8 | (tyhjä) | Laskenta valmis, tulos 6 |
+
+Kutsuvaiheessa pino kasvaa, koska jokainen kehys odottaa alikutsun tulosta
+(esimerkiksi `n + summa(n - 1)`). Perustapauksen jälkeen laskenta etenee
+takaisin päin, ja jokainen kehys täydentää omaa laskuaan alikutsun tuloksella.
+Tämä on se "muisti", jonka ansiosta rekursio toimii.
+
+Sama ajatus voidaan toteuttaa myös ilman rekursiota käyttämällä omaa pinoa.
+Tällöin "pinokehys" on itse rakentamasi rakenne, joka kertoo mitä on vielä
+tekemättä. Yksinkertainen esimerkki on kertoma, jossa rekursiivinen versio
+kertoo tuloksen aina yhdellä luvulla lisää.
+
+```java,ignore
+int kertoma(int n) {
+    if (n <= 1) return 1;
+    return n * kertoma(n - 1);
+}
+```
+
+Iteratiivinen versio voidaan kirjoittaa eksplisiittisen pinon avulla niin, että
+ensin talletetaan "odottavat kertolaskut" ja sitten puretaan ne:
+
+```java,ignore
+int kertomaIter(int n) {
+    Deque<Integer> pino = new ArrayDeque<>();
+    while (n > 1) {
+        pino.push(n);
+        n--;
+    }
+
+    int tulos = 1;
+    while (!pino.isEmpty()) {
+        tulos *= pino.pop();
+    }
+
+    return tulos;
+}
+```
+
+Tässä itse ylläpitämämme pino korvaa kutsupinon: jokainen talletettu luku vastaa
+rekursiivisen kutsun "odottavaa" vaihetta. Yleinen sääntö on, että jos
+rekursiivisessa ratkaisussa on työn tekemistä sekä ennen että jälkeen alikutsun,
+tarvitset pinokehykseen lisäksi tiedon siitä, missä vaiheessa ollaan. Tämä on
+syy, miksi rekursion muuttaminen silmukaksi vaatii usein pinoa eikä pelkkää
+muuttujaa.
+
+Käytännössä rekursio on siis vain yksi tapa käyttää pinoa. Se on usein selkeä
+ja suoraan ongelman määritelmästä johdettavissa, mutta syvä rekursio kasvattaa
+kutsupinoa ja voi aiheuttaa pinon ylivuodon. Iteratiivinen ratkaisu eksplisiittisellä
+pinolla antaa enemmän hallintaa, mutta koodi on yleensä pidempi ja vähemmän
+luettava.
+
+Seuraavassa on esimerkki siitä, miten rekursion “tilaa” voidaan mallintaa
+omalla pinokehys-oliolla. Tässä pinokehys kertoo, onko solmu jo käsitelty
+“kutsuvaiheessa” vai ollaanko “paluuvaiheessa”. Kutsuvaiheessa alikutsu
+alustetaan ja pinokehys jää odottamaan sen tulosta; paluuvaiheessa odotus on
+päättynyt ja kehys viimeistelee oman työnsä. 
+
+Tätä rakennetta käytetään myös seuraavassa tehtävässä. 
+
+```java,ignore
+static class Frame {
+    Solmu solmu;
+    boolean kayty;
+
+    Frame(Solmu solmu, boolean kayty) {
+        this.solmu = solmu;
+        this.kayty = kayty;
+    }
+}
+```
+
+Tulostetaan nyt binääripuun solmut jälkijärjestyksessä (vasen, oikea, solmu).
+Tässä työ tehdään **alikutsujen jälkeen**, joten meidän täytyy muistaa, onko
+solmu jo nähty kutsuvaiheessa (ja laitettu takaisin pinoon odottamaan) vai
+ollaanko paluuvaiheessa, jossa varsinainen työ tehdään. Siksi tarvitaan `Frame`:
+sen avulla tiedetään **mihin solmuun palataan** ja **ollaanko kutsuvaiheessa vai
+paluuvaiheessa** (vaihe-taulukon odotusvaiheet 1–3 ja paluuvaiheet 5–7), eli
+odotetaanko vielä rekursiivisten kutsujen tulosta vai ollaanko jo palaamassa.
+
+```java,ignore
+void tulostaJalkijarjestyksessa(Solmu juuri) {
+    if (juuri == null) return;
+
+    Deque<Frame> pino = new ArrayDeque<>();
+    // Huomio: Java:ssa Stack on vanhentunut; Deque/ArrayDeque on suositeltu pino.
+    pino.push(new Frame(juuri, false));
+
+    while (!pino.isEmpty()) {
+        Frame f = pino.pop();
+        if (f.kayty) {
+            IO.println(f.solmu.arvo); // paluuvaihe
+            continue;
+        }
+
+        // Kutsuvaihe: laitetaan solmu odottamaan ja työnnetään lapset.
+        f.kayty = true;
+        pino.push(f);
+        if (f.solmu.oikea != null) pino.push(new Frame(f.solmu.oikea, false));
+        if (f.solmu.vasen != null) pino.push(new Frame(f.solmu.vasen, false));
+    }
+}
+```
+
+
 ## Mitä rekursio tarkoittaa yleisellä tasolla
 
 Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
@@ -248,15 +392,6 @@ Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
    - Faktoriaali
    - Fibonacci
    - Puun tai listan läpikäynti
-
-## Rekursio pinon avulla
-Kutsupino (call stack)
-- Miten funktiokutsut tallentuvat pinoon
-- Paikallisten muuttujien elinkaari
-
-Rekursion eteneminen pinossa
-- Kutsuvaihe (push)
-- Paluuvaihe (pop)
 
 Rekursion ja iteratiivisen ratkaisun vertailu
 - Rekursio vs. silmukat
