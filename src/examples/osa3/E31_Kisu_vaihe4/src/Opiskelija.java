@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+
 class Opiskelija extends Henkilo {
-    private ArrayList<String> kaynnissaOlevatKurssit = new ArrayList<>();
+    private List<String> kaynnissaOlevatKurssit = new ArrayList<>();
     private int opintopisteet;
     private boolean opintoOikeusVoimassa;
 
@@ -11,8 +12,7 @@ class Opiskelija extends Henkilo {
         this.opintopisteet = 0;
     }
 
-    void aktivoiOpintoOikeus()
-    {
+    void aktivoiOpintoOikeus() {
         this.opintoOikeusVoimassa = true;
     }
 
@@ -20,7 +20,7 @@ class Opiskelija extends Henkilo {
         this.kaynnissaOlevatKurssit.add(kurssi);
     }
 
-    public void naytaKurssit(){
+    public void naytaKurssit() {
         String kaikkiKurssit = String.join(", ", this.kaynnissaOlevatKurssit);
         IO.println(this.getNimi() + " opiskelee kursseilla: " + kaikkiKurssit);
     }

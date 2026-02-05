@@ -1,104 +1,109 @@
 # Kokoelmat
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 9. helmikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät, mitä kokoelma tarkoittaa ja miksi niitä käytetään ohjelmoinnissa.
-> - Ymmärrät Javan kokoelmaviitekehyksen (*Collections Framework*)
+> - Ymmärrät Javan kokoelmakehyksen (*Collections Framework*)
 >   perusrakenteen.
 > - Tunnet Javan `Collection`-rajapinnan metodit ja osaat käyttää ne ohjelmassa.
 
+Ohjelmoinnin ytimessä on usein tiedon koostaminen järkeviksi kokonaisuuksiksi.
+Olemme aiemmin käyttäneet taulukoita ja listoja samantyyppisten arvojen, kuten
+lämpötilojen tai opiskelijoiden, tallentamiseen. Olemme myös oppineet
+olio-ohjelmointia, jonka avulla voimme niputtaa yhteen dataa ja siihen liittyvää
+toiminnallisuutta.
 
-Tiedon koostaminen kokonaisuuksiin on hyvin yleinen osa ohjelmointia.
-Esimerkiksi osassa 2 ja 3 käsitelty olio-ohjelmointi tarjoaa tavan koostaa
-samaan kohteeseen liittyviä tietoja attribuutteina ja määrittää tapoja käsitellä
-tätä tietoa. Kun taas samantyyppisiä arvoja, kuten päivän lämpötiloja tai
-luennolla olevia opiskelijoita, olemme koostaneet taulukoihin (`T[]`) tai
-listohin (`ArrayList<T>`).
+Pelkkä listaus ei kuitenkaan aina riitä. Vaikka taulukot ja listat ovat
+hyödyllisiä, todellisen maailman ongelmat vaativat usein tarkempia sääntöjä
+sille, miten tietoa lisätään, poistetaan tai haetaan.
 
-Taulukon ja listan erot ovat pintapuolisesti pienet. Kumpaankin voi tallentaa
-samantyyppisiä arvoja ja arvoja voidaan hakea indeksin perusteella, mutta
-taulukkoihin ei voi lisätä uusia alkioita, kun taas listaan voi. Oikeassa
-maailmassa on kuitenkin tapauksia, jossa tietorakenteeseen liittyy jonkin
-erikoisrajoite.
+Javassa termi **kokoelma** (engl. *collection*) viittaa olioon, jonka tehtävänä on
+hallita joukkoa muita arvoja tai olioita. Kokoelma ei ole vain säilö; se on
+tietorakenne, joka määrittelee pelisäännöt tiedon käsittelylle. Oikean
+tietorakenteen valinta on ohjelmoijalle tärkeä taito, sillä se vaikuttaa sekä
+ohjelman tehokkuuteen että koodin luettavuuteen.
 
-> [!ESIMERKKI]
-> 
-> - Uno-korttipelissä on korttipakka, jossa on kortteja, *mutta* kortteja saa
->   ottaa vain pakan päältä ja lisätä pakan alle.
-> - Sisuun viedään arvosanat aina pareina `(opiskelijanumero, arvosana)` **ja**
->   jokaista opiskelijaa tulee vastata korkeintaan yksi arvosana samassa
->   toteutuksessa.
-> - Discord-viestipalvelussa käyttäjällä voi olla useita ystäviä, **mutta** samaa
->   käyttäjää ei voi lisätä ystäväkseen kahdesti.
+Alla on esimerkkejä tilanteista, joissa pelkkä peruslista ei ole paras ratkaisu,
+ja niihin sopivista kokoelmatyypeistä:
 
-Yllä olevat tapaukset pystytään toteuttamaan taulukko- ja listarakenteilla,
-mutta lisäehtojen toteuttaminen vaatisi ylimääräistä teknistä työtä. Ohjelman
-suunnittelu ja toteutus olisi mahdollisesti helpompi, jos se pystyttäisiin
-tekemään kohdealueen rakenteilla ja termeillä. Siten tarvitaan mahdollisesti
-listoja ja taulukoita yleisempi koostava tietorakenne.
+ - **Jono (Queue)**: Kun soitat asiakaspalveluun, puhelut ohjataan jonoon. Uudet
+soittajat tulevat jonon hännille, ja asiakaspalvelija poimii palveltavan aina
+jonon kärjestä. Tätä "ensimmäisenä sisään, ensimmäisenä ulos" -rakennetta
+kutsutaan jonoksi. Vastaavasti *pino* (engl. *stack*) toimii päinvastoin: viimeisenä
+lisätty alkio poistetaan ensimmäisenä (kuten pinossa lautasia).
 
-**Kokoelma** (eng. collection) on olio, joka koostaa useita samantyyppisiä arvoja
-samaan yksikköön ja mallintaa tapoja, jolla näitä arvoja voi käsitellä. Toisin
-sanoen kokoelma on eräänlainen yleistys tietorakenteelle, joka voi sisältää
-useita samantyyppisiä tietorakenteita.
+ - **Joukko (Set)**: Discord-palvelussa tai puhelinmuistiossa samaa henkilöä ei ole
+järkevää lisätä ystäväksi kahta kertaa. Rakennetta, joka huolehtii siitä, että
+jokainen alkio esiintyy siellä vain kerran (uniikit arvot), kutsutaan joukoksi.
 
-> [!ESIMERKKI]
->
-> On olemassa erilaisia kokoelmatyyppejä.
->
-> - *Lista* on kokoelma, jossa alkiot pysyvät kiinteässä järjestyksessä ja joita 
->   pystyy osoittamaan indeksillä.
-> - Uno-korttipelin korttipakkaa voisi mallintaa parhaiten *jonorakenteella* (eng.
->   queue), joka on kokoelma, jossa uudet alkiot lisätään kokoelmaan loppuun ja
->   alkioita poistetaan aina kokoelman alusta.
-> - Sisuun vietävät kurssiarvosanat voi mallintaa *hakurakenteella* (eng. map),
->   joka on kokoelma avain-arvopareja, jossa jokaista avainta voi vastata
->   täsmälleen yksi arvo.
-> - Discordin ystävälistaa voi mallintaa *joukkorakenteella* (eng. set), joka on
->   kokoelma, johon ei voi lisätä samaa arvoa kahdesti.
->
-> Tutustumme tässä yleisimpiin kokoelmatyyppeihin tämän osan myöhemmissa luvuissa.
+ - **Hakurakenne (Map)**: Opintotietojärjestelmässä jokaista opiskelijanumeroa vastaa
+tietty arvosana. Tässä ei ole kyse vain listasta, vaan *avaimista*
+(opiskelijanumero) ja niihin liittyvistä *arvoista* (arvosana). Rakennetta, jossa
+tietoa haetaan yksilöllisen avaimen perusteella, kutsutaan hakurakenteeksi tai
+assosiaatiotaulukoksi.
 
+Voisimme periaatteessa toteuttaa nämä kaikki logiikat käyttämällä tavallisia
+listoja ja kirjoittamalla paljon ylimääräistä koodia (if-lauseita tarkistamaan
+duplikaatteja tai silmukoita etsimään tietoa). Javan kokoelmat tarjoavat
+kuitenkin valmiit, optimoidut ja selkeät työkalut näihin tarpeisiin.
 
-## Kokoelmat Javassa
+Tässä osassa tutustumme Javan tarjoamiin erilaisiin kokoelmatyyppeihin ja opimme
+valitsemaan oikean työkalun oikeaan tarpeeseen.
 
-Java tarjoaa joukon valmiita kokoelmia sekä rajapintoja uusien kokoelmien
-toteuttamiseksi osana Javan kokelmaviitekehtystä (eng. Java Collections
-Framework, [Java Docs](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/doc-files/coll-overview.html)).
-Javassa jokainen kokoelma koostuu
+## Kokoelmakehys (Java Collections Framework)
 
-- *kokoelmarajapinnasta*, joka määrittää, mitkä toiminnot ovat määritelty kokoelmalle, ja
-- yhdestä tai useasta *kokoelmaluokasta*, joka on yhden tai useamman kokoelman toteutus.
+Java tarjoaa valtavan joukon valmiita kokoelmia sekä rajapintoja uusien kokoelmien
+toteuttamiseksi osana [Javan
+kokoelmakehystä](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/doc-files/coll-overview.html). 
 
-Esimerkiksi `List<T>` on rajapinta, joka määrittää listalle kuuluvia
-metodeja, mutta ei sitä, miten ne varsinaisesti toteutetaan.
-Puolestaan `ArrayList<T>` on eräs luokka, joka toteuttaa `List<T>`-rajapinnan käyttämällä
-taulukkoja. Muita valiita listan toteutuksia käsitellän [luvussa 5.2](02-listarakenteet.md).
+Javan kokoelmaviitekehys perustuu kahteen pääosaan: 
 
-Javan kokoelmaviitekehyksen oleellisin rajapinta on `Collection<T>` ([Java Doc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collection.html)),
-joka on yleinen rajapinta mille tahansa kokoelmalle.
-Esimerkiksi edellä mainittu `ArrayList<T>` voidaan sijoittaa `Collection<T>`-tyyppiseen
-muuttujaan:
+- *kokoelmarajapintoihin*, jotka määrittävät, mitä toimintoja kokoelmalla voi
+  tehdä (esim. `List`, `Set`), sekä
+- *konkreettisiin toteutusluokkiin*, jotka toteuttavat rajapinnan tai 
+  rajapinnat jollakin tavalla (esim. `ArrayList`, `HashSet`, `HashMap`).
+
+Esimerkiksi `List` on kokoelmarajapinta, joka määrittää listalle kuuluvia
+metodeja, mutta ei sitä, miten ne varsinaisesti toteutetaan. Puolestaan
+`ArrayList` on eräs luokka, joka toteuttaa `List`-rajapinnan käyttämällä
+taulukkoja. Muita valmiita listan toteutuksia käsitellään [osassa 5.2](02-listarakenteet.md).
+
+Javan kokoelmakehyksen oleellisin rajapinta on `Collection` ([Java
+Doc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collection.html)),
+joka on yleinen, korkean tason rajapinta. `List`-rajapinta periytyy 
+`Collection`-rajapinnasta, joten esimerkiksi edellä mainittu `ArrayList` voidaan 
+sijoittaa `Collection`-tyyppiseen muuttujaan:
 
 ```java
 //-void main() {
-Collection<String> marjat = new ArrayList<>(List.of("mansikka", "mustikka", "puolukka", "lakka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mansikka", "mustikka", "puolukka", "lakka")
+);
+
 IO.println(marjat);
 //-}
 ```
 
-Javassa `Collection<T>` on hyvin yleinen rajapinta, joka ei tee oletuksia
-sen sisältämien alkioiden järjestyksestä tai sisällöstä.
-Tarkastellaan, mitä yleisellä kokoelmalla pystyy tekemään.
+`Collection` ei tee oletuksia sen sisältämien alkioiden järjestyksestä tai
+sisällöstä. Varsin lukuisa joukko Javan valmiita kokoelmia toteuttavat
+`Collection`-rajapinnan. Tutustumme seuraavaksi mitä `Collection`-rajapinnan
+toteuttavalla kokoelmalla voi tehdä.
 
-### Kokoelmaan voi lisätä tai poistaa alkioita
+## Lisääminen ja poistaminen
 
-Kokoelmilla on `add` ja `remove`-metodit, jolla kokoelmiin voi lisätä
-ja sieltä voi poistaa alkioita.
+Alkioita lisätään `add`-metodilla ja poistetaan `remove`-metodilla. Molemmat
+palauttavat `true`, jos kokoelma muuttui.
 
 ```java
 //-void main() {
-//- Collection<String> marjat = new ArrayList<>(List.of("mansikka", "mustikka", "puolukka", "lakka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mansikka", "mustikka", "puolukka", "lakka")
+);
+
 marjat.add("kirsikka");
 IO.println(marjat);
 
@@ -107,18 +112,41 @@ IO.println(marjat);
 //-}
 ```
 
-**Huomaa**, että kokoelmaan ei voi lisätä alkioita tiettyyn indeksiin eikä
-alkiota voi poistaa indeksin perusteella. Toisin sanoen, kokoelman
-*ei ole pakko* pitää alkioitaan missään kiinteässä järjestyksessä.
+Kaikissa kokoelmissa lisäys ei aina onnistu. Esimerkiksi `Set`-toteutuksessa
+samaa alkiota ei voi olla kahta kertaa, joten `add` voi palauttaa `false`.
+`remove` puolestaan poistaa yhden `equals`-metodin perusteella löytyvän alkion
+ja palauttaa `false`, jos alkiota ei löytynyt.
 
-### Kokoelmasta voi tarkistaa, löytyykö jokin alkio sieltä
+`Collection`-rajapinta ei tunne indeksien käsitettä. Siksi `remove` poistaa
+alkion arvon perusteella, eikä esimerkiksi "kolmatta alkiota". Jos haluat
+lisätä tai poistaa indeksillä, tarvitset `List`-rajapinnan.
 
-Kokoelmilla on `contains`-metodi, jolla voi tarkistaa, löytyykö kokoelmasta
-jokin alkio.
+Yksittäisen alkion poistamisen lisäksi koko kokoelman voi tyhjentää 
+`clear`-metodilla.
 
 ```java
 //-void main() {
-//- Collection<String> marjat = new ArrayList<>(List.of("mustikka", "puolukka", "lakka", "kirsikka"));
+Collection<String> marjat = new ArrayList<>(
+  List.of("mansikka", "mustikka", "puolukka", "lakka")
+);
+
+marjat.clear();
+IO.println(marjat);
+//-}
+```
+
+## Tietyn alkion löytyminen kokoelmasta
+
+`Collection`-rajapinta määrittelee myös `contains`-metodin, jolla voi tarkistaa,
+löytyykö kokoelmasta jokin alkio. Tarkistus perustuu `equals`-metodiin, joten
+omien olioiden kanssa `equals` tulee toteuttaa järkevästi.
+
+```java
+//-void main() {
+Collection<String> marjat = new ArrayList<>(
+  List.of("mustikka", "puolukka", "lakka", "kirsikka")
+);
+
 IO.println("Löytyykö mustikka: " + marjat.contains("mustikka"));
 
 // Mansikka poistettiin yllä, eli ei löydy
@@ -126,6 +154,51 @@ IO.println("Löytyykö mansikka: " + marjat.contains("mansikka"));
 //-}
 ```
 
+## Alkioiden määrä ja tyhjyys
+
+`Collection`-rajapinta määrittelee myös `size`- ja `isEmpty`-metodit, joilla voi
+selvittää, kuinka monta alkiota kokoelmassa on ja onko kokoelma tyhjä. 
+`isEmpty` on usein selkeämpi tapa ilmaista, että kiinnostaa vain tyhjyys.
+
+```java
+//-void main() {
+Collection<String> marjat = new ArrayList<>(
+  List.of("mustikka", "puolukka", "lakka", "kirsikka")
+);
+
+IO.println("Marjoja on: " + marjat.size());
+IO.println("Onko marjakokoelma tyhjä: " + marjat.isEmpty());  
+//-}
+```
+
+## Alkioiden läpikäynti
+
+`Collection`-rajapinta perii `Iterable`-rajapinnan, joten kokoelman alkioita voi
+käydä läpi `for each`-silmukalla.
+
+```java
+//-void main() {
+Collection<String> marjat = new ArrayList<>(
+  List.of("mustikka", "puolukka", "lakka", "kirsikka")
+);
+
+for (String marja : marjat) {
+    IO.println("Marja: " + marja);
+}
+//-}
+```
+
+`Collection`-rajapinta ei tee oletuksia alkioiden järjestyksestä. Tämän vuoksi
+läpikäynti ei perustu indekseihin, ja järjestys riippuu aina
+konkreettisesta kokoelmasta. `ArrayList` säilyttää lisäysjärjestyksen, kun taas
+`HashSet` ei takaa mitään järjestystä.
+
+Sivuhuomautuksena mainittakoon, että `Collection` todellakin *perii*
+`Iterable`-rajapinnan. Emme käsitelleet rajapinnan perintää aiemmin, mutta idea
+toimii rajapinnoissa samalla tavalla kuin luokissa: kaikki
+`Collection`-toteutukset tarjoavat myös `Iterable`-rajapinnan vaatimukset. 
+
+## Mieti mitä näille tehdään
 
 - `Collection`
     - Kokoelma alkioita, joita voi käydä läpi järjestelmällisesti
