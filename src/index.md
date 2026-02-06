@@ -96,6 +96,9 @@ tulee myöhemmin saataville.
 ## Ohjeet etäohjaukseen liittymiseksi {#teams}
 
 <details><summary>Teams-kanavalle liittyminen: Jyväskylän yliopiston tutkinto-opiskelijat</summary>
+## Ohjeet etäohjaukseen liittymiseksi {#teams}
+
+<details><summary>Teams-kanavalle liittyminen: Jyväskylän yliopiston tutkinto-opiskelijat</summary>
 
 1. Kirjaudu yliopiston tunnuksellasi Microsoft Teamsiin osoitteessa
     <https://teams.microsoft.com>. Käyttäjätunnus on muotoa
@@ -119,6 +122,9 @@ tarvittaessa sallia oikeudet käyttöjärjestelmäsi asetuksista.
 </details>
 
 <details><summary>Teams-kanavalle liittyminen: Jyväskylän yliopiston Avoin yliopisto sekä erilliset opinto-oikeudet</summary>
+</details>
+
+<details><summary>Teams-kanavalle liittyminen: Jyväskylän yliopiston Avoin yliopisto sekä erilliset opinto-oikeudet</summary>
 
 Lähetä sähköpostilla alla oleva pyyntö osoitteeseen `ohj2-opet@jyu.onmicrosoft.com`.
 
@@ -134,6 +140,9 @@ Terveisin, [oma nimi]
 
 Liitämme sinut viimeistään seuraavana arkipäivänä.
 
+</details>
+
+<details><summary>Etäohjauksiin osallistuminen ilman Teamsia</summary>
 </details>
 
 <details><summary>Etäohjauksiin osallistuminen ilman Teamsia</summary>
@@ -157,6 +166,7 @@ voit pyytää etäohjausta Zoomin kautta seuraavasti:
  8. Odota, että ohjaaja tulee huoneeseesi. Saatat joutua hyväksymään hänen
     sisäänpääsyn (riippuu kokoushuoneesi asetuksista)
 
+</details>
 </details>
 
 ## Navigointi tässä materiaalissa
