@@ -13,7 +13,12 @@
 
 ## Johdanto
 
-Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla. Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja kun rekursiivinen askel pienentää ongelmaa siten, että perustapaukseen päädytään varmasti. 
+Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla.
+Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja
+kun rekursiivinen askel pienentää ongelmaa siten, että perustapaukseen päädytään
+varmasti. Rekursio on luonteva tapa toteuttaa niin kutsuttua *hajota ja
+hallitse* -periaatetta: ongelma jaetaan pienempiin osiin, ratkaistaan pienet
+ongelmat ja yhdistetään tulokset.
 
 Rekursio on erityisen luonteva toteuttaa algoritmeja silloin, kun käsitellään rekursiivisia tietorakenteita. Rekursiivinen tietorakenne on rakenne, jonka määritelmä viittaa itseensä.
 
@@ -111,9 +116,15 @@ int n = lista.pituus(); // n == 3
 
 ## Rekursio käytännössä
 
-Listat ovat lineaarisia: jokaisella solmulla on korkeintaan yksi seuraava solmu. Monissa ongelmissa rakenne kuitenkin haarautuu. Puu on tällainen haarautuva tietorakenne: se koostuu solmuista ja niiden lapsisolmuista, ja sillä on yksi juurisolmu. Puu ei sisällä syklejä, joten solmulle ei päästä takaisin kulkemalla lapsista ylöspäin.
+Listat ovat lineaarisia: jokaisella solmulla on korkeintaan yksi seuraava solmu.
+Monissa ongelmissa rakenne kuitenkin haarautuu. Puu on tällainen haarautuva
+tietorakenne: se koostuu solmuista ja niiden lapsisolmuista, ja sillä on yksi
+juurisolmu. Puu ei sisällä syklejä, joten solmulle ei päästä takaisin kulkemalla
+lapsista ylöspäin.
 
-Yleinen erikoistapaus on binääripuu, jossa jokaisella solmulla on korkeintaan kaksi lasta: vasen ja oikea. Rekursio sopii puiden käsittelyyn, koska puu koostuu alipuista: jokainen lapsi on itsekin puu.
+Yleinen erikoistapaus on binääripuu, jossa jokaisella solmulla on korkeintaan
+kaksi lasta: vasen ja oikea. Rekursio sopii puiden käsittelyyn, koska puu
+koostuu alipuista: jokainen lapsi on itsekin puu.
 
 Esimerkki binääripuusta:
 
@@ -128,7 +139,12 @@ C --> F((7))
 C --> G((9))
 ```
 
-Seuraava esimerkki laskee binääripuun korkeuden rekursion avulla. Ajatus seuraa suoraan korkeuden määritelmästä: tyhjän puun korkeus on 0, ja ei-tyhjän puun korkeus on 1 + suurimman alipuun korkeus. Jokainen polku juuresta lehteen kulkee ensin vasempaan tai oikeaan alipuuhun, joten pisin polku saadaan valitsemalla näistä kahdesta suurempi. Rekursio pysähtyy, kun alipuuta ei ole (`juuri == null`), jolloin perustapaus palauttaa 0.
+Seuraava esimerkki laskee binääripuun korkeuden rekursion avulla. Ajatus seuraa
+suoraan korkeuden määritelmästä: tyhjän puun korkeus on 0, ja ei-tyhjän puun
+korkeus on 1 + suurimman alipuun korkeus. Jokainen polku juuresta lehteen kulkee
+ensin vasempaan tai oikeaan alipuuhun, joten pisin polku saadaan valitsemalla
+näistä kahdesta suurempi. Rekursio pysähtyy, kun alipuuta ei ole (`juuri ==
+null`), jolloin perustapaus palauttaa 0.
 
 ```java
 public class Solmu {
@@ -174,11 +190,14 @@ niiden perusteella arvona 1 + suuremman alipuun korkeus. Näin puun korkeus
 rakentuu askel askeleelta lehdistä kohti juurta, pelkkien palautusarvojen
 avulla. 
 
-Tällainen ratkaisu intuitiivisesti selkeä, koska se vastaa suoraan puun matemaattista määritelmää: solmun korkeus riippuu sen alipuista. Siksi koodi on usein helppo lukea ja perustella oikeaksi. Haittapuolena on se, että rekursio käyttää kutsupinoa. Jos puu on hyvin syvä, tämä voi johtaa pinon ylivuotoon, ja lisäksi rekursiiviset kutsut aiheuttavat yleensä hieman enemmän suorituskykykustannuksia kuin vastaava silmukkaratkaisu.
+Tällainen ratkaisu intuitiivisesti selkeä, koska se vastaa suoraan puun
+matemaattista määritelmää: solmun korkeus riippuu sen alipuista. Siksi koodi on
+usein helppo lukea ja perustella oikeaksi. Haittapuolena on se, että rekursio
+käyttää kutsupinoa. Jos puu on hyvin syvä, tämä voi johtaa pinon ylivuotoon, ja
+lisäksi rekursiiviset kutsut aiheuttavat yleensä hieman enemmän
+suorituskykykustannuksia kuin vastaava silmukkaratkaisu.
 
 Tarkastellaan seuraavaksi esimerkkiä, jossa lasketaan binääripuun korkeus iteratiivisesti, eli ilman rekursiota.
-
-Tähän jäin 5.2. t. A-J
 
 ```java
 //-public class Solmu {
