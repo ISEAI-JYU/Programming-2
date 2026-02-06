@@ -22,8 +22,9 @@ int summa(Solmu juuri) {
 }
 ```
 
-Kirjoita metodi `summaIteratiivisesti(Solmu juuri)`, joka palauttaa saman
-tuloksen. Mallinna rekursiota pinon avulla: jokainen pinon alkio vastaa
-rekursiivisen kutsun tilaa. Pinoa ei tarvitse toteuttaa, vaan voit käyttää
-`ArrayDeque`-toteutusta, kuten materiaalissakin. Älä käytä rekursiota missään vaiheessa.
+Mallinna rekursiota pinon avulla: jokainen pinon alkio vastaa rekursiivisen
+kutsun tilaa. Tätä varten tarvitset `Kehys`-luokan (esim. `Solmu` ja `kayty`),
+jolla ylläpidetään tilatietoa. Pinoa ei tarvitse toteuttaa, vaan voit käyttää
+`ArrayDeque`-toteutusta, kuten materiaalissakin. 
 
+Esimerkkipääohjelma on mukana TIM-tehtävässä. 

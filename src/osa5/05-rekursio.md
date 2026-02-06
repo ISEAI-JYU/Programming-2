@@ -190,60 +190,6 @@ niiden perusteella arvona 1 + suuremman alipuun korkeus. Näin puun korkeus
 rakentuu askel askeleelta lehdistä kohti juurta, pelkkien palautusarvojen
 avulla. 
 
-Tällainen ratkaisu intuitiivisesti selkeä, koska se vastaa suoraan puun
-matemaattista määritelmää: solmun korkeus riippuu sen alipuista. Siksi koodi on
-usein helppo lukea ja perustella oikeaksi. Haittapuolena on se, että rekursio
-käyttää kutsupinoa. Jos puu on hyvin syvä, tämä voi johtaa pinon ylivuotoon, ja
-lisäksi rekursiiviset kutsut aiheuttavat yleensä hieman enemmän
-suorituskykykustannuksia kuin vastaava silmukkaratkaisu.
-
-Tarkastellaan seuraavaksi esimerkkiä, jossa lasketaan binääripuun korkeus iteratiivisesti, eli ilman rekursiota.
-
-```java
-//-public class Solmu {
-//-    int arvo;
-//-    Solmu vasen;
-//-    Solmu oikea;
-//-
-//-    Solmu(int arvo) {
-//-        this.arvo = arvo;
-//-    }
-//-}
-
-public static int puunKorkeusIteratiivisesti(Solmu juuri) {
-    if (juuri == null) return 0;
-
-    Queue<Solmu> jono = new LinkedList<>();
-    jono.add(juuri);
-    int korkeus = 0;
-
-    while (!jono.isEmpty()) {
-        int tasonKoko = jono.size();
-        korkeus++;
-
-        for (int i = 0; i < tasonKoko; i++) {
-            Solmu nykyinen = jono.poll();
-            if (nykyinen.vasen != null) jono.add(nykyinen.vasen);
-            if (nykyinen.oikea != null) jono.add(nykyinen.oikea);
-        }
-    }
-
-    return korkeus;
-}
-//-
-//-void main() {
-//-    //Muodostetaan binääripuu
-//-    Solmu juuri = new Solmu(1);
-//-    juuri.vasen = new Solmu(2);
-//-    juuri.oikea = new Solmu(3);
-//-    juuri.vasen.vasen = new Solmu(4);
-//-
-//-    IO.println(puunKorkeusIteratiivisesti(juuri));
-//-}
-```
-
-Vaikka ongelma voitiin ratkaista iteratiivisesti, on iteratiivinen ratkaisu huomattavasti vaikeampi ymmärtää nopealla vilkaisulla.
-
 ## Rekursion mallintaminen pinon avulla
 
 Rekursiivinen ratkaisu näyttää usein hämmentävän yksinkertaiselta, jopa
@@ -303,25 +249,11 @@ Voisimmeko tehdä saman asian itse ilman rekursiota? Kyllä voimme. Voimme
 "leikkiä tietokonetta" ja hallita pinoa manuaalisesti. Tämä ei ole vain
 akateeminen harjoitus, vaan varsin hyödyllinen taito, sillä se auttaa
 ymmärtämään syvällisesti, mitä koodissa tapahtuu. Lisäksi on tilanteita, kuten
-erittäin syvät puut, joissa automaattinen kutsupino saattaa täyttyä (pinon ylivuoto),
-mutta oma manuaalinen pinomme toimii yhä.
+erittäin syvät puut, joissa automaattinen kutsupino saattaa täyttyä (pinon
+ylivuoto), mutta oma manuaalinen pinomme toimii yhä.
 
-Ratkaistaan siis sama puun korkeusongelma uudestaan, mutta tällä kertaa
-iteratiivisesti silmukalla. Jotta onnistumme tässä, tarvitsemme kaksi asiaa:
-
- * while-silmukan, joka pyörii niin kauan kuin töitä on jäljellä.
- * pino-tietorakenteen, johon talletamme solmut, joita emme ole vielä
-   käsitelleet – aivan kuten rekursio teki automaattisesti. Nyky-Javassa
-   [`ArrayDeque`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayDeque.html) on suositeltu pino-tietorakenne.
-
-Sama ajatus voidaan toteuttaa myös ilman rekursiota käyttämällä omaa pinoa.
-Tällöin "pinokehys" on itse rakentamasi rakenne, joka kertoo mitä on vielä
-tekemättä. Yksinkertaisissa tapauksissa pinokehys voi olla pelkkä arvo:
-kertoma-funktiossa tarvitaan vain tieto siitä, mitä lukuja on vielä
-kerrottavana. 
-
-Alla muistutus rekursiivisesta kertoma-funktiosta, joka kertoo tuloksen aina
-edellistä pienemmällä luvulla.
+Lähdetään liikkelle klassisesta yksinkertaisesta esimerkistä, eli kertomasta.
+Alla muistutus rekursiivisesta versiosta.
 
 ```java,ignore
 int kertoma(int n) {
@@ -331,7 +263,10 @@ int kertoma(int n) {
 ```
 
 Iteratiivinen versio voidaan kirjoittaa itse ylläpitämämme pinon avulla niin,
-että ensin talletetaan "odottavat kertolaskut" ja sitten puretaan ne:
+että ensin talletetaan "odottavat kertolaskut" ja sitten puretaan ne.
+Nyky-Javassa
+[`ArrayDeque`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayDeque.html)
+on suositeltu pino-tietorakenne.
 
 ```java,ignore
 int kertomaIter(int n) {
@@ -352,24 +287,105 @@ int kertomaIter(int n) {
 }
 ```
 
-Edellisessä esimerkissä pärjäsimme pinossa pelkillä luvuilla. Tämä onnistui,
-koska tapaus oli yksinkertainen: meidän ei tarvinnut tietää, missä vaiheessa
-laskentaa olimme, ainoastaan mitä lukuja oli jäljellä. Itse ylläpitämämme pino
-korvasi suoraan rekursion kutsupinon.
+Tässä siis "pinokehys" on itse rakentamamme rakenne, joka kertoo mitä on vielä
+tekemättä. Yksinkertaisissa tapauksissa, kuten kertoma-funktiossa, pinokehys voi
+olla pelkkä arvo, joka on vain tieto siitä, mitä lukuja on vielä kerrottavana. 
 
-Tilanne muuttuu, jos algoritmimme tekee töitä sekä ennen että jälkeen
-rekursiivisen kutsun, kuten puun läpikäynnissä tapahtuu. Tällöin pelkkä data
-pinossa ei riitä. Meidän on tallennettava myös tilatieto: olemmeko vasta menossa
-alaspäin (kutsuvaihe) vai palaamassa ylöspäin (tulosten käsittely)?
-Mallintaaksemme rekursion tilaa, joka sisältää sekä dataa että tietoa siitä,
-missä vaiheessa laskentaa ollaan, tarvitsemme *pinokehyksen*. 
+Ratkaistaan myös puun korkeusongelma iteratiivisesti. Jotta onnistumme tässä,
+tarvitsemme kaksi asiaa:
 
-Seuraavassa esimerkissä mallinnamme rekursion etenemistä omalla
-pinokehys-oliolla. Kehys toimii yksinkertaisena muistilappuna: sen avulla
-tiedetään, mihin solmuun laskennassa ollaan palaamassa ja onko kyseessä
-kutsuvaihe vai paluuvaihe. Näin sama tieto, joka rekursiossa piiloutuu
-kutsupinoon, tehdään eksplisiittiseksi ja näkyväksi omassa tietorakenteessa.
-Sama rakenne on käytössä myös seuraavassa tehtävässä.
+ * `while`-silmukan, joka pyörii niin kauan kuin töitä on jäljellä.
+ * pino-tietorakenteen, johon talletamme solmut, joita emme ole vielä
+   käsitelleet – aivan kuten rekursio teki automaattisesti. 
+
+Korkeuden laskeminen tapahtuu niin, että käymme puun läpi tason kerrallaan (ns.
+*leveys ensin*, engl. *breadth-first*) ja laskemme, kuinka monta tasoa puussa
+on. Tason läpikäynti onnistuu hyvin jonotietorakenteella, joka pitää kirjaa
+siitä, mitä solmuja on vielä käsittelemättä kullakin tasolla. Jokaisella tasolla
+käydään läpi kaikki solmut, ja niiden lapset lisätään jonoon seuraavaa tasoa
+varten. 
+
+
+```java
+//-public class Solmu {
+//-    int arvo;
+//-    Solmu vasen;
+//-    Solmu oikea;
+//-
+//-    Solmu(int arvo) {
+//-        this.arvo = arvo;
+//-    }
+//-}
+
+public static int puunKorkeusIter(Solmu juuri) {
+    if (juuri == null) return 0;
+
+    // Käytetään jonoa tason läpikäyntiin. 
+    // Jokaisella tasolla käydään läpi kaikki solmut,
+    // ja niiden lapset lisätään jonoon seuraavaa tasoa varten.
+    Queue<Solmu> odottavatSolmut = new ArrayDeque<>();
+    odottavatSolmut.add(juuri);
+    int korkeus = 0;
+
+    while (!odottavatSolmut.isEmpty()) {
+        int tasonSolmujenLkm = odottavatSolmut.size();
+        korkeus++;
+
+        for (int i = 0; i < tasonSolmujenLkm; i++) {
+            // otetaan jonon ensimmäinen solmu käsittelyyn
+            Solmu nykyinen = odottavatSolmut.poll(); 
+            // Jos solmulla on vasen lapsi, lisätään se jonoon seuraavalle tasolle
+            if (nykyinen.vasen != null) odottavatSolmut.add(nykyinen.vasen); 
+            // Vastaavasti oikea lapsi, jos sellainen on
+            if (nykyinen.oikea != null) odottavatSolmut.add(nykyinen.oikea); 
+        }
+    }
+
+    return korkeus;
+}
+
+void main() {
+    //Muodostetaan binääripuu
+    Solmu juuri = new Solmu(1);
+    juuri.vasen = new Solmu(2);
+    juuri.oikea = new Solmu(3);
+    juuri.vasen.vasen = new Solmu(4);
+
+    IO.println(puunKorkeusIter(juuri));
+}
+```
+
+<task>
+  <task-title>Tehtävä 5.10: Summa pinolla. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-10-summa-pinolla/handout.md}}
+
+<task-link><a
+href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava10">Tee
+tehtävä TIMissä</a></task-link>
+
+  </handout>
+</task>
+
+
+Kertoman ja puun korkeuden laskemisessa ei tarvittu erillistä tilatietoa.
+Kertomassa pinoon tallennettiin vain luvut ja puun korkeutta laskettaessa
+käsiteltiin pelkkiä solmuja, joita kohdeltiin aina samalla tavalla. Rekursion
+etenemis- ja paluuvaiheita ei tarvinnut erottaa, koska perustapauksen jälkeen
+tulos rakentui automaattisesti palautusarvojen kautta. Siksi pelkkä pino tai
+jono riitti käsittelyjärjestyksen ja lopputuloksen muodostamiseen.
+
+Tilanne muuttuu, kun algoritmi tekee työtä sekä ennen että jälkeen rekursiivisen
+kutsun, kuten puun läpikäynnissä. Tällöin pelkkä data pinossa ei riitä, vaan
+mukaan on tallennettava myös tieto siitä, ollaanko kutsuvaiheessa vai
+paluuvaiheessa. Tätä varten tarvitaan *pinokehys*, joka yhdistää solmuun liittyvän
+datan ja rekursion vaiheen.
+
+Seuraavassa esimerkissä rekursion etenemistä mallinnetaan omalla
+pinokehys-oliolla. Kehys toimii muistilappuna, jonka avulla tiedetään, mihin
+solmuun ollaan palaamassa ja missä vaiheessa laskentaa ollaan. Näin rekursion
+kutsupinoon kätkeytyvä tieto tehdään eksplisiittiseksi omassa tietorakenteessa.
 
 ```java,ignore
 static class Kehys {
@@ -434,155 +450,3 @@ ilman rekursiivisia metodikutsuja.
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava11">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-
-## Mitä rekursio tarkoittaa yleisellä tasolla
-
-Rekursiivinen ongelmanratkaisu voidaan jakaa kahteen vaiheeseen:
-
-1) Perustapaus:
-- Jos ongelma on riittävän helppo, ratkaise se ja palauta vastaus.
-
-2) Rekursiivinen tapaus:
-- Muunna ongelmaa hiukan helpommaksi ja välitä se seuraavalle ratkaisijalle
-
-(Hiukan erilainen sanoitus)
-1. Voinko ratkaista tämän nyt?
-2. Jos en, miten teen ongelmasta helpomman ja lähetän sen eteenpäin?
-
-- Ongelman määrittely itseään pienempien aliongelmien avulla
-- Rekursiivisen funktion rakenne
-    - Funktion kutsuminen itseään
-    - Parametrien muuttuminen kutsujen välillä
-
-- Esimerkkitehtäviä:
-   - Faktoriaali
-   - Fibonacci
-   - Puun tai listan läpikäynti
-
-## Rekursio pinon avulla
-Kutsupino (call stack)
-- Miten funktiokutsut tallentuvat pinoon
-- Paikallisten muuttujien elinkaari
-
-Rekursion eteneminen pinossa
-- Kutsuvaihe (push)
-- Paluuvaihe (pop)
-
-Rekursion ja iteratiivisen ratkaisun vertailu
-- Rekursio vs. silmukat
-
-Muistin käyttö
-
-```java
-void lahtolaskenta(int n) {
-    if (n == 0) return;
-    IO.println(n);
-    lahtolaskenta(n - 1);
-}
-
-void main() {
-    lahtolaskenta(5);
-}
-```
-
-- Milloin rekursio pysähtyy
-- Tyypilliset virheet (puuttuva tai väärä perustapaus)
-    - Ääretön rekursio --> Liian suuret kutsusyvyydet
-    - Virheellinen perustapaus
-
-Induktiotapaus (rekursiivinen askel)
-- Ongelman pienentäminen
-- Oikean etenemissuunnan valinta
-
-## Rekursiiviset tietorakenteet
-"Itsensä sisältävää" tietorakennetta voidaan kutsua rekursiiviseksi tietorakenteeksi. Esimerkkejä tällaisista ovat linkitetty lista, puut ja graafit.
-
-- Rekursiiviset algoritmit tietorakenteille
-    - Haku
-    - Läpikäynti (DFS, preorder, inorder, postorder)
-
-### Hajota ja hallitse
-Sopii erityisen hyvin, jos ongelma jakaantuu riippumattomiin aliongelmiin.
-- Periaatteen idea
-    - Ongelman jakaminen osiin
-    - Osaongelmien yhdistäminen
-- Rekursion rooli hajota ja hallitse -menetelmässä
-- Esimerkkejä algoritmeista
-    - Merge sort
-    - Quick sort
-    - Puolitushaku (engl. *binary search*)
-
-## Pinon käyttö rekursiossa
-Rekursiossa pinoa hallinnoi ohjelmointikieli. Iteratiivisessa ratkaisussa sinä itse huolehdit pinon käytöstä.
-
-- Implisiittinen pino (kutsupino)
-- Eksplisiittinen pino
-    - Rekursion simulointi itse toteutetulla pinolla
-
-## Dynaaminen ohjelmointi?
-Dynaaminen ohjelmointi on sekä matemaattinen optimointimetodi ja algoritminen paradigma. 
-- Yhteys rekursioon
-    - Rekursiivinen määrittely + muistin käyttö
-- Päällekkäiset aliongelmat
-- Muistitekniikat
-    - Memoisaatio
-    - Taulukointi (bottom-up)
-- Esimerkkejä
-    - Fibonacci optimoituna
-    - Kapsäkkiongelma (engl. *knapsack problem*) (koliket)
-
-# Ahne algoritmi
-
-Ahne algoritmi on mikä tahansa algoritmi, joka noudattaa heuristiikkaa, jossa jokaisessa tilanteessa valitaan lokaali optimi. Katsotaan seuraavaksi esimerkki ahneesta algoritmista eurovaluutalle
-
-```java
-void main() {
-    int[] tulos = ahneMenetelma(new int[]{1,2,5,10,20,50}, 4);
-    IO.println(Arrays.toString(tulos));
-}
-
-// Oletetaan, että yksiköt ovat jo nousevassa järjestyksessä
-private int[] ahneMenetelma(int[] valuutat, int tavoite) {
-    List<Integer> tulos = new ArrayList<>();
-    int jaljella = tavoite;
-
-    for (int i = valuutat.length - 1; i >= 0; i--) {
-        int valuutta = valuutat[i];
-
-        int maara = jaljella / valuutta; //Otetaan niin monta kuin mahdollista
-        for (int j = 0; j < maara; j++) {
-            tulos.add(valuutta);
-        }
-        jaljella -= maara * valuutta;
-    }
-    // Tavoite ei mahdollinen
-    if(jaljella != 0) return new int[0];
-    return tulos.stream().mapToInt(Integer::intValue).toArray();
-}
-```
-Useimmat nykyiset rahayksiköt ovat tarkoituksella suunniteltu siten (kuten euro), että ahne algoritmi antaa optimaalisen tuloksen. Esimerkiksi, jos meillä olisi yksiköt `1,3,4` ahne algoritmi antaa tavoitteelle 6 tuloksen `4+1+1`, eikä globaalia optimia `3+3`:
-
-```java
-void main() {
-    int[] tulos = ahneMenetelma(new int[]{1,3,4}, 6);
-    IO.println(Arrays.toString(tulos));
-}
-
-//-private int[] ahneMenetelma(int[] valuutat, int tavoite) {
-//-    List<Integer> tulos = new ArrayList<>();
-//-    int jaljella = tavoite;
-
-//-    for (int i = valuutat.length - 1; i >= 0; i--) {
-//-        int valuutta = valuutat[i];
-
-//-        int maara = jaljella / valuutta; //Otetaan niin monta kuin mahdollista
-//-        for (int j = 0; j < maara; j++) {
-//-            tulos.add(valuutta);
-//-        }
-//-        jaljella -= maara * valuutta;
-//-    }
-//-    // Tavoite ei mahdollinen
-//-    if(jaljella != 0) return new int[0];
-//-    return tulos.stream().mapToInt(Integer::intValue).toArray();
-//-}
-```
