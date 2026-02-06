@@ -117,8 +117,9 @@ int n = lista.pituus(); // n == 3
 Listat ovat lineaarisia: jokaisella solmulla on korkeintaan yksi seuraava solmu.
 Monissa ongelmissa rakenne kuitenkin haarautuu. Puu on tällainen haarautuva
 tietorakenne: se koostuu solmuista ja niiden lapsisolmuista, ja sillä on yksi
-juurisolmu. Puu ei sisällä syklejä, joten solmulle ei päästä takaisin kulkemalla
-lapsista ylöspäin.
+juurisolmu. Puu ei sisällä syklejä, mikä tarkoittaa, että kun etenet puussa
+alaspäin lapsisolmuihin, et voi koskaan palata samaan solmuun pelkästään
+lapsiviitteitä seuraamalla.
 
 Yleinen erikoistapaus on binääripuu, jossa jokaisella solmulla on korkeintaan
 kaksi lasta: vasen ja oikea. Rekursio sopii puiden käsittelyyn, koska puu
@@ -446,4 +447,3 @@ ilman rekursiivisia metodikutsuja.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava11">Tee tehtävä TIMissä</a></task-link>
 </task>
-
