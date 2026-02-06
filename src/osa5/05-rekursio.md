@@ -8,8 +8,6 @@
 >
 > - Ymmärrät miten rekursio toimii
 > - Ymmärrät, miten rekursiota voidaan mallintaa pinon avulla
-> - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
-> - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
 Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla.
 Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja
