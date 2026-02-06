@@ -130,10 +130,10 @@ Esimerkki binääripuusta:
 ```mermaid
 graph TD
 A((5))
-A --> B((3))
-A --> C((8))
-B --> D((1))
-B --> E((3))
+A --> B((8))
+A --> C((3))
+B --> D((7))
+B --> E((1))
 C --> F((7))
 C --> G((9))
 ```
