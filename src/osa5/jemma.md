@@ -1,4 +1,58 @@
 
+## Listaluvusta
+
+
+
+> [!WIP]
+> Tehdään esimerkkien kautta
+> - Tehdään `Lista<T>`-luokka ja sille attribuutiksi taulukko
+> - Katsotaan, mitkä ovat olennaisimmat listan toiminnan kannalta olevat metodit ja toteutetaan ne järjestyksessä
+>     - `get(index)` -> suoraan
+>     - `size()` -> suoraan
+>     - `isEmpty()` -> tehtävänä
+>     - `set(index, element)` -> suoraan
+>     - `contains(object)` -> tehtävänä
+>     - `indexOf(object)` -> tehtävänä
+>     - `iterator()` -> suoraan tai tehtävänä
+
+
+
+## Vanhaa tekstiä...
+
+> [!WIP]
+> Tehdään esimerkkien kautta
+> - Toteutetaan järjestyksessä
+>     - `add(e)` -> yllä olevan kuvauksen kautta
+>     - `remove(e)` -> yllä olevan kuvauksen kautta
+>     - `remove(index)` -> tehtävänä
+>     - `size()`, `isEmpty()` ja muiden aiempien metodien päivitys -> tehtävänä
+
+- Lopuksi huomioita
+  - Toteutus ei vielä lopullinen, sillä `List`-rajapinta paljon laajempi
+
+> [!WIP]
+> Mahdollinen ajatus bonus- tai guru-tason tehtäväksi: toteuta itse tehtyyn listaan
+> loput `Collection<T>`-rajapinnan pakolliset metodit, jotta itse tehtyä listaa voi käyttää kokoelmana.
+>  - `contains`, `containsAll`, `equals`, `hashCode`, `isEmpty`, `iterator`, `size`, `toArray`
+
+## Listan toteutuksia
+
+- Yleisiä toteutuksia listalle
+   - `ArrayList` - lista, jossa alkiot tallenetaan taulukkoon
+      - kun taulukosta loppuu tila, luodaan uusi taulukko
+      - kaikki operaatiot toteutettu taulukko-operaatioina
+      - Erityishuomiot operaatioista
+        - Uuden alkion lisääminen listan loppuun on keskimäärin O(1) mutta pahimmillaan O(n)
+        - Lisääminen alkuun aina O(n), listan väliin keskimäärin O(n)
+        - Alkion hakeminen indeksin perusteella O(1)
+        - Plussaa: alkiot sijaitsevat tietokoneen muistissa aina lähekkäin, jolloin käyttöjärjestelmä pystyy optimoimaan muistin käyttöä
+   - `LinkedList` - lista, jossa jokainen alkio sisältää arvon ja viitteen seuraavaan ja edelliseen alkioon
+      - Alkiot muodostavat ikään kuin "ketjun", jota pitkin voi liikkua
+      - Erityishuomiot operaatioista
+        - Lisääminen loppuun ja alkuun on nopeaa O(1)
+        - Poistaminen lopusta ja alusta on myös nopeaa O(1) -> soveltuu jonoksi, josta oma luku
+   - Muuttumattomat listat `List.of`-metodilla
+
 
 ## Mitä rekursio tarkoittaa yleisellä tasolla
 

@@ -368,7 +368,6 @@ tehtävä TIMissä</a></task-link>
   </handout>
 </task>
 
-
 Kertoman ja puun korkeuden laskemisessa ei tarvittu erillistä tilatietoa.
 Kertomassa pinoon tallennettiin vain luvut ja puun korkeutta laskettaessa
 käsiteltiin pelkkiä solmuja, joita kohdeltiin aina samalla tavalla. Rekursion
