@@ -178,6 +178,14 @@ void main() {
 }
 ```
 
+Sivuhuomautuksena mainittakoon, että koodissamme mikään ei nyt estä meitä
+luomasta syklisiä rakenteita, joissa solmut viittaavat toisiinsa muodostaen
+silmukan. Tällöin rekursio ei pysähtyisi koskaan, vaan aiheuttaisi ohjelman
+kaatumisen (pinon ylivuodon). Vaikka emme tässä harjoituksessa toteuta
+syklisyyden tarkistusta, todellisessa ohjelmassa on syytä varmistaa, että
+syklisiä rakenteita ei pääse syntymään, jos algoritmi olettaa puun kaltaista
+rakennetta.
+
 Kun `korkeus`-metodia kutsutaan juurisolmulle, laskenta etenee luonnollisesti
 alaspäin puussa. Metodi kutsuu itseään vasemmalle ja oikealle alipuulle ja
 jatkaa näin, kunnes vastaan tulee `null`, eli tyhjä puu. Tämä on rekursion
