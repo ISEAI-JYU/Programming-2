@@ -108,7 +108,7 @@ vaarallisempaa. Se ainoastaan kertoo kääntäjälle, että tiedostat tämän
 rajoituksen ja hyväksyt sen. Ilman annotaatiota ohjelma toimii täsmälleen
 samalla tavalla, mutta kääntäjä tulostaa varoituksen.
 
-<details><summary>Lisätietoa: Missä tilanteessa tyyppimuunnos voisi aiheuttaa ongelmia?</summary>
+<details><summary><i class="bi bi-stars jyu-gold"></i> Valinnaista lisätietoa: Missä tilanteessa tyyppimuunnos voisi aiheuttaa ongelmia?</summary>
 
 Oletetaan, että luot `Lista<String>`-olion. Tällöin `T` on `String`. Sisäisesti
 taustalla luotu taulukko alkioiden säilyttämistä varten on kuitenkin `Object[]`.
