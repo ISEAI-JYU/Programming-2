@@ -18,16 +18,18 @@ varmasti. Rekursio on luonteva tapa toteuttaa niin kutsuttua *hajota ja
 hallitse* -periaatetta: ongelma jaetaan pienempiin osiin, ratkaistaan pienet
 ongelmat ja yhdistetään tulokset.
 
-Rekursio on erityisen luonteva toteuttaa algoritmeja silloin, kun käsitellään rekursiivisia tietorakenteita. Rekursiivinen tietorakenne on rakenne, jonka määritelmä viittaa itseensä.
+Rekursiivinen tietorakenne on rakenne, jonka määritelmä viittaa itseensä. Eräs
+esimerkki rekursiivisesta tietorakenteesta on linkitetty lista, jossa jokainen
+solmu sisältää viitteen seuraavaan solmuun tai null-arvon, joka merkitsee listan
+loppua. Linkitettyihin listoihin törmää käytännössä esimerkiksi soittolistan
+toistossa (seuraava kappale), sovellusten "takaisin/eteenpäin"- historiassa sekä
+käyttöjärjestelmien ja ohjelmistokirjastojen (eli valmiiden ohjelmakokoelmien)
+sisäisissä tietorakenteissa. 
 
-Eräs esimerkki rekursiivisesta tietorakenteesta on linkitetty lista, jossa
-jokainen solmu sisältää viitteen seuraavaan solmuun tai null-arvon, joka
-merkitsee listan loppua. Linkitettyihin listoihin törmää käytännössä esimerkiksi
-soittolistan toistossa (seuraava kappale), sovellusten "takaisin/eteenpäin"-
-historiassa sekä käyttöjärjestelmien ja ohjelmistokirjastojen (eli valmiiden
-ohjelmakokoelmien) sisäisissä tietorakenteissa. Seuraava Java-esimerkki näyttää
-kokonaislukuja sisältävän linkitetyn listan rakenteen ja listan pituuden
-laskemisen rekursiivisesti.
+Rekursiivisten algoritmien soveltaminen on erityisen luontevaa, kun käsitellään
+rekursiivisia tietorakenteita. Seuraava Java-esimerkki näyttää kokonaislukuja
+sisältävän linkitetyn listan rakenteen ja listan pituuden laskemisen
+rekursiivisesti.
 
 ```java,ignore
 class Solmu {
