@@ -64,7 +64,7 @@ tehtävä TIMissä</a></task-link>
 </task>
 
 <task>
-  <task-title>Tehtävä 5.11: Puun summa pinolla. <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 5.11: Puun summa pinolla. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/5-11-puun-summa-pinolla/handout.md}}
