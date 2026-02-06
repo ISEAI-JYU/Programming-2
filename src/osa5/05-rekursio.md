@@ -11,8 +11,6 @@
 > - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
 > - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
-## Johdanto
-
 Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla.
 Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja
 kun rekursiivinen askel pienentää ongelmaa siten, että perustapaukseen päädytään
