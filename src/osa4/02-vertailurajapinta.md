@@ -394,17 +394,14 @@ käsitellä kaikkia liukulukutyyppien erikoisarvoja, kuten äärettömyyttä tai
 
 ## Useamman attribuutin vertailu
 
-Monesti luonnollinen järjestys voi määräytyä useamman luokan attribuutin
-mukaan.
-
-Mitä jos kohdealueen kannalta nyt olisikin järkevämpi, että kortit
-järjestetäänkin ensin aakkosjärjestyksen ja sitten vasta numerotunnisteen
-mukaan?
-Tätä varten meidän
-täytyy muuttaa `compareTo`-metodia siten, että ensin verrataan `nimi`
+Luonnollinen järjestys voi määräytyä useamman attribuutin
+mukaan. Esimerkiksi kortit voitaisiin järjestetää ensin aakkosjärjestyksen ja
+vasta sitten numerotunnisteen mukaan. Tätä varten meidän
+täytyy muuttaa `compareTo`-metodia siten, että ensin verrataan
+`nimi`-arvoja 
 aakkosjärjestyksen mukaan käyttäen `String`-luokan omaa `compareTo`-metodia.
 Jos merkkijonot ovat samat (eli `compareTo` palauttaa `0`), tehdään vertailu
-`tunnistenumero`-attribuutille:
+`tunnistenumero`-attribuutille.
 
 ```java
 // FILE: Kerailykortti.java
