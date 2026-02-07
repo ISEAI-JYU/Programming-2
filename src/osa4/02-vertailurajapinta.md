@@ -342,8 +342,7 @@ Yllä olevassa tapauksessa toteutimme `compareTo`-metodin käyttäen suoraan
 Kuitenkin Javan valmiit tyypit useimmiten tarjoavat jo
 valmiita vertailumetodeja, joita voi hyödyntää `Comparable`-rajapinnan toteuttamiseksi.
 
-Esimerkiksi `int`-kokonaisluvuille Java tarjoaa valmiin `Integer.compare`-metodin 
-([JavaDoc]()), jolla `Kerailykortti`-luokan `compareTo`-metodin toteutus
+Esimerkiksi `int`-kokonaisluvuille Java tarjoaa valmiin [`Integer.compare`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html#compare(int,int))-metodin, jolla `Kerailykortti`-luokan `compareTo`-metodin toteutus
 voidaan yksinkertaistaa yhden rivin funktioksi:
 
 ```java
