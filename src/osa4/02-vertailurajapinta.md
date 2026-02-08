@@ -2,11 +2,11 @@
 
 Rajapinta
 [`Comparable`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Comparable.html)
-määrittelee metodin `compareTo`, jonka avulla luokan olioille voi määrittää oman
-_luonnollisen_ järjestyksensä suhteessa toiseen olioon.
+määrittelee metodin `compareTo`, jonka avulla luokan olioille voi määrittää
+_luonnollisen_ järjestykse suhteessa toiseen saman tyyppiseen olioon.
 
-Rajapinnan ainoa metodi `compareTo` palauttaa kokonaisluvun, joka ilmaisee olion
-_järjestyksen_ suhteessa toiseen olioon:
+Rajapinnassa on yksi metodi, `compareTo`, joka palauttaa kokonaisluvun, joka ilmaisee olion
+_järjestyksen_ suhteessa toiseen olioon. Palautusarvo tulkitaan seuraavasti:
 
 | Tapaus                        | Merkitys         | Tulkinta                           |
 | ----------------------------- | ---------------- | ---------------------------------- |
@@ -15,7 +15,7 @@ _järjestyksen_ suhteessa toiseen olioon:
 | `olioA.compareTo(olioB) > 0`  | `olioA > olioB`  | `olioA` on suurempi kuin `olioB`   |
 
 Esimerkiksi `Integer`-tyyppi toteuttaa `Comparable`-rajapinnan
-`Integer`-olioille, eli kaksi kokonaislukuoliota voidaan vertailla
+`Integer`-olioille. Niinpä kahta kokonaislukuoliota voidaan vertailla
 keskenään `compareTo`-metodilla.
 
 ```java
@@ -29,9 +29,7 @@ void main() {
 }
 ```
 
-Luonnollisella järjestyksellä tarkoitetaan ihmisjärjen mukaisesti olion tyypille
-ominaista ja intuitiivista järjestystä. 
-Esimerkiksi merkkijonoille on Javassa luonnollinen järjestys määritelty
+Merkkijonoille on valmiiksi määriteltynä luonnollinen järjestys 
 aakkosjärjestyksenä: 
 
 ```java
@@ -57,12 +55,11 @@ void main() {
 }
 ```
 
-Vastaavasti `Integer`-luokalla on toteutus `Comparable`-rajapinnalle, joka
-kertoo kokonaislukujen luonnollisen järjestyksen, joka on suuruusjärjestys.
+Vastaavasti `Integer`-luokalla kokonaislukujen luonnollinen järjestys on nouseva suuruusjärjestys.
 
 ```java
 //-int kerroJarjestys(Integer luku1, Integer luku2) {
-//-  int tulos = luku1.compareTo(luku1);
+//-  int tulos = luku1.compareTo(luku2);
 //-  if (tulos < 0) {
 //-      IO.println(luku1 + " on pienempi kuin " + luku2);
 //-  } else if (tulos > 0) {
@@ -86,11 +83,11 @@ void main() {
 Olennainen `Comparable`-rajapinnan hyöty on, että voimme kirjoittaa
 ohjelmia ja käyttää vertailuja vaativia algoritmeja, jotka toimivat
 yleisesti kaikille olioille, jotka toteuttavat `Comparable`-rajapinnan.
-Esimerkiksi voimme käyttää Javan valmiita
+Kyseisen rajapinnan toteuttavat luokat voidaan myös järjestää
+käyttämällä Javan valmiita
 kokoelmien järjestämistoteutuksia, kuten esimerkiksi
 [`Collections.sort`](<https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collections.html#sort(java.util.List)>)-metodia.
-Näin saamme järjestettyä kokoelmia helposti ilman, että meidän tarvitsee itse
-kirjoittaa järjestämisalgoritmeja jokaiselle luokalle erikseen.
+Näin meidän ei tarvitse itse kirjoittaa järjestämisalgoritmeja.
 
 ```java
 void main() {
@@ -111,14 +108,14 @@ void main() {
 <details closed><summary>Ekstra: <code>Collections</code>-luokka</summary>
 
 [`Collections`](https://docs.oracle.com/en/java/javase/25/docs/api//java.base/java/util/Collections.html)
-on Javan valmis luokka, joka tarjoaa yllämainitun `sort`-metodin lisäksi monia
-yleishyödyllisiä metodeja Javan _kokoelmille_. 
+tarjoaa yllämainitun `sort`-metodin lisäksi monia
+yleishyödyllisiä metodeja Javan kokoelmille. 
 Kokoelma on Javassa käytetty yleistys alkioita sisältäville tietorakenteille,
 kuten taulukoille, listoille ja sanakirjoille.
 
 Käsittelemme kokoelmia tarkemmin [osassa 5](../osa5/index.md).
 Voit kuitenkin halutessasi tutkia jo `Collections`-luokkaa, joka
-sisältää yleispäteviä metodeja kokoelmien käsittelyyn. 
+sisältää metodeja kokoelmien käsittelyyn. 
 Mikäli katsot linkin, varaudu, että se sisältää paljon vasta myöhemmin 
 käsiteltävää syntaksia.
 
@@ -342,8 +339,7 @@ Yllä olevassa tapauksessa toteutimme `compareTo`-metodin käyttäen suoraan
 Kuitenkin Javan valmiit tyypit useimmiten tarjoavat jo
 valmiita vertailumetodeja, joita voi hyödyntää `Comparable`-rajapinnan toteuttamiseksi.
 
-Esimerkiksi `int`-kokonaisluvuille Java tarjoaa valmiin `Integer.compare`-metodin 
-([JavaDoc]()), jolla `Kerailykortti`-luokan `compareTo`-metodin toteutus
+Esimerkiksi `int`-kokonaisluvuille Java tarjoaa valmiin [`Integer.compare`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Integer.html#compare(int,int))-metodin, jolla `Kerailykortti`-luokan `compareTo`-metodin toteutus
 voidaan yksinkertaistaa yhden rivin funktioksi:
 
 ```java
@@ -393,29 +389,16 @@ kuten lukualueen ylivuotoja. Vastaavasti `Double.compare` osaa
 käsitellä kaikkia liukulukutyyppien erikoisarvoja, kuten äärettömyyttä tai
 "Not a Number" -arvoja.
 
-<task>
-  <task-title>Tehtävä 4.x: Henkilöt järjestykseen, osa 1 <points>0,5 p.</points> </task-title>
-  <handout>
-
-
-  </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/itkp102/demot/demo1#tehtava_tulostaminen_header">Tee tehtävä TIMissa</a></task-link>
-</task>
-
-
 ## Useamman attribuutin vertailu
 
-Monesti luonnollinen järjestys voi määräytyä useamman luokan attribuutin
-mukaan.
-
-Mitä jos kohdealueen kannalta nyt olisikin järkevämpi, että kortit
-järjestetäänkin ensin aakkosjärjestyksen ja sitten vasta numerotunnisteen
-mukaan?
-Tätä varten meidän
-täytyy muuttaa `compareTo`-metodia siten, että ensin verrataan `nimi`
+Luonnollinen järjestys voi määräytyä useamman attribuutin
+mukaan. Esimerkiksi kortit voitaisiin järjestetää ensin aakkosjärjestyksen ja
+vasta sitten numerotunnisteen mukaan. Tätä varten meidän
+täytyy muuttaa `compareTo`-metodia siten, että ensin verrataan
+`nimi`-arvoja 
 aakkosjärjestyksen mukaan käyttäen `String`-luokan omaa `compareTo`-metodia.
 Jos merkkijonot ovat samat (eli `compareTo` palauttaa `0`), tehdään vertailu
-`tunnistenumero`-attribuutille:
+`tunnistenumero`-attribuutille.
 
 ```java
 // FILE: Kerailykortti.java

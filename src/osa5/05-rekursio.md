@@ -8,8 +8,6 @@
 >
 > - Ymmärrät miten rekursio toimii
 > - Ymmärrät, miten rekursiota voidaan mallintaa pinon avulla
-> - Rekursio, perus- ja induktiotapaukset, rekursiivinen tietorakenne (?). Hajota ja hallitse -periaate. Pinon käyttö rekursiossa.
-> - Mahdollisesti jotakin dynaamisesta ohjelmoinnista (?)
 
 Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla.
 Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja
@@ -119,8 +117,9 @@ int n = lista.pituus(); // n == 3
 Listat ovat lineaarisia: jokaisella solmulla on korkeintaan yksi seuraava solmu.
 Monissa ongelmissa rakenne kuitenkin haarautuu. Puu on tällainen haarautuva
 tietorakenne: se koostuu solmuista ja niiden lapsisolmuista, ja sillä on yksi
-juurisolmu. Puu ei sisällä syklejä, joten solmulle ei päästä takaisin kulkemalla
-lapsista ylöspäin.
+juurisolmu. Puu ei sisällä syklejä, mikä tarkoittaa, että kun etenet puussa
+alaspäin lapsisolmuihin, et voi koskaan palata samaan solmuun pelkästään
+lapsiviitteitä seuraamalla.
 
 Yleinen erikoistapaus on binääripuu, jossa jokaisella solmulla on korkeintaan
 kaksi lasta: vasen ja oikea. Rekursio sopii puiden käsittelyyn, koska puu
@@ -131,10 +130,10 @@ Esimerkki binääripuusta:
 ```mermaid
 graph TD
 A((5))
-A --> B((3))
-A --> C((8))
-B --> D((1))
-B --> E((3))
+A --> B((8))
+A --> C((3))
+B --> D((7))
+B --> E((1))
 C --> F((7))
 C --> G((9))
 ```
@@ -178,6 +177,14 @@ void main() {
     IO.println(korkeus(juuri));
 }
 ```
+
+Sivuhuomautuksena mainittakoon, että koodissamme mikään ei nyt estä meitä
+luomasta syklisiä rakenteita, joissa solmut viittaavat toisiinsa muodostaen
+silmukan. Tällöin rekursio ei pysähtyisi koskaan, vaan aiheuttaisi ohjelman
+kaatumisen (pinon ylivuodon). Vaikka emme tässä harjoituksessa toteuta
+syklisyyden tarkistusta, todellisessa ohjelmassa on syytä varmistaa, että
+syklisiä rakenteita ei pääse syntymään, jos algoritmi olettaa puun kaltaista
+rakennetta.
 
 Kun `korkeus`-metodia kutsutaan juurisolmulle, laskenta etenee luonnollisesti
 alaspäin puussa. Metodi kutsuu itseään vasemmalle ja oikealle alipuulle ja
@@ -368,7 +375,6 @@ tehtävä TIMissä</a></task-link>
   </handout>
 </task>
 
-
 Kertoman ja puun korkeuden laskemisessa ei tarvittu erillistä tilatietoa.
 Kertomassa pinoon tallennettiin vain luvut ja puun korkeutta laskettaessa
 käsiteltiin pelkkiä solmuja, joita kohdeltiin aina samalla tavalla. Rekursion
@@ -449,4 +455,3 @@ ilman rekursiivisia metodikutsuja.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava11">Tee tehtävä TIMissä</a></task-link>
 </task>
-

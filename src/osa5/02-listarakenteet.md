@@ -4,20 +4,6 @@
 > Tämä osio julkaistaan 9. helmikuuta 2026.
 > {{#include ../ei-julkaistu.md}}
 
-> [!WIP]
-> - Otetaan pohjaa seuraavista lähteistä
->    - <https://docs.oracle.com/javase/tutorial/collections/>
->    - <https://dev.java/learn/api/collections-framework/>
->    - <https://www.cs.helsinki.fi/u/ahslaaks/kkkk.pdf>
-
-> [!Osaamistavoitteet]
->
-> TODO: Pitäisikö olla sen sijaan ohjattu tehtävä?
-> TAI: Voisi tehdä Full Stack Moocin tavoin ohjatusti ja sitten
->      tehtävänä on tehdä LinkedList tai HashMap.
-> Vrt. myös [HY](https://java-programming.mooc.fi/part-12/2-arraylist-and-hashtable)
-> 
-
 `List`-rajapinta kuvaa kokoelmaa, jossa alkiot ovat tietyssä järjestyksessä ja
 niihin voidaan viitata indeksin avulla. Tämä vastaa monella tapaa taulukkoa,
 mutta tarjoaa huomattavasti joustavamman rajapinnan. Sivuhuomautus: Oikeampaa
@@ -122,7 +108,7 @@ vaarallisempaa. Se ainoastaan kertoo kääntäjälle, että tiedostat tämän
 rajoituksen ja hyväksyt sen. Ilman annotaatiota ohjelma toimii täsmälleen
 samalla tavalla, mutta kääntäjä tulostaa varoituksen.
 
-<details><summary>Lisätietoa: Missä tilanteessa tyyppimuunnos voisi aiheuttaa ongelmia?</summary>
+<details><summary><i class="bi bi-stars jyu-gold"></i> Valinnaista lisätietoa: Missä tilanteessa tyyppimuunnos voisi aiheuttaa ongelmia?</summary>
 
 Oletetaan, että luot `Lista<String>`-olion. Tällöin `T` on `String`. Sisäisesti
 taustalla luotu taulukko alkioiden säilyttämistä varten on kuitenkin `Object[]`.
@@ -234,17 +220,6 @@ kyseinen indeksi on listan ulkopuolella. Tämä on yleinen käytäntö Javan
 kokoelmissa, ja varmasti sinulle myös tuttu aivan ohjelmoinnin alkeista asti.
 Nyt pääsemme itse heittämään kyseisen poikkeuksen!
 
-> [!WIP]
-> Tehdään esimerkkien kautta
-> - Tehdään `Lista<T>`-luokka ja sille attribuutiksi taulukko
-> - Katsotaan, mitkä ovat olennaisimmat listan toiminnan kannalta olevat metodit ja toteutetaan ne järjestyksessä
->     - `get(index)` -> suoraan
->     - `size()` -> suoraan
->     - `isEmpty()` -> tehtävänä
->     - `set(index, element)` -> suoraan
->     - `contains(object)` -> tehtävänä
->     - `indexOf(object)` -> tehtävänä
->     - `iterator()` -> suoraan tai tehtävänä
 
 ## Dynaamisuus
 
@@ -468,42 +443,3 @@ ensimmäisen; muiden poistaminen vaatii uuden läpikäynnin.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava4">Tee tehtävä TIMissä</a></task-link>
 </task>
-
-
-
-
-## Vanhaa tekstiä...
-
-> [!WIP]
-> Tehdään esimerkkien kautta
-> - Toteutetaan järjestyksessä
->     - `add(e)` -> yllä olevan kuvauksen kautta
->     - `remove(e)` -> yllä olevan kuvauksen kautta
->     - `remove(index)` -> tehtävänä
->     - `size()`, `isEmpty()` ja muiden aiempien metodien päivitys -> tehtävänä
-
-- Lopuksi huomioita
-  - Toteutus ei vielä lopullinen, sillä `List`-rajapinta paljon laajempi
-
-> [!WIP]
-> Mahdollinen ajatus bonus- tai guru-tason tehtäväksi: toteuta itse tehtyyn listaan
-> loput `Collection<T>`-rajapinnan pakolliset metodit, jotta itse tehtyä listaa voi käyttää kokoelmana.
->  - `contains`, `containsAll`, `equals`, `hashCode`, `isEmpty`, `iterator`, `size`, `toArray`
-
-## Listan toteutuksia
-
-- Yleisiä toteutuksia listalle
-   - `ArrayList` - lista, jossa alkiot tallenetaan taulukkoon
-      - kun taulukosta loppuu tila, luodaan uusi taulukko
-      - kaikki operaatiot toteutettu taulukko-operaatioina
-      - Erityishuomiot operaatioista
-        - Uuden alkion lisääminen listan loppuun on keskimäärin O(1) mutta pahimmillaan O(n)
-        - Lisääminen alkuun aina O(n), listan väliin keskimäärin O(n)
-        - Alkion hakeminen indeksin perusteella O(1)
-        - Plussaa: alkiot sijaitsevat tietokoneen muistissa aina lähekkäin, jolloin käyttöjärjestelmä pystyy optimoimaan muistin käyttöä
-   - `LinkedList` - lista, jossa jokainen alkio sisältää arvon ja viitteen seuraavaan ja edelliseen alkioon
-      - Alkiot muodostavat ikään kuin "ketjun", jota pitkin voi liikkua
-      - Erityishuomiot operaatioista
-        - Lisääminen loppuun ja alkuun on nopeaa O(1)
-        - Poistaminen lopusta ja alusta on myös nopeaa O(1) -> soveltuu jonoksi, josta oma luku
-   - Muuttumattomat listat `List.of`-metodilla
