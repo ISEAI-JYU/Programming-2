@@ -411,23 +411,3 @@ IO.println(alipuu);
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava7">Tee tehtävä TIMissä</a></task-link>
 </task>
-
----
-
-# Sisällön hahmotelma
-
-- `Map`
-    - Kokoelma avain-arvoparien säilyttämiseen ja hakemiseen ✔
-    - Jokaista avaimen arvoa vastaa nolla tai yksi toinen arvo ✔
-    - Esimerkkejä: hetu => henkilö, nimi => arvosana ✔
-    - Avaimet ovat uniikkeja, eli samassa Map-oliossa ei voi olla kaksi samaa avainta ✔
-    - Yleisiä toteutuksia
-       - `HashMap` - hajautustaulu
-         - Avain-arvoparit säilytään taulukossa, yksittäisen avain-arvoparin indeksi lasketaan avaimen hajautusarvosta `hashCode` ✔
-         - Uusien arvojen lisääminen nopeaa O(1), haku nopeaa O(1), mutta riippuu hajautusfunktiosta ✔
-         - Avain-arvoparien järjestys ei ole kiinteä ✔
-       - `LinkedHashMap` - hajautustaulu, mutta avain-arvoparien järjestys pysyy kiinteänä ✔
-    - Lisäksi seuraavia rajapintoja
-       - `SortedMap` - hajautustaulu, mutta avaimet aina järjestetty halutussa järjestyksessä ✔
-          - Valmis toteutus Javassa: `TreeMap` ✔
-       - `NavigableMap` - hajautustaulu, mutta voidaan hakea suurinta/pienintä avaimen arvoa ✔

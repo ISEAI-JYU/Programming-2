@@ -492,30 +492,3 @@ kuitenkin erittäin nopeaa ja tapahtuu vakioajassa *O(1)*.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava9">Tee tehtävä TIMissä</a></task-link>
 </task>
-
----
-
-# Sisällön hahmotelma
-
-- `Set`
-    - Kokoelma, jossa jokainen alkion arvo voi esiintyä vain kerran, ts. ei duplikaatteja ✔
-    - Alkion lisääminen joukkoon voi epäonnistua ✔
-    - Yleisiä toteutuksia 
-        - `HashSet` - hajautustauluun perustuva joukko ✔
-           - Alkioden järjestys ei ole kiinteä ✔
-           - Alkioiden lisäys O(1), alkion olemassaolon tarkistus O(1) ✔
-    - Lisäksi seuraavia rajapintoja
-        - `SortedSet` - `Set`, jossa alkiot ovat aina järjestetty ✔
-            - Valmis toteutus Javassa: `TreeSet` ✔
-        - `NavigableSet` - `SortedSet`, mutta mahdollista etsiä suurin/pienin arvoja ✔
-
-
-
-- `Stack`, `Queue`, `Deque`
-   - Kokoelmatyypit, jotka mahdollistavat alkioiden lisäämistä ja ottamista pois eri järjestyksessä ✔
-   - `Stack`: LIFO ✔
-        - Huom: Javan historian takia `Stack` on luokka eikä sitä kannata käyttää ellei kyse ole monisäikeisestä ohjelmasta. Sen sijaan suositus on käyttää `Deque` rajapintaa
-   - `Queue`: FIFO ✔
-        - `ArrayDeque`, `LinkedList`, `PriorityQueue`
-   - `Deque`: LIFO ja FIFO ✔
-        - `ArrayDeque`, `LinkedList`, `PriorityQueue`
