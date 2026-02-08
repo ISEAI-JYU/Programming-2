@@ -4,19 +4,12 @@
 > Tämä osio julkaistaan 9. helmikuuta 2026.
 > {{#include ../ei-julkaistu.md}}
 
-> [!WIP]
-> - Otetaan pohjaa seuraavista lähteistä
->    - <https://docs.oracle.com/javase/tutorial/collections/>
->    - <https://dev.java/learn/api/collections-framework/>
->    - <https://www.cs.helsinki.fi/u/ahslaaks/kkkk.pdf>
-
 > [!Osaamistavoitteet]
 >
-> - Tunnet Java-kielen yleisimmät valmiit tietorakenteet HashMap
-> - Rajapintaa vasten ohjelmointi: Map
-> - Lyhyesti käydään läpi vaikutukset suorituskykyyn
-> - Ymmärrät ym. tietorakenteiden keskeisimmät operaatiot ja niiden aikakompleksisuudet
-> - Ymmärrät, miksi `hashCode` tarvitaan (HashMap tapauksessa ainakin)
+> - Tunnet Java-kielen yleisimmät valmiit tietorakenteet: `Map` ja sen toteutukset `HashMap`, `LinkedHashMap` ja `TreeMap`.
+> - Osaat käyttää ym. tietorakenteita.
+> - Ymmärrät ym. tietorakenteiden keskeisimmät operaatiot ja niiden aikakompleksisuudet. 
+> - Ymmärrät, miksi oliot tarvitsevat `hashCode`-metodin.
 
 Kuvitellaan tilanne, jossa ylläpidämme laajaa opiskelijarekisteriä. Haluamme
 tallentaa kunkin opiskelijan numeron ja nimen siten, että voimme 
@@ -25,7 +18,7 @@ opiskelijanumeron perusteella löytää helposti opiskelijan nimen.
 Jos käyttäisimme tähän listaa, joutuisimme tallentamaan tiedot joko 
 eri listoihin tai luomaan erillisen olion, joka sisältää kaikki tiedot. Kun 
 haluaisimme hakea tietyn henkilön tiedot, joutuisimme käymään listan alkioita 
-läpi, kunnes oikea henkilö löytyy. Tämä ei ole hireän tehokasta, jos 
+läpi, kunnes oikea henkilö löytyy. Tämä ei ole hirveän tehokasta, jos 
 opiskelijoita on hyvin suuri määrä. 
 
 Hakurakenteet tarjoavat tähän ratkaisun mahdollistamalla suoran haun jonkin 
@@ -62,7 +55,7 @@ samaan arvoon.
 
 > [!HUOMAUTUS]
 > Javassa sekä avaimet että arvot ovat on aina olioita. Ne eivät 
-> voi olla primitiivitietotyypejä, kuten `int` tai `double`, vaan tähän 
+> voi olla primitiivisiä tietotyypejä, kuten `int` tai `double`, vaan tähän 
 > tarkoitukseen on käytettävä vastaavia kääreluokkia, kuten `Integer` tai `Double`. 
 
 ## Map
@@ -79,10 +72,7 @@ vuoksi hakurakenteita ei voida iteroida esimerkiksi `for each` -silmukan avulla,
 vaan alkioiden läpikäynti on tehtävä hieman hankalammin avainten tai arvojen 
 kautta.
 
-Tutusutaan nyt `Map`-rajapinnan tärkeimpiin metodeihin.
-
-Voit lukea lisää rajapinnan lupaamista metodeista Javan dokumentaatiosta; 
-[`Map`](https://docs.oracle.com/javase/8/docs/api/java/util/Map.html).
+Tutustutaan nyt `Map`-rajapinnan tärkeimpiin metodeihin.
 
 ## Alkion lisääminen ja poistaminen
 
@@ -176,14 +166,14 @@ onko se tyhjä.
 Map<String, Integer> arvosanat = new HashMap<>();
 arvosanat.put("Maija", 5);
 
-IO.println("Alkioita: " + arvosanat.size());    // 1
+IO.println("Alkioita: " + arvosanat.size()); // 1
 IO.println("Tyhjä: " + arvosanat.isEmpty()); // false
 //-}
 ```
 
 ## Alkioiden läpikäynti
 
-`Map` ei toteuta `Iterable`-rajapintaa ja ole siten suoraan iteroitavissa
+`Map` ei toteuta `Iterable`-rajapintaa eikä ole siten suoraan iteroitavissa
 `for each` -silmukalla, mutta se tarjoaa metodit `keySet`, `values` ja 
 `entrySet`, jotka palauttavat avaimet, arvot tai näiden parit kokoelmina.
 
@@ -264,7 +254,7 @@ lisääntymiseen.
 
 Hajautustaulu toimii kuin varasto, jossa on monta säilytyslaatikkoa, joihin
 voidaan laittaa kuinka monta esinettä tahansa. Kapasiteetti kuvastaa
-säilityslaatikoiden lukumäärää ja laatikot ovat hajautustaulun *indeksejä*. 
+säilytyslaatikoiden lukumäärää ja laatikot ovat hajautustaulun *indeksejä*. 
 Laatikot ovat tapa järjestellä esineitä niin, että löydämme haluamamme esineen 
 varastosta helpommin. Yksi laatikko voi olla vaatteita varten, toinen työkaluja, 
 ja kolmanteen laitetaan kaikki muut. Voimme yksinkertaistetusti ajatella, että 
@@ -279,26 +269,21 @@ työkalun löytämiseen voi silti mennä aikaa.
 `HashMap`-luokan toteutus perustuu edellä mainittuun hajautustauluun ja se 
 tarjoaa parhaan keskimääräisen suorituskyvyn perusoperaatioille. Alkioiden 
 hakeminen, lisääminen ja poistaminen avaimen perusteella onnistuu parhaimmillaan
-vakioajassa O(1). Kaikkien alkioiden läpikäyminen on kuitenkin sisäisen
-tietorakenteen vuoksi yleensä hitaampaa kuin listoissa. Hakurakenteiden 
-suorituskykyerot tulevat paremmin esille, kun alkioita on hyvin suuri määrä; 
-jos alkioita on vähän, eroa ei juurikaan huomaa.
+vakioajassa *O(1)*. Kaikkien alkioiden läpikäyminen on kuitenkin sisäisen
+tietorakenteen vuoksi yleensä hitaampaa kuin listoissa. `HashMap`-luokan 
+suorituskykyerot tulevat paremmin esille, kun alkioita on hyvin suuri määrä. 
+Jos alkioita on vähän, eroa esimerkiksi listaan ei juurikaan huomaa.
 
 `HashMap` ei takaa alkioiden järjestystä; alkioita läpi käydessä ne voivat olla 
 missä järjestyksessä tahansa, ja järjestys voi muuttua, kun rakenteeseen 
 lisätään uusia alkioita.
-
-Voit lukea lisää
-[HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)
--luokasta ja sen metodeista Javan dokumentaatiosta.
 
 ## LinkedHashMap
 
 `LinkedHashMap` on `HashMap`-luokasta periytyvä luokka, joka ylläpitää 
 sisäisesti hajautustaulun lisäksi linkitettyä listaa kaikista lisätyistä 
 alkioista. Tämä mahdollistaa alkioiden **lisäysjärjestyksen** säilyttämisen, 
-mutta lisätty tietorakenne vie enemmän muistia ja sen ylläpitäminen tekee tästä 
-toteutuksesta hieman `HashMap`-luokan toteutusta hitaamman.
+mutta lisätty tietorakenne vie hieman enemmän muistia.
 
 ```java
 //-void main() {
@@ -326,19 +311,19 @@ for (String key : linked.keySet()) {
 //-}
 ```
 
-Voit lukea lisää
-[LinkedHashMap](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html)
--luokasta ja sen metodeista Javan dokumentaatiosta.
-
 ## TreeMap
 
 `TreeMap` eroaa edellisistä siten, että se käyttää hajautustaulun sijaan
-puurakenneta sisäisenä tietorakenteenaan. Se toteuttaa `SortedMap`- ja
+puurakennetta sisäisenä tietorakenteenaan. Se toteuttaa `SortedMap`- ja
 `NavigableMap`-rajapinnat. `SortedMap` takaa, että avaimet ovat aina
 **luonnollisessa järjestyksessä**, ja `NavigableMap` lisää tähän mahdollisuuden 
-etsiä esimerkiksi lähintä avainta tietyn arvon ylä- tai alapuolelta. `TreeMap` 
-on puurakenteen vuoksi operaatioiltaan hitaampi kuin `HashMap`, mutta se 
-mahdollistaa alkioiden järjestämisen. `TreeMap`-luokan operaatioiden
+etsiä esimerkiksi lähintä avainta tietyn arvon ylä- tai alapuolelta. Muista
+tässä osassa mainituista hakurakenteista poiketen `TreeMap` ei salli
+`null`-arvoa avaimena, sillä sitä ei voitaisi vertailla muihin avaimiin
+niiden järjestyksen selvittämiseksi.
+
+`TreeMap` on puurakenteen vuoksi operaatioiltaan hitaampi kuin `HashMap`, mutta 
+se mahdollistaa alkioiden järjestämisen. `TreeMap`-luokan operaatioiden
 aikavaativuus on *O(log n)*.
 
 ```java
@@ -360,63 +345,76 @@ avaimia tai pareja eri tavoin avainten järjestykseen perustuen.
 
 ```java
 //-void main() {
-TreeMap<String, Integer> tree = new TreeMap<>();
+NavigableMap<String, Integer> tree = new TreeMap<>();
 tree.put("B", 2);
 tree.put("H", 3);
 tree.put("A", 1);
+tree.put("Q", 1);
 
-// Ensimmäinen avain järjestyksessä on "A".
-IO.println(tree.firstKey()); 
+// Tulostetaan pienin ja suurin avain.
+IO.println("Pienin avain: " + tree.firstKey());
+IO.println("Suurin avain: " + tree.lastKey()); 
 
-// Viimeinen avain järjestyksessä on "H".
-IO.println(tree.lastKey()); 
-
-// Pienin avain, joka on suurempi kuin "B". Palauttaa "H";
-IO.println(tree.higherKey("B")); 
-
-// Suurin avain, joka on pienempi kuin "B". Palauttaa "A";
+// Tulostetaan annettua avainta lähin pienempi ja suurempi avain.
 IO.println(tree.lowerKey("B")); 
+IO.println(tree.higherKey("B"));
 
 // Palauttaa koko tietorakenteen käänteisessä järjestyksessä.
 IO.println(tree.descendingMap()); 
 //-}
 ```
 
-Voit lukea lisää
-[TreeMap](https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html)
--luokasta ja sen metodeista Javan dokumentaatiosta.
+Lisäksi `TreeMap` mahdollistaa alijoukkojen muodostamisen `subMap`-metodilla.
+
+```java
+//-void main() {
+NavigableMap<String, Integer> tree = new TreeMap<>();
+tree.put("B", 2);
+tree.put("H", 3);
+tree.put("A", 1);
+
+// Muodostetaan uusi hakurakenne alkioista, jotka ovat A-C välillä.
+// Parametrien true-arvot kertovat, että myös A ja C otetaan mukaan.
+Map<String, Integer> alipuu = tree.subMap("A", true, "C", true);
+IO.println(alipuu);
+//-}
+```
+
+---
 
 <task>
-  <task-title>Tehtävä 5.5:<points>1 p.</points> </task-title>
+  <task-title>Tehtävä 5.5: Sanat<points>1 p.</points> </task-title>
   <handout>
 
-...
+{{#include ../exercises/5-5-sanat/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava5">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 <task>
-  <task-title>Tehtävä 5.6:<points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 5.6: Varaukset<points>1 p.</points> </task-title>
   <handout>
 
-...
+{{#include ../exercises/5-6-varaukset/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava6">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 <task>
-  <task-title>Tehtävä 5.7:<points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 5.7: Hajautustaulu<points>1 p.</points> </task-title>
   <handout>
 
-...
+{{#include ../exercises/5-7-hajautustaulu/handout.md}}
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava7">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-# Alkuperäinen hahmotelma
+---
+
+# Sisällön hahmotelma
 
 - `Map`
     - Kokoelma avain-arvoparien säilyttämiseen ja hakemiseen ✔
