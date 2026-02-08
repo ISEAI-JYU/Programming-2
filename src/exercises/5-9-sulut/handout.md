@@ -6,6 +6,7 @@ Jos kaikilla suluilla on pari, palauta parien lukumäärä.
 Jos yhdeltäkin sululta puuttuu pari, palauta -1. 
 
 Esimerkit:
+
 | Merkkijono | Tulos  |
 |------------|--------|
 | ""         | 0      |
