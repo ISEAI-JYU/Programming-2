@@ -368,11 +368,8 @@ void main() {
 
 {{#include ../exercises/5-10-summa-pinolla/handout.md}}
 
-<task-link><a
-href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava10">Tee
-tehtävä TIMissä</a></task-link>
-
   </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava10">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 Kertoman ja puun korkeuden laskemisessa ei tarvittu erillistä tilatietoa.

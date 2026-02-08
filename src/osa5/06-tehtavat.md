@@ -51,16 +51,63 @@
 </task>
 
 <task>
+  <task-title>Tehtävä 5.5: Sanat<points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-5-sanat/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava5">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 5.6: Varaukset<points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-6-varaukset/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava6">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 5.7: Hajautustaulu<points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-7-hajautustaulu/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava7">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title>Tehtävä 5.8: Joukot<points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-8-joukot/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava8">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 5.9: Sulut<points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/5-9-sulut/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava9">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+<task>
   <task-title>Tehtävä 5.10: Summa pinolla. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/5-10-summa-pinolla/handout.md}}
 
-<task-link><a
-href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava10">Tee
-tehtävä TIMissä</a></task-link>
-
   </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava10">Tee tehtävä TIMissä</a></task-link>
 </task>
 
 <task>
