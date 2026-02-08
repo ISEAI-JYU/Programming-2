@@ -7,9 +7,8 @@
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät, mitä kokoelma tarkoittaa ja miksi niitä käytetään ohjelmoinnissa.
-> - Ymmärrät Javan kokoelmakehyksen (*Collections Framework*)
->   perusrakenteen.
-> - Tunnet Javan `Collection`-rajapinnan metodit ja osaat käyttää ne ohjelmassa.
+> - Ymmärrät Javan kokoelmakehyksen (*Collections Framework*) perusrakenteen.
+> - Tunnet Javan `Collection`-rajapinnan metodit ja osaat käyttää niitä ohjelmassa.
 
 Ohjelmoinnin ytimessä on usein tiedon koostaminen järkeviksi kokonaisuuksiksi.
 Olemme aiemmin käyttäneet taulukoita ja listoja samantyyppisten arvojen, kuten
@@ -197,64 +196,3 @@ Sivuhuomautuksena mainittakoon, että `Collection` todellakin *perii*
 `Iterable`-rajapinnan. Emme käsitelleet rajapinnan perintää aiemmin, mutta idea
 toimii rajapinnoissa samalla tavalla kuin luokissa: kaikki
 `Collection`-toteutukset tarjoavat myös `Iterable`-rajapinnan vaatimukset. 
-
-## Mieti mitä näille tehdään
-
-- `Collection`
-    - Kokoelma alkioita, joita voi käydä läpi järjestelmällisesti
-    - Yleinen rajapinta mille tahansa kokoelmalle
-    - Perii `Iterable`-rajapintaa, eli alkiot voi käydä läpi `for each`
-      -silmukalla
-    - Esimerkki kokoelmasta: `ArrayList`
-    - Mitä kokoelmalla voi tehdä (esimerkkejä `ArrayList`in lautta):
-        - Lisätä ja poistaa alkioita
-        - Selvittää, löytyykö kokoelmasta alkioita
-        - Selvittää, kuinka monta alkiota on kokoelmassa ja onko kokoelma tyhjä
-        - Tyhjentää kokoelma
-        - Käydä jokainen alkio läpi iteroimalla tai Streamilla
-
-
-> [!WIP] 
-> 
-> Ajatuksia tehtäville:
->
-> - Ota joku vanha tuttu tehtävä ja toteuta se kokoelmalle (esim. Keskiarvon
->   laskeminen)
-> - Tutustu `Collections`-luokkaan, tee esim. valmiista kokoelmasta sellaisen,
->   että sitä ei voi muokata (`Collections.unmodifibleCollection`); laske
->   kokoelmassa annettun luvun frekvenssi/maksimi/minimi.
-> - Tehtävien tarkistimessa voi olla erilaisia kokoelmia => testataan, että
->   opiskelijan koodi toimii erilaisilla kokoelmilla
-> - Tee luokka `NotNullCollection<T> implements Collection<T>` joka tallentaa
->   attribuutiksi `Collection`in, välittää kaikki kutsut attribuuttiin (eli
->   luokka on ikään kuin käärijäluokka), mutta kokoelmaan ei saa lisätä
->   `null`-arvoja. Eli pitää ylikirjoittaa `add` yms.
-
-## Miksi ja milloin käyttäisin kokoelmia?
-
-- Listat ja taulukot toimivat pitkälle
-- Monissa tapauksissa taulukolla pärjää todella pitkälle => taulukko on myös
-  eräänlainen kokoelma
-
-- Valinta tarkoittaa sekä kokoelmarajapinnan valinta sekä sen vastaavan
-  toteutuksen valinta
-- Kumpikin tärkeä => rajapinta vaikuttaa siihen, miten ohjelman koodi
-  kirjoitetaan (kokoelmarajapinta antaa takeita); toteutus vaikuttaa siihen,
-  kuinka paljon aikaa tai muistia eri operaatiot vie ja tai mitä
-  "lisäominaisuuksia" toteutus tarjoaa (esim. samanaikaisuus, alkioiden
-  järjestys)
-- <https://dev.java/learn/api/collections-framework/intro/>: tarkempia ohjeita
-  valintaa, voi tiivistää
-- Javassa jos yleispätevissä algoritmeissa voi käyttää mielellään
-  `Collection`-tyyppiä, sillä algoritmia voi sitten käyttää kaikilla kokoelmilla
-- Javassa `Collection` tarjoaa jo jotain toimintoja, joita perustaulukko ei
-  tarjoa (esim. olemassaolon tarkistus, poistaminen)
-- Seuraavissa luvuissa esitellään erilaisia kokoelmatyyppejä
-   - Jokaisen yhteydessä esitetään sen olennaiset toiminnot ja vaatimukset sekä
-     toteutukset ja niiden mahdolliset hyödyt ja käyttötarkoitukset 
-
-> [!WIP] 
-> 
-> Ehkä ei tehtäviä varsinaisesti, mutta jotain esimerkkejä voisi heittää?
->
-> Jos tehtäviä, niin yllä olevat käyvät hyvin myös tähän kohtaan.
