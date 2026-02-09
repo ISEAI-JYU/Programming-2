@@ -97,8 +97,7 @@ viitetyypistä eli `Object`:sta ja pakottaa se tyyppimuunnoksella geneeriseksi.
 ```
 
 Kääntäjä tietää, että tämä muunnos ei ole täysin turvallinen. Se ei pysty
-varmistamaan, että taulukkoon ei koskaan päädy väärän tyyppisiä alkioita. Tästä
-syystä kääntäjä antaa varoituksen. Varoituksen ohittava annotaatio
+varmistamaan, että taulukkoon ei koskaan päädy väärän tyyppisiä alkioita. Varoituksen ohittava annotaatio
 `@SuppressWarnings("unchecked")` ei tee koodista turvallisempaa eikä
 vaarallisempaa. Se ainoastaan kertoo kääntäjälle, että tiedostat tämän
 rajoituksen ja hyväksyt sen. Ilman annotaatiota ohjelma toimii täsmälleen
