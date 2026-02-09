@@ -380,9 +380,10 @@ eri sisältöisiä, jolloin syntyy niin sanottu *törmäys*. Tämä tarkoittaa, 
 vain päätyvät samaan lokeroon, mutta `equals` erottelee ne kuitenkin toisistaan.
 
 **Toteutus:** Helpoin ja turvallisin tapa toteuttaa `hashCode` on käyttää Javan
-valmista apumetodia `Objects.hash`. **Tärkeää**: `hashCode`-metodin on käytettävä
-laskennassa tismalleen samoja kenttiä kuin `equals`-metodin. Jos `equals` vertailee
-nimeä ja opiskelijanumeroa, `hashCode` ei voi jättää toista pois.
+valmista apumetodia `Objects.hash`. On erittäin tärkeää, että `hashCode`-arvon
+laskennassa käytetään tismalleen samoja kenttiä kuin `equals`-metodissa. Jos
+`equals` vertailee nimeä ja opiskelijanumeroa, `hashCode` ei voi jättää toista
+pois.
 
 ```java,ignore
 @Override
