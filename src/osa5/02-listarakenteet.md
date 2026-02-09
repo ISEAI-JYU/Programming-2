@@ -185,7 +185,7 @@ kohdasta "Hide null elements".
 
 Tehdään seuraavaksi metodi `get(int index)`, joka palauttaa listan tietyn indeksin
 alkion, sekä metodi `set(int index, T element)`, joka asettaa tietyn alkion tiettyyn
-indeksiin. Lopuksi vielä `size()`, jolla saadaan listan koko.
+indeksiin. 
 
 ```java,ignore
 public T get(int index) {
@@ -200,10 +200,6 @@ public void set(int index, T element) {
     throw new IndexOutOfBoundsException("Indeksi " + index + " ei ole välillä 0.." + (koko - 1));
   }
   alkiot[index] = element;
-}
-
-public int size() {
-  return koko;
 }
 ``` 
 
