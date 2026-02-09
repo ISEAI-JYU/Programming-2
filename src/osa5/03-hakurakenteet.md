@@ -410,11 +410,6 @@ IO.println(alipuu);
 //-}
 ```
 
-`TreeMap` sopii käytännössä hyvin esimerkiksi varauskalenteriin, jossa avain on
-päivämäärä tai kellonaika. Tällöin voidaan helposti hakea seuraava varaus
-(`higherKey`), edellinen varaus (`lowerKey`) tai tietyn aikavälin varaukset
-(`subMap`) ilman, että tietorakennetta täytyy järjestää erikseen ennen hakua.
-
 Rakenteiden valinta riippuu siis tarpeesta: `HashMap` on yleensä paras, kun
 tarvitaan mahdollisimman nopeaa avaimella hakua eikä järjestyksellä ole väliä.
 `LinkedHashMap` sopii tilanteisiin, joissa lisäysjärjestys halutaan säilyttää.
