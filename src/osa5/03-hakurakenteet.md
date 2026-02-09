@@ -3,8 +3,9 @@
 > [!Osaamistavoitteet]
 >
 > - Tunnet Java-kielen yleisimmät valmiit tietorakenteet: `Map` ja sen toteutukset `HashMap`, `LinkedHashMap` ja `TreeMap`.
-> - Osaat käyttää ym. tietorakenteita.
-> - Ymmärrät ym. tietorakenteiden keskeisimmät operaatiot ja niiden aikakompleksisuudet. 
+> - Osaat käyttää em. tietorakenteita.
+> - Ymmärrät em. tietorakenteiden keskeisimmät operaatiot ja tunnistat niiden
+>   aikavaativuudet.
 > - Ymmärrät, miksi oliot tarvitsevat `hashCode`-metodin.
 
 Kuvitellaan tilanne, jossa ylläpidämme laajaa opiskelijarekisteriä. Haluamme
@@ -17,13 +18,13 @@ haluaisimme hakea tietyn henkilön tiedot, joutuisimme käymään listan alkioit
 läpi, kunnes oikea henkilö löytyy. Tämä ei ole hirveän tehokasta, jos 
 opiskelijoita on hyvin suuri määrä. 
 
-Hakurakenteet tarjoavat tähän ratkaisun mahdollistamalla suoran haun jonkin 
-tunnuksen perusteella parhaimmassa tapauksessa ilman koko listan läpikäymistä. 
-Tunnuksena voisi toimia esimerkiksi opiskelijan numero. Hakurakenne toimii kuin 
-sanakirja, josta voimme katsoa suoraan oikean kohdan sen sijaan, että lukisimme 
-koko kirjan kannesta kanteen löytääksemme tietyn sanan. Hakurakenteita 
-kutsutaankin useissa ohjelmointikielissä nimellä *dictionary*. Javassa ne 
-tunnetaan nimellä *map*.
+Hakurakenteet tarjoavat tähän ratkaisun mahdollistamalla suoran haun jonkin
+tunnuksen perusteella parhaimmassa tapauksessa ilman koko listan läpikäymistä.
+Tunnuksena voisi toimia esimerkiksi opiskelijan numero. Hakurakenne toimii kuin
+sanakirja, josta voimme katsoa suoraan oikean kohdan sen sijaan, että lukisimme
+koko kirjan kannesta kanteen löytääksemme tietyn sanan. Hakurakenteita
+kutsutaankin useissa ohjelmointikielissä nimellä *sanakirja* (engl.
+*dictionary*). Javassa ne tunnetaan nimellä *map*.
 
 ```java
 //-void main() {
@@ -41,18 +42,18 @@ IO.println("Opiskelija, jonka numero on 123: " + opiskelijat.get("123"));
 ```
 
 Hakurakenteet ovat tietorakenteita, joihin tallennetaan tietoa
-avain-arvo-pareina (engl. *key-value pair*), joista käytetään myös 
-nimitystä `Entry`. Toisin kuin listoissa, joissa tietoa hallinnoidaan 
-numeerisen indeksin avulla, hakurakenteeseen tallennettuun arvoon voidaan päästä 
-käsiksi sen avaimen perusteella. Avaimet ovat aina uniikkeja; yksi avain voi 
-esiintyä hakurakenteessa vain kerran ja se osoittaa vain yhteen arvoon 
-kerrallaan. Arvot sen sijaan eivät ole uniikkeja, eli eri avaimet voivat johtaa 
-samaan arvoon. 
+avain-arvo-pareina (engl. *key-value pair*), joista käytetään myös nimitystä
+`Entry`. Siinä missä listassa yksilöllinen, kokonaislukutyyppinen indeksi toimii
+"reittinä" sisältöön, hakurakenteessa reittinä toimii yksilöllinen, minkä
+tahansa tyyppinen olio. Avaimet ovat aina uniikkeja; yksi avain voi esiintyä
+hakurakenteessa vain kerran ja se osoittaa vain yhteen arvoon kerrallaan. Arvot
+sen sijaan eivät ole uniikkeja. 
 
 > [!HUOMAUTUS]
-> Javassa sekä avaimet että arvot ovat on aina olioita. Ne eivät 
-> voi olla primitiivisiä tietotyypejä, kuten `int` tai `double`, vaan tähän 
-> tarkoitukseen on käytettävä vastaavia kääreluokkia, kuten `Integer` tai `Double`. 
+> Javassa sekä avaimet että arvot ovat aina olioita. Ne eivät 
+> voi olla primitiivityyppejä, kuten `int` tai `double`, vaan tähän 
+> tarkoitukseen on käytettävä vastaavia kääreluokkia, kuten `Integer` tai
+> `Double`. 
 
 ## Map
 
@@ -68,14 +69,16 @@ vuoksi hakurakenteita ei voida iteroida esimerkiksi `for each` -silmukan avulla,
 vaan alkioiden läpikäynti on tehtävä hieman hankalammin avainten tai arvojen 
 kautta.
 
-Tutustutaan nyt `Map`-rajapinnan tärkeimpiin metodeihin.
+Tutustutaan nyt `Map`-rajapinnan tärkeimpiin metodeihin. Käytämme esimerkeissä
+konkreettista `HashMap`-luokkaa, mutta kaikki esimerkeissä käytetyt metodit ovat
+määritelty `Map`-rajapinnassa, joten ne toimivat kaikissa `Map`-toteutuksissa.
 
 ## Alkion lisääminen ja poistaminen
 
-Alkioiden lisääminen onnistuu `put`, `putIfAbsent`. Metodit ottavat ensimmäisenä
-parametrina avaimen ja toisen sinä vastaavan arvon. Jos avain on jo valmiiksi
-tietorakenteessa, metodit palauttavat sitä vastaavan alkuperäisen arvon ennen 
-ylikirjoittamista. Jos avainta ei ole valmiiksi tietorakenteessa, metodit 
+Alkioiden lisääminen onnistuu `put`- ja  `putIfAbsent`-metodeilla. Metodit
+ottavat parametreina avaimen ja sitä vastaavan arvon. Jos avain on jo valmiiksi
+tietorakenteessa, metodit palauttavat sitä vastaavan alkuperäisen arvon ennen
+ylikirjoittamista. Jos avainta ei ole valmiiksi tietorakenteessa, metodit
 palauttavat `null`.
 
 ```java
@@ -112,12 +115,11 @@ IO.println(arvosanat);
 //-}
 ```
 
-## Alkion löytäminen avaimen avulla
+## Arvon hakeminen avaimen avulla
 
-Avainta vastaavan arvon hakemiseen voidaan käyttää `get` ja 
-`getOrDefault`-metodeja. Jos avainta ei löydy, `get` palauttaa `null`, mutta 
-`getOrDefault`-metodille voi itse määrittää tässä tilanteessa palautettavan 
-oletusarvon.
+Avainta vastaavan arvon hakemiseen voidaan käyttää `get` ja
+`getOrDefault`-metodeja. Jos avainta ei löydy, `get` palauttaa `null`.
+`getOrDefault`-metodille voi itse määrittää palautettavan oletusarvon.
 
 ```java
 //-void main() {
@@ -205,74 +207,95 @@ for (Map.Entry<String, Integer> pari : arvosanat.entrySet()) {
 
 ## Hajautustaulu
 
-Hajautustaulu on taulukkopohjainen tietorakenne, jota käytetään
-avain-arvo-parien tallentamiseen. Sen toiminta perustuu olioiden `equals`- ja 
-`hashCode`-metodeihin. Kun tietorakenteeseen lisätään avain-arvo-pari, sen 
-sijainti taulukossa määritetään avaimen `hashCode`-metodin tuottaman 
-*hajautusarvon* perusteella. Hajautusarvon tuottavaa funktiota kutsutaan 
-hajautusfunktioksi.
+Ennen kuin tutustumme tarkemmin konkreettisiin Map-toteutuksiin, katsotaan ensin
+yleisellä tasolla *hajautustaulun* (engl. *hash table*) toimintaperiaatetta.
+Kyseessä on klassinen tietorakenteiden taustalla oleva logiikka, joka toimii
+perustana useille Map-toteutuksille, kuten Javan `HashMap`- ja
+`LinkedHashMap`-luokille.
 
-Hajautusarvo on kokonaisluku, jonka arvo voi olla myös negatiivinen. Voimme 
-määrittää sitä vastaavan indeksin taulukossa yksinkertaisesti laskemalla sen 
-ja taulukon koon jakojäännöksen, mikä varmistaa, että indeksi on aina taulukon
-rajojen sisällä. Hajautustaulun taulukon kokoa kutsutaan kapasiteetiksi
-(engl. *capacity*).
+Hajautustaulun toteutus perustuu taulukkoon, jota käytetään avain-arvo-parien
+tallentamiseen. Menetelmän keskeinen idea on siinä, että tietoa ei tarvitse
+etsiä selaamalla, vaan oikea sijainti lasketaan avaimen perusteella.
+
+Kun tietorakenteeseen lisätään pari, sen paikka taulukossa määritetään
+seuraavasti:
+
+ 1. Hajautusarvo: Avaimelle (key) lasketaan kokonaisluku hashCode-metodin avulla.
+ 2. Indeksi: Koska hajautusarvo voi olla valtava tai negatiivinen, se täytyy "leikata" taulukon kokoon sopivaksi.
+
+Tämä tehdään tyypillisesti laskemalla hajautusarvon jakojäännös hajautustaulun
+taustalla olevan taulukon koosta (kapasiteetti). Tästä luvusta otetaan
+itseisarvo, joka on aina välillä [0..kapasiteetti-1].
 
 ```
 indeksi = itseisarvo(hajautusarvo % kapasiteetti)
 ```
 
-Hajautustaulussa on rajallinen määrä indeksejä, joten useampi alkio voi päätyä 
-samaan indeksiin. Tätä kutsutaan törmäykseksi (engl. *collision*).
-Törmäystilanteiden käsittelemiseen on kaksi yleistä tapaa; ensimmäinen on myös 
-Javan `HashMap`-luokan käyttämä ketjutus (engl. *chaining*), jossa 
-hajautustaulun indeksissä on lista, johon siihen indeksiin sijoittuvat alkiot 
-lisätään. Toinen tapa on avoin hajautus (engl. *open addressing*), jossa 
-hajautustaulun indeksit sisältävät listan sijaan itse alkioita ja törmäävä alkio 
-lisätään seuraavaan vapaaseen indeksiin.
+Koska mahdollisia hajautusarvoja on valtavasti, mutta taulukossa on vain
+rajallinen määrä indeksejä, on mahdollista, että kaksi eri avainta päätyy samaan
+indeksiin. Tätä kutsutaan törmäykseksi. Törmäysten hallintaan on kaksi
+päästrategiaa: 
 
-Törmäysten määrä vaikuttaa suoraan tietorakenteen suorituskykyyn. Parhaimmillaan
-hajautustaulun lisäys-, poisto- ja hakuoperaatiot ovat vakioaikaisia eli
-aikavaativuudeltaan *O(1)*, sillä oikea indeksi saadaan suoraan yksinkertaisella 
-laskutoimituksella. Huonoimmassa tapauksessa kaikki alkiot päätyvät samaan 
+ 1. Ketjutus (engl. Chaining): Tämä on muun muassa Javan `HashMap`-luokan
+käyttämä tapa. Hajautustaulun jokainen indeksi on "ämpäri", joka sisältää
+listan. Kaikki samaan indeksiin osuvat alkiot lisätään tähän listaan jonoon.
+
+ 2. Avoin hajautus (engl. Open Addressing): Indeksissä on tilaa vain yhdelle
+    alkiolle. Jos paikka on varattu, etsitään seuraava vapaa paikka esimerkiksi
+    siirtymällä taulukossa eteenpäin, kunnes tyhjä kohta löytyy.
+
+Alkiota hakiessa lasketaan ensin indeksi samalla kaavalla kuin lisäyksessä.
+Tämän jälkeiset vaiheet riippuvat strategiasta. Ketjutusmenetelmää käytettäessä
+alkiota lähdetään etsimään indeksistä löytyvästä listasta. Avointa hajautusta
+käytettäessä lähdetään käymään hajautustaulun taulukon indeksejä läpi, kunnes
+etsitty avain (tai `null`-arvo) löytyy.
+
+Törmäysten määrä vaikuttaa suoraan tietorakenteen suorituskykyyn. Hajautustaulun
+lisäys-, poisto- ja hakuoperaatiot ovat hyvin nopeita. Niiden keskimääräinen
+aikavaativuus on $O(1)$, sillä oikea indeksi saadaan suoraan yksinkertaisella
+laskutoimituksella. Huonoimmassa tapauksessa kaikki alkiot päätyvät samaan
 indeksiin, jolloin oikean alkion löytämiseksi joudutaan käymään koko
-tietorakenne läpi, minkä vuoksi aikavaativuus laskee tasolle *O(n)*.
+tietorakenne läpi, minkä vuoksi pahin tapaus on $O(n)$.
 
-Alkiota hakiessa tarkistetaan ensimmäiseksi sen hajautusarvon mukainen indeksi. 
-Ketjutusmenetelmää käytettäessä alkiota lähdetään etsimään indeksistä löytyvästä 
-listasta, kun taas avointa hajautusta käytettäessä lähdetään käymään 
-hajautustaulun taulukon indeksejä läpi, kunnes löytyy oikea alkio tai alkio, 
-joka ei kuulu samaan indeksiin. Ideaalitilanteessa jokainen alkio päätyy omaan 
-indeksiinsä ilman törmäyksiä, jolloin haku on välitöntä, sillä haun ei tarvitse 
-selata tietorakennetta läpi löytääkseen oikean alkion.
+> [!HUOMAUTUS]
+> Aikavaativuuksia käsitellään perusteellisemmin [Algoritmit 1
+> -opintojaksolla](https://opinto-opas.jyu.fi/2025/fi/opintojakso/itka201/); tässä vain sivuamme niitä.
+> Tämän opintojakson osalta riittää ymmärtää, että $O(1)$ tarkoittaa, että
+> operaatio onnistuu vakioajassa, eli se ei riipu tietorakenteen koosta. $O(n)$
+> tarkoittaa, että operaation vaatima aika kasvaa samassa suhteessa
+> tietorakenteen kokoon. Jos esimerkiksi tietorakenteessa on 1000 alkiota,
+> $O(n)$-operaatio vaatisi 1000 kertaa enemmän aikaa kuin $O(1)$-operaatio.
 
-Hajautustaulun suorituskyky paranee merkittävästi, jos sille määritetään 
-käyttötarkoitukseen sopiva kapasiteetti jo luontivaiheessa. Jos kapasiteetti 
-on liian pieni suhteessa alkioiden määrään, taulukon täyttöaste 
-(engl. *load factor*) nousee liian korkeaksi, mikä johtaa törmäysten 
-lisääntymiseen.
+Jotta hajautustaulu pysyisi nopeana ($O(1)$), törmäykset on minimoitava. Tähän
+vaikuttaa täyttöaste (engl. *load factor*). Jos taulukon kapasiteetti on liian
+pieni suhteessa alkioiden määrään, taulukko tulee liian täyteen ja törmäykset
+lisääntyvät. Kun täyttöaste ylittää tietyn rajan, hajautustaulu kasvatetaan --
+yleensä tuplataan -- ja kaikki alkiot sijoitetaan uudelleen uuteen, isompaan
+taulukkoon. Tämä operaatio on raskas, joten oikean alkukapasiteetin arviointi on
+tärkeää.
 
 Hajautustaulu toimii kuin varasto, jossa on monta säilytyslaatikkoa, joihin
 voidaan laittaa kuinka monta esinettä tahansa. Kapasiteetti kuvastaa
-säilytyslaatikoiden lukumäärää ja laatikot ovat hajautustaulun *indeksejä*. 
-Laatikot ovat tapa järjestellä esineitä niin, että löydämme haluamamme esineen 
-varastosta helpommin. Yksi laatikko voi olla vaatteita varten, toinen työkaluja, 
-ja kolmanteen laitetaan kaikki muut. Voimme yksinkertaistetusti ajatella, että 
-esimerkiksi kaikki työkalut saisivat saavat hajautusfunktion tuloksena saman 
-indeksin ja päätyvät samaan laatikkoon. Etsiessämme vasaraa voimme heti katsoa 
-työkalujen laatikosta, mutta jos se sisältää suuren määrän esineitä, oikean 
-työkalun löytämiseen voi silti mennä aikaa.
+säilytyslaatikoiden lukumäärää ja laatikot ovat hajautustaulun *indeksejä*.
+Laatikot ovat tapa järjestellä esineitä niin, että löydämme haluamamme esineen
+varastosta helpommin. Yksi laatikko voi olla vaatteita varten, toinen työkaluja,
+ja kolmanteen laitetaan kaikki muut. Voimme yksinkertaistetusti ajatella, että
+esimerkiksi kaikki työkalut saisivat hajautusfunktion tuloksena saman indeksin
+ja päätyvät samaan laatikkoon. Etsiessämme vasaraa voimme heti katsoa työkalujen
+laatikosta, mutta jos se sisältää suuren määrän esineitä, oikean työkalun
+löytämiseen voi silti mennä aikaa.
 
 ## HashMap
 
-`HashMap` on yleisimmin käytetty `Map`-rajapinnan toteuttava luokka. 
-`HashMap`-luokan toteutus perustuu edellä mainittuun hajautustauluun ja se 
-tarjoaa parhaan keskimääräisen suorituskyvyn perusoperaatioille. Alkioiden 
+`HashMap` on yleisimmin käytetty `Map`-rajapinnan toteuttava luokka.
+`HashMap`-luokan toteutus perustuu edellä mainittuun hajautustauluun ja se
+tarjoaa parhaan keskimääräisen suorituskyvyn perusoperaatioille. Alkioiden
 hakeminen, lisääminen ja poistaminen avaimen perusteella onnistuu parhaimmillaan
-vakioajassa *O(1)*. Kaikkien alkioiden läpikäyminen on kuitenkin 
+vakioajassa $O(1)$. Kaikkien alkioiden läpikäyminen on kuitenkin
 monimutkaisemman sisäisen tietorakenteen vuoksi hieman hitaampaa kuin listoissa.
 `HashMap`-luokan suorituskykyerot tulevat paremmin esille, kun alkioita on hyvin
-suuri määrä; jos alkioita on vähän, eroa esimerkiksi listaan ei juurikaan huomaa.
+suuri määrä; jos alkioita on vähän, eroa esimerkiksi listaan ei juurikaan
+huomaa.
 
 `HashMap` ei takaa alkioiden järjestystä; alkioita läpi käydessä ne voivat olla 
 missä järjestyksessä tahansa, ja järjestys voi muuttua, kun rakenteeseen 
@@ -324,7 +347,7 @@ niiden järjestyksen selvittämiseksi.
 
 `TreeMap` on puurakenteen vuoksi operaatioiltaan hitaampi kuin `HashMap`, mutta 
 se mahdollistaa alkioiden järjestämisen avaimen perusteella. `TreeMap`-luokan 
-operaatioiden aikavaativuus on *O(log n)*.
+operaatioiden aikavaativuus on $O(\log n)$.
 
 ```java
 //-void main() {
