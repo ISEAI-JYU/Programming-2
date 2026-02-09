@@ -397,13 +397,13 @@ public int hashCode() {
 
 Hajauttavien rakenteiden kanssa on yksi vaaranpaikka: olioiden muuttaminen.
 
-Jos lisäät olion HashSet-kokoelmaan ja sen jälkeen muutat olion kenttiä (esim.
-opiskelijanumeroa), olion laskennallinen hashCode muuttuu. Olio on kuitenkin
+Jos lisäät olion `HashSet`-kokoelmaan ja sen jälkeen muutat olion kenttiä (esim.
+opiskelijanumeroa), olion laskennallinen `hashCode` muuttuu. Olio on kuitenkin
 edelleen alkuperäisen hajautusarvon mukaisessa lokerossa. Kun yrität etsiä sitä
-uudella arvolla, Java katsoo uuteen lokeroon – eikä löydä mitään.
+uudella arvolla, Java katsoo uuteen lokeroon eikä löydä mitään.
 
-Nyrkkisääntö: Jos käytät oliota HashMapin avaimena tai HashSetin jäsenenä, pyri
-pitämään kyseinen olio muuttumattomana (immutable).
+Nyrkkisääntö: Jos käytät oliota `HashMap`-avaimena tai `HashSet`-jäsenenä, pyri
+pitämään kyseinen olio muuttumattomana.
 
 Vinkki: Jos käytät Javan uudempia record-tietueita, sinun ei tarvitse huolehtia
 tästä. Java generoi automaattisesti oikeaoppiset `equals`- ja
