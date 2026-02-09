@@ -1,9 +1,5 @@
 # Rekursio
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 9. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät miten rekursio toimii

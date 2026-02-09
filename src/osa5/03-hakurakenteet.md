@@ -1,9 +1,5 @@
 # Hakurakenteet
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 9. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Tunnet Java-kielen yleisimmät valmiit tietorakenteet: `Map` ja sen toteutukset `HashMap`, `LinkedHashMap` ja `TreeMap`.

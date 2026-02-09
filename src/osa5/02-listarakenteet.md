@@ -1,9 +1,5 @@
 # Listarakenteet
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 9. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 `List`-rajapinta kuvaa kokoelmaa, jossa alkiot ovat tietyssä järjestyksessä ja
 niihin voidaan viitata indeksin avulla. Tämä vastaa monella tapaa taulukkoa,
 mutta tarjoaa huomattavasti joustavamman rajapinnan. Sivuhuomautus: Oikeampaa
