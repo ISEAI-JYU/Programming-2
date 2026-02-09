@@ -147,14 +147,13 @@ ei käytännössä tapahdu normaalissa käytössä.
 
 ## Listan perustoiminnot
 
-Ensimmäisenä toteutetaan metodi `add(element)`, joka lisää alkion listan
+Ensimmäisenä toteutetaan metodi `add(T element)`, joka lisää alkion listan
 loppuun. Emme vielä murehdi sitä, mitä tapahtuu, jos taulukko on täynnä. Jos taulukossa
 on tilaa, lisääminen on yksinkertaista: asetetaan alkio taulukon seuraavaan vapaaseen
 kohtaan ja kasvatetaan kokoa yhdellä. Jos taulukko on täynnä, palataan vain
 `return`-lauseella tekemättä mitään -- korjataan tämä myöhemmin.
 
-Koska emme voi vielä lukea alkioita listasta, emme voi ohjelmallisesti tarkistaa,
-että lisäys onnistui. Voimme kuitenkin käyttää debuggeria. Kutsutaan 
+Voimme debuggerilla tarkistaa, että lisäys onnistui käyttämällä. Kutsutaan 
 `add`-metodia pääohjelmasta ja asetetaan sen jälkeen keskeytyskohta.
 
 ```java,ignore
