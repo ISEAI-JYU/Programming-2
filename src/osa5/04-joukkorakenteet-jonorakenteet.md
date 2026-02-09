@@ -473,7 +473,7 @@ kuitenkin erittäin nopeaa ja tapahtuu vakioajassa *O(1)*.
   <task-title>Tehtävä 5.8: Joukot<points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/5-8-joukot/handout.md}}
+{{#include ../exercises/5-8-joukot/handout.md}} 
 
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa5/tehtava8">Tee tehtävä TIMissä</a></task-link>
