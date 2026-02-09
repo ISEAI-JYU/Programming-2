@@ -65,8 +65,7 @@ metodeja, mutta ei sitä, miten ne varsinaisesti toteutetaan. Puolestaan
 `ArrayList` on eräs luokka, joka toteuttaa `List`-rajapinnan käyttämällä
 taulukkoja. Muita valmiita listan toteutuksia käsitellään [osassa 5.2](02-listarakenteet.md).
 
-Javan kokoelmakehyksen oleellisin rajapinta on `Collection` ([Java
-Doc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collection.html)),
+Javan kokoelmakehyksen oleellisin rajapinta on [`Collection`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Collection.html),
 joka on yleinen, korkean tason rajapinta. `List`-rajapinta periytyy 
 `Collection`-rajapinnasta, joten esimerkiksi edellä mainittu `ArrayList` voidaan 
 sijoittaa `Collection`-tyyppiseen muuttujaan:
