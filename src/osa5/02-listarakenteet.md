@@ -371,7 +371,7 @@ hajautusarvon ja hyppää suoraan oikeaan lokeroon.
 käyttäen `equals`-metodia varmistaakseen, onko etsitty olio todella siellä.
 
 Javan kokoelmat luottavat sokeasti siihen, että jos `equals` sanoo, että kaksi
-oliota on samat, niiden hajautusarvojen on oltava samat. 
+oliota ovat samat, niiden hajautusarvojen on oltava samat. 
 
  * Pakollinen suunta: `x.equals(y) == true` $\rightarrow$ `x.hashCode() == y.hashCode()`.
 
