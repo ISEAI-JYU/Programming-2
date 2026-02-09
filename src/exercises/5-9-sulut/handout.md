@@ -26,11 +26,11 @@ Esimerkit:
 
 | Merkkijono | Tulos | Selite                                             |
 | ---------- | ----- | -------------------------------------------------- |
-| ""         | 0     | "Tyhjä syöte on validi, 0 paria.                   |
+| ""         | 0     | Tyhjä syöte on validi, 0 paria.                    |
 | "()"       | 1     | Yksi ehjä pari.                                    |
 | "(())"     | 2     | Kaksi sisäkkäistä paria.                           |
 | "([{}])"   | 3     | Kolme sisäkkäistä paria.                           |
-| "a(b)c"    | 1     | "Kirjaimet sivuutetaan, yksi pari."                |
+| "a(b)c"    | 1     | Kirjaimet sivuutetaan, yksi pari.                  |
 | "("        | -1    | Sulkeva pari puuttuu.                              |
 | "(()"      | -1    | Yksi sulkeva pari puuttuu.                         |
 | "()}"      | -1    | Ylimääräinen sulkeva sulku.                        |
