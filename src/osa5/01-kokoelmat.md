@@ -111,7 +111,7 @@ ja palauttaa `false`, jos alkiota ei löytynyt.
 
 `Collection`-rajapinta ei tunne indeksien käsitettä. Siksi `remove` poistaa
 alkion arvon perusteella, eikä esimerkiksi "kolmatta alkiota". Jos haluat
-lisätä tai poistaa indeksillä, tarvitset `List`-rajapinnan.
+lisätä tai poistaa indeksin perusteella, tarvitset `List`-rajapinnan.
 
 Yksittäisen alkion poistamisen lisäksi koko kokoelman voi tyhjentää 
 `clear`-metodilla.
@@ -131,7 +131,7 @@ IO.println(marjat);
 
 `Collection`-rajapinta määrittelee myös `contains`-metodin, jolla voi tarkistaa,
 löytyykö kokoelmasta jokin alkio. Tarkistus perustuu `equals`-metodiin, joten
-omien olioiden kanssa `equals` tulee toteuttaa järkevästi.
+omien olioiden kanssa `equals` tulee toteuttaa järkevästi &ndash; palaamme tähän [osassa 5.2](02-listarakenteet.md).
 
 ```java
 //-void main() {
