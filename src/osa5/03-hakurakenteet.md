@@ -60,7 +60,7 @@ samaan arvoon.
 
 ## Map
 
-`Map` on Javan kokoelmaviitekehyksen toinen keskeinen rajapinta
+`Map` on Javan kokoelmakehyksen toinen keskeinen rajapinta
 `Collection`-rajapinnan rinnalla. `Map` määrittelee yleiset säännöt kaikille
 hakurakenteille tarjoamalla tärkeimmät metodit avain-arvo-parien tallentamiseen
 ja käsittelyyn. `Collection`-rajapinnan tapaan `Map`-rajapinta ei ota kantaa 
@@ -101,7 +101,7 @@ IO.println(arvosanat);
 Poistaminen onnistuu kokoelmien tapaan `remove`-metodilla, jolle annetaan
 parametrina poistettava avain. Metodi palauttaa lisäämisen tapaan poistettavaa
 avainta vastaavan arvon, jos sellainen tietorakenteessa on. Muussa tapauksessa
-se palauttaa myös `null`;
+se palauttaa `null`.
 
 ```java
 //-void main() {
@@ -139,8 +139,9 @@ IO.println("Jonin arvosana: " + arvosanat.getOrDefault("Joni", 0));
 //-}
 ```
 
-Voimme myös tarkistaa, sisältääkö rakenne tietyn avaimen tai arvon `containsKey`
-ja `containsValue` -metodeilla, jotka palauttavat totuusarvon `true` tai `false`.
+Voimme myös tarkistaa, sisältääkö tietorakenne tietyn avaimen tai arvon 
+`containsKey` ja `containsValue` -metodeilla, jotka palauttavat totuusarvon 
+`true` tai `false`.
 
 ```java
 //-void main() {
@@ -159,7 +160,7 @@ IO.println(arvosanat.containsKey(0)); // false
 
 `Map`-rajapinta määrittelee `Collection`-rajapinnan tapaan myös `size` ja
 `isEmpty` -metodit, joilla voimme tarkastella alkioiden lukumäärää tai sitä,
-onko se tyhjä.
+onko tietorakenne tyhjä.
 
 ```java
 //-void main() {
@@ -208,18 +209,21 @@ for (Map.Entry<String, Integer> pari : arvosanat.entrySet()) {
 
 ## Hajautustaulu
 
-Hajautustaulu on tietorakenne, jonka toiminta perustuu olioiden
-`equals`- ja `hashCode`-metodeihin. Kun hajautustauluun lisätään
-avain-arvo-pari, rakenne kutsuu avaimen `hashCode`-metodia. Käytettyä metodia
-kutsutaan *hajautusfunktioksi* ja sen palauttama luku eli *hajautusarvo* 
-muutetaan hajautustaulun indeksiksi, johon alkio sijoitetaan. Hajautustaulun 
-indeksien lukumäärää kutsutaan kapasiteetiksi (engl. *capacity*).
-Hajautusarvolle sopiva indeksi voidaan laskea esimerkiksi hajautusarvon ja
-hajautustaulun kapasiteetin jakojäännöksellä, mikä pitää huolen, että laskettu 
-indeksi ei koskaan ole taulukon rajojen ulkopuolella.
+Hajautustaulu on taulukkopohjainen tietorakenne, jota käytetään
+avain-arvo-parien tallentamiseen. Sen toiminta perustuu olioiden `equals`- ja 
+`hashCode`-metodeihin. Kun tietorakenteeseen lisätään avain-arvo-pari, sen 
+sijainti taulukossa määritetään avaimen `hashCode`-metodin tuottaman 
+*hajautusarvon* perusteella. Hajautusarvon tuottavaa funktiota kutsutaan 
+hajautusfunktioksi.
+
+Hajautusarvo on kokonaisluku, jonka arvo voi olla myös negatiivinen. Voimme 
+määrittää sitä vastaavan indeksin taulukossa yksinkertaisesti laskemalla sen 
+ja taulukon koon jakojäännöksen, mikä varmistaa, että indeksi on aina taulukon
+rajojen sisällä. Hajautustaulun taulukon kokoa kutsutaan kapasiteetiksi
+(engl. *capacity*).
 
 ```
-indeksi = hajautusarvo % kapasiteetti
+indeksi = itseisarvo(hajautusarvo % kapasiteetti)
 ```
 
 Hajautustaulussa on rajallinen määrä indeksejä, joten useampi alkio voi päätyä 
@@ -236,15 +240,15 @@ hajautustaulun lisäys-, poisto- ja hakuoperaatiot ovat vakioaikaisia eli
 aikavaativuudeltaan *O(1)*, sillä oikea indeksi saadaan suoraan yksinkertaisella 
 laskutoimituksella. Huonoimmassa tapauksessa kaikki alkiot päätyvät samaan 
 indeksiin, jolloin oikean alkion löytämiseksi joudutaan käymään koko
-tietorakenne läpi ja aikavaativuus laskee tasolle *O(n)*.
+tietorakenne läpi, minkä vuoksi aikavaativuus laskee tasolle *O(n)*.
 
 Alkiota hakiessa tarkistetaan ensimmäiseksi sen hajautusarvon mukainen indeksi. 
 Ketjutusmenetelmää käytettäessä alkiota lähdetään etsimään indeksistä löytyvästä 
 listasta, kun taas avointa hajautusta käytettäessä lähdetään käymään 
-hajautustaulun indeksejä läpi, kunnes löytyy oikea alkio tai alkio, joka ei 
-kuulu samaan indeksiin. Ideaalitilanteessa jokainen alkio päätyy omaan 
+hajautustaulun taulukon indeksejä läpi, kunnes löytyy oikea alkio tai alkio, 
+joka ei kuulu samaan indeksiin. Ideaalitilanteessa jokainen alkio päätyy omaan 
 indeksiinsä ilman törmäyksiä, jolloin haku on välitöntä, sillä haun ei tarvitse 
-käydä tietorakennetta läpi löytääkseen oikean alkion.
+selata tietorakennetta läpi löytääkseen oikean alkion.
 
 Hajautustaulun suorituskyky paranee merkittävästi, jos sille määritetään 
 käyttötarkoitukseen sopiva kapasiteetti jo luontivaiheessa. Jos kapasiteetti 
@@ -269,10 +273,10 @@ työkalun löytämiseen voi silti mennä aikaa.
 `HashMap`-luokan toteutus perustuu edellä mainittuun hajautustauluun ja se 
 tarjoaa parhaan keskimääräisen suorituskyvyn perusoperaatioille. Alkioiden 
 hakeminen, lisääminen ja poistaminen avaimen perusteella onnistuu parhaimmillaan
-vakioajassa *O(1)*. Kaikkien alkioiden läpikäyminen on kuitenkin sisäisen
-tietorakenteen vuoksi yleensä hitaampaa kuin listoissa. `HashMap`-luokan 
-suorituskykyerot tulevat paremmin esille, kun alkioita on hyvin suuri määrä. 
-Jos alkioita on vähän, eroa esimerkiksi listaan ei juurikaan huomaa.
+vakioajassa *O(1)*. Kaikkien alkioiden läpikäyminen on kuitenkin 
+monimutkaisemman sisäisen tietorakenteen vuoksi hieman hitaampaa kuin listoissa.
+`HashMap`-luokan suorituskykyerot tulevat paremmin esille, kun alkioita on hyvin
+suuri määrä; jos alkioita on vähän, eroa esimerkiksi listaan ei juurikaan huomaa.
 
 `HashMap` ei takaa alkioiden järjestystä; alkioita läpi käydessä ne voivat olla 
 missä järjestyksessä tahansa, ja järjestys voi muuttua, kun rakenteeseen 
@@ -323,8 +327,8 @@ tässä osassa mainituista hakurakenteista poiketen `TreeMap` ei salli
 niiden järjestyksen selvittämiseksi.
 
 `TreeMap` on puurakenteen vuoksi operaatioiltaan hitaampi kuin `HashMap`, mutta 
-se mahdollistaa alkioiden järjestämisen. `TreeMap`-luokan operaatioiden
-aikavaativuus on *O(log n)*.
+se mahdollistaa alkioiden järjestämisen avaimen perusteella. `TreeMap`-luokan 
+operaatioiden aikavaativuus on *O(log n)*.
 
 ```java
 //-void main() {
@@ -364,7 +368,7 @@ IO.println(tree.descendingMap());
 //-}
 ```
 
-Lisäksi `TreeMap` mahdollistaa alijoukkojen muodostamisen `subMap`-metodilla.
+Lisäksi `TreeMap` mahdollistaa alipuiden muodostamisen `subMap`-metodilla.
 
 ```java
 //-void main() {

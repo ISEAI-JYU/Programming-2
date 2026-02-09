@@ -30,16 +30,16 @@ operaatioiden mallintamiseen.
 Javan kokoelmakehys sisältää rajapinnan `Set`, joka määrittelee perussäännöt
 kaikille joukkorakenteille. `Set` periytyy `Collection`-rajapinnasta, joten
 kaikki joukot toteuttavat myös sen lupaamat toiminnallisuudet. Voimme tämän
-vuoksi myös iteroida joukkoja helposti listojen tavoin.
+vuoksi esimerkiksi iteroida joukkoja helposti listojen tavoin.
 
-Javassa yleisimmin käytetty joukon toteutus on `HashSet`, jonka toiminta
-perustuu sen nimen mukaisesti hajautustauluun. Sisäisesti `HashSet`-käyttää
-alkioiden tallentamiseen `HashMap`-tietorakennetta, johon se tallentaa joukon
-alkiot avaimina. Hajautustaulutoteutuksen vuoksi erityisesti alkion lisääminen,
-poistaminen ja hakeminen tietorakenteesta onnistuvat nopeasti. Hajautustaulu on 
-kuitenkin tavallista taulukkoa monimutkaisempi tietorakenne, joten 
+Javassa yleisimmin käytetty joukon toteutus on `HashSet`, joka perustuu nimensä
+mukaisesti hajautustauluun. Sisäisesti `HashSet`-käyttää alkioiden 
+tallentamiseen `HashMap`-tietorakennetta, johon se tallentaa joukon alkiot 
+avaimina. Hajautustaulutoteutuksen vuoksi erityisesti alkion lisääminen,
+poistaminen ja hakeminen tietorakenteesta onnistuvat nopeasti vakioajassa. 
+Hajautustaulu on kuitenkin tavallista taulukkoa monimutkaisempi tietorakenne, joten 
 tietorakenteen läpikäyminen on taulukkoon perustuvaa `ArrayList`-luokkaa hieman
-hitaampaa, mikä on huomattavissa alkioiden määrän kasvaessa hyvin suureksi.
+hitaampaa, mikä voi olla huomattavissa alkioiden määrän kasvaessa hyvin suureksi.
 
 `Collection` ja `Map` -rajapintojen tapaan `Set`-rajapinta tai sen toteuttava 
 luokka `HashSet` eivät takaa alkioiden olevan missään tietyssä järjestyksessä,
@@ -127,7 +127,8 @@ IO.println("Onko tyhjä: " + nimet.isEmpty());
 
 `HashSet` ei säilytä alkioiden järjestystä millään tavalla, mutta
 hakurakenteiden tapaan myös joukoille on olemassa tietorakenteita, jotka
-säilyttävät joko alkioiden lisäysjärjestyksen tai luonnollisen järjestyksen.
+säilyttävät joko alkioiden lisäysjärjestyksen tai niiden luonnollisen
+järjestyksen.
 
 `LinkedHashSet` periytyy `HashSet`-luokasta ja ylläpitää `LinkedHashMap`-luokan
 tapaan sisäistä linkitettyä listaa, joka säilyttää alkiot niiden
@@ -195,8 +196,7 @@ IO.println(tree.descendingSet());
 //-}
 ```
 
-Aivan kuin `TreeMap`, myös `TreeSet` mahdollistaa myös alijoukkojen
-muodostamisen `subSet`-metodilla.
+`NavigableSet` mahdollistaa myös alijoukkojen muodostamisen `subSet`-metodilla.
 
 ```java
 //-void main() {
@@ -220,14 +220,14 @@ Jonot ja pinot ovat listojen kaltaisia lineaarisia tietorakenteita. Nämä
 tietorakenteet ovat hyödyllisiä tilanteissa, joissa haluamme tarkastella 
 erityisesti tietorakenteen alussa ja lopussa sijaitsevia alkioita. Jonot ja
 pinot ovat käytännössä listoja, joissa alkioiden lisäys-, poisto- ja
-hakuoperaatiot ovat rajoitettu tietorakenteen päätyihin, mutta näiden 
+hakuoperaatiot rajoittuvat tietorakenteen päätyihin, mutta näiden 
 tietorakenteiden *käsitteet* ovat erittäin hyödyllisiä tietojenkäsittelyssä ja
 niitä käytetäänkin tietojärjestelmissä hyvin usein.
 
 Jonon lisäksi on myös olemassa kaksipäinen jono, joka yhdistää jonon ja pinon 
 toiminnallisuudet ja sallii siten lisäys- ja poisto-operaatiot tietorakenteen
 molempiin päätyihin. Javassa kaksipäinen jono sisältää myös monia
-muita hyödyllisiä toiminnallisuuksia ja sitä käytetäänkin Javassa sekä
+muita hyödyllisiä toiminnallisuuksia ja sitä itse asiassa käytetään Javassa sekä
 jonon että pinon toteuttamiseen.
 
 ## Pino
@@ -242,8 +242,8 @@ kumoamistoiminnon seurauksena ohjelma ottaa viimeisimmän muutoksen pinon pääl
 ja kumoaa sen.
 
 > [!HUOMAUTUS]
-> Muista tietorakenteista poiketen Java **ei** tarjoa `Stack`-rajapintaa pinon
-> toteuttamista varten. Javan historiasta johtuen `Stack` on vanhentunut luokka, 
+> Poikkeuksellisesti Java **ei** tarjoa `Stack`-rajapintaa pinon
+> toteuttamista varten. Javan historiasta johtuen `Stack` on luokka, 
 > jonka käyttöä ei enää suositella. Pinon toteuttamiseen käytetään nykyään 
 > kaksipäistä jonoa, eli `Deque`-rajapinnan toteuttavaa `ArrayDeque`-luokkaa.
 
@@ -291,10 +291,10 @@ voidaan lisätä jonon loppuun ja poistaa tai tarkastella sen alusta.
 
 `Queue`-rajapinta sisältää näistä kolmesta perustoiminnosta kahdet eri versiot,
 jotka käsittelevät virheet eri tavalla. Metodit `add`, `remove` ja `element` 
-heittävät poikkeuksen virhetilanteissa, kun taas `offer`, `poll` ja `peek` 
-palauttavat näissä tilanteissa eri arvon. Käsittelemme poikkeuksia myöhemmin
-tällä kurssilla, joten tässä vaiheessa voimme keskittyä käyttämään `offer`, 
-`poll` ja `peek` -metodeja.
+aiheuttavat virhetilanteissa ohjelman pysäyttävän poikkeuksen, kun taas `offer`,
+`poll` ja `peek` palauttavat näissä tilanteissa eri arvon. Käsittelemme 
+poikkeuksia myöhemmin tällä kurssilla, joten tässä vaiheessa voimme keskittyä 
+käyttämään `offer`, `poll` ja `peek` -metodeja, jotka toimivat ihan yhtä hyvin.
 
 `ArrayDeque`-luokka toteuttaa `Queue`-rajapinnan, joten se sisältää kaikki sen
 tarvitsemat metodit. Käytämme siis sitä toteuttamaan jonon.
@@ -338,8 +338,8 @@ metodien lisäksi myös pinon ja jonon yhteydessä mainitut metodit.
 
 `Deque`-rajapinnan yleisimmin käytetty toteutusluokka on `ArrayDeque`, joka
 nimensä mukaisesti käyttää taulukkoa sisäisenä tietorakenteenaan.
-`Deque`-toteuttaa myös `Collection`-rajapinnan, joten kaikki kokoelmista tutut
-metodit, kuten `size`, `isEmpty` ja `contains` ovat käytettävissä.
+`Deque`-toteuttaa `Collection`-rajapinnan, joten kaikki kokoelmista tutut
+metodit, kuten `size`, `isEmpty` ja `contains` ovat myös käytettävissä.
 
 ### Alkion lisääminen ja poistaminen
 

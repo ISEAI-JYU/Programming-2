@@ -30,6 +30,7 @@ Esimerkit:
 | "()"       | 1     | Yksi ehjä pari.                                    |
 | "(())"     | 2     | Kaksi sisäkkäistä paria.                           |
 | "([{}])"   | 3     | Kolme sisäkkäistä paria.                           |
+| "()[]{}"   | 3     | Kolme vierekkäistä paria.                          |
 | "a(b)c"    | 1     | Kirjaimet sivuutetaan, yksi pari.                  |
 | "("        | -1    | Sulkeva pari puuttuu.                              |
 | "(()"      | -1    | Yksi sulkeva pari puuttuu.                         |
