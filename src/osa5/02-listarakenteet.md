@@ -269,8 +269,7 @@ Jotta `remove(T element)`-metodi toimisi oikein, on tärkeää käyttää
 toimii oikein myös silloin, kun listassa on geneerisiä tyyppejä. Toteutetaan
 tämä metodi seuraavaksi. Olemme tähän asti laittaneet listan alkioiksi lähinnä
 lukuja ja merkkijonoja, mutta käyttäessämme geneeristä `T`-tyyppiä, metodi
-toimii kaikilla olioilla, jotka toteuttavat `equals`-metodin.  Toteutuksen
-näet alempana kohdassa **Poistaminen alkion perusteella**.
+toimii kaikilla olioilla, jotka toteuttavat `equals`-metodin. 
 
 ## Equals-metodi
 
