@@ -24,6 +24,7 @@ Voit testata luokan toimintaa valmiin pääohjelman avulla.
 
 <details><summary>Vinkki</summary>
 
-Mikä tietorakenne soveltuu hyvin, kun alkioiden pitää olla järjestyksessä?
+Tietorakennetta ei tässä tapauksessa kannata järjestää itse. Yksi 
+`Map`-rajapinnan toteuttavista luokista pitää alkiot aina järjestyksessä.
 
 </details>
