@@ -334,6 +334,13 @@ for (String key : linked.keySet()) {
 //-}
 ```
 
+`LinkedHashMap` sopii hyvin esimerkiksi verkkokaupan viimeksi katsottujen
+tuotteiden tallentamiseen. Tuote voidaan hakea nopeasti avaimena toimivan
+tuotetunnuksen perusteella, mutta samalla tuotteet säilyvät siinä järjestyksessä
+kuin käyttäjä on niitä katsonut. Tämä tekee rakenteesta käytännöllisen silloin,
+kun tarvitaan sekä nopeaa hakua että käyttäjälle näytettävää, luonnollista
+järjestystä.
+
 ## TreeMap
 
 `TreeMap` eroaa edellisistä siten, että se käyttää hajautustaulun sijaan
@@ -402,6 +409,17 @@ Map<String, Integer> alipuu = tree.subMap("A", true, "C", true);
 IO.println(alipuu);
 //-}
 ```
+
+`TreeMap` sopii käytännössä hyvin esimerkiksi varauskalenteriin, jossa avain on
+päivämäärä tai kellonaika. Tällöin voidaan helposti hakea seuraava varaus
+(`higherKey`), edellinen varaus (`lowerKey`) tai tietyn aikavälin varaukset
+(`subMap`) ilman, että tietorakennetta täytyy järjestää erikseen ennen hakua.
+
+Rakenteiden valinta riippuu siis tarpeesta: `HashMap` on yleensä paras, kun
+tarvitaan mahdollisimman nopeaa avaimella hakua eikä järjestyksellä ole väliä.
+`LinkedHashMap` sopii tilanteisiin, joissa lisäysjärjestys halutaan säilyttää.
+`TreeMap` on näitä hitaampi, mutta oikea valinta silloin, kun tarvitaan
+avainten jatkuvaa järjestystä sekä järjestykseen perustuvia hakuja.
 
 ---
 
