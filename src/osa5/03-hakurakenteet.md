@@ -410,6 +410,39 @@ IO.println(alipuu);
 //-}
 ```
 
+Hyvä esimerkki `TreeMap`-rakenteen käyttökohteesta on aikaleimoihin perustuva
+tapahtumien tallennus. Oletetaan, että järjestelmä kerää lokimerkintöjä, joissa
+jokaisella tapahtumalla on tarkka aikaleima ja siihen liittyvä kuvaus. Tällöin
+`TreeMap<LocalDateTime, Tapahtuma>` soveltuu rakenteeksi hyvin. Sen keskeinen
+etu on avainten automaattinen järjestäminen: uudet tapahtumat sijoittuvat
+suoraan oikeaan kohtaan, jolloin dataa voidaan käsitellä kronologisessa
+järjestyksessä ilman erillistä lajittelua.
+
+TreeMap mahdollistaa myös nopeat haut tietyltä aikaväliltä (subMap, headMap,
+tailMap) sekä lähimmän arvon etsimisen. Esimerkiksi floorKey löytää annettua
+hetkeä edeltävän (tai saman) aikaleiman, kun taas ceilingKey palauttaa seuraavan
+(tai saman) aikaleiman. Kaikkien näiden hakumetodien aikavaativuus on $O(\log
+n)$, mikä on huomattavasti tehokkaampaa kuin järjestämättömän tietorakenteen
+läpikäynti.
+
+`TreeMap` mahdollistaa myös tehokkaat aikavälihaut, jotka ovat tällaisessa
+tilanteessa keskeisiä. Esimerkiksi voidaan hakea kaikki tapahtumat tietyn
+ajanhetken jälkeen tai kahden aikaleiman väliltä käyttämällä `tailMap`, `headMap`
+tai `subMap` -metodeja. Näiden operaatioiden aikavaativuus on $O(\log n)$, mikä tekee
+niistä selvästi tehokkaampia kuin koko tietorakenteen läpikäynnin vaativat
+ratkaisut. Lisäksi `TreeMap` tarjoaa metodeja, joilla voidaan löytää lähin
+tapahtuma ennen tai jälkeen tietyn ajanhetken, mikä on tyypillinen tarve lokien
+ja historiatietojen käsittelyssä.
+
+Seuraavassa taulukossa verrataan TreeMap-rakennetta vaihtoehtoisiin
+tietorakenteisiin aikajärjestystä vaativissa tilanteissa:
+
+| Rakenne           | Etu                                                         | Haitta                                                                                             |
+| :---------------- | :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| **HashMap**       | Yksittäisen avaimen haku on keskimäärin nopeampaa ($O(1)$). | Järjestys katoaa. Aikavälihaut vaatisivat kaikkien alkioiden läpikäynnin tai erillisen lajittelun. |
+| **LinkedHashMap** | Säilyttää lisäysjärjestyksen.                               | Ei takaa aikajärjestystä, jos dataa ei syötetä kronologisesti.                                     |
+| **PriorityQueue** | Nopea pääsy ääriarvoihin (min/max).                         | Ei tue tehokasta hakua mielivaltaisella avaimella tai aikavälillä.                                 |
+
 Rakenteiden valinta riippuu siis tarpeesta: `HashMap` on yleensä paras, kun
 tarvitaan mahdollisimman nopeaa avaimella hakua eikä järjestyksellä ole väliä.
 `LinkedHashMap` sopii tilanteisiin, joissa lisäysjärjestys halutaan säilyttää.
