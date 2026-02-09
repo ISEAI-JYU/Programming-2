@@ -3,9 +3,7 @@ listan alkiota, sekä kokonaislukumuuttuja, joka pitää kirjaa listan nykyisest
 alkiomäärästä. Toteuta metodit
 
  * `add(T element)`: lisää alkion listan loppuun.
- * `get(int index)`: hakee alkion listasta indeksin perusteella. Jos indeksi on
-   virheellinen, metodi palauttaa `IndexOutOfBoundsException`-poikkeuksen.
 
 Tietorakenteen kokoa ei tarvitse tässä vaiheessa kasvattaa, eli taulukko voi
-tulla täyteen. Tutki get-metodin ja/tai debuggerin avulla, että alkio on lisätty
+tulla täyteen. Tutki debuggerin avulla, että alkio on lisätty
 oikein.
