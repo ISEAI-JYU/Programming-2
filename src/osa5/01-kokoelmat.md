@@ -22,14 +22,16 @@ tietorakenne, joka määrittelee pelisäännöt tiedon käsittelylle. Oikean
 tietorakenteen valinta on ohjelmoijalle tärkeä taito, sillä se vaikuttaa sekä
 ohjelman tehokkuuteen että koodin luettavuuteen.
 
-Alla on esimerkkejä tilanteista, joissa pelkkä peruslista ei ole paras ratkaisu,
-ja niihin sopivista kokoelmatyypeistä:
+Alla on esimerkkejä tilanteista ja niihin soveltuvista kokoelmatyypeistä, kun
+taulukko tai lista ei enää ole optimaalinen ratkaisu: 
 
  - **Jono (Queue)**: Kun soitat asiakaspalveluun, puhelut ohjataan jonoon. Uudet
 soittajat tulevat jonon hännille, ja asiakaspalvelija poimii palveltavan aina
 jonon kärjestä. Tätä "ensimmäisenä sisään, ensimmäisenä ulos" -rakennetta
-kutsutaan jonoksi. Vastaavasti *pino* (engl. *stack*) toimii päinvastoin: viimeisenä
-lisätty alkio poistetaan ensimmäisenä (kuten pinossa lautasia).
+kutsutaan jonoksi. Jono on optimoitu tällä tavalla tapahtuviin lisäyksiin ja
+poistoihin, toisin kuin tavallinen lista. Vastaavasti *pino* (engl. *stack*)
+toimii päinvastoin: viimeisenä lisätty alkio poistetaan ensimmäisenä (kuten
+pinossa lautasia). 
 
  - **Joukko (Set)**: Discord-palvelussa tai puhelinmuistiossa samaa henkilöä ei ole
 järkevää lisätä ystäväksi kahta kertaa. Rakennetta, joka huolehtii siitä, että
@@ -43,11 +45,7 @@ assosiaatiotaulukoksi.
 
 Voisimme periaatteessa toteuttaa nämä kaikki logiikat käyttämällä tavallisia
 listoja ja kirjoittamalla paljon ylimääräistä koodia (if-lauseita tarkistamaan
-duplikaatteja tai silmukoita etsimään tietoa). Javan kokoelmat tarjoavat
-kuitenkin valmiit, optimoidut ja selkeät työkalut näihin tarpeisiin.
-
-Tässä osassa tutustumme Javan tarjoamiin erilaisiin kokoelmatyyppeihin ja opimme
-valitsemaan oikean työkalun oikeaan tarpeeseen.
+duplikaatteja tai silmukoita etsimään tietoa). Javan kokoelmat tarjoavat kuitenkin valmiit, optimoidut ja selkeät työkalut näihin tarpeisiin.
 
 ## Kokoelmakehys (Java Collections Framework)
 
