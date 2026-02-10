@@ -1,4 +1,4 @@
-# JYU — Ohjelmointi 2 oppimateriaali
+# Ohjelmointi 2 (Jyväskylän yliopisto)
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
