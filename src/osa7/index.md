@@ -13,3 +13,4 @@
 >   (in-memory), ja esitetään syötetty tieto käyttäjälle käyttöliittymässä.
 > - Osaat luoda projektillesi paikallisen Git-varaston sopivilla asetuksilla, ja
 >   tehdä varastoon committeja
+> - Harjoitustyön vaihe 1 palautus TIMiin (ei tarvitse erikseen näyttää tuntiopettajalle)

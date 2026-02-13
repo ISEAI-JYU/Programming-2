@@ -11,3 +11,4 @@
 > - Tunnistat MVC-arkkitehtuurin periaatteet M-kerroksen ja datan osalta ja
 >   osaat kytkeä M-kerroksen osaksi JavaFX-projektia
 > - Osaat esittää datan käyttöliittymässä lista- tai taulukkonäkymässä
+> - Harjoitustyön vaihe 2 palautus TIMiin (ei tarvitse erikseen näyttää tuntiopettajalle)
