@@ -5,8 +5,11 @@
 > - Ymmärrät miten rekursio toimii
 > - Ymmärrät, miten rekursiota voidaan mallintaa pinon avulla
 
-Rekursio tarkoittaa ongelman määrittelyä itsensä pienempien aliongelmien avulla.
-Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on selkeä perustapaus ja
+Rekursio tarkoittaa ongelman määrittelemistä itsensä avulla niin, että ongelma
+muodostuu pienemmistä osista, jotka ovat rakenteeltaan samanlaisia kuin
+alkuperäinen ongelma. 
+Rekursiivinen ratkaisu on perusteltu, kun ongelmalla on
+selkeä perustapaus ja
 kun rekursiivinen askel pienentää ongelmaa siten, että perustapaukseen päädytään
 varmasti. Rekursio on luonteva tapa toteuttaa niin kutsuttua *hajota ja
 hallitse* -periaatetta: ongelma jaetaan pienempiin osiin, ratkaistaan pienet
