@@ -1,37 +1,71 @@
-# Kontribuutioehdotus
+# Osallistuminen ja kehittäminen (Contributing)
 
-## Aseta autentikointi
-- SSH vs. PAT?
-    - Voi käyttää molempia, mutta suositellaan turvallisuussyistä SSH:ta
-- Tarkemmat ohjeet SSH:n käyttöönottoon: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+Tervetuloa mukaan kehittämään Ohjelmointi 2 -kurssimateriaalia! Arvostamme suuresti kaikkia parannusehdotuksia, olivat ne sitten pieniä kirjoitusvirheiden korjauksia tai laajempia sisältömuutoksia.
 
-## Kloonaa repositorio
-- **SSH:ta käytettäessä:**
-    - git clone git@github.com:ohj-perus-jy/ohj2.git
-        - Osoite löytyy projektin juuresta oikealla ylhäällä olevasta "code" painikkeesta ja sieltä kohdasta SSH
-- CLI ohjeistus?
+## Lisenssi
 
-## Konttisysteemi devausta varten
-- Asenna Rust (mukana tulee myös automaattisesti Cargo)
-- Asenna mdbook
-- Asenna mdbookkiin mermaid tuki: https://github.com/badboy/mdbook-mermaid
-- Mene komentorivillä projektin juureen ja aja komento: mdbook serve --hostname 0.0.0.0 --port 3000 --open
+Huomioithan, että tähän repoon tehdyt muutokset julkaistaan 
+[CC BY-SA 4.0](LICENSE) -lisenssillä. 
+Lähettämällä muutoksia tämän repon sisältöön hyväksyt, että muutoksesi
+julkaistaan CC BY-SA 4.0 -lisenssin ehdoilla.
 
-## Tee branch
-- git switch -c [branchin nimi]
-    - Luo uuden branchin [branchin nimi] ja vaihtaa siihen
-- Voit katsella lisää osoitteesta: https://git-scm.com/docs/git-switch
+Lisenssi ei koske tähän repoon lähetettyjä issue-kortteja.
 
-## Puske branch etävarastoon
-- git push -u origin [branchin nimi]
+## Miten voit auttaa?
 
-## Tee muutoksia branchiin
+Voit osallistua monella tavalla:
 
-## Tee pull request
-#### Halutaanko hyödyntää tuota issuen automaattista linkkausta vai miten PR ja issuet keskustelevat keskenään?
-git commit -m "[haluamasi teksti] #[issuen numero]"
-1. Puske halutut muutokset branchiin
-2. Githubin kautta tai:
-    1. Tähän ohjeet CLI versioon
+1.  **Ilmoita ongelmasta:** Jos huomaat virheen mutta et ehdi korjata sitä itse, [luo uusi Issue](https://github.com/ohj-perus-jy/ohj2/issues/new).
+2.  **Pienet korjaukset:** Kirjoitusvirheet ja pienet selkeytykset on helpointa tehdä suoraan selaimessa GitHubin web-käyttöliittymän kautta.
+    - [Ohje tiedostojen muokkaamiseen GitHubissa](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
+3.  **Laajemmat muutokset:** Jos haluat lisätä uusia esimerkkejä tai lukuja, suosittelemme pystyttämään paikallisen kehitysympäristön.
 
-## Puske muutoksia branchiin ehdotuksien mukaisesti
+---
+
+## Kehitysympäristön pystyttäminen
+
+Jos haluat tehdä laajempia muutoksia ja nähdä ne livenä omalla koneellasi, toimi seuraavasti:
+
+### 1. Autentikointi ja kloonaus
+Suosittelemme [SSH-avaimen](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) käyttöä autentikointiin.
+
+```bash
+git clone git@github.com:ohj-perus-jy/ohj2.git
+cd ohj2
+```
+
+### 2. Työkalujen asennus
+Materiaali on toteutettu **mdBookilla**. Pystytystä varten tarvitset:
+- [Rust & Cargo](https://www.rust-lang.org/tools/install)
+- [mdBook](https://rust-lang.github.io/mdBook/guide/installation.html)
+- [mdbook-mermaid](https://github.com/badboy/mdbook-mermaid) -tuki kaavioita varten.
+
+### 3. Paikallinen esikatselu
+Käynnistä kehityspalvelin projektin juuresta:
+```bash
+mdbook serve --hostname 0.0.0.0 --port 3000 --open
+```
+Tämä avaa materiaalin selaimeesi (oletuksena localhost:3000) ja päivittää näkymän automaattisesti, kun tallennat muutoksia.
+
+---
+
+## Työnkulku (Workflow)
+
+Kun haluat ehdottaa muutoksia, noudata tätä prosessia:
+
+1.  **Luo uusi branch:**
+    ```bash
+    git switch -c korjaus-aihe
+    ```
+2.  **Tee muutokset:** Muokkaa `src`-kansion markdown-tiedostoja. Noudata projektin tyyliopasta ja olemassa olevia käytänteitä.
+3.  **Commit & Push:**
+    Pyri kirjoittamaan selkeitä commit-viestejä. Jos muutoksesi liittyy avoimeen issueen, voit linkittää sen viestissä (esim. `Korjattu typo #123`).
+    ```bash
+    git add .
+    git commit -m "Kuvaava viesti muutoksesta"
+    git push -u origin korjaus-aihe
+    ```
+4.  **Tee Pull Request (PR):**
+    Avaa GitHubissa projektin sivu ja luo uusi Pull Request branchistasi. Ohjaajat tarkistavat ehdotuksesi ja antavat tarvittaessa palautetta.
+
+Kiitos avustasi materiaalin parantamisessa!
