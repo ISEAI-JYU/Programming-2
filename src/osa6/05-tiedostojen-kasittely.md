@@ -450,9 +450,9 @@ Lisää `pom.xml`-tiedostoon Jackson-riippuvuus:
 
 ```xml
 <dependency>
-    <groupId>com.fasterxml.jackson.core</groupId>
+    <groupId>tools.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
-    <version>2.17.2</version>
+    <version>3.0.4</version>
 </dependency>
 ```
 
@@ -461,9 +461,9 @@ lukee tiedoston `henkilot.json` listaksi `Henkilo`-olioita. Selitämme koodin
 tarkemmin seuraavaksi.
 
 
-```java
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+```java,ignore
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -548,9 +548,9 @@ epäonnistua, joten sekin tulee käsitellä `try-catch`-rakenteella.
 
 Seuraava esimerkki kirjoittaa listan henkilöitä tiedostoon `henkilot-uusi.json`:
 
-```java
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+```java,ignore
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
