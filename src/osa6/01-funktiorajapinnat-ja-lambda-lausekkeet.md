@@ -1,56 +1,457 @@
-# Funktiorajapinnat ja lambda-lausekkeet
+# Funktiorajapinnat ja lambdalausekkeet
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 16. helmikuuta 2026.
+> [!VAROITUS] 
+> Tämä osio julkaistaan 16. helmikuuta 2026. 
 > {{#include ../ei-julkaistu.md}}
 
 > [!Osaamistavoitteet]
 >
-> - Funktionaalinen ohjelmointi
-> - Funktionaalinen rajapinta ja Javan `Function`, `BiFunction`
-> - lambda-lausekkeet
+> - Ymmärrät funktionaalisen rajapinnan käsitteen
+> - Osaat käyttää lambdalausekkeita ja funktioviitteitä funktiorajapintojen
+>   toteuttamiseen
+> - Tunnet Javan yleisimmät valmiit funktiorajapinnat (esim. `Function`,
+>   `Consumer`)
+> - Osaat määrittää olioille vaihtoehtoisia järjestyksiä `Comparator`-rajapinnan
+>   ja lambdalausekkeiden avulla
 
 
-### Esimerkki: Comparator-rajapinta
+*Funktionaalinen rajapinta* (engl. *functional interface*) on rajapinta, joka
+sisältää vain yhden pakollisen metodin. Sen tarkoituksena on edustaa yksittäistä
+toimintoa tai kyvykkyyttä.
 
-> [!WIP]
->
-> Tämä osio on kirjoitettava hieman uusiksi lambdoja ja funktioviitteitä
-> käyttäen. 
-> `Comparator`-rajapintaa käytetään Javassa nykyään aikalailla vain funktiorajapintana.
-> 
+Esimerkiksi seuraava rajapinta on funktionaalinen:
 
-Kuten totesimme ylempänä, toisinaan voi olla vaikeaa valita yksittäinen
-järkevä järjestys. 
-Yleisestikin, luonnollisen järjestyksen lisäksi voi olla järkevää
-pystyä määrittämään *vaihtoehtoisia* järjestystapoja samalle luokalle.
+```java,ignore
+/**
+ * Rajapinta, joka edustaa funktiota. Se ottaa parametrina luvun
+ * ja palauttaa toisen luvun.
+ */
+public interface NumeroFunktio {
+    int laske(int luku);
+}
+```
 
-Esimerkiksi, vaikka kokonaislukujen suuruusjärjestys on järkevä luonnolliseksi
-järjestykselle, joskus lukuja saatetaan haluta järjestää niiden suuruusluokan
-mukaan tai vaikkapa sen mukaan, kuinka lähellä luvut ovat jotakin toista
-tiettyä lukua. Vastaavasti, vaikka yllä oleville keräilykorteille voisi olla
-järkevää määrätä järjestys tunnisteen mukaan, voi olla mielekästä
-pystyä järjestämään niitä kortin nimen mukaan.
+Myös luvussa 4.1 esimerkkinä tehty
+[Saadettava-rajapinta](../osa4/01-rajapinta.md#alykoti-saadettava) on
+funktionaalinen, sillä se sisältää vain yhden metodin: `asetaArvo`.
+
+Java tarjoaa erityisen yksinkertaistetun tavan luoda olioita, jotka toteuttavat
+funktionaalisia rajapintoja. Tämä mahdollistaa koodin, jossa voimme käsitellä
+funktioita lähes samalla tavalla kuin käsittelemme dataa.
+
+## Olion alustaminen funktiorajapinnasta
+
+Perinteisesti, jos haluamme luoda olion, joka toteuttaa
+`NumeroFunktio`-rajapinnan, meidän täytyy ensin määritellä uusi luokka:
+
+```java
+// FILE: main.java
+public class KerroKahdella implements NumeroFunktio {
+    @Override
+    public int laske(int luku) {
+        return luku * 2;
+    }
+}
+
+void main() {
+    NumeroFunktio kerroKahdella = new KerroKahdella();
+    IO.println(kerroKahdella.laske(3));
+}
+// FILE_END
+// FILE: NumeroFunktio.java
+public interface NumeroFunktio {
+    int laske(int luku);
+}
+// FILE_END
+```
+
+Tässä jouduimme kirjoittamaan melko paljon koodia (uusi luokka, metodin
+ylikirjoitus) vain yhtä pientä oliota varten. Koska `NumeroFunktio` on
+funktionaalinen rajapinta, Java tarjoaa suoraviivaisemman tavan: voimme käyttää
+olemassa olevaa metodia ikään kuin se olisi kyseisen rajapinnan toteuttava olio.
+Tätä kutsutaan *funktioviitteeksi* (engl. *method reference*).
+
+```java
+// FILE: main.java
+int kerroKahdella(int luku) {
+    return luku * 2;
+}
+
+void main() {
+    // Käytetään olemassa olevaa metodia rajapinnan toteutuksena
+    // HIGHLIGHT_GREEN_BEGIN
+    NumeroFunktio funktio = this::kerroKahdella;
+    // HIGHLIGHT_GREEN_END
+    
+    IO.println(funktio.laske(3));
+}
+// FILE_END
+// FILE: NumeroFunktio.java
+public interface NumeroFunktio {
+    int laske(int luku);
+}
+// FILE_END
+```
+
+Huomaa erityisesti syntaksi `this::kerroKahdella`. Se ei kutsu metodia, vaan se
+ikään luo viitteen metodiin. Java osaa automaattisesti luoda rajapinnan
+toteuttavan olion, koska `kerroKahdella`-metodin parametrit ja palautusarvo
+täsmäävät rajapinnan ainoan metodin kanssa. Jos yritämme tulostaa
+`funktio`-muuttujan arvon, kokonaisluvun sijaan tulostuukin olion tiedot:
+
+```java
+//-public interface NumeroFunktio {
+//-    int laske(int luku);
+//-}
+//-
+//-int kerroKahdella(int luku) {
+//-    return luku * 2;
+//-}
+//-
+//-void main() {
+NumeroFunktio funktio = this::kerroKahdella;
+IO.println(funktio);
+//-}
+```
+
+Toiseksi, funktioviitteen yhteydessä käytetään `::`-merkintää viittaamaan joko
+olion tai luokan metodiin. Toisin sanoen, `this::kerroKahdella` tarkoittaa, että
+funktioviite koskee nykyisen olion `kerroKahdella`-metodia. `this`-viitteen
+sijaan voidaan käyttää olioviitettä tai luokkametodien tapauksessa luokkaa:
+
+
+```java
+// FILE: main.java
+class Ohjelma {
+    public static int kerroKahdellaStatic(int luku) {
+        IO.println("Olen luokkametodi!");
+        return luku * 2;
+    }
+
+    public int kerroKahdellaEiStatic(int luku) {
+        IO.println("Olen oliometodi!");
+        return luku * 2;
+    }
+
+    void main() {
+        // Nyt kerroKahdella on luokkametodi, joten käytetään luokan nimeä
+        // olioviitteen sijaan.
+        NumeroFunktio funktio = Ohjelma::kerroKahdellaStatic;
+        // Tavallisen metodin viite saadaan olioviitteen kautta
+        NumeroFunktio funktio2 = this::kerroKahdellaEiStatic;
+        IO.println(funktio.laske(2));
+        IO.println(funktio2.laske(2));
+    }
+}
+// FILE_END
+// FILE: NumeroFunktio.java
+/**
+ * Rajapinta, joka kuvastaa funktiota, joka ottaa parametrina luvun
+ * ja palauttaa toisen luvun.
+ */
+public interface NumeroFunktio {
+    int laske(int luku);
+}
+// FILE_END
+```
+
+<details>
+<summary><i class="bi bi-stars jyu-gold"></i> Bonus: Miten funktioviite toimii?</summary>
+
+Saatat miettiä, miten funktio voi yhtäkkiä "muuttua" olioksi. Javassa kyseessä
+on oikeastaan tekninen temppu. Ennen funktioviitteitä sama asia Javassa tehtiin
+*anonyymeillä luokilla*. 
+
+Kääntäjä muuttaa funktioviitteen `this::kerroKahdella` suunnilleen tällaiseksi
+rakenteeksi:
+
+```java,ignore
+int kerroKahdella(int luku) {
+    return luku * 2;
+}
+
+NumeroFunktio funktio = new NumeroFunktio() {
+    @Override
+    public int laske(int luku) {
+        return kerroKahdella(luku);
+    }
+};
+```
+
+Lambdalauseke on siis todellisuudessa olio, joka toteuttaa halutun rajapinnan.
+Tästä syystä niitä voidaan käyttää vain sellaisten rajapintojen kanssa, joissa
+on tasan yksi metodi (funktionaaliset rajapinnat).
+
+Mainittakoon, että vaikka anonyymejä luokkia käytetään nykyään vähemmän, voivat
+olla silti hyödyllisiä tapauksissa, jossa toteutettava rajapinta ei ole
+funktionaalinen.
+
+</details>
+
+
+## Lambdalausekkeet
+
+Aina emme haluaisi kirjoittaa uutta metodia pelkästään funktioviitteen takia.
+Tällöin voimme kirjoittaa funktion toteutuksen suoraan *lausekkeena*.
+Lausekkeena kirjoitettu funktio on nimeltään *lambdalausekkeita* (engl. *lambda
+expression*).
+
+```java
+// FILE: main.java
+void main() {
+    // HIGHLIGHT_GREEN_BEGIN
+    NumeroFunktio funktio = (int luku) -> {
+        return luku * 2;
+    };
+    // HIGHLIGHT_GREEN_END
+    IO.println(funktio.laske(1));
+    IO.println(funktio.laske(2));
+    IO.println(funktio.laske(3));
+    IO.println(funktio.laske(4));
+}
+// FILE_END
+// FILE: NumeroFunktio.java
+/**
+ * Rajapinta, joka kuvastaa funktiota, joka ottaa parametrina luvun
+ * ja palauttaa toisen luvun.
+ */
+public interface NumeroFunktio {
+    int laske(int luku);
+}
+// FILE_END
+```
+
+Lambdalausekkeena määriteltylle funktiolle ei tarvitse antaa erikseen nimeä.
+Tästä syystä lambdalausekkeita yleensä kutstutaan myös *anonyymeiksi
+funktioiksi* (engl. *anonymous function*).
+
+Lambdalausekkeen perusrakenne on seuraava:
+
+```java,ignore
+(Tyyppi parametri, Tyyppi parametri2, Tyyppi parametri3) -> {
+    // funktion runko
+    return tulos;
+}
+```
+
+Lambdalausekkeiden suurin etu on niiden tiiviys. Java osaa päätellä monta asiaa
+automaattisesti, jolloin koodia voidaan lyhentää. Ensinnäkin, Java osaa päätellä
+parametrien tyypit automaattisesti funktiorajapinnan parametrien tyypeistä,
+jolloin parametrit voidaan jättää usein pois.
+
+```java
+//-public interface NumeroFunktio {
+//-    int laske(int luku);
+//-}
+//-
+//-void main() {
+NumeroFunktio funktio = (luku) -> {
+    return luku * 2;
+};
+//-IO.println(funktio.laske(1));
+//-IO.println(funktio.laske(2));
+//-IO.println(funktio.laske(3));
+//-IO.println(funktio.laske(4));
+//-}
+```
+
+Toiseksi, jos lambdalausekkeen runko sisältää vain yhden lauseen, aaltosulut ja
+`return`-määreen voi jättää pois.
+
+```java
+//-public interface NumeroFunktio {
+//-    int laske(int luku);
+//-}
+//-
+//-void main() {
+NumeroFunktio funktio = (luku) -> luku * 2;
+//-IO.println(funktio.laske(1));
+//-IO.println(funktio.laske(2));
+//-IO.println(funktio.laske(3));
+//-IO.println(funktio.laske(4));
+//-}
+```
+
+Lopuksi, jos lambdalausekkeessa on tasan yksi parametri, myös kaarisulut voi
+jättää pois.
+
+```java
+//-public interface NumeroFunktio {
+//-    int laske(int luku);
+//-}
+//-
+//-void main() {
+NumeroFunktio funktio = luku -> luku * 2;
+//-IO.println(funktio.laske(1));
+//-IO.println(funktio.laske(2));
+//-IO.println(funktio.laske(3));
+//-IO.println(funktio.laske(4));
+//-}
+```
+
+Lambdalausekkeissa on lisäksi tapana käyttää tavallista lyhyempiä parametrien
+nimiä, sillä parametrien merkitys dokumentoidaan funktionaalisessa rajapinnassa. 
+
+```java
+//-public interface NumeroFunktio {
+//-    int laske(int luku);
+//-}
+//-
+//-void main() {
+NumeroFunktio kerroKahdella = x -> x * 2;
+//-IO.println(kerroKahdella.laske(1));
+//-IO.println(kerroKahdella.laske(2));
+//-IO.println(kerroKahdella.laske(3));
+//-IO.println(kerroKahdella.laske(4));
+//-}
+```
+
+### Funktiot parametreina
+
+Koska lambdalauseke on olio, voimme välittää sen aliohjelmalle parametrina. Tämä
+mahdollistaa korkeamman abstraktiotason funktioiden kirjoittamisen. Voimme tehdä
+vaikkapa aliohjelman, joka osaa laskea kahden eri funktion summan:
+
+```java
+//-public interface NumeroFunktio {
+//-    int laske(int luku);
+//-}
+//-
+/**
+ * Laskee kahden funktion summan tietylle arvolle.
+ */
+int summaaFunktiot(NumeroFunktio f1, NumeroFunktio f2, int x) { 
+    return f1.laske(x) + f2.laske(x);
+}
+
+void main() {
+    // Välitetään kaksi eri funktiota (x*2 ja x*x) summattavaksi
+    int tulos = summaaFunktiot(x -> x * 2, x -> x * x, 3);
+    IO.println("Tulos: " + tulos); // (3*2) + (3*3) = 6 + 9 = 15
+}
+```
+
+## Esimerkkejä
+
+### Valmiita funktiorajapintoja
+
+Javassa on joukko valmiita yleisiä funktiorajapintoja, jotka löytyvät
+`java.util.function`-paketista (ks.
+[JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/function/package-summary.html#class-summary)).
+
+**`Function<T, R>`**
+([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/function/Function.html))
+esittää funktiota, joka ottaa yhden parametrin tyyppiä `T` ja palauttaa
+parametrin tyyppiä `R`. Esimerkiksi yllä oleva esimerkki voidaan yksinkertaistaa
+käyttämällä valmista `Function`-rajapintaa `NumeroFunktio`-rajapinnan sijaan:
+
+```java
+//-void main() {
+Function<Integer, Integer> kerroKahdella = x -> x * 2;
+Function<Integer, Integer> potenssiinKaksi = x -> x * x;
+
+IO.println(kerroKahdella.apply(1));
+IO.println(potenssiinKaksi.apply(2));
+//-}
+```
+
+`Function`-rajapinta sisältää myös apumetodit `andThen` ja `compose`, joiden
+avulla funktioita voidaan ketjuttaa:
+
+```java
+//-void main() {
+Function<Integer, Integer> kerroKahdella = x -> x * 2;
+Function<Integer, Integer> potenssiinKaksi = x -> x * x;
+
+// Laskee: (x^2) * 2
+Function<Integer, Integer> potenssiinJaKerro = kerroKahdella.compose(potenssiinKaksi);
+// Laskee: (x * 2)^2
+Function<Integer, Integer> kerroJaPotenssiin = kerroKahdella.andThen(potenssiinKaksi);
+
+IO.println(potenssiinJaKerro.apply(2));
+IO.println(kerroJaPotenssiin.apply(2));
+//-}
+```
+
+Vastaavasti **`BiFunction<T, U, R>`**
+([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/function/BiFunction.html))
+edustaa funktiota, joka ottaa kaksi parametria ja palauttaa yhden arvon.
+
+**`Consumer<T>`**
+([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/function/Consumer.html))
+ja **`BiConsumer<T, U>`**
+([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/function/BiConsumer.html))
+puolestaan vastaavat funktioita, jotka ottavat parametreja mutta eivät palauta
+mitään (palautustyyppi on `void`). Esimerkiksi useat kokoelmat sisältävät
+`forEach`-metodin, jolle välitetään `Consumer`-olio:
+
+```java
+//-void main() {
+List<String> marjoja = List.of("mansikka", "mustikka", "puolukka");
+
+// IO.println sopii Consumer<T>:hen, sillä 
+// se ottaa yhden parametrin eikä palauta mitään
+marjoja.forEach(IO::println);
+
+Map<String, Integer> arvosanat = new HashMap<>(
+            Map.of( "Denis",        1,
+                    "Antti-Jussi",  3,
+                    "Sami",         5,
+                    "Karri",        5)
+    );
+// BiConsumer ottaa kaksi parametria (avain ja arvo)
+arvosanat.forEach((nimi, arvosana) -> IO.println(nimi + " => " + arvosana));
+//-}
+```
+
+<task>
+  <task-title>Tehtävä 6.1: Laskukone <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/6-1-laskukone/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava1">Tee tehtävä TIMissa</a></task-link>
+</task>
+
+### Comparator-rajapinta
+
+Palataan [luvussa 4.2](../osa4/02-vertailurajapinta.md) esiteltyyn
+`Comparable<T>`-rajapintaan. Sen avulla määritimme olioille *luonnollisen
+järjestyksen*. Toisinaan haluamme kuitenkin järjestää samoja olioita eri
+tilanteissa eri tavoin (esim. henkilöt nimen mukaan TAI iän mukaan).
 
 Javan `Comparator`-rajapinta
-[JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Comparator.html)
-tarjoaa tavan määrittää *vaihtoehtoisia* järjestystapoja tyypeille.
-Lisäksi rajapinta tarjoaa mahdollisuuden määrittää järjestystapoja
-ilman, että alkuperäisen luokan tarvitsisi toteuttaa `Comparable`-rajapintaa.
-
-Rajapinta sisältää ainoastaan yhden pakollisen metodin `compare`, joka
-ottaa parametriksi kaksi samantyyppistä oliota ja palauttaa 
-vertailuluvun samoilla säännöillä kuin `Comparable`-rajapinnan `compareTo`:
-
-| Tapaus                             | Merkitys         | Tulkinta                           |
-| ---------------------------------- | ---------------- | ---------------------------------- |
-| `cmp.compareTo(olioA, olioB) < 0`  | `olioA < olioB`  | `olioA` on pienempi kuin `olioB`   |
-| `cmp.compareTo(olioA, olioB) == 0` | `olioA == olioB` | `olioA` on yhtä suuri kuin `olioB` |
-| `cmp.compareTo(olioA, olioB) > 0`  | `olioA > olioB`  | `olioA` on suurempi kuin `olioB`   |
+([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/Comparator.html))
+tarjoaa tavan määrittää *vaihtoehtoisia* järjestystapoja. Rajapinta sisältää
+vain yhden pakollisen metodin (`compare`), eli se on funktionaalinen rajapinta.
+Rajapinnan `compare` toimii samalla periaattella kuin `Comparable.compareTo`:
 
 
-Laajenetaan hieman `Kerailykortti`-luokkaa lisäämällä attribuutti
-`sarja`, joka kuvaa korttisarjaa (esim. eläimet, ajoneuvot, jne.):
+| Tapaus                   | Merkitys | Tulkinta                            |
+| ------------------------ | -------- | ----------------------------------- |
+| `cmp.compare(a, b) < 0`  | `a < b`  | `a` on järjestyksessä ennen `b`:tä  |
+| `cmp.compare(a, b) == 0` | `a == b` | `a` ja `b` ovat samanarvoisia       |
+| `cmp.compare(a, b) > 0`  | `a > b`  | `a` on järjestyksessä `b`:n jälkeen |
+
+Koska `Comparator` on funktionaalinen, voimme määrittää vertailun erittäin
+tiiviisti lambdalausekkeena:
+
+```java
+//-void main() {
+List<String> nimet = Arrays.asList("Ville", "Aino", "Matti");
+
+// Järjestetään nimet pituuden mukaan (lyhyin ensin)
+nimet.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
+
+IO.println(nimet); // [Aino, Ville, Matti]
+//-}
+```
+
+Palataan vielä luvussa 4.2 olevaan
+[keräilykorttiesimerkkiin](../osa4/02-vertailurajapinta.md#oma-toteutus-comparable-rajapinnalle).
+Laajenetaan hieman `Kerailykortti`-luokkaa lisäämällä attribuutti `sarja`, joka
+kuvaa korttisarjaa (esim. eläimet, ajoneuvot, jne.):
 
 
 ```java,
@@ -121,21 +522,35 @@ class Kerailykortti implements Comparable<Kerailykortti> {
 ```
 
 Tällä hetkellä keräilykorteille on määritelty luonnollinen järjestys siten, että
-ensin keräilykortit järjestetään nimen ja sitten tunnisteen mukaan.
-Haluaisimme kuitenkin tarjota vaihtoehtoisen tavan järjestää keräilykortteja
-sarjan nimen mukaan.
-Tätä varten voimme luoda uuden vertailuluokan, joka toteuttaa
-`Comparator`-rajapinnan:
+ensin keräilykortit järjestetään nimen ja sitten tunnisteen mukaan. Haluaisimme
+kuitenkin tarjota vaihtoehtoisen tavan järjestää keräilykortteja sarjan nimen
+mukaan. Tätä varten voimme käyttää Javan valmista `sort`-metodin versiota, joka
+ottaa parametrina `Comparator`-vertailijan:
 
 ```java
-// FILE: KerailykorttiSarjaVertailija.java
-import java.util.Comparator;
+// FILE: main.java
+void main() {
+    List<Kerailykortti> kortit = Arrays.asList(
+        new Kerailykortti("Loistava Lohikäärme", "Eläimet", 3),
+        new Kerailykortti("Vauhdikas Vespajetti", "Ajoneuvot", 1),
+        new Kerailykortti("Aloittelijan Ameeba", "Eläimet", 1),
+        new Kerailykortti("Mieletön Merihevonen", "Eläimet", 2),
+        new Kerailykortti("Nopea Nopsa", "Ajoneuvot", 2)
+    );
 
-class KerailykorttiSarjaVertailija implements Comparator<Kerailykortti> {
-    @Override
-    public int compare(Kerailykortti kortti1, Kerailykortti kortti2) {
-        return kortti1.getSarja().compareTo(kortti2.getSarja());
-    }
+    IO.println("Ennen järjestämistä:");
+    kortit.forEach(IO::println);
+
+    // Collections.sort tarjoaa version, jossa toiseksi parametrina voi antaa
+    // järjestyksen, jonka mukaan alkioita järjestetään.
+    Comparator<Kerailykortti> sarjanMukaan = 
+        (kortti1, kortti2) -> kortti1.getSarja().compareTo(kortti2.getSarja());
+    Collections.sort(kortit, sarjanMukaan);
+
+    IO.println();
+
+    IO.println("Jälkeen järjestämisen:");
+    kortit.forEach(IO::println);
 }
 // FILE_END
 // FILE: Kerailykortti.java
@@ -171,79 +586,100 @@ class Kerailykortti implements Comparable<Kerailykortti> {
     }
 }
 // FILE_END
-// FILE: main.java
-void main() {
-    List<Kerailykortti> kortit = Arrays.asList(
-        new Kerailykortti("Loistava Lohikäärme", "Eläimet", 3),
-        new Kerailykortti("Vauhdikas Vespajetti", "Ajoneuvot", 1),
-        new Kerailykortti("Aloittelijan Ameeba", "Eläimet", 1),
-        new Kerailykortti("Mieletön Merihevonen", "Eläimet", 2),
-        new Kerailykortti("Nopea Nopsa", "Ajoneuvot", 2)
-    );
-
-    IO.println("Ennen järjestämistä:");
-    for (Kerailykortti kortti : kortit) {
-        IO.println(kortti);
-    }
-
-    // HIGHLIGHT_GREEN_BEGIN
-    KerailykorttiSarjaVertailija vertailija = new KerailykorttiSarjaVertailija();
-    Collections.sort(kortit, vertailija);
-    // HIGHLIGHT_GREEN_END
-
-    IO.println();
-
-    IO.println("Jälkeen järjestämisen:");
-    for (Kerailykortti kortti : kortit) {
-        IO.println(kortti);
-    }
-}
-// FILE_END
 ```
 
-Huomaa erityisesti, että:
+Huomaa erityisesti, että nyt järjestäminen tehdään `sarjanMukaan`-vertailijan
+mukaan, joka on määritelty lambdalausekkeena. Koska vertailija on määritelty
+`Kerailykortti`-luokan ulkopuolella, lisäsimme myös saantimetodin `getSarja()`.
 
-- Vaihtoehtoinen vertailu on nyt toteutettu omaan luokkaan `KerailykorttiSarjaVertailija`.
-  Tämä on tarkoituksellista ja se mahdollistaa, että vertailijoita voi tehdä
-  myös sellaisille luokille, joiden koodia ei voi suoraan muokata (esim.
-  Javan sisäänrakennetut luokat).
-- Koska `KerailykorttiSarjaVertailija` on oma luokkansa, määritimme `Kerailykortti`-luokkaan
-  saantimetodin `getSarja()`.
-- Jotta vertailijaa voi käyttää, siitä tulee alustaa olio. Alustuksen jälkeen
-  vertailijaolio voidaan käyttää `Collections.sort`-metodin ylikuormituksen
-  kanssa, joka joka ottaa `Comparator`-olion toisena parametrina.
+Javan `Comparator`-luokka tarjoaa myös valmiita apumetodeja vertailijoiden
+yhdistämiseksi.
 
-> [!VAROITUS]
->
-> Yllä olevassa esimerkissä toteutimme `Comparator`-rajapinnan luokassa, jotta esimerkki
-> voidaan pitää yksinkertaisena.
-> 
-> Modernissa Javassa on kuitenkin yleistä, että *vertailuluokkia ei luoda käsin*.
-> `Comparator` on nimittäin ns. *funktiorajapinta*, jonka ansiosta mikä tahansa
-> luokkametodi, jonka määrittely vastaa `compare`-metodia, voidaan sijoittaa
-> suoraan `Comparator`-tyyppiseen muuttujaan tekemättä luokkaa:
->
-> ```java
-> //-void main() {
-> List<Integer> luvut = new ArrayList<>(List.of(5, 4, 2, 1, 3));
-> Comparator<Integer> vertailija = Integer::compare;
-> Collections.sort(luvut, vertailija);
-> IO.println(luvut);
-> //-}
-> ```
->
-> Tutustumme funktiorajapintoihin ja palaamme taas `Comparator`-tyyppiin tarkemmin
-> [osassa 6](../osa6/index.md).
- 
-`Comparator`-rajapinta tarjoaa lisäksi muutaman hyödyllisen metodin, jotka
-auttavat algoritmien suunnittelussa.
+`Comparator.comparing()`-metodi ottaa parametrina lambdalausekkeen, joka
+palauttaa oliosta lasketun arvon, jonka perusteella vertailu tehdään. Metodi
+soveltuu tilanteisiin, kun olio halutaan vertailla olion metodin palauttaman
+arvon luonnollisen järjestyksen mukaan. Esimerkiksi keräilykorttien
+`sarjanMukaan`-vertailija voidaan toteuttaa suoraviivaisemmin:
 
-`Comparator.naturalOrder()` palauttaa `Comparator`-tyyppisen vertailuolion,
-joka järjestää oliot niiden *luonnollisen järjestyksen* mukaan.
-Toisin sanoen, tämä mahdollistaa ns. eristää `Comparable`-rajapintaa
-toteuttavan olion `compareTo`-metodin toteutuksen vertailuolioksi.
-Esimerkiksi merkkijonojen aakkosjärjestystä vastaavan vertailuolion saa tällä
-tavoin:
+```java
+//-void main() {
+//-    List<Kerailykortti> kortit = Arrays.asList(
+//-        new Kerailykortti("Loistava Lohikäärme", "Eläimet", 3),
+//-        new Kerailykortti("Vauhdikas Vespajetti", "Ajoneuvot", 1),
+//-        new Kerailykortti("Aloittelijan Ameeba", "Eläimet", 1),
+//-        new Kerailykortti("Mieletön Merihevonen", "Eläimet", 2),
+//-        new Kerailykortti("Nopea Nopsa", "Ajoneuvot", 2)
+//-    );
+//-
+//-    IO.println("Ennen järjestämistä:");
+//-    kortit.forEach(IO::println);
+//-
+Comparator<Kerailykortti> sarjanMukaan = 
+    Comparator.comparing(Kerailykortti::getSarja);
+//-    Collections.sort(kortit, sarjanMukaan);
+//-
+//-    IO.println();
+//-
+//-    IO.println("Jälkeen järjestämisen:");
+//-    kortit.forEach(IO::println);
+//-}
+//-
+//-class Kerailykortti implements Comparable<Kerailykortti> {
+//-    private String nimi;
+//-    private String sarja;
+//-    private int tunnistenumero;
+//-    
+//-    public Kerailykortti(String nimi, String sarja, int tunnistenumero) {
+//-        this.nimi = nimi;
+//-        this.sarja = sarja;
+//-        this.tunnistenumero = tunnistenumero;
+//-    }
+//-
+//-    public String getSarja() {
+//-        return sarja;
+//-    }
+//-
+//-    @Override
+//-    public int compareTo(Kerailykortti other) {
+//-        int sarjaVertailu = this.sarja.compareTo(other.sarja);
+//-        if (sarjaVertailu != 0) {
+//-            return sarjaVertailu;
+//-        }
+//-        return Integer.compare(this.tunnistenumero, other.tunnistenumero);
+//-    }
+//-
+//-    @Override
+//-    public String toString() {
+//-        return "Kortti: " + nimi + " (Sarja: " + sarja + ", #" + tunnistenumero + ")";
+//-    }
+//-}
+```
+
+Puolestaan `Comparator.thenComparing()`-metodi palauttaa vertailijan, joka
+yhdistää kaksi vertailijaa yhteen: ensin verrataan olioita ensimmäisen
+vertailijan mukaan ja jos ensimmäinen vertailija palauttaa `0`, vertaillaan
+toisen vertailijan mukaan. Esimerkiksi keräilykorttien omaa `compareTo`-metodia
+voidaan toteuttaa oliomaisemmin seuraavasti:
+
+```java,ignore
+@Override
+public int compareTo(Kerailykortti other) {
+    // Vertailija, joka vertaa kortteja sarjan mukaan
+    Comparator<Kerailykortti> sarjanMukaan = Comparator.comparing(k -> k.sarja);
+    // Vertailija, joka vertaa kortteja tunnistenumeron mukaan
+    Comparator<Kerailykortti> tunnistenumeronMukaan = Comparator.comparing(k -> k.tunnistenumero);
+    
+    // vertaillaan ensin sarjan mukaan ja sitten tunnistenumeron mukaan
+    Comparator<Kerailykortti> vertailu = sarjanMukaan.thenComparing(tunnistenumeronMukaan);
+    return vertailu.compare(this, other);
+}
+```
+
+`Comparator.naturalOrder()` palauttaa `Comparator`-vertailijan, joka järjestää
+oliot niiden *luonnollisen järjestyksen* mukaan. Toisin sanoen, tämä
+mahdollistaa ns. eristää `Comparable`-rajapintaa toteuttavan olion
+`compareTo`-metodin toteutuksen vertailuolioksi. Esimerkiksi merkkijonojen
+aakkosjärjestystä vastaavan vertailijan saa tällä tavoin:
 
 ```java
 void main() {
@@ -254,10 +690,9 @@ void main() {
 }
 ```
 
-`Comparator.reversed()` luo uuden vertailuolion, joka kääntää
-vertailujärjestyksen.
-Tämän avulla esimerkiksi pystyy helposti järjestämään merkkijonot
-käänteiseen aakkosjärjestykseen:
+`Comparator.reversed()` luo uuden vertailijan, joka kääntää
+vertailujärjestyksen. Tämän avulla esimerkiksi pystyy helposti järjestämään
+merkkijonot käänteiseen aakkosjärjestykseen:
 
 ```java
 void main() {
@@ -272,12 +707,10 @@ void main() {
 }
 ```
 
-Kun olioita vertailee käyttäen luonnollista tai vaihtoehtoista järjestystä,
-ei voi olla varma siitä, että `null`-viite on käsitelty järkevästi
-tai ollenkaan.
-Esimerkiksi jopa Javassa määritelty `String`-merkkijonojen luonnollinen
-järjestys ei käsittele tapausta, jos jompikumpi verrattavista merkkijonoista
-on `null`:
+Oletuksena monet vertailijat eivät käsittele `null`-viitteitä, mikä voi johtaa
+erilaisiin virheisiin ja odottamattomiin tilanteisiin. Esimerkiksi jopa Javassa
+määritelty `String`-merkkijonojen luonnollinen järjestys ei käsittele tapausta,
+jos jompikumpi verrattavista merkkijonoista on `null`:
 
 ```java,ignore
 //-void main() {
@@ -291,12 +724,12 @@ IO.println(Arrays.toString(jono));
 java.lang.NullPointerException: Cannot invoke "java.lang.Comparable.compareTo(Object)" because "a[runHi]" is null
 ```
 
-Tätä varten on olemassa `Comparator.nullsFirst()` ja `Comparator.nullsLast()`:
-ne ottavat parametriksi vertailuolion ja palauttavat uuden vertailijan,
-joka osaa käsitellä `null`-viitteitä. Nimensä mukaan `nullsFirst()`
-asettaa `null`-viitteet pienemmäksi kuin muut arvot (ja siten järjestyksessä
-ensimmäiseksi), kun taas `nullsLast` asettaa `null`-viitteet suuremmaksi kuin
-muut arvot (eli järjestyksessä viimeiseksi):
+`Comparator.nullsFirst()` ja `Comparator.nullsLast()` -metodit auttavat
+tällaisissa tilanteissa: ne ottavat parametriksi vertailuolion ja palauttavat
+uuden vertailijan, joka osaa käsitellä `null`-viitteitä. Nimensä mukaan
+`nullsFirst()` asettaa `null`-viitteet pienemmäksi kuin muut arvot (ja siten
+järjestyksessä ensimmäiseksi), kun taas `nullsLast` asettaa `null`-viitteet
+suuremmaksi kuin muut arvot (eli järjestyksessä viimeiseksi):
 
 ```java
 //-void main() {
@@ -313,21 +746,35 @@ IO.println(Arrays.toString(jono));
 //-}
 ```
 
-<task> 
+Yhdistämällä eri `Comparator`-vertailijoiden metodeja voidaan toteuttaa hyvin
+monipuolisia vertailijoita ilman ehtorakenteita:
 
-<task-title>
-Tehtävä 4.4: Kortit harvinaisuuden mukaan. <points>1 p.</points> </task-title> 
+```java
+//-void main() {
+List<String> nimet = Arrays.asList("Ville", "Aino", "Matti", null);
 
-<handout>
+// Rakennetaan monimutkaisempi vertailija:
+// 1. Huomioi null-arvot (laita ne loppuun)
+// 2. Järjestä pituuden mukaan
+// 3. Jos pituus on sama, käytä aakkosjärjestystä (naturalOrder)
+Comparator<String> vertailija = Comparator.nullsLast(
+    Comparator.comparingInt(String::length)
+              .thenComparing(Comparator.naturalOrder())
+);
 
+nimet.sort(vertailija);
+IO.println(nimet);
+//-}
+```
 
-</handout> 
-  
-<task-link>
-<a
-  href="https://tim.jyu.fi/view/kurssit/tie/tiep111/TODO">Tee tehtävä TIMissä</a>
-</task-link> 
+<task>
+  <task-title>Tehtävä 6.2: Vertailu harvinaisuuden mukaan <points>1 p.</points> </task-title>
+  <handout>
 
+{{#include ../exercises/6-2-vertailu-harvinaisuus/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava2">Tee tehtävä TIMissa</a></task-link>
 </task>
 
 <!-- ## Tietue (kannattaako esitellä tässä vai mennäänkö vain luokilla?)
