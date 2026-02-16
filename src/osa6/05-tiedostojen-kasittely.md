@@ -1,9 +1,5 @@
 # Tiedostojen käsittely
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 16. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Osaat lukea ja kirjoittaa tekstitiedostoja Javan `Files`-luokan avulla.

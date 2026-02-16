@@ -1,9 +1,5 @@
 # Funktiorajapinnat ja lambdalausekkeet
 
-> [!VAROITUS] 
-> Tämä osio julkaistaan 16. helmikuuta 2026. 
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät funktionaalisen rajapinnan käsitteen
@@ -13,7 +9,6 @@
 >   `Consumer`)
 > - Osaat määrittää olioille vaihtoehtoisia järjestyksiä `Comparator`-rajapinnan
 >   ja lambdalausekkeiden avulla
-
 
 *Funktionaalinen rajapinta* (engl. *functional interface*) on rajapinta, joka
 sisältää vain yhden pakollisen metodin. Sen tarkoituksena on edustaa yksittäistä

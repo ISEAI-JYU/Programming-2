@@ -1,9 +1,5 @@
 # Ulkoiset kirjastot ja Java-projektien hallintatyökalut
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 16. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät, miksi rakennustyökaluja (kuten Maven tai Gradle) tarvitaan

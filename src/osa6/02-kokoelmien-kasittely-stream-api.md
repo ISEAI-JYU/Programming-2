@@ -1,9 +1,5 @@
 # Kokoelmien käsittely: Stream API
 
-> [!VAROITUS] 
-> Tämä osio julkaistaan 16. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät deklaratiivisen ja imperatiivisen ohjelmoinnin eron kokoelmien

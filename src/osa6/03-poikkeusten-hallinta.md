@@ -1,9 +1,5 @@
 # Poikkeusten hallinta
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 16. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Ymmärrät, mikä poikkeus on ja miten se eroaa ohjelman normaalista
