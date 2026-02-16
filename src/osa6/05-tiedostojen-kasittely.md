@@ -626,12 +626,8 @@ aiemmin määritetty perinteinen luokka.
 {{#include ../exercises/6-9-sanat/handout.md}}
 
   </handout>
-
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava9">Tee tehtävä TIMissä</a></task-link>
-
 </task>
-
-
 
 <task>
   <task-title>Tehtävä 6.10: Lue henkilöt JSON-tiedostosta. <points>1 p.</points> </task-title>
@@ -640,20 +636,15 @@ aiemmin määritetty perinteinen luokka.
 {{#include ../exercises/6-10-json-1/handout.md}}
 
   </handout>
-
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava10">Tee tehtävä TIMissä</a></task-link>
-
 </task>
 
 <task>
   <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 6.11: CSV -> JSON. <points>1 p.</points> </task-title>
-
   <handout>
 
 {{#include ../exercises/6-11-csv-json/handout.md}}
 
   </handout>
-
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava11">Tee tehtävä TIMissä</a></task-link>
-
 </task>
