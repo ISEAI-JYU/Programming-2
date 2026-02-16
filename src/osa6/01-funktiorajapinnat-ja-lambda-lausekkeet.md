@@ -94,7 +94,7 @@ public interface NumeroFunktio {
 ```
 
 Huomaa erityisesti syntaksi `this::kerroKahdella`. Se ei kutsu metodia, vaan se
-ikään luo viitteen metodiin. Java osaa automaattisesti luoda rajapinnan
+ikään kuin luo viitteen metodiin. Java osaa automaattisesti luoda rajapinnan
 toteuttavan olion, koska `kerroKahdella`-metodin parametrit ja palautusarvo
 täsmäävät rajapinnan ainoan metodin kanssa. Jos yritämme tulostaa
 `funktio`-muuttujan arvon, kokonaisluvun sijaan tulostuukin olion tiedot:
@@ -193,7 +193,7 @@ funktionaalinen.
 
 Aina emme haluaisi kirjoittaa uutta metodia pelkästään funktioviitteen takia.
 Tällöin voimme kirjoittaa funktion toteutuksen suoraan *lausekkeena*.
-Lausekkeena kirjoitettu funktio on nimeltään *lambdalausekkeita* (engl. *lambda
+Lausekkeena kirjoitettu funktio on nimeltään *lambdalauseke* (engl. *lambda
 expression*).
 
 ```java
@@ -221,23 +221,35 @@ public interface NumeroFunktio {
 // FILE_END
 ```
 
-Lambdalausekkeena määriteltylle funktiolle ei tarvitse antaa erikseen nimeä.
-Tästä syystä lambdalausekkeita yleensä kutstutaan myös *anonyymeiksi
+Lambdalausekkeelle ei tarvitse antaa erikseen nimeä.
+Tästä syystä niitä kutsutaan myös *anonyymeiksi
 funktioiksi* (engl. *anonymous function*).
 
 Lambdalausekkeen perusrakenne on seuraava:
 
 ```java,ignore
-(Tyyppi parametri, Tyyppi parametri2, Tyyppi parametri3) -> {
+(tyyppi parametri) -> {
     // funktion runko
     return tulos;
 }
 ```
 
+Jos parametreja on useampi, ne erotetaan pilkulla:
+
+```java,ignore
+(tyyppi1 parametri1, tyyppi2 parametri2) -> {
+    // funktion runko
+    return tulos;
+}
+```
+
+Kullekin parametrille tulee määritellä tyyppi, joka vastaa funktionaalisen
+rajapinnan metodin parametreja.
+
 Lambdalausekkeiden suurin etu on niiden tiiviys. Java osaa päätellä monta asiaa
-automaattisesti, jolloin koodia voidaan lyhentää. Ensinnäkin, Java osaa päätellä
-parametrien tyypit automaattisesti funktiorajapinnan parametrien tyypeistä,
-jolloin parametrit voidaan jättää usein pois.
+automaattisesti, jolloin koodia voidaan lyhentää. Ensinnäkin, parametrien tyypit
+voidaan päätellä funktiorajapinnan parametrien tyypeistä, joten tyypit voidaan
+usein jättää pois.
 
 ```java
 //-public interface NumeroFunktio {
@@ -256,7 +268,7 @@ NumeroFunktio funktio = (luku) -> {
 ```
 
 Toiseksi, jos lambdalausekkeen runko sisältää vain yhden lauseen, aaltosulut ja
-`return`-määreen voi jättää pois.
+`return`-sanan voi jättää pois.
 
 ```java
 //-public interface NumeroFunktio {
@@ -331,9 +343,7 @@ void main() {
 }
 ```
 
-## Esimerkkejä
-
-### Valmiita funktiorajapintoja
+## Valmiita funktiorajapintoja
 
 Javassa on joukko valmiita yleisiä funktiorajapintoja, jotka löytyvät
 `java.util.function`-paketista (ks.
