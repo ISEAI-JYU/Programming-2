@@ -4,7 +4,7 @@ Tee
 
  1. Uusi Maven-projekti, joka käyttää Jackson-kirjastoa JSON-tiedostojen
    käsittelyyn. Lisää `pom.xml`-tiedostoosi tarvittava riippuvuus.
- 2. Lataa [henkilot.json](/exercises/6-11-json-1/henkilot.json) ja tallenna se projektiisi samaan kansioon kuin
+ 2. Lataa [henkilot.json](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-10-json-1/henkilot.json) ja tallenna se projektiisi samaan kansioon kuin
       missä koodisi on. 
  2. `Henkilo`-record, jolla on kentät `String nimi`, `int ika`, `String kaupunki`.
  3. lukee tiedoston `henkilot.json`

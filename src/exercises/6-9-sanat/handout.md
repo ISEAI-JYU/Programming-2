@@ -1,4 +1,4 @@
-Lataa aineisto: [sanat.txt](/exercises/6-9-sanat/sanat.txt)
+Lataa aineisto: [sanat.txt](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-9-sanat/sanat.txt)
 
 Tallenna tiedosto projektisi työskentelyhakemistoon nimellä `sanat.txt`.
 
