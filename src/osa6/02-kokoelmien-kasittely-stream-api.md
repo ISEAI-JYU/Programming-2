@@ -35,8 +35,8 @@ IO.println("Summa: " + summa);
 ```
 
 Tätä ohjelmointitapaa kutsutaan *imperatiiviseksi*. Siinä kirjoitamme vaihe
-vaiheelta, *mitä tietokoneen pitäisi tehdä* päästäkseen haluttuun
-lopputulokseen.
+vaiheelta, *mitä tietokoneen pitää tehdä*, jonka seurauksena pääsemme 
+lopputulokseen, jonka tiedämme haluavamme.
 
 Datan prosessoinnissa on kuitenkin usein selkeämpää kuvata, *millaisen*
 lopputuloksen haluamme, sen sijaan että kertoisimme tarkat suoritusvaiheet. Tätä
@@ -142,7 +142,7 @@ Tarvitsemme tämän vaiheen siksi, että yleinen `Stream<T>` on geneerinen, ja
 Javassa geneeristen tyyppien sisällä ei voi olla perustietotyyppejä (kuten
 `int`). Kutsumalla `mapToInt()` striimi muuttuu `IntStream`-tyyppiseksi
 ([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/stream/IntStream.html)).
-`IntStream` on optimoitu juuri numeroiden käsittelyyn ja se tarjoaa valmiita
+`IntStream` on optimoitu kokonaislukujen käsittelyyn ja se tarjoaa valmiita
 tilastollisia metodeja, kuten `sum()`.
 
 **4. Arvon laskeminen**
@@ -477,17 +477,17 @@ public class Ostotapahtuma {
 Huomaa, että `average()` ei palauta suoraan `double`-arvoa, vaan
 `OptionalDouble`-olion. Tämä johtuu siitä, että jos striimi on tyhjä
 (esimerkiksi yhtään syyskuun ostosta ei löytyisi), keskiarvoa ei voida laskea.
-Palaamme tähän hetken päästä alempana.
+Palaamme tähän hieman alempana.
 
 ### Striimien lopetusoperaatiot
 
-Kaikki striimin metodit, jotka palauttavat jotain muuta kuin uuden striimin ovat
+Kaikki striimin metodit, jotka palauttavat jotain muuta kuin uuden striimin, ovat
 *lopetusoperaatioita* (engl. *terminal operations*). Lopetusoperaatiot yleensä
 käyvät läpi striimissä kaikki alkiot ja tuottavat arvon tai sivuvaikutuksen. 
 
-Yleisin hyödyllinen lopetusoperaatio on striimin alkioiden kerääminen
-kokoelmaksi. Esimerkiksi `toList()`-metodi kerää striimin alkiot listaksi ja
-`toArray()`-metodi taulukoksi:
+Eräs tavallinen lopetusoperaatio on striimin alkioiden kerääminen
+kokoelmaksi. Esimerkiksi `toList()` kerää striimin alkiot listaksi ja
+`toArray()` taulukoksi:
 
 ```java
 //-void main() {
@@ -509,9 +509,10 @@ IO.println(Arrays.toString(oikeitaArvosanojaTaulu));
 //-}
 ```
 
-Huomaa, että lopetusoperaation jälkeen striimi yleensä lasketaan käytetyksi,
-eikä jo käytettyä striimiä voi enää yleensä käyttää sen jälkeen. Jo käytetyn
-striimin uudelleenkäyttäminen aiheuttaa yleensä virheen:
+Huomaa, että lopetusoperaation jälkeen striimi yleensä lasketaan *käytetyksi*,
+eikä jo käytettyä striimiä voi enää yleensä käyttää sen jälkeen, vaan tarvitaan
+uusi striimi. Jo käytetyn striimin uudelleenkäyttäminen aiheuttaa yleensä
+virheen:
 
 ```java,ignore
 //-void main() {

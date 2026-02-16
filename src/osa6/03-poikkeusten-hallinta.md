@@ -67,8 +67,8 @@ käsittelijä löytyy, poikkeus välitetään sille. Tällöin sanotaan, että p
 "otetaan kiinni" (engl. *catch*). 
 
 Jos järjestelmä käy läpi koko kutsupinon löytämättä sopivaa käsittelijää, se
-säie (engl. *thread*), jossa virhe tapahtui, pysähtyy. Jos kyseessä on pääsäie
-(engl. *main thread*), koko ohjelma kaatuu.
+säie (engl. *thread*), jossa virhe tapahtui, pysähtyy. Jos kyseessä on ohjelman
+pääsäie (engl. *main thread*), koko ohjelma kaatuu.
 
 Alla oleva kaavio havainnollistaa karkeasti poikkeuksen heittämisen ja
 käsittelyn prosessia. Oletetaan, että `main()`-metodi kutsuu metodia `a()`, joka
@@ -122,7 +122,7 @@ joihin ohjelma voi usein reagoida hallitusti. Tyypillisiä esimerkkejä ovat
 tiedostojen käsittely, verkkoyhteydet ja tietokantatoiminnot. Esimerkiksi
 tiedoston avaaminen voi epäonnistua, koska tiedostoa ei ole olemassa tai siihen
 ei ole lukuoikeuksia, vaikka ohjelmakoodi itsessään olisi täysin oikein.
-Tällaisia poikkeuksia ovat esimerkiksi 
+Tarkastettuja poikkeuksia ovat esimerkiksi 
 
  * `IOException`, joka kuvaa syötteeseen tai tulosteeseen liittyviä ongelmia,
    kuten tiedoston lukemisen epäonnistumista, ja
@@ -130,9 +130,10 @@ Tällaisia poikkeuksia ovat esimerkiksi
 
 Tarkastetut poikkeukset periytyvät `Exception`-luokasta. 
 
-Tällöin kääntäjä ikään kuin ilmoittaa ohjelmoijalle: "*Näen, että olet tekemässä
-jotain riskialtista (kuten lukemassa tiedostoa). En käännä ohjelmaasi, ennen
-kuin olet osoittanut, että olet ottanut huomioon mahdolliset ongelmat.*"
+Kun kääntäjä kohtaa koodin, joka voi heittää tarkastetun poikkeuksen, se
+ikään kuin ilmoittaa ohjelmoijalle: "*Näen, että olet tekemässä jotain
+riskialtista (kuten lukemassa tiedostoa). En käännä ohjelmaasi, ennen kuin olet
+osoittanut, että olet ottanut huomioon mahdolliset ongelmat.*"
 
 Tällöin on tehtävä jompikumpi seuraavista:
 
@@ -146,7 +147,7 @@ specify* -vaatimukseksi.
 
 *Tarkastamaton poikkeus* on poikkeus, jota ei tarkasteta käännösaikana, eikä
 sitä siten tarvitse käsitellä tai ilmoittaa etukäteen. Tällainen poikkeus voi
-kuitenkin laueta ohjelman ohjelman suorituksenaikana. Tyypillisiä
+kuitenkin laueta ohjelman ohjelman suorituksen aikana. Tyypillisiä
 tarkastamattomia poikkeuksia ovat
  
  * `NullPointerException`, joka tapahtuu, kun yritetään käyttää olion viitettä,
@@ -222,10 +223,12 @@ Kun käytössä on `try-catch-finally`, suoritus etenee näin:
  2. Jos poikkeus tapahtuu, sopiva `catch` suoritetaan.
  3. Lopuksi `finally` suoritetaan aina.
 
-Alla on esimerkki tiedoston lukemisesta `Scanner`-luokan avulla, jossa
-`finally`-lohko varmistaa, että tiedoston lukija suljetaan, vaikka lukeminen
-epäonnistuisi poikkeuksen vuoksi. TODO: Lyhyt selitys Scannerista. 
-
+Alla on esimerkki tiedoston lukemisesta `Scanner`-luokan avulla. Paneudumme
+`Scanner`-luokkaan tarkemmin [osassa 6.5](./05-tiedostojen-kasittely.md), mutta
+lyhyesti: `Scanner`-olion avulla voidaan lukea tekstiä tiedostosta esimerkiksi
+merkki tai rivi kerrallaan. Käytettäessä `try-catch`-rakennetta `Scanner`-olio
+ei sulje itseään automaattisesti esimerkiksi poikkeuksen sattuessa, joten se
+pitää sulkea `finally`-lohkossa. 
 ```java
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -251,23 +254,37 @@ void lueTiedosto(String polku) {
 ```
 
 Yllä olevassa esimerkissä `finally` sulkee lukijan myös silloin, kun tiedoston
-lukeminen keskeytyy poikkeukseen. Näin vältetään resurssivuodot, kuten
-muistivuodot tai tiedostokahvojen jääminen auki.
+lukeminen keskeytyy poikkeukseen. Jos oliota ei suljeta, "tiedostokahva", eli
+resurssi, joka on varattu tiedoston lukemiseen, jää auki. Käyttöjärjestelmillä
+on tiukat rajat sille, kuinka monta tiedostoa yhdellä prosessilla tai koko
+järjestelmällä voi olla auki samanaikaisesti. Jos ohjelmasi pyörii silmukassa
+tai palvelimella ja avaa tiedostoja sulkematta niitä, ns. *file descriptor*
+-taulukko täyttyy. Kun raja tulee vastaan, ohjelma kaatuu virheeseen, usein
+`IOException: Too many open files`, eikä se pysty enää avaamaan uusia
+tiedostoja. `finally`-lohko varmistaa, että tiedoston lukija suljetaan, vaikka
+lukeminen epäonnistuisi. 
 
-Nyky-Javassa resurssien hallintaan kannattaa usein käyttää
-`try-with-resources`-rakennetta, jolloin resurssit suljetaan automaattisesti.
-Otetaan tästä esimerkki myöhemmissä osissa, kun olemme tutustuneet
-`Closeable`-rajapintaan.
+Nyky-Javassa resurssien hallintaan käytetään usein `try-catch`-rakenteen sijaan
+`try-with-resources`-rakennetta
+([JavaDoc](https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html)),
+jolloin esimerkiksi `Scanner` osaa sulkea itsensä automaattisesti. Otetaan tästä
+esimerkki myöhemmissä osissa, kun olemme tutustuneet `Closeable`-rajapintaan,
+jonka avulla resurssit voidaan määritellä suljettaviksi.
 
 ## Esimerkki tarkastetusta poikkeuksesta
 
 Oletetaan, että haluamme lukea tiedoston sisältöä. Tehdään se käyttäen
 modernista Javasta löytyvää `Files.readString()`-metodia. Huomaa, että tätä
-metodia käytettäessä ei tarvita `finally`-lohkoa, koska kyseinen metodi
-huolehtii tiedoston sulkemisesta automaattisesti. Jatkon kannalta on kuitenkin
-tärkeä muista, että näin ei ole kaikkien Files-luokan metodien, esim
-[Files.lines](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/file/Files.html#lines(java.nio.file.Path))
+metodia käytettäessä ei tarvita `finally`-lohkoa, koska kyseinen metodi lukee
+tiedoston kerralla ja huolehtii tiedoston sulkemisesta automaattisesti. Jatkon
+kannalta on kuitenkin tärkeä muista, että näin ei ole kaikkien `Files`-luokan
+metodien, esim `Files.lines()`
+([JavaDoc](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/file/Files.html#lines(java.nio.file.Path)))
 kanssa. 
+
+`Files.readString()`-metodi vaatii `Path`-olion argumentikseen, joten käytämme
+tässä myös `Path.of()`-metodia, mikä on kätevä tapa luoda `Path`-olio
+merkkijonon avulla.
 
 ```java
 import java.nio.file.Files;
@@ -390,7 +407,7 @@ void kasitteleListaa(List<Henkilo> henkilot) {
 }
 ```
 
-Tämähän ei ole `main()`-metodin näkökulmasta ollenkaan ilmeistä -- se hoitaa
+Tämähän ei ole `main()`-metodin näkökulmasta ollenkaan ilmeistä &ndash; se hoitaa
 vain omaa hommaansa. Ongelma onkin siinä, että `kasitteleListaa()`-metodi
 aiheuttaa sivuvaikutuksen (muuttaa listan sisältöä) nimenomaan sillä tavalla,
 joka rikkoo `main()`-metodin odotuksen siitä, että listalla on vain
@@ -475,7 +492,7 @@ void rekisteroiKayttaja(String salasana) throws EpakelpoSalasanaException {
 
 Omien poikkeusten etu on se, että virheestä tulee semanttisesti tarkempi:
 poikkeuksen nimestä näkee heti, mitä sääntöä rikottiin. Toki salasanan
-tarkistamisessa olisi voinut käyttää myös if-lausetta ilman poikkeuksia, mutta
+tarkistamisessa olisi voinut käyttää myös `if`-lausetta ilman poikkeuksia, mutta
 poikkeuksella on se etu, että se pakottaa käsittelemään virhetilanteen, eikä
 sitä voi unohtaa.
 
