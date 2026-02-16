@@ -120,7 +120,7 @@
 </task>
 
 <task>
-  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 6.12: Laskin <points>1 p.</points> </task-title>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 6.12: Parempi laskukone <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/6-12-laskin/handout.md}}

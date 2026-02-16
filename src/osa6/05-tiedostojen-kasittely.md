@@ -648,3 +648,14 @@ aiemmin määritetty perinteinen luokka.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava11">Tee tehtävä TIMissä</a></task-link>
 </task>
+
+<task>
+  <task-title><i class="bi bi-stars jyu-gold"></i> Bonus: Tehtävä 6.12: Parempi laskukone <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/6-12-laskin/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava12">Tee tehtävä TIMissä</a></task-link>
+</task>
+
