@@ -1,18 +1,15 @@
-
-
-Tee 
-
- 1. Uusi Maven-projekti, joka käyttää Jackson-kirjastoa JSON-tiedostojen
-   käsittelyyn. Lisää `pom.xml`-tiedostoosi tarvittava riippuvuus.
- 2. Lataa [henkilot.json](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-10-json-1/henkilot.json) ja tallenna se projektiisi samaan kansioon kuin
+ 1. Tee uusi Maven-projekti, joka käyttää Jackson-kirjastoa JSON-tiedostojen
+   käsittelyyn. 
+ 2. Lisää `pom.xml`-tiedostoosi tarvittava riippuvuus.
+ 3. Lataa [henkilot.json](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-10-json-1/henkilot.json) ja tallenna se projektiisi samaan kansioon kuin
       missä koodisi on. 
- 2. `Henkilo`-record, jolla on kentät `String nimi`, `int ika`, `String kaupunki`.
- 3. lukee tiedoston `henkilot.json`
-    listaksi `Henkilo`-olioita,
- 4. suodattaa mukaan vain vähintään 18-vuotiaat,
- 5. tulostaa heidän nimensä, ikänsä ja kaupunkinsa.
+ 4. `Henkilo`-luokka tai vastaava record, jolla on kentät `String nimi`, `int
+    ika`, `String kaupunki`.
+ 5. Lue tiedosto `henkilot.json` ja muuta se listaksi `Henkilo`-olioita.
+ 6. Suodata mukaan vain vähintään 18-vuotiaat.
+ 7. Tulosta heidän nimensä, ikänsä ja kaupunkinsa.
 
-Vinkki: Varmista, että tallennat `henkilot.json`-tiedoston samaan kansioon kuin
+Muista varmistaa, että tallennat `henkilot.json`-tiedoston samaan kansioon kuin
 missä koodisi sijaitsee. Tarkista sitten ajokonfiguraatiostasi, että
 työskentelyhakemisto on sama kuin koodisi kansio, jotta tiedosto löytyy.
 
