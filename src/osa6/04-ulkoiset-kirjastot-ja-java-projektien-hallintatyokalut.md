@@ -39,10 +39,12 @@ löydy. Kysymys kuuluu: mistä tämä kirjasto pitäisi saada? Jos löydätkin s
 jostain, ja lataat sen `.jar`-tiedostona, niin mihin tuo tiedosto pitäisi
 laittaa? Entä jos kirjasto tarvitsee itse tuekseen muita kirjastoja?
 
-Tässä kohtaa törmätään modernin ohjelmistokehityksen ytimeen: oma koodi ei
-riitä. Tarvitsemme muiden kirjoittamia kirjastoja. Kun käytät toisen kehittäjän
-tekemää kirjastoa, projektisi *riippuu* siitä; Tätä kutsutaan riippuvuudeksi
-(dependency). Äskeisessä esimerkissä riippuvuus on OkHttp-kirjasto. 
+Tässä kohtaa törmätään modernin ohjelmistokehityksen ytimeen: oma koodi ei aina
+riitä, vaan tarvitsemme usein myös muiden kirjoittamaa koodia osana omaa
+ohjelmaamme. Toisen tekemää koodia, joka on julkaistu muiden käytettäväksi,
+kutsutaan *kirjastoksi*. Kun käytät toisen kehittäjän tekemää kirjastoa,
+projektisi *riippuu* siitä; Tätä kutsutaan riippuvuudeksi (dependency).
+Äskeisessä esimerkissä riippuvuus on OkHttp-kirjasto. 
 
 Riippuvuuksien hallinta tarkoittaa:
 
