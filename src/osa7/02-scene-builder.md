@@ -10,8 +10,8 @@ FXML:ää suoraan tai haluat nopeuttaa käyttöliittymän suunnitteluprosessia.
 
 ## Ensimmäinen komponentti
 
-Avataan nyt SceneBuilder. File -> Open. Avataan tekemämme projektin alta `resources`-kansio ja
-sieltä FXML-tiedosto nimeltä `main.fxml`. 
+Avataan nyt SceneBuilder. File -> Open. Avataan tekemämme projektin alta
+`resources`-kansio ja sieltä FXML-tiedosto nimeltä `main.fxml`. 
 
 Lisätään ensimmäienn tekestikenttä. 
 
@@ -24,7 +24,7 @@ elementti anchorpane-elementin sisälle children-elementtiin.
 
 Käynnistä ohjelma. Voit kirjoittaa tekstikenttään. 
 
-Lisätään painike jolla tekstin voi tallentaa. Controls- > Button. Vaihda
+Lisätään painike jolla tekstin voi tallentaa. Controls -> Button. Vaihda
 tekstiksi "Lisää" oikealta ylhtäältä. 
 
 ## FXML:n ja kontrolleriluokan yhdistäminen
@@ -83,6 +83,8 @@ Nyt kun painiketta klikataan, konsoliin tulostuu tekstikentän sisältö.
 
 ## Tekstikentän sisällön näyttäminen ikkunassa
 
+Komponenttien tapahtumien käsittely.
+
 Laitetaan nyt tekstikentän sisältö näkyviin ikkunaan. Lisätään FXML-tiedostoon
 Label-komponentti. Anna sille fx:id "todoLista". Tyhjennä Properties -> Text,
 jotta se on tyhjä. Lisää kontrolleriin `@FXML private Label todoLista;`. 
@@ -91,6 +93,11 @@ Komponentille voidaan määritellä tapahtumankäsittelijöitä, jotka määritt
 mitä tapahtuu, kun käyttäjä vuorovaikuttaa komponentin kanssa. Esimerkiksi
 painikkeelle voidaan määrittää `setOnAction`-tapahtumankäsittelijä, joka
 suoritetaan, kun painiketta klikataan. 
+
+Laita `MainController`-luokkaan `implements Initializable` ja toteuta
+`initialize()`-metodi, joka suoritetaan, kun    FXML-tiedosto on ladattu ja
+kontrolleriluokka on alustettu. `initialize()`-metodiin voidaan lisätä koodi,
+joka määrittää tapahtumankäsittelijöitä komponentteille.
 
 Lisätään tapahtumankäsittelijä `initialize()`-metodiin: 
 
@@ -101,12 +108,30 @@ lisaaUusiTehtavaPainike.setOnAction(event -> {
 });
 ```
 
-AnchorPane ei osaa skaalatua, joten vaihdetaan se GridPaneen, ja laitetaan sen
-sisään asiat. Vaihda buttonin row ja column indexit Layout-kohdassa. 
+## VBOX ja komponenttien luominen dynaamisesti 
 
-## Komponenttien luominen dynaamisesti 
+Laitetaan AnchorPanen sisään VBOX,. Korvataan Label VBOXilla. 
 
+Checkboxeja
 
+Niiden luominen dynaamisesti. 
+
+## Toinen VBOX käsitellyille tehtäville
+
+Siirretään käsitellyt tehtävät omaan VBOXiin. 
+
+Palauttaminen käsitellystä tilasta käsittelemättömään tilaan.
 
 ## Tehtävien lukeminen ja kirjoittaminen tiedostoon
 
+Kirjoittaminen JSON-tiedostoon ja lukeminen sieltä.
+
+## Refaktorointia
+
+## AnchorPane vs Gridpane
+
+AnchorPane ei osaa skaalatua, joten vaihdetaan se GridPaneen, ja laitetaan sen
+sisään asiat. Vaihda buttonin row ja column indexit Layout-kohdassa. 
+
+Skaalauden säätäminen niin että ikkunan pienentäminen ja suurentaminen ei
+totallisesti hajota layoutia. 
