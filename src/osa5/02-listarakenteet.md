@@ -167,11 +167,14 @@ void main() {
 }
 ```
 
-Käynnistä IDEAn debuggeri, ja tarkista `lista`-olion `alkiot`-taulukko. Sen pitäisi sisältää
-lisätyt nimet alusta alkaen. IDEA ei näytä `null`-arvoja taulukon lopussa
-oletuksena. Jos haluat, saat ne esille klikkaamalla `alkiot`-taulukon kohdalla
-hiiren oikeaa painiketta, valitse "Customize data view", ja poista valinta
-kohdasta "Hide null elements". 
+Käynnistä IDEAn debuggeri. Avaa alhaalla aukeavassa näkymässä Threads and
+variables -välilehti. Jos tätä ei näy, valitse ylävalikosta View <i class="bi
+bi-chevron-right"></i> Tool Windows <i class="bi bi-chevron-right"></i> Debug.
+Nyt sinun pitäisi nähdä `lista`-olion tiedot. Avaa `lista`-olion
+`alkiot`-taulukko. Sen pitäisi sisältää lisätyt nimet alusta alkaen. IDEA ei
+näytä `null`-arvoja taulukon lopussa oletuksena. Jos haluat, saat ne esille
+klikkaamalla `alkiot`-taulukon kohdalla hiiren oikeaa painiketta, valitse
+"Customize data view", ja poista valinta kohdasta "Hide null elements". 
 
 <task>
   <task-title>Tehtävä 5.1: Listaan lisääminen. <points>1 p.</points> </task-title>
