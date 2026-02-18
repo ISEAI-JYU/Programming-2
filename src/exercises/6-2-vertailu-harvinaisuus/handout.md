@@ -1,5 +1,5 @@
-Laajenna `Kerailykortti`-luokkaa lisäämällä sille attribuutti `String
-harvinaisuus`. Keräilykortin harvinaisuus voi olla yksi seuraavista arvoista
+Laajenna [`Kerailykortti`-luokkaa](https://ohjelmointi2.it.jyu.fi/osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.html#comparator-rajapinta) 
+lisäämällä sille attribuutti `String harvinaisuus`. Keräilykortin harvinaisuus voi olla yksi seuraavista arvoista
 (vähiten harvinaisesta harvinaisimpaan): `C`, `U`, `R`, `RR`, `RRR`, `SR`, `AR`,
 `SAR`, `UR`.
 
