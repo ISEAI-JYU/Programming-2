@@ -562,13 +562,19 @@ public void initialize(...) {
 
 Tehtävät ovat nyt siis tallennettuina `tehdyt`- ja `tekemattomat`-VBoxeihin.
 VBoxien lapsikomponenttien muuntaminen `Tehtava`-olioiksi vaatii hieman jumppaa.
+VBoxin lapsikomponentit ovat tyyppiä `Node` &ndash; JavaFX:ssä kaikki
+visuaaliset komponentit, myös `CheckBox`, periytyvät `Node`-luokasta. Vaikka
+meidän tapauksessamme kaikki VBoximme lapset ovatkin `CheckBox`-komponentteja,
+on hyvä silti tarkistaa olion todellinen tyyppi. Tämä tarkistus voidaan tehdä
+`instanceof`-operaattorilla, jonka perään voidaan kirjoittaa muuttujan nimi
+(tässä `c`), johon tarkistettu objekti sijoitetaan uuden tyypin kera.
 
 ```java,ignore
 tekemattomat.getChildren().forEach(node -> {
+    // Periaatteessa kaikki lapsikomponentit pitäisi 
+    // olla CheckBoxeja, mutta varmuuden vuoksi tarkistetaan 
+    // tämä kuitenkin. 
     if (!(node instanceof CheckBox c)) {
-        // Periaatteessa kaikki lapsikomponentit pitäisi 
-        // olla CheckBoxeja, mutta varmuuden vuoksi tarkistetaan 
-        // tämä kuitenkin. 
         return;
     }
     // Jos pääsemme tänne, niin node on CheckBox, 
@@ -597,11 +603,13 @@ Katso IDEAssa, että projektikansioon ilmestyy `tehtavat.json`-tiedosto, kun
 lisäät uuden tehtävän. 
 
 Luonnollisesti myös tehdyt tehtävät tulee tallentaa. Jotta koodia ei tarvitse
-toistaa, tehdään erillinen metodi, joka ottaa `VBox`-komponentin ja palauttaa
-sen lapsikomponenttien perusteella listan `Tehtava`-olioita. Kutsutaan tätä
-sitten sekä `tekemattomat`- että `tehdyt`-VBoxeille.
+toistaa, tehdään yllä olevasta koodista uusi metodi, `teeTehtavalista(VBox vbox)`, joka palauttaa VBox-parametrin lapsikomponenttien perusteella listan
+`Tehtava`-olioita. 
+
+Kutsutaan tätä sitten sekä `tekemattomat`- että `tehdyt`-VBoxeille.
 
 ```java,ignore
+
 List<Tehtava> kaikkiTehtavat = new ArrayList<>();
 // HIGHLIGHT_GREEN_BEGIN
 kaikkiTehtavat.addAll(teeTehtavalista(tekemattomat));
@@ -670,6 +678,78 @@ private CheckBox luoCheckBox(String teksti) {
 Jos katsot nyt ajon aikana `tehtavat.json`-tiedostoa, näet, että se päivittyy,
 kun tehtävä lisätään, merkitään tehdyksi tai tehdään tekemättömäksi. Näiden
 keskinäinen järjestys ei säily, mutta emme murehdi siitä tässä vaiheessa.
+  
+Nyt olemme saaneet tehtävät tallennettua, ne pitäisi myös lukea ohjelman
+käynnistyessä. Tehdään sitä varten metodi `lueTehtavat()`. Käytetään tiedoston
+lukemiseen tapaa, jonka opimme [osassa
+6.5](../osa6/05-tiedostojen-kasittely.md#jackson), eli käytetään
+`ObjectMapper`-luokan `readValue()`-metodia. Kääritään koko komeus `try-catch`-lohkon sisään, jotta mahdolliset poikkeukset saadaan kiinni.
+
+```java,ignore
+private void lueTehtavat() {
+    ObjectMapper mapper = new ObjectMapper();
+    Path path = Path.of("tehtavat.json");
+    try {
+        // 
+        List<Tehtava> kaikkiTehtavat = mapper.readValue(path.toFile(),
+                new TypeReference<java.util.List<Tehtava>>() {});
+        kaikkiTehtavat.forEach(tehtava -> {
+            CheckBox checkbox = luoCheckBox(tehtava.getTeksti());
+            if (tehtava.isTehty()) {
+                tehdyt.getChildren().add(checkbox);
+            } else {
+                tekemattomat.getChildren().add(checkbox);
+            }
+        });
+    } catch (JacksonException je) {
+        IO.println("JSONin lukeminen epäonnistui: " + je.getMessage());
+    }
+}
+```
+
+Lisätään kutsu `initialize()`-metodiin.
+
+```java,ignore
+public void initialize(...) {
+    lueTehtavat();
+    // ...
+```
+
+Lukemisessa, tai oikeastaan checkboxien luomisessa, on pieni ongelma.
+`luoCheckBox()`-metodi ei ota huomioon sitä, onko tehtävä tehty vai ei, vaan luo
+aina tekemättömän tehtävän. Korjataan tämä lisäämällä metodille toinen
+parametri.
+
+```java,ignore
+private CheckBox luoCheckBox(String teksti, boolean valittu) {
+    CheckBox checkbox = new CheckBox(teksti);
+    if (valittu) checkbox.setSelected(true);
+    // ...
+}
+```
+
+Nyt voimme lisätä metodin kutsuun mukaan checkboxin oikean tilan. 
+
+```java,ignore
+// ...
+kaikkiTehtavat.forEach(tehtava -> {
+    // HIGHLIGHT_GREEN_BEGIN
+    CheckBox checkbox;
+    // HIGHLIGHT_GREEN_END
+    if (tehtava.isTehty()) {
+    // HIGHLIGHT_GREEN_BEGIN
+        checkbox = luoCheckBox(tehtava.getTeksti(), true);
+    // HIGHLIGHT_GREEN_END
+        tehdyt.getChildren().add(checkbox);
+    } else {
+    // HIGHLIGHT_GREEN_BEGIN
+        checkbox = luoCheckBox(tehtava.getTeksti(), false);
+    // HIGHLIGHT_GREEN_END
+        tekemattomat.getChildren().add(checkbox);
+    }
+});
+// ...
+```
 
 <task>
   <task-title>Tehtävä 7.4: TODO-ohjelma, vaihe 4. <points>1 p.</points> </task-title>
@@ -680,6 +760,7 @@ keskinäinen järjestys ei säily, mutta emme murehdi siitä tässä vaiheessa.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava4">Tee tehtävä TIMissä</a></task-link>
 </task>
+
 
 ## Käyttöliittymän siistimistä
 

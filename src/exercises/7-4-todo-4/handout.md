@@ -1,7 +1,6 @@
-KESKEN!!!
-
-Aina kun käyttäjä syöttää uuden tehtävän, tallenna kaikki tekemättömät tehtävät
-JSON-tiedostoon. JSON-tiedoston pitäisi näyttää esimerkiksi tältä:
+Aina kun käyttäjä lisää tehtävän tai muuttaa tehtävän tilaa, tallenna tehtävät
+JSON-tiedostoon. Lue tehtävät ohjelman käynnistyessä. JSON-tiedoston pitäisi
+näyttää esimerkiksi tältä:
 
 ```json
 [
@@ -11,10 +10,7 @@ JSON-tiedostoon. JSON-tiedoston pitäisi näyttää esimerkiksi tältä:
   },
   {
     "tehtava": "Vie roskat",
-    "tehty": false
+    "tehty": true
   }
 ]
 ```
-
-Tehtyjä tehtäviä ei vielä tarvitse tallentaa -- tehdään se seuraavassa
-vaiheessa. 
