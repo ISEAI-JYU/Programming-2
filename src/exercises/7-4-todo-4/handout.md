@@ -1,3 +1,5 @@
+KESKEN!!!
+
 Aina kun käyttäjä syöttää uuden tehtävän, tallenna kaikki tekemättömät tehtävät
 JSON-tiedostoon. JSON-tiedoston pitäisi näyttää esimerkiksi tältä:
 

@@ -596,6 +596,30 @@ public void initialize(...) {
 Katso IDEAssa, että projektikansioon ilmestyy `tehtavat.json`-tiedosto, kun
 lisäät uuden tehtävän. 
 
+
+Luonnollisesti myös tehdyt tehtävät tulee tallentaa. Jotta koodia ei tarvitse
+toistaa, tehdään erillinen metodi, joka ottaa `VBox`-komponentin ja palauttaa
+sen lapsikomponenttien perusteella listan `Tehtava`-olioita. Kutsutaan tätä
+sitten sekä `tekemattomat`- että `tehdyt`-VBoxeille.
+
+```java,ignore
+List<Tehtava> kaikkiTehtavat = new ArrayList<>();
+// HIGHLIGHT_GREEN_BEGIN
+kaikkiTehtavat.addAll(teeTehtavalista(tekemattomat));
+kaikkiTehtavat.addAll(teeTehtavalista(tehdyt));
+// HIGHLIGHT_GREEN_END
+// HIGHLIGHT_RED_BEGIN
+tekemattomat.getChildren().forEach(node -> {
+    //...
+});
+// HIGHLIGHT_RED_END
+ObjectMapper mapper = new ObjectMapper();
+mapper.writeValue(Path.of("tehtavat.json"), kaikkiTehtavat);
+```
+
+Nyt tallennus kyllä 
+
+
 <task>
   <task-title>Tehtävä 7.4: TODO-ohjelma, vaihe 4. <points>1 p.</points> </task-title>
   <handout>
@@ -606,22 +630,7 @@ lisäät uuden tehtävän.
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava4">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-
-
-
-## Refaktorointia
-
-
-Niinpä myös tehdyt tehtävät tallennetaan samaan tapaan. Jotta koodia ei tarvitse
-toistaa, tehdään erillinen metodi, joka ottaa `VBox`-komponentin ja palauttaa
-sen lapsikomponenttien perusteella listan `Tehtava`-olioita. Kutsutaan tätä
-sitten sekä `tekemattomat`- että `tehdyt`-VBoxeille.
-
-```java,ignore
-List<Tehtava> kaikkiTehtavat = new ArrayList<>();
-kaikkiTehtavat.addAll(teeTehtavalista(tekemattomat));
-kaikkiTehtavat.addAll(teeTehtavalista(tehdyt));
-```
+## Käyttöliittymän siistimistä
 
 ## Fiksumpi skaalautuminen
 
