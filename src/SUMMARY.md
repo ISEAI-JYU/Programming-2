@@ -53,7 +53,7 @@
   - [Osan kaikki tehtävät](./osa6/06-tehtavat.md)
 - [JavaFX osa 1, SceneBuilder](./osa7/index.md)
   - [JavaFX perusteet](./osa7/01-javafx-perusteet.md)
-  - [SceneBuilder](./osa7/02-scene-builder.md)
+  - [SceneBuilder](./osa7/02-scenebuilder.md)
   - [Osan kaikki tehtävät](./osa7/03-tehtavat.md)
 - [JavaFX osa 2, MVC](./osa8/index.md)
 - [Harjoitustyön vaihe 1, Git](./osa9/index.md)
