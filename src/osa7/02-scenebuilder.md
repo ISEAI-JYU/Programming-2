@@ -517,9 +517,111 @@ tehtävien yläpuolelle teksti "TODO" ja käsiteltyjen tehtävien yläpuolelle t
 
 ## Tehtävien lukeminen ja kirjoittaminen tiedostoon
 
-Kirjoittaminen JSON-tiedostoon ja lukeminen sieltä.
+Tekemämme TODO-ohjelma on vielä melko väliaikainen, koska kaikki tehtävät
+katoavat, kun suljet ohjelman. Ratkaistaan tämä tallentamalla tehtävät
+tiedostoon. 
+
+Käytetään JSON-muotoista tiedostoa tallentamiseen. Tiedoston rakenne voisi olla
+esimerkiksi seuraavanlainen.
+
+```json
+{
+  "tehtavat": [
+    {
+      "teksti": "Osta maitoa",
+      "tehty": false
+    },
+    {
+      "teksti": "Vie roskat",
+      "tehty": true
+    }
+  ]
+}
+```
+
+Lisätään riippuvuus Jackson-kirjastoon [osan
+6.5](../osa6/05-tiedostojen-kasittely.md#jackson) ohjeen mukaisesti. 
+
+Tarvitsemme luokan, joka kuvaa yksittäistä tehtävää. Luodaan `Tehtava`-luokka,
+jossa on kaksi attribuuttia: `teksti` ja `tehty`. Tehdään niille myös getterit
+ja setterit, jotta Jackson osaa käsitellä niitä. 
+
+Aivan aluksi meidän pitäisi saada tuotettua lista tehtävistä. Luodaan
+tehtävälista (`List<Tehtava>`) aivan `initialize()`-metodin loppuun. Tämä takaa,
+että kaikki muutokset listaan on tehty. 
+
+```java,ignore
+public void initialize(...) {
+    // ...
+    
+    // HIGHLIGHT_GREEN_BEGIN
+    List<Tehtava> kaikkiTehtavat = new ArrayList<>();
+    // HIGHLIGHT_GREEN_END
+}
+```
+
+Tehtävät ovat nyt siis tallennettuina `tehdyt`- ja `tekemattomat`-VBoxeihin.
+VBoxien lapsikomponenttien muuntaminen `Tehtava`-olioiksi vaatii hieman jumppaa.
+
+```java,ignore
+tekemattomat.getChildren().forEach(node -> {
+    if (!(node instanceof CheckBox c)) {
+        // Periaatteessa kaikki lapsikomponentit pitäisi 
+        // olla CheckBoxeja, mutta varmuuden vuoksi tarkistetaan 
+        // tämä kuitenkin. 
+        return;
+    }
+    // Jos pääsemme tänne, niin node on CheckBox, 
+    // ja voimme turvallisesti käyttää c-muuttujaa
+    // CheckBox-tyyppisenä.
+
+    String tekstiC = c.getText();
+    boolean tehtyC = c.isSelected();
+    Tehtava tehtava = new Tehtava(tekstiC, tehtyC);
+    kaikkiTehtavat.add(tehtava);
+});
+```
+
+Kokeillaan nyt pyytää Jacksonia kirjoittamaan tehtävät JSON-tiedostoon. Lisää
+tämä aivan `initialize()`-metodin loppuun.
+
+```java,ignore
+public void initialize(...) {
+    // ...
+    ObjectMapper mapper = new ObjectMapper();
+    mapper.writeValue(Path.of("tehtavat.json"), kaikkiTehtavat);
+}
+```
+
+Katso IDEAssa, että projektikansioon ilmestyy `tehtavat.json`-tiedosto, kun
+lisäät uuden tehtävän. 
+
+<task>
+  <task-title>Tehtävä 7.4: TODO-ohjelma, vaihe 4. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/7-4-todo-4/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava4">Tee tehtävä TIMissä</a></task-link>
+</task>
+
+
+
 
 ## Refaktorointia
+
+
+Niinpä myös tehdyt tehtävät tallennetaan samaan tapaan. Jotta koodia ei tarvitse
+toistaa, tehdään erillinen metodi, joka ottaa `VBox`-komponentin ja palauttaa
+sen lapsikomponenttien perusteella listan `Tehtava`-olioita. Kutsutaan tätä
+sitten sekä `tekemattomat`- että `tehdyt`-VBoxeille.
+
+```java,ignore
+List<Tehtava> kaikkiTehtavat = new ArrayList<>();
+kaikkiTehtavat.addAll(teeTehtavalista(tekemattomat));
+kaikkiTehtavat.addAll(teeTehtavalista(tehdyt));
+```
 
 ## Fiksumpi skaalautuminen
 

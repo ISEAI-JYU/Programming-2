@@ -436,7 +436,7 @@ silmämääräisesti verrattuna CSV:hen. Lisäksi niissä on hieman enemmän syn
 mikä tekee niistä hieman monimutkaisempia käsitellä "käsin" ilman erillistä
 kirjastoa.
 
-## JSON-tiedostojen käsittely Jackson-kirjastolla
+## JSON-tiedostojen käsittely Jackson-kirjastolla {#jackson}
 
 JSONin käsittely onnistuu toki käsin merkkijonoja pilkkomalla, mutta käytännössä
 tämä on virhealtista. Siksi JSONia kannattaa käsitellä siihen tarkoitetulla
