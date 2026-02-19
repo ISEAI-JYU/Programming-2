@@ -209,6 +209,7 @@ tapahtumankäsittelijän konstruktorin sisään:
 
 ```java,ignore
 public MainController() {
+    uusiTehtavaNimi.requestFocus();
     lisaaUusiTehtavaPainike.setOnAction(event -> {
         String teksti = uusiTehtavaNimi.getText();
         IO.println(teksti);
@@ -300,10 +301,12 @@ add .`, joka lisää kaikki nykyisessä kansiossa ja sen alikansioissa olevat
 tiedostot seurantaan. 
 
 Kirjoittamalla `git status` saat listan tiedostoista, jotka on lisätty
-seurantaan. Pohjaprojektin mukana tuli `.gitignore`-tiedosto, joka kertoo
-Gitille, mitä tiedostoja **ei** haluta seurata. Näin varmistetaan, että
-esimerkiksi käännettyt `.class`-tiedostot tai IDEAn omat asetustiedostot eivät
-päädy versionhallintaan.
+seurantaan. Pohjaprojektin mukana tuli `.gitignore`-tiedosto, mikä pitäisi näkyä
+listassa ensimmäisenä. Tämä tiedosto kertoo Gitille, mitä tiedostoja **ei**
+haluta seurata. Näin varmistetaan, että esimerkiksi käännettyt
+`.class`-tiedostot tai IDEAn omat asetustiedostot eivät päädy versionhallintaan.
+`.gitignore`-tiedostoa voi ja kannattaa muokata tarpeen mukaan, jos halutaan
+jättää pois seurannasta muita tiedostoja.
 
 Nyt voimme tehdä ensimmäisen commitin, joka on kuin "snapshot" projektista
 tietyssä vaiheessa. Commitin yhteydessä kirjoitetaan kuvaava viesti, joka
@@ -328,17 +331,98 @@ commitin, jos haluat.
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava2">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-## VBOX ja komponenttien luominen dynaamisesti 
+## Komponenttien luominen dynaamisesti 
 
 "Tehtävät" ovat toistaiseksi pelkkää tekstiä, eikä niitä voi merkitä tehdyiksi.
 Muutetaan käyttöliittymää niin, että tehtävät näkyvät erillisinä riveinä, ja
-niihin liittyy valintaruutu, jonka avulla tehtävän voi merkitä tehdyksi.
+niihin liittyy valintaruutu, `CheckBox`, jonka avulla tehtävän voidaan näyttää
+paitsi tehtävän nimi, myös se, onko tehtävä tehty vai ei.
 
-Poista `Label`-komponentti ja tilalle `VBox`-komponentti. Anna tälle sama fx:id
-"tekemattomat", joka `. Tallenna, jotta muutokset päivittyvät FXML-tiedostoon.
+Poista `Label`-komponentti ja tilalle `VBox`-komponentti pohjalla olevan
+`VBox`-komponentin ensimmäiseksi lapsielementiksi. Anna tälle sama fx:id
+"tekemattomat". Tallenna, jotta muutokset päivittyvät FXML-tiedostoon.
 
+Muokkaa `MainController`-luokkaa niin, että `tekemattomat`-muuttuja on tyyppiä
+`VBox` eikä `Label`. Nyt tapahtumankäsittelijä ei enää toimi, koska
+`VBox`-komponentti ei osaa näyttää tekstiä. Sen sijaan sille lisätään
+lapsikomponentteja.
 
-Niiden luominen dynaamisesti. 
+Luetaan tapahtumankäsittelijässä ensin `tekemattomat`-VBoxin lapsikomponentit
+`getChildren()`-metodilla, ja lisätään sille aluksi uusi `Label`-komponentti,
+joka sisältää syöttämämme tekstin. 
+
+```java,ignore
+lisaaUusiTehtavaPainike.setOnAction(event -> {
+    String teksti = uusiTehtavaNimi.getText(); 
+    tekemattomat.getChildren().add(new Label(teksti));
+});
+```
+
+Vaihda `Label` tilalle `CheckBox`, jolloin tehtävän nimen eteen pitäisi
+ilmaantua valintaruutu.
+
+Tehdään pari pientä korjausta: tyhjennetään tekstikenttä painikkeen klikkauksen
+jälkeen, ja estetään tyhjän tekstin lisääminen. Myös fokus voisi palata takaisin
+tekstikenttään painikkeen klikkauksen jälkeen. 
+
+```java,ignore
+lisaaUusiTehtavaPainike.setOnAction(event -> {
+    String teksti = uusiTehtavaNimi.getText();
+    // HIGHLIGHT_GREEN_BEGIN
+    if (teksti == null || teksti.isBlank()) {        
+        uusiTehtavaNimi.requestFocus(); 
+        return; 
+    }
+    // HIGHLIGHT_GREEN_END
+    tekemattomat.getChildren().add(new CheckBox(teksti));
+    // HIGHLIGHT_GREEN_BEGIN
+    uusiTehtavaNimi.clear(); 
+    uusiTehtavaNimi.requestFocus(); 
+    // HIGHLIGHT_GREEN_END
+});
+```
+
+Nyt hieman ärsyttävästi joudumme asettamaan fokuksen kahteen kohtaan. Tämän
+voisi ratkaista esimerkiksi käyttämällä `Platform.runLater()`-metodia, joka ajaa
+sille annettavan koodin JavaFX:n tapahtumasilmukan seuraavalla kierroksella.
+Näin varmistetaan, että kaikki tapahtumankäsittelijän koodi on suoritettu ennen
+kuin fokusta asetetaan uudestaan. Laitetaan tämä kutsu aivan
+tapahtumankäsittelijän alkuun.
+
+```java,ignore
+lisaaUusiTehtavaPainike.setOnAction(event -> {
+    // HIGHLIGHT_GREEN_BEGIN
+    Platform.runLater(uusiTehtavaNimi::requestFocus);
+    // HIGHLIGHT_GREEN_END
+    String teksti = uusiTehtavaNimi.getText();
+    if (teksti == null || teksti.isBlank()) {
+        // HIGHLIGHT_RED_BEGIN
+        uusiTehtavaNimi.requestFocus(); 
+        // HIGHLIGHT_RED_END
+        return; 
+    }
+    tekemattomat.getChildren().add(new CheckBox(teksti));
+    uusiTehtavaNimi.clear(); 
+    // HIGHLIGHT_RED_BEGIN    
+    uusiTehtavaNimi.requestFocus(); 
+    // HIGHLIGHT_RED_END
+});
+```
+
+Huomaa, että `runLater()`-metodi ottaa parametrinaan `Runnable`-olion, joka on
+funktionaalinen rajapinta (ks. [Osa
+6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). Koska
+`requestFocus()`-metodi sopii `Runnable`-rajapinnan määritelmään (ts. se on
+parametriton `void`-metodi), voimme käyttäämetodiviittausta
+`uusiTehtavaNimi::requestFocus` lambda-lausekkeena. Toki voimme kirjoittaa tämän
+myös perinteisempänä lambda-lausekkeena, jos se tuntuu selkeämmältä:
+
+```java,ignore
+Platform.runLater(() -> uusiTehtavaNimi.requestFocus());
+```
+
+Jos tehtäviä syöttää paljon, ikkunaan mahtuu vain osa niistä ja sovelluksemme
+ulkoasu hajoaa. Ratkaistaan tämä hieman myöhemmin. 
 
 ## Toinen VBOX käsitellyille tehtäville
 
