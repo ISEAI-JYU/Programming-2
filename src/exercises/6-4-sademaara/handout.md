@@ -4,18 +4,20 @@ laskee taulukkona annettujen lukujen keskiarvon seuraavilla ehdoilla:
 - Jos alkio on pienempi tai yhtä suuri kuin `minimi`, alkio hylätään eikä sitä
   lasketa keskiarvoon mukaan.
 - Jos alkio on suurempi tai yhtä suuri kuin `maksimi`, kyseinen alkio ja kaikki
-  sitä seuraavat alkiot hylätään.
+  sen jälkeen tulevat alkiot hylätään.   
 
 Esimerkki:
 
 ```java,ignore
 IO.println(keskiarvo(new int[] { -5, 1, -4, 0, 98 }, -7, 99));
 IO.println(keskiarvo(new int[] { 11, 4, 2, 6, 99, 12, 0, -3 }, 3, 99));
+IO.println(keskiarvo(new int[] { 99, 1, 2, 3 }, 0, 99));
 ```
 
 ```text
 18.0
 7.0
+0.0
 ```
 
 Ensimmäinen kutsu palauttaa `18.0`, sillä aineisto on kokonaisuudessaan minimin
