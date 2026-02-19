@@ -12,12 +12,27 @@ niiden ominaisuuksia ja järjestää ne haluamallasi tavalla. Se on erityisen
 hyödyllinen, jos et ole vielä tottunut kirjoittamaan FXML:ää suoraan tai haluat
 nopeuttaa käyttöliittymän suunnitteluprosessia.
 
+SceneBuilderin päänäkymään on kolme pääaluetta.
+
+ * Vasemmalla on kaksi paneelia: **Library** ja **Document**. Library-paneelista
+   löydät kaikki käytettävissä olevat komponentit, kuten painikkeet,
+   tekstikentät, layout-komponentit ja niin edelleen. Document-paneelissa näet
+   hierarkkisen esityksen oman sovelluksesi käyttöliittymän rakenteesta.
+ * Keskellä on visuaalinen suunnittelunäkymä. Tässä näet FXML-tiedoston
+   määrittelemän käyttöliittymän visuaalisena esityksenä. Voit tässä raahata
+   komponentteja ja järjestää niitä haluamallasi tavalla.
+ * Oikealla on **Properties**, **Layout** ja **Code**-paneelit. Näissä muutetaan
+   valitun komponentin ominaisuuksia, kuten tekstiä, fonttia, väriä ja monia
+   muita asetuksia.
+
 ## Ensimmäinen komponentti
 
-Avataan nyt projektimme SceneBuilderissä. Valitaan File <i class="bi
-bi-chevron-right"></i> Open. Avataan tekemämme projektin alta `resources`-kansio
-ja sieltä FXML-tiedosto nimeltä `main.fxml`. Nyt sama käyttöliittymä, jonka
-näimme IDEAssa, pitäisi näkyä SceneBuilderissä.
+Avataan nyt projektimme SceneBuilderissä ja lisätään siihen ensimmäinen oma
+komponentti. 
+
+Valitaan File <i class="bi bi-chevron-right"></i> Open. Avataan tekemämme
+projektin alta `resources`-kansio ja sieltä FXML-tiedosto nimeltä `main.fxml`.
+Nyt sama käyttöliittymä, jonka näimme IDEAssa, pitäisi näkyä SceneBuilderissä.
 
 TODO: Kuva.
 
@@ -232,7 +247,8 @@ edellisen tekstin perään.
 
 ## VBOX ja komponenttien luominen dynaamisesti 
 
-Laitetaan AnchorPanen sisään VBOX,. Korvataan Label VBOXilla. 
+Laitetaan AnchorPanen sisään VBOX,. Korvataan Label VBOXilla. Ylimmän solun min
+widtrh ja min height 300. Skaalautuminen myöhemmin. 
 
 Checkboxeja
 
@@ -249,6 +265,14 @@ Palauttaminen käsitellystä tilasta käsittelemättömään tilaan.
 Kirjoittaminen JSON-tiedostoon ja lukeminen sieltä.
 
 ## Refaktorointia
+
+## Fiksumpi skaalautuminen
+
+USE_COMPUTED_SIZE
+
+USE_PREF_SIZE
+
+Vai tartteeko jo aikaisemmin?
 
 ## AnchorPane vs Gridpane
 
