@@ -409,6 +409,9 @@ lisaaUusiTehtavaPainike.setOnAction(event -> {
 });
 ```
 
+Nyt fokuksen pitäisi aina asettua tekstikenttään painikkeen painamisen jälkeen
+riippumatta siitä, onko syötetty teksti tyhjä vai ei.
+
 Huomaa, että `runLater()`-metodi ottaa parametrinaan `Runnable`-olion, joka on
 funktionaalinen rajapinta (ks. [Osa
 6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). Koska
@@ -424,11 +427,93 @@ Platform.runLater(() -> uusiTehtavaNimi.requestFocus());
 Jos tehtäviä syöttää paljon, ikkunaan mahtuu vain osa niistä ja sovelluksemme
 ulkoasu hajoaa. Ratkaistaan tämä hieman myöhemmin. 
 
-## Toinen VBOX käsitellyille tehtäville
+## Käsitellyt tehtävät
 
-Siirretään käsitellyt tehtävät omaan VBOXiin. 
+Siirretään käsitellyt tehtävät pois tekemättömien tehtävien joukosta. Aloitetaan
+siitä, että luodaan uusi `VBox`-komponentti, ja sijoitetaan se tekemättömien
+tehtävien VBoxin alle. Anna sille fx:id "käsitellyt", tallenna, ja määrittele
+kontrolleriluokkaan vastaava attribuutti. 
 
-Palauttaminen käsitellystä tilasta käsittelemättömään tilaan.
+> [!VINKKI]
+> Kun lisäät uuden komponentin, SceneBuilder muistuttaa yläreunassa, että
+> FXML-tiedostossa on määritetty fx:id, mutta kontrolleriluokassa ei ole
+> vastaavaa `@FXML`-annotaatiolla merkittyä muuttujaa. Kannattaa lisätä
+> muuttujat aina, kun SceneBuilder niitä ehdottaa, jotta ei tarvitse myöhemmin
+> ihmetellä miksi FXML-komponentteihin ei saa yhteyttä. Varoituksen saat pois
+> klikkaamalla keltaisessa boksissa Clear.
+
+Siirretään nyt käsitellyt tehtävät omaan VBoxiinsa. Tehtävän käsitellyksi
+merkitsemiseen voidaan käyttää `CheckBox`-komponentin
+`setOnAction`-tapahtumankäsittelijää. Kun käyttäjä klikkaa tehtävän edessä
+olevaa valintaruutua, tarkistetaan, onko se nyt valittuna vai ei. Jos se on
+valittuna, siirretään tehtävä tekemättömien tehtävien VBoxista käsiteltyjen
+tehtävien VBoxiin.
+
+```java,ignore
+public void initialize(...)
+    //...
+
+    // HIGHLIGHT_GREEN_BEGIN
+    // Luo uusi checkbox
+    CheckBox checkbox = new CheckBox(teksti);
+    checkbox.setOnAction(cbevent -> {
+        tekemattomat.getChildren().remove(checkbox);
+        tehdyt.getChildren().add(checkbox);
+    });    
+    tekemattomat.getChildren().add(checkbox);
+    // HIGHLIGHT_GREEN_END
+    // HIGHLIGHT_RED_BEGIN
+    tekemattomat.getChildren().add(new CheckBox(teksti));
+    // HIGHLIGHT_RED_END
+```
+
+Nyt tehtävän klikkaaminen siirtää sen tekemättömien tehtävien joukosta
+käsiteltyjen joukkoon. Klikkaamalla käsiteltyä tehtävää uudestaan, se ei
+kuitenkaan siirry takaisin tekemättömien joukkoon. Jos katsot IDEAssa konsoliin,
+näet poikkeuksen, joka kertoo, että yritämme lisätä samaa
+`CheckBox`-komponenttia uudestaan `tehdyt`-VBoxiin, vaikka se on jo siellä.
+Tarvitsemme siis hieman enemmän logiikkaa, jotta komponentti voidaan siirtää
+takaisin tekemättömien joukkoon.
+
+```java,ignore
+// ...
+checkbox.setOnAction(cbevent -> {
+    if (checkbox.isSelected()) { // Tehtävä valittu --> Siirretään tehtyjen joukkoon
+        tekemattomat.getChildren().remove(checkbox);
+        tehdyt.getChildren().add(checkbox);
+    } else { // Tehtävä ei-valittu--> Siirretään takaisin tekemättömien joukkoon
+        tehdyt.getChildren().remove(checkbox);
+        tekemattomat.getChildren().add(checkbox);
+    }
+});
+// ...
+```
+
+Huomaa, että `isSelected()`-metodilla on jo tiedossaan "uusi" arvo, onko
+komponentti valittuna vai ei. 
+Tilan päivitys tapahtuu ennen `setOnAction`-tapahtuman laukeamista. 
+Kun käyttäjä klikkaa valintaruutua, tapahtumaketju on karkeasti seuraava:
+
+ * Hiiren painallus rekisteröityy käyttöjärjestelmään.
+ * JavaFX päivittää sisäisen `selected`-ominaisuuden (esim. `false` -> `true`).
+ * `ActionEvent` luodaan ja `setOnAction`-käsittelijä suoritetaan.
+ * Käsittelijän suoritus: Kun kutsut tässä vaiheessa `isSelected()`, saat jo uuden, päivitetyn tilan.
+
+Lisätään vielä `Label`-komponentit listojen yläpuolelle. Laitetaan tekemättömien
+tehtävien yläpuolelle teksti "TODO" ja käsiteltyjen tehtävien yläpuolelle teksti
+"DONE". Document-paneelin pitäisi nyt näyttää tältä:
+
+![alt text](images/document.png)
+
+<task>
+  <task-title>Tehtävä 7.3: TODO-ohjelma, vaihe 3. <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/7-3-todo-3/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava3">Tee tehtävä TIMissä</a></task-link>
+</task>
 
 ## Tehtävien lukeminen ja kirjoittaminen tiedostoon
 
