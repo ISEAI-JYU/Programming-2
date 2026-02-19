@@ -596,7 +596,6 @@ public void initialize(...) {
 Katso IDEAssa, että projektikansioon ilmestyy `tehtavat.json`-tiedosto, kun
 lisäät uuden tehtävän. 
 
-
 Luonnollisesti myös tehdyt tehtävät tulee tallentaa. Jotta koodia ei tarvitse
 toistaa, tehdään erillinen metodi, joka ottaa `VBox`-komponentin ja palauttaa
 sen lapsikomponenttien perusteella listan `Tehtava`-olioita. Kutsutaan tätä
@@ -617,8 +616,60 @@ ObjectMapper mapper = new ObjectMapper();
 mapper.writeValue(Path.of("tehtavat.json"), kaikkiTehtavat);
 ```
 
-Nyt tallennus kyllä 
+> [!HUOMAUTUS]
+> Tässä välissä on hyvä lisätä `.gitignore`-tiedostoon rivi `tehtavat.json`,
+> koska tuota tiedostoa ei haluta versionhallintaan. Tallennuksen jälkeen tee
+> komennot 
+> 
+> `git add .gitignore` ja \
+> `git commit -m "Lisätty tehtavat.json .gitignoreen"`.
+> 
+> Jos lisäsit jo `tehtavat.json`-tiedoston versionhallintaan, poista se ensin
+> komennolla `git rm --cached tehtavat.json`, tee commit, ja muuta vasta sen
+> jälkeen `.gitignore`-tiedostoa
 
+Nyt tallennus kyllä toimii, kun tehtävä lisätään. Tila täytyy kuitenkin
+tallentaa myös silloin, kun tehtävä merkitään tehdyksi tai tehdään
+tekemättömäksi. Tämä kyllä onnistuu, jos kirjoitetaan sama tallennuskoodi
+uudestaan uuden `CheckBox`-komponentin `setOnAction`-tapahtumankäsittelijään,
+mutta koodin toistaminen ei ole hyvä ratkaisu. 
+
+Mietitäänpä siis hetki. Tallentaminen on selkeästi oma kokonaisuutensa, joka ei
+liity suoraan siihen, miten tehtävät luodaan, näytetään tai siirretään. Tehdään
+siitä oma metodi. 
+
+```java,ignore
+private void tallenna() {
+    List<Tehtava> kaikkiTehtavat = new ArrayList<>();
+    kaikkiTehtavat.addAll(teeTehtavalista(tekemattomat));
+    kaikkiTehtavat.addAll(teeTehtavalista(tehdyt));
+    ObjectMapper mapper = new ObjectMapper();
+    mapper.writeValue(Path.of("tehtavat.json"), kaikkiTehtavat);
+}
+```
+
+Nyt voimme kutsua tallennusta uuden `CheckBox`-komponentin
+tapahtumankäsittelijässä, eikä koodia tarvitse toistaa. Siirretään samassa
+rytäkässä myös uuden `CheckBox`-komponentin luominen erilliseen metodiin, jotta
+`initialize()`-metodi pysyisi vähän selkeämpänä. 
+
+Uuden `CheckBox`-komponentin luominen on selkeästi
+oma kokonaisuutensa, joten erotetaan se omaksi metodikseen. 
+
+```java,ignore
+private CheckBox luoCheckBox(String teksti) {
+    CheckBox checkbox = new CheckBox(teksti);
+    checkbox.setOnAction(cbevent -> {
+      // ... 
+      tallenna();
+    });
+    return checkbox;
+}
+```
+
+Jos katsot nyt ajon aikana `tehtavat.json`-tiedostoa, näet, että se päivittyy,
+kun tehtävä lisätään, merkitään tehdyksi tai tehdään tekemättömäksi. Näiden
+keskinäinen järjestys ei säily, mutta emme murehdi siitä tässä vaiheessa.
 
 <task>
   <task-title>Tehtävä 7.4: TODO-ohjelma, vaihe 4. <points>1 p.</points> </task-title>
