@@ -5,5 +5,6 @@ alkiomäärästä. Toteuta metodit
  * `add(T element)`: lisää alkion listan loppuun.
 
 Tietorakenteen kokoa ei tarvitse tässä vaiheessa kasvattaa, eli taulukko voi
-tulla täyteen. Tutki debuggerin avulla, että alkio on lisätty
-oikein.
+tulla täyteen. Tutki debuggerin avulla, että alkio on lisätty oikein. Älä
+toteuta vielä `get`- tai `toString`-metodeja; tarkastele listan tilaa nimen
+omaan debuggerin avulla. 
