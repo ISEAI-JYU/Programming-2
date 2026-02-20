@@ -30,7 +30,7 @@ Tee ohjelma, joka:
  * Kirjoittaa uuden tiedoston `output/sanat-siisti.txt`, jossa on siistitty sanalista (yksi sana per rivi).
  * Kirjoittaa lisäksi tiedoston `output/raportti.txt`, jossa on:
     * alkuperäisten rivien määrä
-    * siistittyjen sanojen määrä
+    * uniikkien sanojen määrä sen jälkeen, kun tyhjät rivit on poistettu ja sanat on siistitty
     * pisin sana (jos useita, mikä tahansa kelpaa). Vinkki: Jos ratkaiset
       tehtävän Stream API:lla, voit käyttää `Stream.max(Comparator)`-metodia pisimmän sanan löytämiseen.
 
