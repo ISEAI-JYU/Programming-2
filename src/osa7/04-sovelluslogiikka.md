@@ -85,8 +85,8 @@ Huomaa, että `runLater()`-metodi ottaa parametrinaan `Runnable`-olion, joka on
 funktionaalinen rajapinta (ks. [Osa
 6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). Koska
 `requestFocus()`-metodi sopii `Runnable`-rajapinnan määritelmään (ts. se on
-parametriton `void`-metodi), voimme käyttäämetodiviittausta
-`uusiTehtavaNimi::requestFocus` lambda-lausekkeena. Toki voimme kirjoittaa tämän
+parametriton `void`-metodi), voimme käyttää metodiviittausta
+`uusiTehtavaNimi::requestFocus`. Toki voimme kirjoittaa tämän
 myös perinteisempänä lambda-lausekkeena, jos se tuntuu selkeämmältä:
 
 ```java,ignore
@@ -109,10 +109,9 @@ kontrolleriluokkaan vastaava attribuutti.
 > vastaavaa `@FXML`-annotaatiolla merkittyä muuttujaa. Kannattaa lisätä
 > muuttujat aina, kun SceneBuilder niitä ehdottaa, jotta ei tarvitse myöhemmin
 > ihmetellä miksi FXML-komponentteihin ei saa yhteyttä. Varoituksen saat pois
-> klikkaamalla keltaisessa boksissa Clear.
+> klikkaamalla keltaisessa boksissa *Clear*.
 
-Siirretään nyt käsitellyt tehtävät omaan VBoxiinsa. Tehtävän käsitellyksi
-merkitsemiseen voidaan käyttää `CheckBox`-komponentin
+Tehtävän käsitellyksi merkitsemiseen voidaan käyttää `CheckBox`-komponentin
 `setOnAction`-tapahtumankäsittelijää. Kun käyttäjä klikkaa tehtävän edessä
 olevaa valintaruutua, tarkistetaan, onko se nyt valittuna vai ei. Jos se on
 valittuna, siirretään tehtävä tekemättömien tehtävien VBoxista käsiteltyjen
@@ -136,13 +135,12 @@ public void initialize(...)
     // HIGHLIGHT_RED_END
 ```
 
-Nyt tehtävän klikkaaminen siirtää sen tekemättömien tehtävien joukosta
-käsiteltyjen joukkoon. Klikkaamalla käsiteltyä tehtävää uudestaan, se ei
-kuitenkaan siirry takaisin tekemättömien joukkoon. Jos katsot IDEAssa konsoliin,
-näet poikkeuksen, joka kertoo, että yritämme lisätä samaa
-`CheckBox`-komponenttia uudestaan `tehdyt`-VBoxiin, vaikka se on jo siellä.
-Tarvitsemme siis hieman enemmän logiikkaa, jotta komponentti voidaan siirtää
-takaisin tekemättömien joukkoon.
+Nyt tehtävän klikkaaminen siirtää sen käsiteltyihin. Klikkaamalla käsiteltyä
+tehtävää uudestaan, se ei kuitenkaan siirry takaisin tekemättömiin. Jos
+katsot IDEAssa konsoliin, näet poikkeuksen, joka kertoo, että yritämme lisätä
+samaa `CheckBox`-komponenttia uudestaan `tehdyt`-VBoxiin, vaikka se on jo
+siellä. Tarvitsemme siis hieman enemmän logiikkaa, jotta komponentti voidaan
+siirtää takaisin tekemättömien joukkoon.
 
 ```java,ignore
 // ...

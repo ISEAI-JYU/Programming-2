@@ -39,17 +39,29 @@ Initialized empty Git repository in C:/...Path.../Todo/.git/
 ```
 
 Ennen kuin teemme ensimmäisen commitin, meidän on kerrottava Gitille, mitä
-tiedostoja haluamme seurata. Voimme tässä vaiheessa tehdä sen komennolla `git
-add .`, joka lisää kaikki nykyisessä kansiossa ja sen alikansioissa olevat
-tiedostot seurantaan. 
+tiedostoja haluamme seurata. Voimme tässä vaiheessa tehdä sen seuraavalla
+komennolla:
 
-Kirjoittamalla `git status` saat listan tiedostoista, jotka on lisätty
-seurantaan. Pohjaprojektin mukana tuli `.gitignore`-tiedosto, mikä pitäisi näkyä
-listassa ensimmäisenä. Tämä tiedosto kertoo Gitille, mitä tiedostoja **ei**
-haluta seurata. Näin varmistetaan, että esimerkiksi käännettyt
-`.class`-tiedostot tai IDEAn omat asetustiedostot eivät päädy versionhallintaan.
-`.gitignore`-tiedostoa voi ja kannattaa muokata tarpeen mukaan, jos halutaan
-jättää pois seurannasta muita tiedostoja.
+```bash 
+git add .
+```
+
+Tämä lisää kaikki nykyisessä kansiossa ja sen alikansioissa olevat tiedostot
+seurantaan. 
+
+Kirjoita nyt: 
+
+```bash
+git status
+```
+
+Saat listan tiedostoista, jotka on lisätty seurantaan. Pohjaprojektin mukana
+tuli `.gitignore`-tiedosto, mikä pitäisi näkyä listassa ensimmäisenä. Tämä
+tiedosto kertoo Gitille, mitä tiedostoja **ei** haluta seurata. Näin
+varmistetaan, että esimerkiksi käännettyt `.class`-tiedostot tai IDEAn omat
+asetustiedostot eivät päädy versionhallintaan. `.gitignore`-tiedostoa voi ja
+kannattaa muokata tarpeen mukaan, jos halutaan jättää pois seurannasta muita
+tiedostoja.
 
 Nyt voimme tehdä ensimmäisen commitin, joka on kuin "snapshot" projektista
 tietyssä vaiheessa. Commitin yhteydessä kirjoitetaan kuvaava viesti, joka

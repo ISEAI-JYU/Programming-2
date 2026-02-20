@@ -10,10 +10,9 @@ valikoita ja kuvia sen sijaan, että hänen pitäisi opetella kirjoittamaan
 komentoja oikeassa muodossa. 
 
 Java-kielelle on useita kirjastoja graafisten käyttöliittymien toteuttamiseen,
-mutta JavaFX on niistä ehkäpä nykyaikaisin ja monipuolisin:
-
-JavaFX käsittelee käyttöliittymää puumaisena rakenteena. Jokainen ikkunan osa
-(painike, teksti, ryhmittelyelementti) on "solmu" (*Node*), joka kuuluu johonkin
+mutta JavaFX on niistä ehkäpä nykyaikaisin ja monipuolisin. JavaFX käsittelee
+käyttöliittymää puumaisena rakenteena. Jokainen ikkunan osa, kuten painike,
+teksti tai ryhmittelyelementti on "solmu" (*Node*), joka kuuluu johonkin
 suurempaan kokonaisuuteen. Tämä tekee monimutkaistenkin näkymien hallinnasta
 loogista.
 
@@ -49,6 +48,8 @@ Osassa 7 teemme sovellukseen seuraavat ominaisuudet:
  * Tehtävät tallennetaan tiedostoon, jotta ne säilyvät sovelluksen sulkemisen jälkeen
  * Tehtävät haetaan tiedostosta sovelluksen käynnistyessä
 
+TODO: Tähän väliin gif vai pikku video sovelluksesta.
+
 Kuten aiemminkin, tämänkin osan tehtävistä täytyy tehdä vähintään 50%.
 Erityisesti osissa 7 ja 8 kuitenkin suosittelemme tekemään kaikki tehtävät
 jotta harjoitustyön tekeminen olisi helpompaa. Bonustehtävät jäävät kuitenkin
@@ -56,10 +57,9 @@ edelleen vapaavalintaisiksi.
 
 ## Ensimmäinen JavaFX-sovellus
 
-Tehdään nyt IDEAssa uusi JavaFX-projekti. 
-Avaa IDEA ja valitse
-File <i class="bi bi-chevron-right"></i> New <i class="bi bi-chevron-right"></i>
-Project. Avautuu tuttu *New Project* -näkymä:
+Tehdään nyt IDEAssa uusi JavaFX-projekti. Avaa IDEA ja valitse File <i class="bi
+bi-chevron-right"></i> New <i class="bi bi-chevron-right"></i> Project. Avautuu
+tuttu *New Project* -näkymä:
 
 <img width="600" src="images/intellij-new-project.png">
 
@@ -68,10 +68,11 @@ ja riippuvuuksia. JavaFX vaatii kuitenkin useita riippuvuuksia, asetuksia
 ja alustuskoodia, joita olisi vaivallollista lisätä käsin aina, kun halutaan
 tehdä uusi sovellus.
 
-Käytämmeki valmista Maven-projektipohjaa, eli ns. *Maven-arkkityyppiä* (engl. Maven Archetype).
-Pohja sisältää esimerkiksi valmiin rakenteen projektille, koodia ja valmiiksi määritellyt riippuvuudet. Maven-arkkityyppejä on hyvin
-monenlaisia erilaisiin käyttötarkoituksiin. 
-Käytämmekin jatkossa tätä kurssia varten tehtyä valmista pohjaa.
+Maven-projektille voidaan määritellä valmis pohja, eli ns. *Maven-arkkityyppi*
+(engl. Maven Archetype). Pohja sisältää esimerkiksi valmiin rakenteen
+projektille, koodia ja valmiiksi määritellyt riippuvuudet. Maven-arkkityyppejä
+on hyvin monenlaisia erilaisiin käyttötarkoituksiin. Olemme tehneet tälle
+opintojaksolle oman pohjan ja käytämme sitä jatkossa.
 
 Valitse vasemmasta laidasta **Maven Archetype** jolloin saat seuraavat asetukset
 näkyviin:
@@ -86,7 +87,7 @@ Täytetään lomake meidän projektitiedoilla:
   bi-folder"></i>-ikonista
 - **Create Git repository**: Jätä tyhjäksi. Luomme uuden Git-varaston itse myöhemmin.
 - **JDK**: Valitse jokin Java 25 -vaihtoehto. Oletusarvo on yleensä hyvä.
-  Tarvittaessa voit ladata JDK:n seuraamalla [työkalujen asennusohjeita](../tyokalut.md#java-development-kit-jdk-jdk).
+  Tarvittaessa voit ladata JDK:n seuraamalla [työkalujen asennusohjeita](../tyokalut.md#jdk).
 - **Catalog**: `Maven Central`
 - **Archetype**: `io.github.ohj-perus-jy:javafx-fxml-template`
 - **Version**: Valitse uusin versio, jos se näkyy. Jos ei, kirjoita kenttään
@@ -94,11 +95,11 @@ Täytetään lomake meidän projektitiedoilla:
 - **Additional properties**: Jätä muokkaamatta. Projektipohjan oletusarvot
   riittävät tähän tarkoitukseen.
 - **Additional settings** (Klikkaa otsikosta jos sen alla olevia asetuksia ei näy):
-  - **GroupId**: Aseta jokin ainutlaatuinen avain sovellukselle. Javassa yleinen
-    käytäntö on kirjoittaa avain muodossa `<oma verkkosivun osoite
+  - **GroupId**: Julkinen, yksilöllinen tunniste sovellukselle. Javassa yleinen
+    käytäntö on kirjoittaa tunniste muodossa `<oma verkkosivun osoite
     käänteisesti>.<sovelluksen tunniste>`. Tässä materiaalissa voit käyttää
-    tunnisteena `fi.jyu.ohj2.nimesi.todo`, missä `nimesi` on
-    etunimesi tai käyttäjätunnukseksi ilman erikoismerkkejä.
+    tunnisteena `fi.jyu.ohj2.nimesi.todo`, missä `nimesi` on etunimesi tai
+    käyttäjätunnukseksi ilman erikoismerkkejä.
   - **ArtifactId**: Tämä täsmää projektin **Name**-kentän kanssa
   - **Version**: `0.1`
 
@@ -106,10 +107,9 @@ Tietojen täyttämisen jälkeen lomakkeen tulisi siten näyttää seuraavalta:
 
 <img src="images/intellij-new-project-maven-archetype-filled.png">
 
-Paina sen jälkeen *Create*. Tämä luo projektin ja aloittaa Maven-arkkityypin alustamisen.
-
-Anna projektin alustuksen suoriutua loppuun. Lopuksi *Run*-paneelissa
-pitäisi lukua `BUILD SUCCESS`-teksti onnistumisen merkiksi:
+Paina sen jälkeen *Create*. Tämä luo projektin ja lataa Maven-arkkityypin
+riippuvuudet. Tämä saattaa kestää hetken, joten odota rauhassa. Lopuksi
+*Run*-paneelissa pitäisi lukua `BUILD SUCCESS`-teksti onnistumisen merkiksi:
 
 <img src="images/intellij-archetype-done.png">
 
@@ -147,12 +147,11 @@ muutaman tiedoston:
               └──🗎 main.fxml             
 ```
 
-Maven-projektitiedosto `pom.xml` on käsitelty.
-Puolestaan `fi/jyu/ohj2/nimesi/todo` vastaa projektin `GroupId`-arvoa ja on 
-projektin pääpakkaus. Kummatkin käsitteet olemme käsitelleet luvussa
-[luvussa 6.4](../osa6/04-ulkoiset-kirjastot-ja-java-projektien-hallintatyokalut.md).
-Itse JavaFX-sovellukseen liittyvät tiedostot ovat siis `App.java`,
-`MainController.java`, `Main.java` sekä `main.fxml`.
+ * `pom.xml` on Maven-projektin konfiguraatiotiedosto.
+ *  `fi/jyu/ohj2/nimesi/todo` vastaa äsken asettamaasi *GroupId*-arvoa ja on
+    projektin pääpakkaus. Java-kooditiedostot sijaitsevat tässä kansiossa.
+ * `App.java`, `MainController.java` ja `Main.java` ovat JavaFX-sovellukseen liittyviä Java-luokkia.
+ * `main.fxml` on JavaFX-sovelluksen käyttöliittymään liittyvä tiedosto. 
 
 JavaFX-sovellus koostuu yleensä kolmesta pääkomponentista: pääluokka, ulkoasu ja
 kontrolleriluokka. 
@@ -232,11 +231,10 @@ neljää päävaihetta (ks. numerot kommenteissa):
    vuorovaikuttaa käyttöliittymän kanssa. Ikkuna laitetaan näkyväksi yleensä
    aivan viimeisenä, kun sovellus on täysin alustettu.
 
-JavaFX:ssä kaikki käyttöliittymäosat perivät `Node`-luokan.
-`Node` eli ns. *solmu* vastaa käyttöliittymän yksittäistä komponenttia, kuten painiketta
-tai tekstiä.
-`Node`-oliot ovat rekursiivisia, eli solmu voi sisältää muita solmuja.
-JavaFX-käyttöliittymä muodostaakin ns. puurakenteen, jossa komponentit
+JavaFX:ssä kaikki käyttöliittymäosat perivät `Node`-luokan. `Node` eli ns.
+*solmu* vastaa käyttöliittymän yksittäistä komponenttia, kuten painiketta tai
+tekstiä. `Node`-oliot ovat rekursiivisia, eli solmu voi sisältää muita solmuja.
+JavaFX-käyttöliittymä muodostaakin puurakenteen, jossa komponentit
 sisältävät muita komponentteja. Esimerkiksi projektipohjan esimerkkisovelluksen
 rakenne voitaisiin mallintaa seuraavasti:
 

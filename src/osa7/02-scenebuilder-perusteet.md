@@ -153,8 +153,6 @@ FXML-käyttölittymätiedostoja.
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava1">Tee tehtävä TIMissä</a></task-link>
 </task>
 
-
-
 ## FXML:n ja kontrolleriluokan yhdistäminen
 
 Painikkeesta ei vielä tapahdu mitään. Jotta voimme käsitellä käyttöliittymän
@@ -167,7 +165,7 @@ muuttujat Java-koodissa.
 
  * Jokaisella komponentilla, jota haluamme ohjata koodista käsin, täytyy olla
    yksilöllinen tunniste, niin sanottu *fx:id*.
- * Avaa projekti SceneBuilderissä ja valitse haluamasi komponentti, esimerkiksi `TextField`.
+ * Valitse SceneBuilderissa haluamasi komponentti, esimerkiksi `TextField`.
  * Avaa oikeasta reunasta Code-paneeli.
  * Kirjoita fx:id-kenttään komponentin nimi, esimerkiksi `uusiTehtavaNimi`.
  * Toista sama painikkeelle ja anna sille fx:id `lisaaUusiTehtavaPainike`.
@@ -202,7 +200,7 @@ lukee FXML-tiedoston ja huomaa siellä määritellyt fx:id:t. Tämän jälkeen s
  * injektoi eli asettaa viittaukset käyttöliittymän komponentteihin näihin muuttujiin.
 
 Käytännössä JavaFX tekee puolestasi työn, joka vastaisi koodia:
-this.uusiTehtavaNimi = (TextField) findComponentById("uusiTehtavaNimi");.
+`this.uusiTehtavaNimi = (TextField)findComponentById("uusiTehtavaNimi");`.
 
 Kokeile kääntää ja ajaa ohjelma uudestaan. Ohjelman pitäisi toimia kuten
 ennenkin.
