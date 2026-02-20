@@ -12,33 +12,25 @@ komentoja oikeassa muodossa.
 Java-kielelle on useita kirjastoja graafisten käyttöliittymien toteuttamiseen,
 mutta JavaFX on niistä ehkäpä nykyaikaisin ja monipuolisin:
 
-1.  **Scene Graph (näkymägraafi):** JavaFX käsittelee käyttöliittymää puumaisena
-    rakenteena. Jokainen ikkunan osa (painike, teksti, ryhmittelyelementti) on
-    "solmu" (*Node*), joka kuuluu johonkin suurempaan kokonaisuuteen. Tämä tekee
-    monimutkaistenkin näkymien hallinnasta loogista.
-2.  **Ulkoasun ja logiikan erottaminen:** Voimme määritellä sovelluksen ulkoasun
-    tekstipohjaisesti FXML-kielellä ja kirjoittaa
-    toiminnallisen logiikan tavallisena Java-koodina. Tämä muistuttaa tapaa,
-    jolla web-kehityksessä erotetaan rakenne (HTML) ja toiminta (JavaScript).
-3.  **CSS-tyylittely:** JavaFX tukee CSS-tyylitiedostoja. Voit siis muuttaa
-    ohjelmasi ulkoasua lähes samalla tavalla kuin tekisit nettisivuja tyylitellessäsi.
-1.  **Ominaisuudet ja sitominen (*Properties and Binding*):** Tämä on yksi
-    JavaFX:n tehokkaimmista työkaluista. Voimme "sitoa"
-    käyttöliittymäkomponentin (esim. tekstikentän) suoraan olion tilaan. Jos
-    olion tila muuttuu, käyttöliittymä päivittyy automaattisesti ilman, että meidän
-    tarvitsee kirjoittaa erillistä päivityskoodia.
+JavaFX käsittelee käyttöliittymää puumaisena rakenteena. Jokainen ikkunan osa
+(painike, teksti, ryhmittelyelementti) on "solmu" (*Node*), joka kuuluu johonkin
+suurempaan kokonaisuuteen. Tämä tekee monimutkaistenkin näkymien hallinnasta
+loogista.
 
+Ulkoasu ja logiikka erotetaan JavaFX:ssä toisistaan. Ulkoasun määritellään
+käyttämällä **FXML**-kieltä, mikä on XML-pohjainen tiedostomuoto. Toiminnallisen
+logiikka kirjoitetaan tavallisena Java-koodina. Tämä muistuttaa tapaa, jolla
+web-kehityksessä erotetaan HTML (rakenne) ja JavaScript (toiminta).
 
-<details><summary>Analogia: teatteriesitys</summary>
-
-Ajattele JavaFX-sovellusta kuin teatteriesitystä:
-
-- **Stage (Näyttämö):** Itse ikkuna, jonka käyttäjä näkee.
-- **Scene (Kohtaus):** Se, mitä näyttämöllä tapahtuu juuri nyt. Voit vaihtaa kohtausta (näkymää) lennosta.
-- **Actors (Näyttelijät/Solmut):** Painikkeet, tekstit ja kuvat, jotka ovat osa kohtausta.
-- **Script (Käsikirjoitus/Kontrolleri):** Java-koodi, joka kertoo, miten näyttelijät reagoivat, kun käyttäjä esimerkiksi klikkaa painiketta.
-
-</details>
+JavaFX:ssä on oma toteutus CSS:stä (Cascading Style Sheets), joka tukee osaa CSS
+2.1:n ominaisuuksista, ja joitain CSS 3:n ominaisuuksia. Tämän avulla
+käyttöliittymäelementtien tyylittelyjä voidaan tietyssä määrin toteuttaa
+web-kehityksestä tutulla tavalla. CSS-tuki on kuitenkin kohtalaisen rajallista,
+eikä esimerkiksi float-, position- tai flexbox-ominaisuuksia tueta. Joihinkin
+ominaisuuksiin löytyy joko JavaFX:n omat vastineensa, kuten flexboxin
+tapauksessa VBox/HBox. Myös kehittäjäyhteisö tuottaa jatkuvasti avoimen
+lähdekoodin kirjastoja, jotka tuovat joitain CSS:stä tuttuja ominaisuuksia
+JavaFX:ään.
 
 ## Tutoriaali: TODO-sovellus
 
