@@ -563,7 +563,7 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
     Tarkista lopuksi, että komentorivillä olevassa tulosteessa on teksti `Successfully installed`.
 
 
-3. Testaa, että SceneBuilder toimii. Mene Mene *Haku-ikoni* <i class="bi bi-chevron-right"></i> Kirjoita *SceneBuilder* <i class="bi bi-chevron-right"></i> Valitse *SceneBuilder*.
+3. Testaa, että SceneBuilder toimii. Mene *Haku-ikoni* <i class="bi bi-chevron-right"></i> Kirjoita *SceneBuilder* <i class="bi bi-chevron-right"></i> Valitse *SceneBuilder*.
    
     Varmista, että ohjelma käynnistyy.
 
