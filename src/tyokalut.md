@@ -13,11 +13,14 @@
   Development Environment, IDE), jolla voi kehittää ja debugata muun muassa
   Java-ohjelmia. Käytämme IntelliJ IDEAn ilmaista Community Edition -versiota.
 
+- **[SceneBuilder](#scenebuilder)** - aputyökalu JavaFX-käyttöliittymien luomiseksi.
+
 - **[ComTest](#comtest)** - työkalu *dokumentaatiotestien* kirjoittamiselle ja ajamiselle.
+
 
 Yllä olevat ohjelmat löytyvät valmiiksi asennettuna [Agoran
 mikroluokissa](https://navi.jyu.fi/space/m118987) (Alban puoleinen pääty, 1. ja
-2. kerros). Jos sinulla on oma tietokone, suosittelemme vahvasti, että asennat
+1. kerros). Jos sinulla on oma tietokone, suosittelemme vahvasti, että asennat
 ohjelmat myös siihen. Erityisesti harjoitustyön tekeminen on helpompaa, kun
 kaikki tarvittavat ohjelmat on myös omalla tietokoneella.
 
@@ -534,6 +537,112 @@ Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
 >     ```
 > 
 > 8. Voit nyt sulkea IntelliJ IDEA:n.
+
+
+## SceneBuilder {#scenebuilder}
+
+### [Windows](#tab/win)
+
+1. Avaa PowerShell-komentorivi.
+2. Asenna SceneBuilder suorittamalla alla oleva komento:
+
+    ```bash
+    winget install -e --id=Gluon.SceneBuilder
+    ```
+    
+    Odota komennon suorittamista loppuun ja anna tarvittaessa asennusoikeus.
+    Jos näet komentorivillä kysymyksen, kuten:
+    
+    ```
+    Do you agree to all the source agreements terms?
+    [Y] Yes [N] No:
+    ```
+    
+    Paina komentorivillä `y`-näppäintä ja sen jälkeen `Enter`-näppäintä.
+    
+    Tarkista lopuksi, että komentorivillä olevassa tulosteessa on teksti `Successfully installed`.
+
+
+3. Testaa, että SceneBuilder toimii. Mene Mene *Haku-ikoni* <i class="bi bi-chevron-right"></i> Kirjoita *SceneBuilder* <i class="bi bi-chevron-right"></i> Valitse *SceneBuilder*.
+   
+    Varmista, että ohjelma käynnistyy.
+
+4. Sulje ohjelma.
+
+Valmis!
+
+***
+
+### [macOS](#tab/macos)
+
+1. Avaa Pääte.
+2. Asenna IntelliJ IDEA suorittamalla alla oleva komento:
+
+    ```bash
+    brew install --cask scenebuilder
+    ```
+
+    Anna asennuksen suoriutua loppuun asti. Sinulta saatetaan pyytää
+    macOS-käyttäjän salasanaa `Password:`-kentässä. Kirjoita silloin
+    salasana paikalle ja paina <kbd>Enter</kbd>.
+
+3. Tarkista, että SceneBuilder toimii. Avaa Launchpad ja käynnistä sieltä *SceneBuilder*.
+
+    Tämän pitäisi käynnistää SceneBuilder-ohjelman.
+
+4. Sulje SceneBuilder.
+
+Valmis!
+
+***
+
+### [Linux](#tab/linux)
+
+1. Avaa jakelusi pääteohjelma.
+2. Asenna SceneBuilder. Asennustapa vaihtelee jakelun mukaan:
+
+    - Arch: Asenna [`javafx-scenebuilder`](https://aur.archlinux.org/packages/javafx-scenebuilder)-pakkaus AUR:sta.
+      Voit asentaa sen käsin tai käyttämällä [yay](https://github.com/Jguer/yay)-työkalua:
+      
+      ```bash
+      yay -S javafx-scenebuilder
+      ```
+
+    - Flatpak: Asenna työkalu komennolla 
+    
+        ```bash
+        flatpak install flathub com.gluonhq.SceneBuilder
+        ```
+      
+    - Muut jakelut: Suosittelemme lataamaan virallisen `.rpm`- tai
+      `.deb`-asennustiedoston [SceneBuilderin
+      sivuilta](https://gluonhq.com/products/scene-builder/#download).
+      
+        `.deb`-tiedoston asennus (Debian, Ubuntu, Linux Mint) onnistuu esimerkiksi `dpkg`-komennolla:
+
+        ```
+        sudo dpkg -i tiedosto.deb
+        ```
+
+        vastaavasti `.rpm`-tiedoston asennus (Fedora, CentOS) onnistuu `rpm`-komennolla:
+    
+        ```bash
+        sudo rpm -i tiedosto.rpm
+        ```
+
+3. Tarkista, että SceneBuilder toimii. Käynnistä SceneBuilder (joko sovellusvalikosta tai `scenebuilder`-komennolla).
+    
+    Sulje ohjelma.
+
+Valmis!
+
+***
+
+### [Valitse](#tab/default)
+
+Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
+
+***
 
 
 ## ComTest {#comtest}
