@@ -118,52 +118,155 @@ Avaa projektiselaimessa `src/main/java/<pakkauksen nimi>`-kansiossa
 oleva `Main`-luokka ja klikkaa `main`-pääohjelman vieressä olevaa
 ajopainiketta (<i class="bi bi-play-fill"></i>) ja valitse *Run*:
 
-
+<img src="images/intellij-run-javafx.png" width="600">
 
 Tämä käynnistää sovelluksen, jossa sinun pitäisi nyt nähdä yksi klikattava
-painike. Lisäksi tämä luo ajokonfiguraation, ja voit painaa Play-painiketta
-suoraan jatkossa.
+painike: 
+
+<img src="images/javafx-hello-start.png">
+
+Lisäksi tämä luo ajokonfiguraation, jolloin voit käynnistää projektin
+yläpalkin ajopainikkeella.
 
 ## JavaFX-sovelluksen rakenne
+
+Projektia ajaessa saatoit jo huomata, että JavaFX-projekti sisältää valmiiksi
+muutaman tiedoston:
+
+```bob
+🗎 pom.xml
+🖿 src
+  └──🖿 main
+      ├──🖿 java
+      │    └──🖿 "fi/jyu/ohj2/nimesi/todo"⠀
+      │        ├──🗎 App.java
+      │        ├──🗎 MainController.java
+      │        └──🗎 Main.java
+      └──🖿 resources
+          └──🖿 "fi/jyu/ohj2/nimesi/todo"
+              └──🗎 main.fxml             
+```
+
+Maven-projektitiedosto `pom.xml` on käsitelty.
+Puolestaan `fi/jyu/ohj2/nimesi/todo` vastaa projektin `GroupId`-arvoa ja on 
+projektin pääpakkaus. Kummatkin käsitteet olemme käsitelleet luvussa
+[luvussa 6.4](../osa6/04-ulkoiset-kirjastot-ja-java-projektien-hallintatyokalut.md).
+Itse JavaFX-sovellukseen liittyvät tiedostot ovat siis `App.java`,
+`MainController.java`, `Main.java` sekä `main.fxml`.
 
 JavaFX-sovellus koostuu yleensä kolmesta pääkomponentista: pääluokka, ulkoasu ja
 kontrolleriluokka. 
 
-**Pääluokka** on Java-luokka, joka toimii sovelluksen käynnistyspisteenä.
+**Pääluokka** on Java-luokka, joka toimii JavaFX-sovelluksen käynnistyspisteenä.
 Esimerkissämme se on `App.java`, jota kutsutaan `Main.java`-tiedostossa olevasta
-perinteisestä `main()`- pääohjelmasta. Pääluokka perii `Application`-luokan ja
+perinteisestä `main()`-pääohjelmasta. Pääluokka perii `Application`-luokan ja
 määrittelee, miten sovellus luo ja näyttää ikkunan. Pääluokka on vastuussa
 sovelluksen elinkaaren hallinnasta.
 
-**Ulkoasu** määritellään niin kutsutussa FXML-tiedostossa, joka on XML-pohjainen
+**Käyttöliittymän näkymä** määritellään niin kutsutussa FXML-tiedostossa, joka on XML-pohjainen
 kuvaus käyttöliittymästä. Esimerkissämme se löytyy `resources`-kansiosta nimeltä
 `main.fxml`. FXML-tiedosto määrittelee tekstimuodossa, millaisia komponentteja
-ikkunassa on ja miten ne on järjestetty. FXML-tiedosto ei ole siis Java-koodia,
-vaan erillinen tiedosto, joka kuvaa käyttöliittymän rakennetta. Pienessä
-projektissa FXML-tiedostoja on yleensä vain yksi, mutta suuremmissa projekteissa
+eli käyttöliittymäosia ikkunassa on ja miten ne on järjestetty. Pienessä
+projektissa FXML-tiedostoja on yleensä nolla tai yksi, mutta suuremmissa projekteissa
 niitä voi olla useita. Jos esimerkiksi sovelluksella on useita eri näkymiä,
-kuten päävalikko, asetukset ja itse pääkäyttöliittymä, jokaiselle näkymälle
+kuten pääikkuna, asetukset ja itse pääkäyttöliittymä, ja jokaiselle näkymälle
 voidaan luoda oma FXML-tiedosto.
 
 **Kontrolleriluokka** on Java-luokka, joka sisältää logiikan käyttöliittymän
-komponenttien käsittelyyn. Esimerkkiprojektissamme tämän nimi on
-`MainController.java`. Kontrolleriluokassa määritellään miten sovellus reagoi
-käyttäjän syötteisiin ja tapahtumiin. Kontrolleriluokka sisältää metodeja, jotka
-on sidottu FXML-tiedoston komponentteihin, kuten painikkeisiin ja
-tekstikenttiin. Nämä metodit määrittelevät, mitä tapahtuu, kun käyttäjä
-vuorovaikuttaa käyttöliittymässä olevien komponenttien kanssa.
-Kontrolleriluokkia on yleensä yksi per FXML-tiedosto, ja ne toimivat ikään kuin
-välittäjinä FXML:n ja pääluokan välillä.
+komponenttien käsittelyyn. Kontrolleriluokka ja sitä vastaava
+FXML-näkymätiedosto ovat kytköksessä toisiinsa. Esimerkiksi projektissamme
+oleva `MainController.java` on kontrolleri näkymälle `main.fxml`.
+Kontrolleriluokassa määritellään, miten sovellus reagoi
+käyttöliittymän syötteisiin ja tapahtumiin.
+Toisin sanoen, sillä aikaan kun FXML-tiedosto määrittelee käyttöliittymän,
+kontrolleriluokka tekee käyttöliittymästä vuorovaikutteisen.
 
-## TODO.... Tarvittaneenko tässä??? Stage, Scene ja Node
+### JavaFX-sovelluksen käynnistys ja ydinluokat
 
-Stage on ikkunan pääkomponentti, joka sisältää kaikki muut komponentit. 
+Tutustutaan hieman `App.java`-pääluokan rakenteeseen tarkemmin:
 
-Scene on ikkunan sisältö, joka koostuu erilaisista graafisista elementeistä,
-kuten painikkeista, tekstikentistä ja kuvista. Nämä elementit järjestetään
-layout-pohjiin, kuten VBox tai HBox, jotka määrittävät niiden asettelun
-ikkunassa.
 
-Node on JavaFX:n peruskomponentti, joka toimii pohjana kaikille
-graafisilleelementeille. Esimerkiksi Button, Label ja TextField ovat kaikki
-Node-luokan aliluokkia.
+```java,ignore
+public class App extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+    /* 1 */ FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+    /* 1 */ Scene scene = new Scene(loader.load());
+
+    /* 2 */ stage.setScene(scene);
+    /* 3 */ stage.setTitle("MyApp");
+    /* 4 */ stage.show();
+    }
+}
+```
+
+JavaFX-sovelluksen pääluokka perii `Application`-luokan, joka vastaa sovelluksen
+alustamisesta ja ikkunan luomisesta käyttöjärjestelmätasolla.
+JavaFX-kirjasto kutsuu `start()`-metodin, kun käyttöliittymälle on luotu ikkuna.
+
+`start()`-metodin parametrina välittyy `Stage`-olio, joka vastaa sovellukselle
+luotua ikkunaa. `start()`-metodin vastuulla on yleensä suorittaa seuraavat
+neljää päävaihetta (ks. numerot kommenteissa):
+
+1. **Näkymän alustaminen:** aivan alkuun käyttöliittymän ensisijainen näkymä
+   alustetaan luomalla `Scene`-olio. `Scene` on kokoelma käyttöliittymässä
+   olevia komponentteja, eli ns. *näkymäolio*. Tässä projektipohjassa komponentit ladataan
+   `main.fxml`-tiedostosta käyttäen `FXMLLoader`-apuluokkaa, joka alustaa
+   näkymässä olevia komponentteja. Komponentteja voitaisiin luoda myös
+   manuaalisesti alustamalla komponenttiolioita.
+
+2. **Näkymän asettaminen ikkunaan:** `stage.setScene()`-metodilla voidaan
+   asettaa luotu `Scene`-olio ja siinä olevat komponentit näkyviin ikkunaan.
+   Huomaa, että samassa ikkunassa (`Stage`) voi olla vain yksi näkymä (`Scene`)
+   kerrallaan, mutta näkymä voidaan vaihtaa milloin tahanssa. Tällä tavoin
+   voidaan esimerkiksi toteuttaa erilaisia näkymiä samaan sovellukseen (esim.
+   sisäänkirjautumisnäkymä, sovellusnäkymä, jne.)
+
+3. **Ikkunan asetusten muuttaminen:** `Stage`-olio sisältää lukuisia metodia,
+   jolla sovelluksen ikkunan toimintaa voidaan muuttaa. Yleinen toiminto on
+   esimerkiksi `setTitle()`-metodi, jolla voi muuttaa ikkunan otsikon.
+
+4. **Ikkunan näyttäminen:** Aivan alussa sovelluksen ikkuna on piilossa
+   käyttäjältä, jotta vältytään käyttöliittymän "välkkymiseltä". `Stage`-olion
+   `show()`-metodi asettaa ikkunan näkyväksi, jolloin käyttäjä voi alkaa
+   vuorovaikuttaa käyttöliittymän kanssa. Ikkuna laitetaan näkyväksi yleensä
+   aivan viimeisenä, kun sovellus on täysin alustettu.
+
+JavaFX:ssä kaikki käyttöliittymäosat perivät `Node`-luokan.
+`Node` eli ns. *solmu* vastaa käyttöliittymän yksittäistä komponenttia, kuten painiketta
+tai tekstiä.
+`Node`-oliot ovat rekursiivisia, eli solmu voi sisältää muita solmuja.
+JavaFX-käyttöliittymä muodostaakin ns. puurakenteen, jossa komponentit
+sisältävät muita komponentteja. Esimerkiksi projektipohjan esimerkkisovelluksen
+rakenne voitaisiin mallintaa seuraavasti:
+
+```mermaid
+flowchart TD
+    Stage["
+        Stage
+        (Pääikkuna)
+    "]
+    Scene["
+        Scene
+        (Näkymä)
+    "]
+    VBox["
+        VBox
+        (Node)
+    "]
+    Label["
+        Label
+        text: Hello JavaFx
+    "]
+    Button["
+        Button
+        text: Click Me!
+    "]
+
+    Stage --- Scene
+    Scene --- VBox
+    subgraph "UI-komponentit (Node)"
+    VBox --- Label
+    VBox --- Button
+    end
+```
