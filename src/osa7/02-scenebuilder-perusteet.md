@@ -161,21 +161,36 @@ ja kontrolleriluokan välille. Tämä tapahtuu kahdessa vaiheessa: antamalla
 komponenteille tunnisteet SceneBuilderissä ja määrittelemällä vastaavat
 muuttujat Java-koodissa.
 
-**Tunnisteiden määrittäminen komponenteille**
+### Tunnisteiden määrittäminen komponenteille
 
- * Jokaisella komponentilla, jota haluamme ohjata koodista käsin, täytyy olla
-   yksilöllinen tunniste, niin sanottu *fx:id*.
- * Valitse SceneBuilderissa haluamasi komponentti, esimerkiksi `TextField`.
- * Avaa oikeasta reunasta Code-paneeli.
- * Kirjoita fx:id-kenttään komponentin nimi, esimerkiksi `uusiTehtavaNimi`.
- * Toista sama painikkeelle ja anna sille fx:id `lisaaUusiTehtavaPainike`.
- * Tallenna, jotta muutokset päivittyvät FXML-tiedostoon.
+FXML:ssä jokaisella komponentilla, jota haluamme hallita ohjelmallisesti, täytyy 
+olla yksilöllinen tunniste. Lisätään alkuun tunnisteet painikkeelle ja
+syöttökentälle ja kokeillaan tulostaa kenttään kirjoitettu teksti konsoliin.
 
-**Muuttujien määrittäminen FXML:ssä**
+Valitse SceneBuilderissa syöttökenttä ja valitse Inspector-näkymän alapuolella
+oleva Code-paneeli:
 
- * Palaa IDEAan. Jotta Java-koodi löytää nämä komponentit, ne on ilmoitettava
-   `MainController`-luokassa käyttämällä `@FXML`-annotaatiota.
- * Lisää luokkaan seuraavat attribuutit:
+<video src="images/scenebuilder-code-panel.mp4" controls></video>
+
+Aseta tunnisteen eli *fx:id*-kentän arvoksi jokin uniikki komponenttia kuvaava
+nimi käyttäen `camelCase`-kirjoitustyyliä, esimerkiksi `uusiTehtavaNimi`.
+Vahvista muutos painamalla <kbd>Enter</kbd>.
+Toista sama painikkeelle ja anna sen tunnisteeksi `listaaUusiTehtavaPainike`,
+
+Tallenna lopuksi FXML-tiedosto.
+
+### Komponenttien määrittäminen komponentissa
+
+Saatoit huomata, että heti tunnisteen määrittämisen jälkeen SceneBuilder
+näyttää varoituksen "No injectable field found":
+
+<img src="images/scenebuilder-inject-warning.png">
+
+Korjataan varoitus lisäämällä tunnistetta vastaavat attribuutit
+kontrolleriluokkaan. 
+
+Palaa IDEAan ja avaa `MainController.java`. Lisää luokkaan kaksi attribuuttia
+luokan alkuun:
 
 ```java,ignore
 @FXML
@@ -185,65 +200,84 @@ private Button lisaaUusiTehtavaPainike;
 private TextField uusiTehtavaNimi;
 ```
 
+Korjaa mahdolliset import-määreiden puute lisäämällä `import`-määreet 
+`javafx.scene.control`-pakkauksessa oleviin `Button` ja `TextField`-luokkiin:
+
+<video src="images/intellij-component-imports.mp4" controls></video>
+
 > [!TÄRKEÄÄ]
 > Muuttujan nimen on oltava täsmälleen sama kuin SceneBuilderissä määritellyn
-> fx:id-arvon. Muuten JavaFX ei osaa yhdistää niitä.
-
- * Lisää puuttuvat import-lauseet `javafx.scene.control`-pakkauksesta, *ei*
-`java.awt`-pakkauksesta.
-
-Kun ohjelma käynnistyy, `FXMLLoader`-luokka (alustettu `App.java`-luokassa)
-lukee FXML-tiedoston ja huomaa siellä määritellyt fx:id:t. Tämän jälkeen se:
-
- * luo instanssin kontrolleriluokasta (esim. `MainController`),
- * etsii kontrollerista `@FXML`-annotaatiolla merkityt kentät,
- * injektoi eli asettaa viittaukset käyttöliittymän komponentteihin näihin muuttujiin.
-
-Käytännössä JavaFX tekee puolestasi työn, joka vastaisi koodia:
-`this.uusiTehtavaNimi = (TextField)findComponentById("uusiTehtavaNimi");`.
+> *fx:id*-arvon. JavaFX yhdistää komponentit ja attribuutit toisiinsa käyttäen
+> tunnistetta. Jos tunnistet eivät täsmää, JavaFX ei osaa yhdistää niitä.
 
 Kokeile kääntää ja ajaa ohjelma uudestaan. Ohjelman pitäisi toimia kuten
 ennenkin.
 
-## Kontrollerin elinkaari ja initialize-metodi
+Mitä tämä käytännössä teki? Kun ohjelma käynnistyy, `App`-luokassa määritelty
+`FXMLLoader`-olio lukee `main.fxml`-tiedoston ja huomaa siellä määritellyt
+komponentit sekä niiden *fx:id*-tunnisteet. Tämän jälkeen se
+luo ilmentymän `MainController`-luokasta ja etsii `@FXML`-*annotaatiolla*
+merkityt attribuutit. Lopuksi lataaja asettaa annotoitujen attribuuttien arvoksi
+komponenttien oliot attribuutin nimen ja *fx:id*-tunnisteen perusteella.
+Siispä `FXMLLoader` tekee puolestamme jotakuinkin seuraavaa:
 
-Kontrolleriluokan on hyvä toteuttaa `Initializable`-rajapinta, jolloin
-`initialize()`-metodi kutsutaan automaattisesti, kun FXML-tiedosto on ladattu ja
-kontrolleriluokka on alustettu. Tämä on oikea paikka määritellä
-tapahtumankäsittelijöitä ja tehdä muita alustuksia, jotka vaativat pääsyä
-FXML-komponentteihin.
+```java,ignore
+// Älä kopioi.
+// FXMLLoader tekee tämän meidän puolestamme käyttäen attributtin nimeä ja
+// fx:id-asetuksen arvoa.
+this.uusiTehtavaNimi = (TextField)findComponentById("uusiTehtavaNimi");
+// Tämän jälkeen uusiTehtavaNimi sisältää näkymässä olevan TextField-komponentin olion.
+```
 
-Vaihtoehtoisesti voitaisiin määritellä `@FXML public void initialize()`-metodi.
-Tekemässämme archetypessä kontrolleriluokka toteuttaa
-`Initializable`-rajapinnan, joten käytämme `initialize()`-metodia.
+## Kontrollerin elinkaari ja `initialize`-metodi
 
-Lisätään nyt `initialize()`-metodiin seuraava rivi, joka asettaa tekstikentän
-fokukseen heti ohjelman käynnistyessä.
+Jos kontrolleri toteuttaa `Initializible`-rajapinnan, JavaFX kutsuu metodin
+automaattisesti, kun FXML-tiedosto on täysin ladattu ja kontrolleriluokassa
+olevat attribuutit ovat alustettu.
+Tämä on oikea paikka määritellä komponenttien käyttäytymiseen liittyviä toimintoja.
+
+Lisätään alkuun `initialize()`-metodiin seuraava rivi testatakseen, että
+syöttökentän olio on todellakin käytettävissä koodista.
 
 ```java,ignore
 uusiTehtavaNimi.requestFocus();
 ```
 
-Testaa ohjelma uudestaan. 
+Aja ohjelma uudestaan. Nyt heti ohjelman käynnistyessä syöttökenttä aktivoituu,
+eli se saa ns. *fokuksen*, ikään kuin kenttää olisi klikattu:
 
-## setOnAction
+<img src="images/todo-app-focus.png">
 
-Lisätään seuraavaksi tapahtumankäsittelijä painikkeelle, joka 
+## Tapahtumien käsittely
 
- * lukee tekstikentän sisällön ja
- * tulostaa sen konsoliin.
+Pelkän fokuksen lisääminen on vielä hieman tylsää. Lisätään sovellukselle
+toiminnallisuus, että painiketta klikattaessa konsoliin tulostetaan
+tekstikentässä oleva teksti.
 
-Monien komponenttien, kuten painikkeiden, tekstikenttien ja valintaruutujen,
-tapahtumia voidaan käsitellä `setOnAction`-metodilla. Tämä tapahtuma laukeaa,
-kun käyttäjä vuorovaikuttaa komponentin kanssa tietyllä tavalla, kuten
-klikkaamalla painiketta tai painamalla Enter-näppäintä tekstikentässä. Tällöin
-komponentti tuottaa `ActionEvent`-tapahtuman. Painikkeen kohdalla tämä tarkoittaa
-käytännössä sitä, että koodi ajetaan painiketta klikattaessa (tai kun painike
-aktivoidaan näppäimistöllä). Suoritettava koodi voidaan määritellä
-lambda-lausekkeena tai erillisenä metodina. 
+JavaFX-sovelluksissa kaikenlaiset vuorovaikutukset komponenttien kanssa 
+muodostavat *tapahtumia*. Esimerkiksi painikkeen painaminen, näppäimen
+painaminen syöttökentässä, tekstin kopioiminen tai liittäminen, kaikki
+muodostavat erilaisia tapahtumia.
+Käyttöliittymän ohjelmointi onkin yleisesti sitä, että ensin määritellään
+käyttöliittymässä näkyvät osat ja sitten reagoidaan osien tapahtumiin.
 
-Määritellään nyt `lisaaUusiTehtavaPainike`-painikkeelle tapahtumankäsittelijä
-`initialize()`-metodissa lambda-lausekkeena:
+Reagointi tapahtumiin JavaFX:ssä tapahtuu lisäämällä komponenteille
+*tapahtumakäsittelijät* käyttäen muun muassa 
+komponenttien `setOn`-alkavia metodeja. `setOn`-metodit ottavat parametrina
+funktioviitteen tai lambdalausekkeen, joka kutsutaan, kun tapahtuma laukeaa.
+
+Lisätään painikkeelle nyt yleinen toimintatapahtuma `setOnAction`-metodia.
+Tämä `action`-tapahtuma laukeaa, kun käyttäjä vuorovaikuttaa komponentin kanssa
+komponentille ominaisella tavalla. Painikkeiden tapauksessa `action`-tapahtuma
+laukeaa painiketta klikkaamalla tai painamalla <kbd>Enter</kbd>-painiketta, kun
+fokus on painikkeessa.
+Huomaa, että muissa komponenteissa `action`-tapahtuma voi merkitä jotain toista
+komponentille ominaista vuorovaikutusta.
+
+Lisää `initialize()`-metodiin tapahtumakäsittelijä
+`lisaaUusiTehtavaPainike`-painikkeelle käyttäen `setOnAction`-metodia.
+Tässä vaiheessa painikkeen painaminen käsitellään hakemalla tekstikentän sisältö
+ja tulostamalla se näytölle:
 
 ```java,ignore
 lisaaUusiTehtavaPainike.setOnAction(event -> {
@@ -287,25 +321,48 @@ tehdään `initialize()`-metodissa.
 
 </details>
 
-Nyt kun painiketta klikataan, konsoliin tulostuu tekstikentän sisältö.
+Tallenna ja käynnistä sovellus. 
+Nyt kun painiketta klikataan, konsoliin tulostuu tekstikentän sisältö:
+
+<video src="images/todo-app-field-works.mp4" controls></video>
+
+Meillä on nyt alustava graafinen "Hei maailma!" -sovellus! 🥳
 
 ## Tekstikentän sisällön näyttäminen ikkunassa
 
-Lisätään nyt tekstikenttään kirjoitettu sisältö näkyviin yläpuolella olevaan
-`Label`-komponenttiin. Anna `Label`-komponentille fx:id "tekemattomat". Tämä
-kuvastaa tehtäviä, jotka eivät ole vielä tehty. Tyhjennä Properties <i class="bi
-bi-chevron-right"></i> Text, jotta se on aluksi tyhjä. 
-Tallenna muutokset.
+Tekstin tulostuminen konsoliin on kylläkin mukavaa, mutta todellisessa
+sovelluksessa on harvoin konsoli samaan aikaan auki. 
+Muutetaankin sovellusta vielä niin, että syöttökenttään kirjoitettu teksti
+lisätään yläpuolella olevaan nimiökomponenttiin.
 
-Lisää kontrolleriluokkaan `@FXML private Label tekemattomat;`.
+Mene SceneBuilderiin ja valitse `Label`-nimiökomponentti, jossa lukee nyt
+"Hello, JavaFX!". Ensin, valitse Inspector-näkymästä Properties-paneeli
+ja poista Text-asetuksesta kaikki teksti. Nimiö jää silloin tyhjäksi:
 
-Muokkaa aiemmin tekemääsi tapahtumankäsittelijää: 
+<img src="images/scenebuilder-label-cleanup.png">
+
+Lisää sen jälkeen nimiölle *fx:id*-asetukseen tunniste Code-paneelista.
+Anna tunnisteeksi esimerkiksi `tekemattomat`.
+Tallenna FXML-tiedosto.
+
+Lisää kontrolleriluokkaan nimiötä vastaava attribuutti:
+
+```java,ignore
+@FXML
+private Label tekemattomat;
+```
+
+Lisää tarpeelliset `import`-määreet. Mikäli IntelliJ tarjoaa useita vaihtoehtoja
+`Label`-luokalle, valitse `javafx.scene.control`-pakkauksessa oleva vaihtoehto.
+
+Muokkaa aiemmin tekemääsi tapahtumankäsittelijää niin, että
+teksti lisätäänkin nimiöön:
 
 ```java,ignore
 lisaaUusiTehtavaPainike.setOnAction(event -> {
     String teksti = uusiTehtavaNimi.getText();
     // HIGHLIGHT_RED_BEGIN
-    IO.println(teksti);
+    IO.println("Tekstikentän sisältö: " + teksti);
     // HIGHLIGHT_RED_END
     //HIGHLIGHT_GREEN_BEGIN
     tekemattomat.setText(tekemattomat.getText() + teksti + "\n");
@@ -313,11 +370,10 @@ lisaaUusiTehtavaPainike.setOnAction(event -> {
 });
 ```
 
-Nyt kirjoittamasi teksti näkyy ikkunassa, ja voit lisätä uusia rivejä
-painikkeella. Jos suurennat ikkunaa, näet, että tekstirivejä lisätään aina
-edellisen tekstin perään. 
+Tallenna ja aja. Nyt painikkeen painaminen lisää tekstin syötekentän yläpuolelle
+olevaan nimiöön aina omalle rivilleen:
 
+<video src="images/todo-app-label-print.mp4" controls></video>
 
-
-
-
+Saatoit huomata, että toisen rivin lisääminen ei näy ellei ikkunan kokoa
+suurenna. Korjaamme ikkunankokoon liittyvät ongelmat tämän tutoriaalin osan lopussa.
