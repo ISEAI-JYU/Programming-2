@@ -83,9 +83,8 @@ riippumatta siitä, onko syötetty teksti tyhjä vai ei.
 
 Huomaa, että `runLater()`-metodi ottaa parametrinaan `Runnable`-olion, joka on
 funktionaalinen rajapinta (ks. [Osa
-6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). Koska
-`requestFocus()`-metodi sopii `Runnable`-rajapinnan määritelmään (ts. se on
-parametriton `void`-metodi), voimme käyttää metodiviittausta
+6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). `requestFocus()` on
+parametriton void-metodi, joten se sopii `Runnable`-rajapinnan määritelmään. Näin voimme käyttää metodiviittausta
 `uusiTehtavaNimi::requestFocus`. Toki voimme kirjoittaa tämän
 myös perinteisempänä lambda-lausekkeena, jos se tuntuu selkeämmältä:
 
