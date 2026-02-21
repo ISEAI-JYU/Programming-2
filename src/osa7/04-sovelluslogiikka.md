@@ -1,11 +1,66 @@
 # Sovelluslogiikan ja käyttöliittymän yhdistäminen
 
+Sovelluksemme voisi jo nyt toimia eräänlaisena TODO-listana.
+Palautetaan kuitenkin vielä mieleen, mitä ominaisuuksia suunnittelimme tämän
+osan alussa:
+
+* Käyttäjä voi lisätä uuden tehtävän
+* Käyttäjä näkee listan kaikista tehtävistä
+* Käyttäjä voi merkitä tehtävän tehdyksi
+* Käyttäjä voi poistaa tehtävän
+* Käyttäjä voi palauttaa tehdyn tehtävän takaisin tekemättömäksi
+* Tehtävät tallennetaan tiedostoon, jotta ne säilyvät sovelluksen sulkemisen jälkeen
+* Tehtävät haetaan tiedostosta sovelluksen käynnistyessä
+
+Näitä huomioon ottaen sovelluksemme ei ole vielä kovin käytettävä: tehtäviä
+voidaan lisätä, ja pystymme näkemään kaikki tehtävät, mutta tehtäviä ei voi
+poistaa eikä merkitä tehdyksi.
+
+Muutetaan käyttöliittymä siten, että tehtävät näytetään valintaruutuina,
+jolloin ne voi merkitä tehdyksi tai tekemättömäksi. Lisäksi listataan tehdyt ja
+tekemättömät tehtävät omaan listaan. Piirretään alustava
+wireframe-suunnitelmakuva:
+
+<img src="images/todo-app-wireframe.png">
+
+Yllä oleva kuva on piirretty käyttäen
+[wireframe.cc](https://wireframe.cc/Mq98ie) -palvelua, mutta vastaavia
+suunnitelmakuvia voidaan piirtää millä tahansa piirtotyökalulla. 
+Yleisesti ottaen käyttöliittymiä on hyvä suunnitella hieman etukäteen, jotta 
+sen toteuttaminen olisi suoraviivaisempaa.
+
 ## Komponenttien luominen dynaamisesti 
 
-"Tehtävät" ovat toistaiseksi pelkkää tekstiä, eikä niitä voi merkitä tehdyiksi.
-Muutetaan käyttöliittymää niin, että tehtävät näkyvät erillisinä riveinä, ja
-niihin liittyy valintaruutu, `CheckBox`, jonka avulla tehtävän voidaan näyttää
-paitsi tehtävän nimi, myös se, onko tehtävä tehty vai ei.
+Aloitetaan ensin muuttamalla painikkeen toimintaa niin, että uusi tehtävä
+lisätään käyttöliittymään valintaruutuna, eli ns. `CheckBox`-komponenttina.
+Koska käyttäjä voi lisätä uusia tehtäviä rajattomasti, emme voi
+lisätä valintaruutuja SceneBuilderin kautta. Sen sijaan lisäämme komponentteja
+suoraan kontrollerin koodissa.
+
+Valmistellaan ensiksi käyttöliittymä. Mene SceneBuilderiin ja poista siellä
+oleva `Label`-nimiökomponentti. Koska nimiössä ei ole oletuksena tekstiä, 
+sitä ei pysty klikkaamaan suunnittelunäkymässä.
+Sen sijaan valitse nimiö käyttäen vasemmalla puolella olevan Document-näkymän
+Hierrachy-paneelia:
+
+<video src="images/scenebuilder-hierarchy-panel-select.mp4"></video>
+
+Poista nimiö painamalla <kbd>Delete</kbd> (macOS: <kbd>⌫ delete</kbd>).
+Saat varoituksen "This component has an fx:id. Do you really want to delete
+it?" sen merkiksi, että nimiökomponenttia käytetään kontrollerin koodissa.
+Valitse varoitusdialogissa **Delete**.
+
+Tämän jälkeen etsi `VBox`-komponentti Library-näkymästä (**Library** 
+<i class="bi bi-chevron-right"></i> **Containers** 
+<i class="bi bi-chevron-right"></i> **VBox**
+) ja raahaa se tekstikentän yläpuolelle:
+
+<img src="images/scenebuilder-vbox-add.png" >
+
+`VBox` (**V**ertical **Box**) on ns. *sisältökomponentti*, jonka tehtävänä
+
+Anna uudelle `VBox`-komponentille fx:id-tunnisteeksi `tekemattomat`, eli sama
+kuin poistetun nimiökomponentin.
 
 Poista `Label`-komponentti ja tilalle `VBox`-komponentti pohjalla olevan
 `VBox`-komponentin ensimmäiseksi lapsielementiksi. Anna tälle sama fx:id
