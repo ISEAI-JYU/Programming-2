@@ -1,79 +1,84 @@
-# Versiohallinta
+# Versionhallinta
+
+> [!TÄRKEÄÄ]
+> 
+> Tämä luku olettaa, että olet käyttänyt Git-versiohallintaa aikaisemman.
+> Jos et ole aiemmin käyttänyt Gitiä tai kaipaat kertausta, lue aluksi
+> Ohjelmointi 1 -kurssin materiaalin
+> [Git-osio](https://ohjelmointi1.it.jyu.fi/git.html). Emme tässä vaiheessa
+> tarvitse vielä etävarastoa, joten voit ohittaa GitLab-etävarastoa käsittelevän
+> kohdan. 
+>
+> Vastaavasti Git-komentorivityökalun käyttö olettaa, että sinulla on kokemusta 
+> komentorivityökalujen käytöstä. Mikäli kaipaat kertausta, tutustu
+> Ohjelmointi 1 -kurssin komentorivimateriaaliin:
+>
+> - [OpenCS: Johdatus komentorivin käyttöön](https://opencs.it.jyu.fi/cli-intro/)
+> - [Ohjelmointi 1: Pikakurssi komentorivin käyttöön](https://tim.jyu.fi/view/kurssit/tie/itkp102/ohjeet/tyokalut#pikakurssi-komentorivin-k%C3%A4ytt%C3%B6%C3%B6n)
 
 Tässä vaiheessa on hyvä hetki aloittaa versionhallinta. Käytämme
 Git-versionhallintaa, joka on laajasti käytetty työkalu ohjelmistokehityksessä.
-Jos et ole aiemmin käyttänyt Gitiä, lue aluksi
-Ohjelmointi 1 -kurssin materiaalin
-[Git-osio](https://ohjelmointi1.it.jyu.fi/git.html). Emme tässä vaiheessa
-tarvitse vielä etävarastoa, joten voit ohittaa GitLab-etävarastoa käsittelevän
-kohdan. 
-
-Lyhyesti: Gitin avulla voit seurata koodiin tehtyjä muutoksia, tehdä koodista
-varmuuskopion etävarastoon, työskennellä tiimin kanssa saman koodin parissa ja
-paljon muuta. 
-
-Osien 7 ja 8 aikana teet jokaisesta tehtävästä oman Git-commitin, joka kuvaa
+Tämän luvun jälkeen teet jokaisesta tutoriaalin tehtävästä oman Git-commitin, joka kuvaa
 tehtävän aikana tehtyjä muutoksia. 
 
 Gitin käyttämiseen on monenlaisia käyttöliittymiä &ndash; myös IDEAssa on
 omansa. Käytämme tässä kuitenkin komentoriviä, koska se on suhteellisen
-universaali tapa käyttää Gitiä kaikissa ympäristöissä samalla tavalla. 
+yleinen tapa käyttää Gitiä kaikissa ympäristöissä samalla tavalla. 
 
-Aloitetaan versionhallinta luomalla Git-varasto projektille. Avataan komentorivi
-ja navigoidaan projektin juurikansioon. Juurikansio on se kansio, jossa on
-`src`-kansio ja `pom.xml`-tiedosto. Tyhjä Git-varasto alustetaan komennolla `git
-init`.
+Aloitetaan versionhallinta luomalla Git-varasto projektille. Avaa komentorivi
+ja siirry projektisi juurikansioon. Juurikansio on se kansio, jossa on
+`src`-kansio ja `pom.xml`-tiedosto. Alusta sen jälkeen Git-varasto komennolla
+`git init`:
 
-TODO: Tähän Asciinema?
+<asciinema src="images/git-init.cast" rows="4" poster="npt:10"></asciinema>
 
-```bash
-cd /polku/projektiin
-git init
-```
-
-Saat ilmoituksen, että tyhjä Git-varasto on luotu. Projektin polku `...Path...`
+Saat ilmoituksen, että tyhjä Git-varasto on luotu. Projektin polku `polku/omaan/todo/projektiin`
 on tietenkin erilainen omalla koneellasi.
 
-```
-Initialized empty Git repository in C:/...Path.../Todo/.git/
-```
-
 Ennen kuin teemme ensimmäisen commitin, meidän on kerrottava Gitille, mitä
-tiedostoja haluamme seurata. Voimme tässä vaiheessa tehdä sen seuraavalla
-komennolla:
+tiedostoja tulisi lisätä mukaan. Aivan alkuun riittää, että lisätään kaikki
+kansiossa olevat tiedostot mukaan käyttäen `git add .` -komentoa:
 
-```bash 
-git add .
-```
+<asciinema src="images/git-add.cast" rows="2" poster="npt:10"></asciinema>
 
 Tämä lisää kaikki nykyisessä kansiossa ja sen alikansioissa olevat tiedostot
-seurantaan. 
+tulevaan commitiin. Huomaa, että komento ei itsessään tulosta mitään.
 
-Kirjoita nyt: 
+Varmistetaan vielä, mitä tiedostoja lähtee committiin mukaan käyttäen `git
+status` -komentoa:
 
-```bash
-git status
-```
+<asciinema src="images/git-status.cast" rows="19" poster="npt:10"></asciinema>
 
-Saat listan tiedostoista, jotka on lisätty seurantaan. Pohjaprojektin mukana
-tuli `.gitignore`-tiedosto, mikä pitäisi näkyä listassa ensimmäisenä. Tämä
-tiedosto kertoo Gitille, mitä tiedostoja **ei** haluta seurata. Näin
+
+Saat listan tiedostoista, joita Git seuraa ja tulee lisäämään seuraavaan
+commitiin. Tarkastellaan lyhyesti sisältö.
+Alkuun on aiemmista vaiheista tutut `pom.xml`, `.java`-lähdekoodit ja
+`.fxml`-näkymätiedosto.
+Puolestaan `.idea`-kansio sisältää IntelliJ IDEA:n kannalta oleellisia asetuksia.
+
+Lisäksi mukana on `.gitignore`-tiedosto. Tämä tiedosto tuli valmiiksi
+projektipohjan mukana. Tiedosto kertoo
+Git-työkalulle, 
+mitä tiedostoja **ei** haluta koskaan lisätä mukaan commitiin. Näin
 varmistetaan, että esimerkiksi käännettyt `.class`-tiedostot tai IDEAn omat
 asetustiedostot eivät päädy versionhallintaan. `.gitignore`-tiedostoa voi ja
-kannattaa muokata tarpeen mukaan, jos halutaan jättää pois seurannasta muita
-tiedostoja.
+kannattaa muokata tarpeen mukaan, jos halutaan jättää pois muita
+tiedostoja versionhallinnasta.
 
-Nyt voimme tehdä ensimmäisen commitin, joka on kuin "snapshot" projektista
-tietyssä vaiheessa. Commitin yhteydessä kirjoitetaan kuvaava viesti, joka
+Nyt voimme tehdä ensimmäisen commitin, joka tallentaa kansiossa olevan koodin
+tilan Gitiin ikään kuin "ruutukaappauksena". 
+Commitin yhteydessä kirjoitetaan kuvaava viesti, joka
 kertoo, mitä muutoksia on tehty. Yleensä ensimmäiselle commitille kirjoitetaan
 viesti, kuten "Initial commit" tai "Projektin aloitus". 
+Luo uusi commit komennolla `git commit`:
 
-```bash
-git commit -m "Initial commit"
-```
+<asciinema src="images/git-commit.cast" rows="14" poster="npt:10"></asciinema>
 
-Tästä eteenpäin jokaisen tehtävän yhteydessä teet uuden commitin, jossa kuvaat
-tehtävän aikana tekemiäsi muutoksia. Voit aivan hyvin tehdä useammankin
+Komento listaa onnistumisen merkiksi kaikki tiedostot, joista tallennettiin
+senhetkinen tila Gitiin.
+
+Tästä eteenpäin jokaisen tehtävän yhteydessä tee uusi commit, jossa kuvaat
+tehtävän aikana tekemiäsi muutoksia. Voit halutessasi tehdä useammankin
 commitin, jos haluat. 
 
 <task>
