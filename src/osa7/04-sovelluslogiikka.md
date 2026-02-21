@@ -83,9 +83,8 @@ riippumatta siitä, onko syötetty teksti tyhjä vai ei.
 
 Huomaa, että `runLater()`-metodi ottaa parametrinaan `Runnable`-olion, joka on
 funktionaalinen rajapinta (ks. [Osa
-6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). Koska
-`requestFocus()`-metodi sopii `Runnable`-rajapinnan määritelmään (ts. se on
-parametriton `void`-metodi), voimme käyttää metodiviittausta
+6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). `requestFocus()` on
+parametriton void-metodi, joten se sopii `Runnable`-rajapinnan määritelmään. Näin voimme käyttää metodiviittausta
 `uusiTehtavaNimi::requestFocus`. Toki voimme kirjoittaa tämän
 myös perinteisempänä lambda-lausekkeena, jos se tuntuu selkeämmältä:
 
@@ -100,8 +99,8 @@ ulkoasu hajoaa. Ratkaistaan tämä hieman myöhemmin.
 
 Siirretään käsitellyt tehtävät pois tekemättömien tehtävien joukosta. Aloitetaan
 siitä, että luodaan uusi `VBox`-komponentti, ja sijoitetaan se tekemättömien
-tehtävien VBoxin alle. Anna sille fx:id "käsitellyt", tallenna, ja määrittele
-kontrolleriluokkaan vastaava attribuutti. 
+tehtävien VBoxin alle. Anna sille fx:id "käsitellyt". Tallenna, ja määrittele
+kontrolleriluokkaan vastaava attribuutti.  
 
 > [!VINKKI]
 > Kun lisäät uuden komponentin, SceneBuilder muistuttaa yläreunassa, että
@@ -113,9 +112,9 @@ kontrolleriluokkaan vastaava attribuutti.
 
 Tehtävän käsitellyksi merkitsemiseen voidaan käyttää `CheckBox`-komponentin
 `setOnAction`-tapahtumankäsittelijää. Kun käyttäjä klikkaa tehtävän edessä
-olevaa valintaruutua, tarkistetaan, onko se nyt valittuna vai ei. Jos se on
-valittuna, siirretään tehtävä tekemättömien tehtävien VBoxista käsiteltyjen
-tehtävien VBoxiin.
+olevaa valintaruutua, tarkistetaan, onko se nyt valittu vai ei. Jos se on
+valittu, poistetaan tehtävä tehdyistä ja lisätään se tekemättömien tehtävien
+VBoxiin. 
 
 ```java,ignore
 public void initialize(...)
@@ -136,7 +135,7 @@ public void initialize(...)
 ```
 
 Nyt tehtävän klikkaaminen siirtää sen käsiteltyihin. Klikkaamalla käsiteltyä
-tehtävää uudestaan, se ei kuitenkaan siirry takaisin tekemättömiin. Jos
+tehtävää se ei kuitenkaan siirry takaisin tekemättömiin. Jos
 katsot IDEAssa konsoliin, näet poikkeuksen, joka kertoo, että yritämme lisätä
 samaa `CheckBox`-komponenttia uudestaan `tehdyt`-VBoxiin, vaikka se on jo
 siellä. Tarvitsemme siis hieman enemmän logiikkaa, jotta komponentti voidaan
@@ -145,13 +144,17 @@ siirtää takaisin tekemättömien joukkoon.
 ```java,ignore
 // ...
 checkbox.setOnAction(cbevent -> {
+    // HIGHLIGHT_GREEN_BEGIN
     if (checkbox.isSelected()) { // Tehtävä valittu --> Siirretään tehtyjen joukkoon
+    // HIGHLIGHT_GREEN_END
         tekemattomat.getChildren().remove(checkbox);
         tehdyt.getChildren().add(checkbox);
+    // HIGHLIGHT_GREEN_BEGIN
     } else { // Tehtävä ei-valittu--> Siirretään takaisin tekemättömien joukkoon
         tehdyt.getChildren().remove(checkbox);
         tekemattomat.getChildren().add(checkbox);
     }
+    // HIGHLIGHT_GREEN_END
 });
 // ...
 ```
@@ -304,9 +307,9 @@ mapper.writeValue(Path.of("tehtavat.json"), kaikkiTehtavat);
 > jälkeen `.gitignore`-tiedostoa
 
 Nyt tallennus kyllä toimii, kun tehtävä lisätään. Tila täytyy kuitenkin
-tallentaa myös silloin, kun tehtävä merkitään tehdyksi tai tehdään
+tallentaa myös silloin, kun tehtävä merkitään tehdyksi tai palautetaan
 tekemättömäksi. Tämä kyllä onnistuu, jos kirjoitetaan sama tallennuskoodi
-uudestaan uuden `CheckBox`-komponentin `setOnAction`-tapahtumankäsittelijään,
+uudestaan `CheckBox`-komponentin `setOnAction`-tapahtumankäsittelijään,
 mutta koodin toistaminen ei ole hyvä ratkaisu. 
 
 Mietitäänpä siis hetki. Tallentaminen on selkeästi oma kokonaisuutensa, joka ei
