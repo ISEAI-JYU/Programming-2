@@ -48,7 +48,9 @@ Osassa 7 teemme sovellukseen seuraavat ominaisuudet:
  * Tehtävät tallennetaan tiedostoon, jotta ne säilyvät sovelluksen sulkemisen jälkeen
  * Tehtävät haetaan tiedostosta sovelluksen käynnistyessä
 
-TODO: Tähän väliin gif vai pikku video sovelluksesta.
+Tämän osan lopuksi sovelluksemme toimii seuraavasti:
+
+<video src="images/todo-app-final-product.mp4" controls></video>
 
 Kuten aiemminkin, tämänkin osan tehtävistä täytyy tehdä vähintään 50%.
 Erityisesti osissa 7 ja 8 kuitenkin suosittelemme tekemään kaikki tehtävät
