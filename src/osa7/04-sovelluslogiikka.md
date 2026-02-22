@@ -287,67 +287,115 @@ Muutosten myötä sovellus on nyt hieman käytettävämpi:
 
 ## Käsitellyt tehtävät
 
-Siirretään käsitellyt tehtävät pois tekemättömien tehtävien joukosta. Aloitetaan
-siitä, että luodaan uusi `VBox`-komponentti, ja sijoitetaan se tekemättömien
-tehtävien VBoxin alle. Anna sille fx:id "käsitellyt". Tallenna, ja määrittele
-kontrolleriluokkaan vastaava attribuutti.  
+Jatketaan sovelluksen toimintojen edistämistä. Muutetaan sovellusta niin, että
+käsitellyt tehtävät ovat aina erillään tekemättömistä, jolloin tehtävien
+tekemistä on helpompaa seurata.
 
-> [!VINKKI]
-> Kun lisäät uuden komponentin, SceneBuilder muistuttaa yläreunassa, että
-> FXML-tiedostossa on määritetty fx:id, mutta kontrolleriluokassa ei ole
-> vastaavaa `@FXML`-annotaatiolla merkittyä muuttujaa. Kannattaa lisätä
-> muuttujat aina, kun SceneBuilder niitä ehdottaa, jotta ei tarvitse myöhemmin
-> ihmetellä miksi FXML-komponentteihin ei saa yhteyttä. Varoituksen saat pois
-> klikkaamalla keltaisessa boksissa *Clear*.
+Palaa SceneBuilderiin ja lisää uusi `VBox`-komponentti tekemättömien tehtävien
+`VBox`-komponentin alle. Anna samalla uudelle `VBox`-komponentin
+*fx:id*-tunnisteeksi `tehdyt`:
 
-Tehtävän käsitellyksi merkitsemiseen voidaan käyttää `CheckBox`-komponentin
-`setOnAction`-tapahtumankäsittelijää. Kun käyttäjä klikkaa tehtävän edessä
-olevaa valintaruutua, tarkistetaan, onko se nyt valittu vai ei. Jos se on
-valittu, poistetaan tehtävä tehdyistä ja lisätään se tekemättömien tehtävien
-VBoxiin. 
+<img src="images/scenebuilder-tehdyt-vbox.png" width="600">
+
+Tallenna FXML-tiedosto, ja määrittele kontrolleriluokkaan vastaava `VBox
+tehdyt` -attribuutti:
 
 ```java,ignore
-public void initialize(...)
-    //...
-
-    // HIGHLIGHT_GREEN_BEGIN
-    // Luo uusi checkbox
-    CheckBox checkbox = new CheckBox(teksti);
-    checkbox.setOnAction(cbevent -> {
-        tekemattomat.getChildren().remove(checkbox);
-        tehdyt.getChildren().add(checkbox);
-    });    
-    tekemattomat.getChildren().add(checkbox);
-    // HIGHLIGHT_GREEN_END
-    // HIGHLIGHT_RED_BEGIN
-    tekemattomat.getChildren().add(new CheckBox(teksti));
-    // HIGHLIGHT_RED_END
+@FXML
+private VBox tehdyt;
 ```
 
-Nyt tehtävän klikkaaminen siirtää sen käsiteltyihin. Klikkaamalla käsiteltyä
-tehtävää se ei kuitenkaan siirry takaisin tekemättömiin. Jos
-katsot IDEAssa konsoliin, näet poikkeuksen, joka kertoo, että yritämme lisätä
-samaa `CheckBox`-komponenttia uudestaan `tehdyt`-VBoxiin, vaikka se on jo
-siellä. Tarvitsemme siis hieman enemmän logiikkaa, jotta komponentti voidaan
-siirtää takaisin tekemättömien joukkoon.
+Tehdään niin, että aina, kun valintaruutua klikataan, tehtävä siirtyy
+tekemättömästä tehdyksi ja samalla siirtyy ylemmästä alempaan
+`VBox`-komponenttiin.
+Huomaamme, että `CheckBox`-komponentti perii painikekomponentin `ButtonBase`,
+jolloin `onAction`-tapahtuma laukeaa aina, kun valintaruutupainiketta klikataan
+(ks.
+[JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/CheckBox.html)).
+Muutetaan `lisaaTehtava()`-metodia niin, että valintaruudun
+`onAction`-tapahtumalle asetetaan käsittelijä. Tapahtumankäsittelijässä ensiksi
+poistamme valintaruudun `tekemattomat`-säiliökomponentista ja lisätään se
+`tehdyt`-säiliökomponenttiin:
+
 
 ```java,ignore
-// ...
-checkbox.setOnAction(cbevent -> {
+private void lisaaTehtava() {
+    // metodin alku piilotettu...
+//-    String teksti = uusiTehtavaNimi.getText();
+//-    if (teksti == null || teksti.isBlank()) {
+//-        uusiTehtavaNimi.requestFocus();
+//-        return;
+//-    }
+//-    teksti = teksti.trim();
+    CheckBox tehtava = new CheckBox(teksti);
     // HIGHLIGHT_GREEN_BEGIN
-    if (checkbox.isSelected()) { // Tehtävä valittu --> Siirretään tehtyjen joukkoon
+    tehtava.setOnAction(event -> {
+        tekemattomat.getChildren().remove(tehtava);
+        tehdyt.getChildren().add(tehtava);
+    });
     // HIGHLIGHT_GREEN_END
-        tekemattomat.getChildren().remove(checkbox);
-        tehdyt.getChildren().add(checkbox);
-    // HIGHLIGHT_GREEN_BEGIN
+    tekemattomat.getChildren().add(tehtava);
+    // metodin loppu piilotettu...
+//-    uusiTehtavaNimi.clear();
+//-    uusiTehtavaNimi.requestFocus();
+}
+```
+
+<!-- 
+DZ: En saanut tätä toistettua. Ilmeisesti add automaattisesti poistaa checkboxin tekemattomat-vboxista (?)
+
+
+ Huomaa, että tapahtumakäsittelijässä *ensiksi poistamme* valintaruudun
+ tekemättömien tehtävien säiliöstä ja *sitten lisätään* tehtyjen tehtävien säiliöön.
+ **JavaFX:ssä sama komponenttiolio saa olla vain yhden toisen komponentin sisällä.**
+ Jos sen sijaan yrittäisimme ensin lisätä valintaruutu tehtyihin tehtäviin ja
+ sitten poistaa tekemättömistä, aiheutuisi siitä virhe:
+
+ ```java,ignore
+ tehdyt.getChildren().add(tehtava); // VIRHE: tehtava on jo tekemattomat-säiliössä
+ tekemattomat.getChildren().remove(tehtava);
+ ``` 
+ 
+-->
+
+Kokeile ajaa sovellusta. Nyt tehtävän klikkaaminen siirtää sen alempaan
+`VBox`-säiliöön.
+Klikkaamalla jo tehtyä
+tehtävää se ei kuitenkaan siirry takaisin tekemättömiin. 
+Lisäksi, jos katsot IDEAssa konsoliin, näet poikkeuksen:
+
+```
+java.lang.IllegalArgumentException: Children: duplicate children added: parent = VBox[id=tehdyt]
+```
+
+Poikkeus kertoo, että yritämme lisätä
+samaa `CheckBox`-komponenttia uudestaan `tehdyt`-säiliöön, vaikka se on jo
+siellä. Muokataan logiikkaa niin, että jos tehtävä merkittiin tehdyksi,
+siirretään se tehtyihin ja jos tehtävä merkittii tekemättömäksi, siirretään se
+takaisin tekemättömiin. 
+Voimme käyttää tässä `CheckBox`-komponentin `isSelected()`-metodia,
+joka kertoo, onko valintaruutu valittu tai ei (ks.
+[JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/CheckBox.html#isSelected())).
+Tällöin tapahtumakäsittely muuttuu seuraavaan muotoon:
+
+
+```java,ignore
+tehtava.setOnAction(event -> {
+    if (tehtava.isSelected()) { // Tehtävä valittu --> Siirretään tehtyjen joukkoon
+        tekemattomat.getChildren().remove(tehtava);
+        tehdyt.getChildren().add(tehtava);
     } else { // Tehtävä ei-valittu--> Siirretään takaisin tekemättömien joukkoon
-        tehdyt.getChildren().remove(checkbox);
-        tekemattomat.getChildren().add(checkbox);
+        tehdyt.getChildren().remove(tehtava);
+        tekemattomat.getChildren().add(tehtava);
     }
-    // HIGHLIGHT_GREEN_END
 });
-// ...
 ```
+
+Kokeile nyt ajaa sovellus. Tehtävien merkkaaminen tehdyksi pitäisi nyt siirtää
+ne alempaan säiliöön. Vastaavasti tehtävien merkkaaminen tekemättömäksi siirtää
+ne takaisin ylös:
+
+<video src="images/todo-app-checkbox-move.mp4" controls></video>
 
 Huomaa, että `isSelected()`-metodilla on jo tiedossaan "uusi" arvo, onko
 komponentti valittuna vai ei. 
@@ -359,11 +407,19 @@ Kun käyttäjä klikkaa valintaruutua, tapahtumaketju on karkeasti seuraava:
  * `ActionEvent` luodaan ja `setOnAction`-käsittelijä suoritetaan.
  * Käsittelijän suoritus: Kun kutsut tässä vaiheessa `isSelected()`, saat jo uuden, päivitetyn tilan.
 
-Lisätään vielä `Label`-komponentit listojen yläpuolelle. Laitetaan tekemättömien
-tehtävien yläpuolelle teksti "TODO" ja käsiteltyjen tehtävien yläpuolelle teksti
-"DONE". Document-paneelin pitäisi nyt näyttää tältä:
 
-![alt text](images/document.png)
+## Nimiöt säiliöille
+
+Tehdään vielä pieni muutos parantaakseen käyttäjäystävällisyyttä.
+Lisää yksi nimiökomponentti (`Label`) tekemättömien tehtävien säiliön
+yläpuolelle ja aseta sen Text-attribuutiksi `TODO`.
+Sen jälkeen lisää vielä yksi nimiökomponentti tehtyjen tehtävien säiliön
+yläpuolelle ja aseta sen Text-attribuutiksi `TEHTY`:
+
+<img src="images/scenebuilder-vbox-label.png">
+
+Tallenna FXML-tiedosto ja kokeile vielä ajaa sovellus IDEA:sta varmistaksesi,
+että kaikki vieläkin toimii.
 
 <task>
   <task-title>Tehtävä 7.3: TODO-ohjelma, vaihe 3. <points>1 p.</points> </task-title>

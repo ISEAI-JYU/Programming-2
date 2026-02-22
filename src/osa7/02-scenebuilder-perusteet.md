@@ -187,7 +187,8 @@ näyttää varoituksen "No injectable field found":
 <img src="images/scenebuilder-inject-warning.png">
 
 Korjataan varoitus lisäämällä tunnistetta vastaavat attribuutit
-kontrolleriluokkaan. 
+kontrolleriluokkaan. Voit toistaiseksi tyhjentää varoituksen painamalla
+**Clear**-painiketta, sillä SceneBuilder ei tyhjennä varoituksia automaattisesti.
 
 Palaa IDEAan ja avaa `MainController.java`. Lisää luokkaan kaksi attribuuttia
 luokan alkuun:
