@@ -1,5 +1,9 @@
 # Tehtävien lukeminen ja kirjoittaminen tiedostoon
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 23. helmikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
+
 Sovelluksemme alkaa olla lähellä valmis toiminnallisesti.
 Toteutetaan vielä kaksi viimeistä toiminnallisuutta:
 

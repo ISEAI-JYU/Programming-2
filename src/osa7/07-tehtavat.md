@@ -1,5 +1,8 @@
 # Osan kaikki tehtävät
 
+> [!VAROITUS]
+> Tämä osio julkaistaan 23. helmikuuta 2026.
+> {{#include ../ei-julkaistu.md}}
 
 <task>
   <task-title>Tehtävä 7.1: TODO-ohjelma, vaihe 1 <points>1 p.</points> </task-title>
