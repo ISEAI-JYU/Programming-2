@@ -243,7 +243,47 @@ lisaaUusiTehtavaPainike.setOnAction(ajaJaFokusoi(event -> {
 Huomaa, että kaikki JavaFX-komponentin perivät `Node`-luokasta.
 </details>
 
-Lopuksi
+Lopuksi, tehtävän lisääminen vaatii aina "Lisää tehtävä" -painikkeen painamista.
+Tehokäyttäjälle voisi olla kätevämpi lisätä tehtäviä myös
+<kbd>Enter</kbd>-painiketta käyttäen, jolloin uusia tehtäviä voi lisätä 
+paljon nopeammin.
+Huomaamme, että `TextField`-komponentin `onAction`-tapahtuma laukeaa, kun
+käyttäjä painaa <kbd>Enter</kbd>-painiketta kentässä (ks.
+[JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/TextField.html#setOnAction(javafx.event.EventHandler))).
+Lisätään siis myös `uusiTehtavaNimi`-syöttökentälle tapahtumankäsittelijä
+käyttäen `setOnAction`-metodia. Koska haluamme käsitellä näppäimen painallusta
+ja tekstikentän <kbd>Enter</kbd>-painiketta samalla tavalla, refaktoroidaan
+samalla tapahtumankäsittely omaksi metodiksi:
+
+```java,ignore
+public void initialize(URL url, ResourceBundle resourceBundle) {
+    lisaaUusiTehtavaPainike.setOnAction(event -> lisaaTehtava());
+    uusiTehtavaNimi.setOnAction(event -> lisaaTehtava());
+}
+
+private void lisaaTehtava() {
+    String teksti = uusiTehtavaNimi.getText();
+    if (teksti == null || teksti.isBlank()) {
+        uusiTehtavaNimi.requestFocus();
+        return;
+    }
+    teksti = teksti.trim();
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
+    uusiTehtavaNimi.clear();
+    uusiTehtavaNimi.requestFocus();
+}
+```
+
+Kokeillaan nyt vielä ajaa sovellus ja testataan, että kaikki toimii.
+Muutosten myötä sovellus on nyt hieman käytettävämpi:
+
+- Tehtävien lisääminen ei onnistu jos tekstikenttä on tyhjä
+- Tehtävän lisääminen tyhjentää tekstikentän ja palauttaa fokuksen siihen
+  nopeampaa kirjoittamista varten
+- Tehtäviä vodaan lisätä myös painamalla <kbd>Enter</kbd>-painiketta
+
+<video src="images/todo-app-usability.mp4" controls></video>
 
 ## Käsitellyt tehtävät
 
