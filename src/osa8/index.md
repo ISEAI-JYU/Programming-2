@@ -12,3 +12,10 @@
 >   osaat kytkeä M-kerroksen osaksi JavaFX-projektia
 > - Osaat esittää datan käyttöliittymässä lista- tai taulukkonäkymässä
 > - Harjoitustyön vaihe 2 palautus TIMiin (ei tarvitse erikseen näyttää tuntiopettajalle)
+
+Harjoitukset:
+
+ - CheckBoxin muuttaminen TableView-komponentiksi
+ - Tehtävää tuplaklikkaamalla tulee näkyviin uusi ikkuna, jossa on tehtävän
+   kuvaus ja asetusikkuna, jolla voi muuttaa tehtävän tietoja, asettaa
+   prioriteettia
