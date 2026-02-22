@@ -92,13 +92,12 @@ Tästä syystä toteutamme tehtävät tavallisena luokkana.
 
 Aloitetaan tehtävien tallentamisella. Aivan aluksi meidän pitäisi saada
 tuotettua lista tehtävistä `Tehtava`-olioina. Tällä hetkellä mallinnamme
-tehtävät suoraan `CheckBox`-komponentilla. 
-Siispä meidän pitäisi muuntaa
-`VBox`-säiliössä olevat valintaruudut listaksi tehtävistä.
-Listojen muuntaminen onnistuu helposti muun muassa striimeillä (ks. [luku
-6.2](../osa6/02-kokoelmien-kasittely-stream-api.md)).
-Lisätään `lisaaTehtava`-metodin loppuun koodi, joka hakee alkuun kaikki
-tekemättömät tehtävät:
+tehtävät suoraan `CheckBox`-komponentilla. Niinpä meidän täytyy muuntaa
+`VBox`-säiliössä olevat valintaruudut listaksi tehtävistä. Listojen muuntaminen
+onnistuu helposti muun muassa striimeillä (ks. [luku
+6.2](../osa6/02-kokoelmien-kasittely-stream-api.md)). Lisätään
+`lisaaTehtava`-metodin loppuun koodi, joka hakee alkuun kaikki tekemättömät
+tehtävät:
 
 ```java,ignore
 void lisaaTehtava() {
@@ -146,16 +145,32 @@ eli tehtävän tekstin ja `isSelected()` palauttaa valintaruudun tilan (ks. [Jav
 tehtävä tehty tai ei.
 Lopuksi `toList()` kerää kaikki tehtävät listaan.
 
+<details><summary>Tekemättömien lista perinteisellä silmukalla</summary>
+
+Tekemättömien listan voisi toki muodostaa myös perinteisellä
+silmukkarakenteella. Alla vertailun vuoksi sama koodi for-each-silmukkana.
+
+```java,ignore
+List<Tehtava> tekemattomatList = new ArrayList<>();
+for (Node node : tekemattomat.getChildren()) {
+    CheckBox c = (CheckBox) node;
+    String tekstiC = c.getText();
+    boolean tehtyC = c.isSelected();
+    Tehtava tehtava = new Tehtava(tekstiC, tehtyC);
+    tekemattomatList.add(tehtava);
+}
+```
+
+</details>
+
 <details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Mitä jos säiliössä on muitakin komponentteja?</summary>
 
 Tässä tapauksessa jätimme tyyppitarkistuksen pois, koska tiesimme, että
-`VBox`-säiliöt sisältävät vain valintaruutuja.
-Jos sen sijaan `VBox` sisältäisi erilaisia komponentteja, ja haluaisimme löytää
-vain tietyntyyppiset komponentit, voisimme tehdä oikeanoppisen
-tyyppitarkistuksen.
-Tämä tarkistus voidaan tehdä
-`instanceof`-operaattorilla, jonka perään voidaan kirjoittaa muuttujan nimi
-(tässä `c`), johon tarkistettu objekti sijoitetaan uuden tyypin kera:
+`VBox`-säiliöt sisältävät vain valintaruutuja. Jos sen sijaan `VBox` sisältäisi
+erilaisia komponentteja, ja haluaisimme löytää vain tietyntyyppiset komponentit,
+voisimme tehdä tyyppitarkistuksen. Tämä tehdään `instanceof`-operaattorilla,
+jonka perään voidaan kirjoittaa muuttujan nimi (tässä `c`), johon tarkistettu
+objekti sijoitetaan uuden tyypin kera:
 
 ```java,ignore
 List<Tehtava> tekemattomatList = new ArrayList<>();
@@ -197,7 +212,6 @@ tekemattomat.getChildren().stream()
 ```
 
 </details>
-
 
 <!-- Lisäksi muistamme, että meillä on kaksi eri säiliötä: yksi tekemättömille ja
 yksi tehdyille tehtäville.
