@@ -47,8 +47,13 @@ saantimetodit. Teemme lisäksi rakentajan, joka asettaa attribuuttien arvot:
 
 ```java,ignore
 public class Tehtava {
-    private final String teksti;
-    private final boolean tehty;
+    @SuppressWarnings("FieldMayBeFinal")
+    private String teksti;
+    @SuppressWarnings("FieldMayBeFinal")
+    private boolean tehty;
+
+    @SuppressWarnings("unused")
+    public Tehtava() { /* Jätä tyhjäksi tai tee oletustoteutus */ }
 
     public Tehtava(String teksti, boolean tehty) { /* Lisää toteutus */ }
 
@@ -60,8 +65,9 @@ public class Tehtava {
 
 Lisää järkevä toteutus itse. Jätämme `set`-asetusmetodit toistaiseksi
 lisäämättä, koska käytämme luokkaa toistaiseksi vain tehtävien lataamiseen ja
-tallentamiseen.  Samasta syystä merkitsemme toistaiseksi kaikki attribuutit
-`final`-määreellä. 
+tallentamiseen. Emme kuitetnkaan merkitse attribuutteja `final`-määreellä, jotta
+Jackson-kirjasto osaa asettaa arvoja attribuutteihin. Lisäämme vielä
+oletusmuodostajan, jota Jackson käyttää olioiden alustamiseen.
 
 <details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Tehtävä on tietue </summary>
 
@@ -453,21 +459,22 @@ private void lisaaTehtava() {
 ## Tehtävien lataaminen
   
 Nyt olemme saaneet tehtävät tallennettua, mutta ne pitäisi myös lukea ohjelman
-käynnistyessä. Tehdään sitä varten saman tien metodi `lueTehtavat()`. Käytetään tiedoston
+käynnistyessä. Tehdään sitä varten saman tien metodi `lataa()`. Käytetään tiedoston
 lukemiseen tapaa, jonka opimme [luvussa 6.5](../osa6/05-tiedostojen-kasittely.md#jackson), eli käytetään
 `ObjectMapper`-luokan `readValue()`-metodia. Kääritään koko komeus `try-catch`-lohkon sisään, jotta mahdolliset poikkeukset saadaan kiinni:
 
 ```java,ignore
-private void lueTehtavat() {
-    ObjectMapper mapper = new ObjectMapper();
+private void lataa() {
     Path path = Path.of("tehtavat.json");
+    if (Files.notExists(path)) {
+        return;
+    }
     try {
-        // 
-        List<Tehtava> kaikkiTehtavat = mapper.readValue(path.toFile(),
-                new TypeReference<java.util.List<Tehtava>>() {});
+        ObjectMapper mapper = new ObjectMapper();
+        List<Tehtava> kaikkiTehtavat = mapper.readValue(path.toFile(), new TypeReference<>() {});
         kaikkiTehtavat.forEach(tehtava -> {
             CheckBox checkbox = luoCheckBox(tehtava.getTeksti());
-            if (tehtava.isTehty()) {
+            if (tehtava.getTehty()) {
                 tehdyt.getChildren().add(checkbox);
             } else {
                 tekemattomat.getChildren().add(checkbox);
@@ -479,51 +486,109 @@ private void lueTehtavat() {
 }
 ```
 
-
-
-Lisätään kutsu `initialize()`-metodiin.
-
-```java,ignore
-public void initialize(...) {
-    lueTehtavat();
-    // ...
-```
-
-Lukemisessa, tai oikeastaan checkboxien luomisessa, on pieni ongelma.
-`luoCheckBox()`-metodi ei ota huomioon sitä, onko tehtävä tehty vai ei, vaan luo
-aina tekemättömän tehtävän. Korjataan tämä lisäämällä metodille toinen
-parametri.
+Toistaiseksi virheen sattuessa tulostamme vaan virheen konsoliin.
+Käsittelemme myöhemmässä osassa, miten virhetilanne voitaisiin ilmoittaa
+käyttäjälle tarkemmin. 
+Lisätään metodin kutsu `initialize()`-metodin alkuun:
 
 ```java,ignore
-private CheckBox luoCheckBox(String teksti, boolean valittu) {
-    CheckBox checkbox = new CheckBox(teksti);
-    if (valittu) checkbox.setSelected(true);
-    // ...
+public void initialize(URL url, ResourceBundle resourceBundle) {
+    lataa();
+    // metodin loppu piilotettu...
+//-    uusiTehtavaNimi.setOnAction(event -> lisaaTehtava());
+//-    lisaaUusiTehtavaPainike.setOnAction(event -> lisaaTehtava());
 }
 ```
 
-Nyt voimme lisätä metodin kutsuun mukaan checkboxin oikean tilan. 
+Kokeile ajaa sovellus. Nyt tehtävät pysyvät tallessa, vaikka ohjelma
+suljettaisiin ja käynnistettäisiin uudelleen:
+
+<video src="images/todo-app-save-load-buggy.mp4" controls></video>
+
+Huomaamme, että lukemisessa, tai oikeastaan valintaruutujen luomisessa, on pieni
+ongelma. Kun ohjelma käynnistetään uudelleen, tehtyjen tehtävien listassa
+valintaruudut eivät ole enää valittuna.
+Tämä johtuu siitä, että `luoCheckBox()`-metodi ei ota huomioon sitä, onko tehtävä tehty vai ei.
+Korjataan tämä lisäämällä metodille parametri, joka kertoo, onko valitaruutu
+luomisen yhteydessä valittu tai ei:
 
 ```java,ignore
-// ...
-kaikkiTehtavat.forEach(tehtava -> {
+private CheckBox luoCheckBox(String teksti, boolean valittu) {
+    CheckBox tehtava = new CheckBox(teksti);
     // HIGHLIGHT_GREEN_BEGIN
-    CheckBox checkbox;
+    tehtava.setSelected(valittu);
     // HIGHLIGHT_GREEN_END
-    if (tehtava.isTehty()) {
-    // HIGHLIGHT_GREEN_BEGIN
-        checkbox = luoCheckBox(tehtava.getTeksti(), true);
-    // HIGHLIGHT_GREEN_END
-        tehdyt.getChildren().add(checkbox);
-    } else {
-    // HIGHLIGHT_GREEN_BEGIN
-        checkbox = luoCheckBox(tehtava.getTeksti(), false);
-    // HIGHLIGHT_GREEN_END
-        tekemattomat.getChildren().add(checkbox);
-    }
-});
-// ...
+    // metodin loppuosa piilotettu...
+//-    tehtava.setOnAction(event -> {
+//-        if (tehtava.isSelected()) {
+//-            tekemattomat.getChildren().remove(tehtava);
+//-            tehdyt.getChildren().add(tehtava);
+//-        } else {
+//-            tehdyt.getChildren().remove(tehtava);
+//-            tekemattomat.getChildren().add(tehtava);
+//-        }
+//-        tallenna();
+//-    });
+//-    return tehtava;
+}
 ```
+
+Nyt voimme asettaa valintaruudun oikean "tehty/ei-tehty" -tilan latauksen yhteydessä:
+
+```java,ignore
+private void lataa() {
+    // metodin alkuosa piilotettu...
+//-    Path path = Path.of("tehtavat.json");
+//-    if (Files.notExists(path)) {
+//-        return;
+//-    }
+//-    try {
+//-        ObjectMapper mapper = new ObjectMapper();
+//-        List<Tehtava> kaikkiTehtavat = mapper.readValue(path.toFile(), new TypeReference<>() {});
+        kaikkiTehtavat.forEach(tehtava -> {
+            // HIGHLIGHT_YELLOW_BEGIN
+            CheckBox checkbox = luoCheckBox(tehtava.getTeksti(), tehtava.getTehty());
+            // HIGHLIGHT_YELLOW_END
+    // metodin loppuosa piilotettu...
+//-            if (tehtava.getTehty()) {
+//-                tehdyt.getChildren().add(checkbox);
+//-            } else {
+//-                tekemattomat.getChildren().add(checkbox);
+//-            }
+//-        });
+//-    } catch (JacksonException je) {
+//-        IO.println("JSONin lukeminen epäonnistui: " + je.getMessage());
+//-    }
+}
+```
+
+Samalla korjaamme `lisaaTehtava()`-metodissa oleva `luoCheckBox()`-kutsu.
+Koska uusi tehtävä lisätään aina tekemättömäksi, annetaan parametrin arvoksi
+`false`:
+
+```java,ignore
+private void lisaaTehtava() {
+    // metodin alkuosa piilotettu...
+//-    String teksti = uusiTehtavaNimi.getText();
+//-    if (teksti == null || teksti.isBlank()) {
+//-        uusiTehtavaNimi.requestFocus();
+//-        return;
+//-    }
+//-    teksti = teksti.trim();
+    // HIGHLIGHT_YELLOW_BEGIN
+    tekemattomat.getChildren().add(luoCheckBox(teksti, false));
+    // HIGHLIGHT_YELLOW_END
+    // metodin loppuosa piilotettu...
+//-    uusiTehtavaNimi.clear();
+//-    uusiTehtavaNimi.requestFocus();
+//-    tallenna();
+}
+```
+
+Kokeile tallentaa ja ajaa sovellus uudelleen. Nyt sovelluksen käynnistyessä
+tehtyjen tehtävien valintaruudut merkataan "tehty"-tilaan oikein:
+
+<img src="images/todo-app-save-load-works.png">
 
 <task>
   <task-title>Tehtävä 7.5: TODO-ohjelma, vaihe 5. <points>1 p.</points> </task-title>
