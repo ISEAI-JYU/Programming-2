@@ -6,18 +6,18 @@ Ensinnäkin, kun sovellus käynnistyy, ikkunan koko on suhteellisen korkea:
 
 <img src="images/todo-app-unstyled.png" width="100">
 
-Toiseksi, ikkunnan korkeuden kasvattaminen jättää TODO-nimiön ja ikkunan yläosan
+Toiseksi, ikkunan korkeuden kasvattaminen jättää TODO-nimiön ja ikkunan yläosan
 ja Lisää tehtävä -painikkeen välille ylimääräistä tilaa.
 Lopuksi, komponenttien asettelu kaipaisi hieman työstämistä: valintaruudut ovat
-liian lähellä toisiinsa, nimiöt ovat oudosti keskitetty, ja Lisää tehtävä
--painike on liian kaukana syöttökentästä, jolloin komponettien välien yhteys ei
+liian lähellä toisiaan, nimiöt ovat oudosti keskitetty, ja Lisää tehtävä
+-painike on liian kaukana syöttökentästä, jolloin komponenttien välien yhteys ei
 ole selvä.
 
 Parannetaan sovelluksen ulkoasua ja tutustutaan vielä `VBox`-säiliön lähisukulaiseen `HBox`.
 
-Avaa sovelluksen `main.fxml`-tiedosto SceneBuilder:ssa. Aivan heti valitse
+Avaa sovelluksen `main.fxml`-tiedosto SceneBuilderissa. Aivan heti valitse
 yläpalkista **View** <i class="bi bi-chevron-right"></i> **Show Outlines**
-tai paina <kbd>Ctrl</kbd>+<kdb>E</kbd> (macOS: <kbd>Cmd</kbd>+<kbd>E</kbd>).
+tai paina <kbd>Ctrl</kbd>+<kbd>E</kbd> (macOS: <kbd>Cmd</kbd>+<kbd>E</kbd>).
 Toiminto muuttaa komponentit näyttämään laatikoilta:
 
 <img src="images/scenebuilder-outline.png">
@@ -26,7 +26,7 @@ Toiminto helpottaa merkittävästi komponenttien paikan ja erityisesti koon
 hahmottamista.
 Tämän luvun jälkeen voit palata takaisin perusnäkymään valitsemalla yläpalkista
 **View** <i class="bi bi-chevron-right"></i> **Hide Outlines**
-tai painamalla <kbd>Ctrl</kbd>+<kdb>E</kbd> (macOS:
+tai painamalla <kbd>Ctrl</kbd>+<kbd>E</kbd> (macOS:
 <kbd>Cmd</kbd>+<kbd>E</kbd>).
 
 ## Ikkunan ja komponenttien koko
@@ -40,11 +40,11 @@ Valitse sitten samalla oikealta Layout-paneeli näkyviin:
 
 Layout-paneeli sisältää asetuksia liittyen komponentin kokoon.
 Tällä hetkellä meitä erityisesti kiinnostaa komponentin leveys (*width*)
-ja korkeus (*height*). JavaFx:ssä jokaisella komponentilla on kuitenkin
+ja korkeus (*height*). JavaFX:ssä jokaisella komponentilla on kuitenkin
 kolmenlaista korkeutta ja leveyttä:
 
 - Oletusleveys ja -korkeus (`Pref Width` ja `Pref Height`): komponentin
-  oletuskoko, kun sovelluksennäkymä ladataan. Koko voi kuitenkin muuttua
+  oletuskoko, kun sovellusnäkymä ladataan. Koko voi kuitenkin muuttua
   riippuen komponentin luonteesta ja sitä ympäröivistä tai sisältämistä
   komponenteista.
 - Pienin leveys ja korkeus (`Min Width` ja `Min Height`): komponentin pienin
@@ -52,14 +52,14 @@ kolmenlaista korkeutta ja leveyttä:
 - Suurin leveys ja korkeus (`Max Width` ja `Max Height`): komponentin suurin
   sallittu koko, jos komponentin koko muuttuu.
 
-Jokaiselle ominaisuudelle voi antaa arvoksi desimaaliluku, jolloin JavaFx pyrkii pitämään
-komponentin koon annettujen lukujen rajoissa. Lisäksi JavaFx tukee kaksi
+Jokaiselle ominaisuudelle voi antaa arvoksi desimaaliluvun, jolloin JavaFX pyrkii pitämään
+komponentin koon annettujen lukujen rajoissa. Lisäksi JavaFX tukee kahta
 erikoisarvoa:
 
-- `USE_COMPUTED_SIZE`: Antaa JavaFx:lle laskea paras komponentin koko
-  komponentin sisällön perusteella. Toisin sanoen: JavaFx laajentaa tai
+- `USE_COMPUTED_SIZE`: Antaa JavaFX:lle laskea paras komponentin koko
+  komponentin sisällön perusteella. Toisin sanoen: JavaFX laajentaa tai
   pienentää komponenttia sen sisällön perusteella.
-- `USE_PREF_SIZE` (vain suurimmalle ja pienimmälle koolle): JavaFx käyttää
+- `USE_PREF_SIZE` (vain suurimmalle ja pienimmälle koolle): JavaFX käyttää
   kokona samaa kuin komponentin oletuskoko. Tämä on hyödyllinen silloin, kun
   halutaan estää, että komponentti kasvaa liian suureksi tai pieneksi.
 
@@ -141,13 +141,13 @@ mukaan. Alla oleva video havainnollistaa ongelman:
 
 Kun `VBox`-säiliön korkeus kasvaa, oletuksella säiliön sisällä olevien
 komponenttien korkeus pidetään muuttumattomana.
-Voimme kuitenkin kertoa `VBox`-säiliölle erikseen, miten jokaisen komponentit
+Voimme kuitenkin kertoa `VBox`-säiliölle erikseen, miten komponenttien
 tulee käyttäytyä, kun säiliön ympärille syntyy tyhjää tilaa.
 Tässä tapauksessa jos sovelluksen koko kasvaa, haluaisimme ensisijaisesti
 kasvattaa tehtyjen ja tekemättömien tehtävien listat ja säilyttää muut nimiöt,
 syöttökentät ja painikkeet samankokoisina.
 
-Valita SceneBuilderissa tekemättömien tehtävien `VBox` ja avaa oikealla puolella
+Valitse SceneBuilderissa tekemättömien tehtävien `VBox` ja avaa oikealla puolella
 Layout-paneeli:
 
 <img src="images/scenebuilder-vbox-constraints.png">
@@ -165,7 +165,7 @@ Mahdolliset asetukset ovat:
   komponenttia ei voi kasvattaa.
 
 Asetetaan tekemättömien tehtävien säiliölle Vgrow-asetuksen arvoksi `ALWAYS`.
-Tee sama myös tehtyjen tehtävien säililölle, jolloin kummatkin säiliöt kasvavat
+Tee sama myös tehtyjen tehtävien säiliölle, jolloin kummatkin säiliöt kasvavat
 samassa suhteessa.
 
 Tallenna muutokset ja käynnistä sovellus. Nyt ikkunan korkeuden kasvaessa
@@ -175,7 +175,7 @@ komponenttien koko pysyy muuttumattomana.
 ## Painikkeen asettaminen syöttökentän tasolle
 
 Tällä hetkellä syöttökenttä näyttää olevan hieman irrallinen painikkeesta.
-Sovelluksissa on yleisempää, että suoraan kenttään liittyvät toiminnut laitetaan
+Sovelluksissa on yleisempää, että suoraan kenttään liittyvät toiminnot laitetaan
 samalle riville kuin syöttökenttä.
 
 Koska `VBox` asettaa komponentit aina allekkain, se ei auta tässä tapauksessa.
@@ -196,7 +196,7 @@ sisältöön. Lopuksi, aseta `HBox`-komponentin Vgrow-asetuksen arvoksi `NEVER`,
 jotta sen korkeus ei ikinä muuttuisi. Tässä tapauksessa tämä on OK, sillä
 syöttökentän ja painikkeen korkeus on aina vakio.
 
-Sen jälkeen valitse `TextBox`-syöttökenttä ja aseta sen Hgrow-asetuksen arvoksi
+Sen jälkeen valitse `TextField`-syöttökenttä ja aseta sen Hgrow-asetuksen arvoksi
 `ALWAYS`,
 jolloin syöttökentän leveys täyttää aina kaiken vaakasuoran tilan. Hgrow-asetus
 vastaa siis `VBox`:n Vgrow-asetusta, mutta on tarkoitettu komponenttien
@@ -216,7 +216,7 @@ ikkunan vasempaan reunaan:
 <img src="images/scenebuilder-alignment.png">
 
 Tallenna FXML-tiedosto ja käynnistä sovellus. Varmista vielä, että sovellus
-toimii ja komponetit mukautuvat hyvin ikkunan kokoon.
+toimii ja komponentit mukautuvat hyvin ikkunan kokoon.
 
 <video src="images/todo-app-final-product.mp4" controls></video>
 
