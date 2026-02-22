@@ -57,98 +57,193 @@ Tämän jälkeen etsi `VBox`-komponentti Library-näkymästä (**Library**
 
 <img src="images/scenebuilder-vbox-add.png" >
 
-`VBox` (**V**ertical **Box**) on ns. *sisältökomponentti*, jonka tehtävänä
+`VBox` (**V**ertical **Box**) on ns. *sisältökomponentti*, joka on tarkoitettu
+muiden komponenttien ryhmittelyyn ja asetteluun. Sisältökomponentteihin voi
+lisätä muita elementteja, joita sisältökomponentti asettelee sille ominaisella
+tavalla. Esimerkiksi `VBox` asettelee kaikki sen sisällä olevat komponentit
+pystysuorasti ylhäältä alas.
 
 Anna uudelle `VBox`-komponentille fx:id-tunnisteeksi `tekemattomat`, eli sama
-kuin poistetun nimiökomponentin.
+kuin poistetun nimiökomponentin. Tallenna FXML-tiedosto ja muokkaa sitten `MainController`-luokka niin,
+että `tekemattomat`-attribuutin tyyppi on jatkossa `VBox`:
 
-Poista `Label`-komponentti ja tilalle `VBox`-komponentti pohjalla olevan
-`VBox`-komponentin ensimmäiseksi lapsielementiksi. Anna tälle sama fx:id
-"tekemattomat". Tallenna, jotta muutokset päivittyvät FXML-tiedostoon.
 
-Muokkaa `MainController`-luokkaa niin, että `tekemattomat`-muuttuja on tyyppiä
-`VBox` eikä `Label`. Nyt tapahtumankäsittelijä ei enää toimi, koska
-`VBox`-komponentti ei osaa näyttää tekstiä. Sen sijaan sille lisätään
-lapsikomponentteja.
+```java,ignore
+// HIGHLIGHT_RED_BEGIN
+@FXML
+private Label tekemattomat;
+// HIGHLIGHT_RED_END
+// HIGHLIGHT_GREEN_BEGIN
+@FXML
+private VBox tekemattomat;
+// HIGHLIGHT_GREEN_END
+```
 
-Luetaan tapahtumankäsittelijässä ensin `tekemattomat`-VBoxin lapsikomponentit
-`getChildren()`-metodilla, ja lisätään sille aluksi uusi `Label`-komponentti,
-joka sisältää syöttämämme tekstin. 
+Nyt tapahtumankäsittelijä ei enää toimi, koska
+`VBox`-komponentti ei sisällä `getText`/`setText`-metodia. 
+Sen sijaan `VBox`-komponentin oleellinen metodi on `getChildren()`, joka
+palauttaa listan kaikista sen sisältämistä komponenteista.
+Muokataankin painikkeen tapahtumakäsittelijä niin, että painikkeen painasusta
+alustetaan uusi `CheckBox`-olio ja lisätään se `VBox`-komponenttiin.
+Tällöin tapahtumakäsittelijästä tulee seuraavanlainen:
 
 ```java,ignore
 lisaaUusiTehtavaPainike.setOnAction(event -> {
-    String teksti = uusiTehtavaNimi.getText(); 
-    tekemattomat.getChildren().add(new Label(teksti));
+    String teksti = uusiTehtavaNimi.getText();
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
 });
 ```
 
-Vaihda `Label` tilalle `CheckBox`, jolloin tehtävän nimen eteen pitäisi
-ilmaantua valintaruutu.
+Kokeile ajaa sovellus tässä vaiheessa. Huomaat, että "Lisää tehtävä" -painike
+luo uuden valintaruutukomponentin ja lisää sen syöttökentän yläpuolelle.
+Valintaruudut ovat klikattavissa ikään kuin merkiksi siitä, onko tehtävä
+tehty:
 
-Tehdään pari pientä korjausta: tyhjennetään tekstikenttä painikkeen klikkauksen
-jälkeen, ja estetään tyhjän tekstin lisääminen. Myös fokus voisi palata takaisin
-tekstikenttään painikkeen klikkauksen jälkeen. 
+<video src="images/todo-app-checbox-add.mp4" controls></video>
+
+Parannetaan sovelluksen käytettävyyttä hieman tässä vaiheessa. Ensiksi, jos
+"Lisää tehtävä" -painiketta painaa ilman, että syöttökenttään kirjoittaa mitään,
+sovellukseen ilmestyy tyhjä valintaruutu. Lisäämme järkevyystarkistuksen: jos
+tekstikentästä haettu teksti on `null`-viite, ei sisällä mitään tekstiä tai
+sisältää vain välilyöntejä, lopetetaan tapahtumankäsittely kesken.
+Tämä onnistuu `String`-tyypin `isBlank()`-metodilla.
+Lisäksi, poistetaan tehtävän alusta ja lopusta turhia välilyöntejä, jos käyttäjä
+saattaa kirjoittaa ne vahingossa käyttäen `trim()`-metodia:
 
 ```java,ignore
 lisaaUusiTehtavaPainike.setOnAction(event -> {
     String teksti = uusiTehtavaNimi.getText();
     // HIGHLIGHT_GREEN_BEGIN
     if (teksti == null || teksti.isBlank()) {        
-        uusiTehtavaNimi.requestFocus(); 
         return; 
     }
+    teksti = teksti.trim();
     // HIGHLIGHT_GREEN_END
-    tekemattomat.getChildren().add(new CheckBox(teksti));
-    // HIGHLIGHT_GREEN_BEGIN
-    uusiTehtavaNimi.clear(); 
-    uusiTehtavaNimi.requestFocus(); 
-    // HIGHLIGHT_GREEN_END
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
 });
 ```
 
-Nyt hieman ärsyttävästi joudumme asettamaan fokuksen kahteen kohtaan. Tämän
-voisi ratkaista esimerkiksi käyttämällä `Platform.runLater()`-metodia, joka ajaa
-sille annettavan koodin JavaFX:n tapahtumasilmukan seuraavalla kierroksella.
-Näin varmistetaan, että kaikki tapahtumankäsittelijän koodi on suoritettu ennen
-kuin fokusta asetetaan uudestaan. Laitetaan tämä kutsu aivan
-tapahtumankäsittelijän alkuun.
+Toiseksi, tehtävän lisääminen jättää tehtävätekstin syöttökenttään, jolloin
+uuden tehtävän lisäämistä varten joudumme kumittamaan pois vanhan tekstin.
+Käytetään sitä varten `TextField`-komponentin `clear()`-metodia, jolla
+me tyhjennämme tekstikentän sisällön aina tehtävän lisäämisen lopuksi:
 
 ```java,ignore
 lisaaUusiTehtavaPainike.setOnAction(event -> {
-    // HIGHLIGHT_GREEN_BEGIN
-    Platform.runLater(uusiTehtavaNimi::requestFocus);
-    // HIGHLIGHT_GREEN_END
     String teksti = uusiTehtavaNimi.getText();
-    if (teksti == null || teksti.isBlank()) {
-        // HIGHLIGHT_RED_BEGIN
-        uusiTehtavaNimi.requestFocus(); 
-        // HIGHLIGHT_RED_END
+    if (teksti == null || teksti.isBlank()) {        
         return; 
     }
-    tekemattomat.getChildren().add(new CheckBox(teksti));
-    uusiTehtavaNimi.clear(); 
-    // HIGHLIGHT_RED_BEGIN    
-    uusiTehtavaNimi.requestFocus(); 
-    // HIGHLIGHT_RED_END
+    teksti = teksti.trim();
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
+    // HIGHLIGHT_GREEN_BEGIN
+    uusiTehtavaNimi.clear();
+    // HIGHLIGHT_GREEN_END
 });
 ```
 
-Nyt fokuksen pitäisi aina asettua tekstikenttään painikkeen painamisen jälkeen
-riippumatta siitä, onko syötetty teksti tyhjä vai ei.
-
-Huomaa, että `runLater()`-metodi ottaa parametrinaan `Runnable`-olion, joka on
-funktionaalinen rajapinta (ks. [Osa
-6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)). `requestFocus()` on
-parametriton void-metodi, joten se sopii `Runnable`-rajapinnan määritelmään. Näin voimme käyttää metodiviittausta
-`uusiTehtavaNimi::requestFocus`. Toki voimme kirjoittaa tämän
-myös perinteisempänä lambda-lausekkeena, jos se tuntuu selkeämmältä:
+Kolmanneksi, tehtävän lisäämisen jälkeen joudumme klikkaamaan syöttökentästä
+ennen kuin seuraavan tehtävän kirjoittamista. Tehdään tämä klikkaus
+ohjelmallisesti käyttäen `requestFocus()`-metodia, joka siirtää fokuksen eli
+ikään kuin simuloi komponentin valintaa. 
+Huomaa, että metodi on lisättävä kaikkin kohtiin, jossa tapahtumankäsittely
+päättyy:
 
 ```java,ignore
-Platform.runLater(() -> uusiTehtavaNimi.requestFocus());
+lisaaUusiTehtavaPainike.setOnAction(event -> {
+    String teksti = uusiTehtavaNimi.getText();
+    if (teksti == null || teksti.isBlank()) {        
+        // HIGHLIGHT_GREEN_BEGIN
+        uusiTehtavaNimi.requestFocus(); 
+        // HIGHLIGHT_GREEN_END
+        return; 
+    }
+    teksti = teksti.trim();
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
+    uusiTehtavaNimi.clear();
+    // HIGHLIGHT_GREEN_BEGIN
+    uusiTehtavaNimi.requestFocus(); 
+    // HIGHLIGHT_GREEN_END
+});
 ```
 
-Jos tehtäviä syöttää paljon, ikkunaan mahtuu vain osa niistä ja sovelluksemme
-ulkoasu hajoaa. Ratkaistaan tämä hieman myöhemmin. 
+<details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Fokuksen automaattinen asettaminen tapahtuman lopuksi </summary>
+
+Nyt hieman ärsyttävästi joudumme asettamaan fokuksen kahteen kohtaan.
+
+Eräs JavaFX-tyylinen tapa ratkaista ongelma on käyttää
+`Platform.runLater()`-metodia ([JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.graphics/javafx/application/Platform.html#runLater(java.lang.Runnable))), joka ajaa
+sille annettavan koodin myöhemmin sovelluksen aikana (mutta aikaisintaan
+sen tapahtuman jälkeen, jona metodia kutsuttiin).
+Metodi ottaa parametrina `Runnable`-rajapintaa toteuttavan olion. Koska
+`Runnable` on funktionaalinen (ks. [Luku 6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md#valmiita-funktiorajapintoja)), voimme
+antaa parametrina lambdalausekkeen tai funktioviitteen metodiin, joka ei ota
+mitään parametreja eikä palauta mitään.
+Koska `requestFocus()`-metodi täsmää parametrien ja palautusarvon kannalta
+`Runnable`-rajapinnan kanssa, voimme käyttää funktioviitettä suoraan.
+Tällöin tapahtumankäsittely yksinkertaistuu muotoon:
+
+```java,ignore
+lisaaUusiTehtavaPainike.setOnAction(event -> {
+    Platform.runLater(uusiTehtavaNimi::requestFocus);
+    String teksti = uusiTehtavaNimi.getText();
+    if (teksti == null || teksti.isBlank()) {        
+        return; 
+    }
+    teksti = teksti.trim();
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
+    uusiTehtavaNimi.clear();
+});
+```
+
+Toinen tapa on soveltaa geneerisia metodeja (ks. [luku
+4.4](../osa4/04-tyyppiparametrit-ja-geneerisyys.md#geneerinen-metodi)) sekä 
+funktionaalisia rajapintoja (ks. [luku
+6.1](../osa6/01-funktiorajapinnat-ja-lambda-lausekkeet.md)).
+Koska lambdalausekkeita voidaan ottaa parametrina ja toisaalta palauttaa arvona,
+voimme tehdä apumetodin `ajaJaFokusoi`, joka ottaa parametrina
+tapahtumakäsittelijän ja palauttaa uuden tapahtumakäsittelijän, joka kutsuu
+`requestFocus` aina lopuksi:
+
+```java,ignore
+
+
+static <T extends Event> EventHandler<T> ajaJaFokusoi(EventHandler<T> kasittelija, Node komponentti) {
+    return e -> {
+        kasittelija.handle(e);
+        komponentti.requestFocus();
+    };
+}
+```
+
+Tällaista metodia, joka palauttaa parametrina annetun funktion pienellä
+muutoksella, kutsutaan yleensä ns. *käärijämetodiksi* tai *wrapper-metodiksi*.
+Nimensä mukaan metodi siis "käärii" alkuperäisen funktion toisen sisään.
+
+Apumetodin avulla voimme yksinkertaistaa tapahtumankäsittelijän muotoon:
+
+```java,ignore
+lisaaUusiTehtavaPainike.setOnAction(ajaJaFokusoi(event -> {
+    String teksti = uusiTehtavaNimi.getText();
+    if (teksti == null || teksti.isBlank()) {
+        return;
+    }
+    teksti = teksti.trim();
+    CheckBox tehtava = new CheckBox(teksti);
+    tekemattomat.getChildren().add(tehtava);
+    uusiTehtavaNimi.clear();
+}, uusiTehtavaNimi));
+```
+
+Huomaa, että kaikki JavaFX-komponentin perivät `Node`-luokasta.
+</details>
+
+Lopuksi
 
 ## Käsitellyt tehtävät
 
