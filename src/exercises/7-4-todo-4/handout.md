@@ -1,16 +1,17 @@
-Aina kun käyttäjä lisää tehtävän tai muuttaa tehtävän tilaa, tallenna tehtävät
-JSON-tiedostoon. Lue tehtävät ohjelman käynnistyessä. JSON-tiedoston pitäisi
-näyttää esimerkiksi tältä:
+Palauta tässä luvun 7.4 perusteella edistetty projekti.
 
-```json
-[
-  {
-    "tehtava": "Osta maitoa",
-    "tehty": false
-  },
-  {
-    "tehtava": "Vie roskat",
-    "tehty": true
-  }
-]
-```
+Kertaus luvun 7.4 vaiheista:
+
+- Tee kaksi `VBox`-komponenttia tekemättömille ja tehdyille tehtäville.
+- Kun käyttäjä syöttää tehtävän, lisää se tekemättömien tehtävien
+  `VBox`-säiliöön `CheckBox`-komponenttina.
+- Kun käyttäjä merkitsee tehtävän tehdyksi klikkaamalla valintaruudusta, siirrä se tekemättömien `VBox`-säiliöstä tehtyjen säiliöön.
+- Kun käyttäjä mewrkitsee tehdyn tehtävän tekemättömäksi klikkaamalla
+  valintaruudusta, siirrä se tehtyjen säiliöstä tekemättömien säiliöön.
+- Kun käyttäjä lisää tehtävän, fokuksen tulee palautua syöttökenttään. 
+- Käyttäjän ei pidä pystyä lisäämään tehtävää ilman tekstiä tai tehtävää, jonka tekstinä on pelkästään välilyöntejä.
+- Käyttäjän tulee pystyä lisäämän tehtävän myös painamalla
+  <kbd>Enter</kbd>-painiketta, kun fokus on syöttökentässä.
+
+Kun vaihe on valmis,  muista tehdä `git add` muuttuneille tiedostoille ja `git
+commit`. Palauta projektisi tiedostot.

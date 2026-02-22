@@ -268,3 +268,14 @@ flowchart TD
     VBox --- Button
     end
 ```
+
+
+<task>
+  <task-title>Tehtävä 7.1: TODO-ohjelma, vaihe 1 <points>1 p.</points> </task-title>
+  <handout>
+
+{{#include ../exercises/7-1-todo-1/handout.md}}
+
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava1">Tee tehtävä TIMissä</a></task-link>
+</task>

@@ -82,11 +82,11 @@ tehtävän aikana tekemiäsi muutoksia. Voit halutessasi tehdä useammankin
 commitin, jos haluat. 
 
 <task>
-  <task-title>Tehtävä 7.2: TODO-ohjelma, vaihe 2. <points>1 p.</points> </task-title>
+  <task-title>Tehtävä 7.3: TODO-ohjelma, vaihe 3. <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/7-2-todo-2/handout.md}}
+{{#include ../exercises/7-3-todo-3/handout.md}}
 
   </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava2">Tee tehtävä TIMissä</a></task-link>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava3">Tee tehtävä TIMissä</a></task-link>
 </task>
