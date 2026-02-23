@@ -194,16 +194,18 @@ mukautuvat hyvin ikkunan kokoon.
 <video src="images/todo-app-final-product.mp4" controls></video>
 
 
-<task> <task-title>Tehtävä 7.6: TODO-ohjelma, vaihe 6. <points>1 p.</points>
-  </task-title> <handout>
+
+<task>
+  <task-title>Tehtävä 7.6: TODO-ohjelma, vaihe 6. <points>1 p.</points> </task-title>
+  <handout>
 
 {{#include ../exercises/7-6-todo-6/handout.md}}
 
-  </handout> <task-link><a
-  href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava6">Tee
-tehtävä TIMissä</a></task-link> 
-
+  </handout>
+  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava6">Tee tehtävä TIMissä</a></task-link>
 </task>
+
+
 
 
 <!-- 
