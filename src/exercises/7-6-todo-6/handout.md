@@ -1,6 +1,6 @@
-Palauta tässä luvun 7.6 perusteella edistetty projekti.
+Palauta tässä osan 7.6 perusteella edistetty projekti.
 
-Kertaus luvun 7.6 vaiheista:
+Kertaus tämän osan vaiheista:
 
 - TODO
 

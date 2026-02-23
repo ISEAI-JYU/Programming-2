@@ -1,6 +1,6 @@
-Palauta tässä luvun 7.4 perusteella edistetty projekti.
+Palauta tässä osan 7.4 perusteella edistetty projekti.
 
-Kertaus luvun 7.4 vaiheista:
+Kertaus tämän osan vaiheista:
 
 - Tee kaksi `VBox`-komponenttia tekemättömille ja tehdyille tehtäville.
 - Kun käyttäjä syöttää tehtävän, lisää se tekemättömien tehtävien

@@ -1,6 +1,6 @@
-Palauta tässä luvun 7.1 perusteella luotu projekti.
+Palauta tässä osan 7.1 perusteella luotu projekti.
 
-Kertaus luvun 7.1 vaiheista:
+Kertaus tämän osan vaiheista:
 
 - Tee `io.github.ohj-perus-jy:javafx-fxml-template`-archetypen pohjalta
 JavaFX-projekti. 

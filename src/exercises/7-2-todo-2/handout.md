@@ -1,6 +1,6 @@
-Palauta tässä luvun 7.2 perusteella edistetty projekti.
+Palauta tässä osan 7.2 perusteella edistetty projekti.
 
-Kertaus luvun 7.2 vaiheista:
+Kertaus tämän osan vaiheista:
 
 - Lisää SceneBuilderissa FXML-tiedostoon oma TextField-komponentti VBoxin sisään.
 - Lisää painikkeelle `onAction`-tapahtumankäsittelijä, joka lisää tekstikenttään

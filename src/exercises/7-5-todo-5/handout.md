@@ -1,6 +1,6 @@
-Palauta tässä luvun 7.5 perusteella edistetty projekti.
+Palauta tässä osan 7.5 perusteella edistetty projekti.
 
-Kertaus luvun 7.5 vaiheista:
+Kertaus tämän osan vaiheista:
 
 - Tallenna tehtävät JSON-tiedostoon aina, kun käyttäjä lisää tehtävän tai
   muuttaa tehtävän tilaa.
