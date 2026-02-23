@@ -1,9 +1,5 @@
 # SceneBuilder
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 23. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 > - Osaat käyttää SceneBuilder-työkalua JavaFX-käyttöliittymien luomiseen
 > - Osaat yhdistää FXML-tiedoston ja kontrolleriluokan

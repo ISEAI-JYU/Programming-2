@@ -1,9 +1,5 @@
 # Sovelluslogiikan ja käyttöliittymän yhdistäminen
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 23. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 Sovelluksemme voisi jo nyt toimia eräänlaisena TODO-listana.
 Palautetaan kuitenkin vielä mieleen, mitä ominaisuuksia suunnittelimme tämän
 osan alussa:

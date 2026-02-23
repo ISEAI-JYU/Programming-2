@@ -1,9 +1,5 @@
 # JavaFX perusteet
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 23. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 > - Ymmärrät JavaFX-sovelluksen rakenteen
 

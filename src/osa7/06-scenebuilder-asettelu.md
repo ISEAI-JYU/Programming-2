@@ -1,9 +1,5 @@
 # Komponenttien asettelu
 
-> [!VAROITUS]
-> Tämä osio julkaistaan 23. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 Sovelluksemme on toiminnallisesti valmis, mutta sen ulkoasussa on vielä muutama
 puute:
 
