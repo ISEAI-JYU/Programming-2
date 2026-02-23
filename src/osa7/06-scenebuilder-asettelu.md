@@ -201,7 +201,9 @@ mukautuvat hyvin ikkunan kokoon.
 
   </handout> <task-link><a
   href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa7/tehtava6">Tee
-tehtävä TIMissä</a></task-link> </task>
+tehtävä TIMissä</a></task-link> 
+
+</task>
 
 
 <!-- 
