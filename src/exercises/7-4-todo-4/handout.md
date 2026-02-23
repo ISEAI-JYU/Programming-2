@@ -6,7 +6,7 @@ Kertaus tämän osan vaiheista:
 - Kun käyttäjä syöttää tehtävän, lisää se tekemättömien tehtävien
   `VBox`-säiliöön `CheckBox`-komponenttina.
 - Kun käyttäjä merkitsee tehtävän tehdyksi klikkaamalla valintaruudusta, siirrä se tekemättömien `VBox`-säiliöstä tehtyjen säiliöön.
-- Kun käyttäjä mewrkitsee tehdyn tehtävän tekemättömäksi klikkaamalla
+- Kun käyttäjä merkitsee tehdyn tehtävän tekemättömäksi klikkaamalla
   valintaruudusta, siirrä se tehtyjen säiliöstä tekemättömien säiliöön.
 - Kun käyttäjä lisää tehtävän, fokuksen tulee palautua syöttökenttään. 
 - Käyttäjän ei pidä pystyä lisäämään tehtävää ilman tekstiä tai tehtävää, jonka tekstinä on pelkästään välilyöntejä.
