@@ -1,3 +1,6 @@
+EDIT 23.2.2026: Jackson-kirjaston riippuvuuksia ja esimerkkejä päivitetty
+materiaalissa. Pahoittelut virheistä. 
+
 Tee ohjelma, joka lukee tiedoston
 [henkilot.csv](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-11-csv-json/henkilot.csv)
 (muoto `nimi,ika,kaupunki`) ja kirjoittaa siitä saman tapainen JSON-tiedoston

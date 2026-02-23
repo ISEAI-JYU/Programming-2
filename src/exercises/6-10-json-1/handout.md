@@ -1,3 +1,6 @@
+EDIT 23.2.2026: Jackson-kirjaston riippuvuuksia ja esimerkkejä päivitetty
+materiaalissa. Pahoittelut virheistä. 
+
  1. Tee uusi Maven-projekti, joka käyttää Jackson-kirjastoa JSON-tiedostojen
    käsittelyyn. 
  2. Lisää `pom.xml`-tiedostoosi tarvittava riippuvuus.
