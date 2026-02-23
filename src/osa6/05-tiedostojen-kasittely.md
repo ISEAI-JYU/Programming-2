@@ -456,13 +456,13 @@ Riippuvuuden lisäämisen jälkeen virkistä Maven-projektisi. Alla oleva esimer
 lukee tiedoston `henkilot.json` listaksi `Henkilo`-olioita. Selitämme koodin
 tarkemmin seuraavaksi.
 
-
 ```java,ignore
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
+
 
 public class LueJson {
     public static void main(String[] args) {
@@ -478,7 +478,7 @@ public class LueJson {
             henkilot.forEach(h ->
                     IO.println(h.nimi() + " (" + h.ika() + "), " + h.kaupunki())
             );
-        } catch (IOException e) {
+        } catch (JacksonException je) {
             IO.println("JSONin lukeminen epäonnistui: " + e.getMessage());
         }
     }
@@ -533,29 +533,35 @@ public class Henkilo {
 }
 ```
 
-Koska on mahdollista, että JSON-tiedoston lukeminen epäonnistuu (esim. tiedosto
-ei löydy, JSON on virheellistä tai tyyppimuunnos epäonnistuu), tulee mahdolliset
-`IOException`-poikkeukset käsitellä käyttäen `try-catch`-rakennetta.
+Tiedoston lukeminen voi epäonnistua, joten `readValue()`-metodi on syytä kääriä
+`try-catch`-rakenteeseen. Jackson-kirjasto heittää
+`JacksonException`-poikkeuksen, mikä on `IOException`-poikkeuksen aliluokka.
 
 **JSONin kirjoittaminen tiedostoon** on aavistuksen lukemista helpompaa.
 Kirjoittaminen tapahtuu `writeValue()`-metodilla, joka ottaa tiedoston ja
-tallennettavan olion, ja muuntaa sen JSON-muotoon. Tiedoston kirjoittaminen voi
-epäonnistua, joten sekin tulee käsitellä `try-catch`-rakenteella.
+tallennettavan olion, ja muuntaa sen JSON-muotoon. Tässä on mahdollista, että
+ 1. kansion luominen epäonnistuu; `createDirectories` heittää
+    `IOException`-poikkeuksen, tai 
+ 2. JSON-tiedoston lukeminen epäonnistuu, jos tiedosto ei löydy, JSON on
+virheellistä tai tyyppimuunnos epäonnistuu; `writeValue` heittää
+`JacksonException`-poikkeuksen. 
 
-Seuraava esimerkki kirjoittaa listan henkilöitä tiedostoon `henkilot-uusi.json`:
+Kumpikin näistä poikkeuksista tulee käsitellä erikseen. 
+
+Seuraava esimerkki kirjoittaa listan henkilöitä tiedostoon `output/henkilot-uusi.json`:
 
 ```java,ignore
 import tools.jackson.databind.ObjectMapper;
-import tools.jackson.databind.SerializationFeature;
+import tools.jackson.core.JacksonException;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
 public class KirjoitaJson {
-    public static void main(String[] args) {
-        ObjectMapper mapper = new ObjectMapper()
-                .enable(SerializationFeature.INDENT_OUTPUT); // kauniimpi sisennys
+    static void main() {
+        ObjectMapper mapper = new ObjectMapper();
 
         List<Henkilo> henkilot = List.of(
                 new Henkilo("Aino", 22, "Turku"),
@@ -569,7 +575,9 @@ public class KirjoitaJson {
             mapper.writeValue(polku.toFile(), henkilot);
             IO.println("Kirjoitettiin JSON: " + polku.toAbsolutePath());
         } catch (IOException e) {
-            IO.println("JSONin kirjoittaminen epäonnistui: " + e.getMessage());
+            IO.println("Kansion luominen epäonnistui: " + e.getMessage());
+        } catch (JacksonException je) {
+            IO.println("JSON-prosessointi epäonnistui: " + je.getMessage());
         }
     }
 }
