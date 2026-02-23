@@ -22,7 +22,7 @@ niiden ominaisuuksia ja järjestää ne haluamallasi tavalla. Se on erityisen
 hyödyllinen, jos et ole vielä tottunut kirjoittamaan FXML:ää suoraan tai haluat
 nopeuttaa käyttöliittymän suunnitteluprosessia.
 
-SceneBuilderin päänäkymään on kolme pääaluetta.
+SceneBuilderin päänäkymässä on kolme pääaluetta.
 
 ## Ensimmäinen komponentti
 

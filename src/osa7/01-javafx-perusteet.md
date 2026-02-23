@@ -21,7 +21,7 @@ suurempaan kokonaisuuteen. Tämä tekee monimutkaistenkin näkymien hallinnasta
 loogista.
 
 Ulkoasu ja logiikka erotetaan JavaFX:ssä toisistaan. Ulkoasun määritellään
-käyttämällä **FXML**-kieltä, mikä on XML-pohjainen tiedostomuoto. Toiminnallisen
+käyttämällä **FXML**-kieltä, mikä on XML-pohjainen tiedostomuoto. Toiminnallinen
 logiikka kirjoitetaan tavallisena Java-koodina. Tämä muistuttaa tapaa, jolla
 web-kehityksessä erotetaan HTML (rakenne) ja JavaScript (toiminta).
 
@@ -38,7 +38,7 @@ JavaFX:ään.
 ## Tutoriaali: TODO-sovellus
 
 Osien 7 ja 8 aikana rakennamme yksinkertaisen TODO-sovelluksen. Tähän osioon
-kuuluu tehtäviä, jossa opit tekemään saman sovelluksen omatoimisesti. Nämä osat
+kuuluu tehtäviä, joissa opit tekemään saman sovelluksen omatoimisesti. Nämä osat
 antavat sinulle tarvittavan ymmärryksen JavaFX:stä, jotta voit luoda oman
 harjoitustyön osien 9-11 aikana. 
 
@@ -105,7 +105,7 @@ Täytetään lomake meidän projektitiedoilla:
     käytäntö on kirjoittaa tunniste muodossa `<oma verkkosivun osoite
     käänteisesti>.<sovelluksen tunniste>`. Tässä materiaalissa voit käyttää
     tunnisteena `fi.jyu.ohj2.nimesi.todo`, missä `nimesi` on etunimesi tai
-    käyttäjätunnukseksi ilman erikoismerkkejä.
+    käyttäjätunnuksesi ilman erikoismerkkejä.
   - **ArtifactId**: Tämä täsmää projektin **Name**-kentän kanssa
   - **Version**: `0.1`
 
@@ -211,7 +211,7 @@ JavaFX-kirjasto kutsuu `start()`-metodin, kun käyttöliittymälle on luotu ikku
 
 `start()`-metodin parametrina välittyy `Stage`-olio, joka vastaa sovellukselle
 luotua ikkunaa. `start()`-metodin vastuulla on yleensä suorittaa seuraavat
-neljää päävaihetta (ks. numerot kommenteissa):
+neljä päävaihetta (ks. numerot kommenteissa):
 
 1. **Näkymän alustaminen:** aivan alkuun käyttöliittymän ensisijainen näkymä
    alustetaan luomalla `Scene`-olio. `Scene` on kokoelma käyttöliittymässä
@@ -223,7 +223,7 @@ neljää päävaihetta (ks. numerot kommenteissa):
 2. **Näkymän asettaminen ikkunaan:** `stage.setScene()`-metodilla voidaan
    asettaa luotu `Scene`-olio ja siinä olevat komponentit näkyviin ikkunaan.
    Huomaa, että samassa ikkunassa (`Stage`) voi olla vain yksi näkymä (`Scene`)
-   kerrallaan, mutta näkymä voidaan vaihtaa milloin tahanssa. Tällä tavoin
+   kerrallaan, mutta näkymä voidaan vaihtaa milloin tahansa. Tällä tavoin
    voidaan esimerkiksi toteuttaa erilaisia näkymiä samaan sovellukseen (esim.
    sisäänkirjautumisnäkymä, sovellusnäkymä, jne.)
 

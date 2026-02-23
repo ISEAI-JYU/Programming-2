@@ -87,7 +87,7 @@ Nyt tapahtumankäsittelijä ei enää toimi, koska
 `VBox`-komponentti ei sisällä `getText`/`setText`-metodia. 
 Sen sijaan `VBox`-komponentin oleellinen metodi on `getChildren()`, joka
 palauttaa listan kaikista sen sisältämistä komponenteista.
-Muokataankin painikkeen tapahtumakäsittelijä niin, että painikkeen painasusta
+Muokataankin painikkeen tapahtumakäsittelijä niin, että painikkeen painalluksesta
 alustetaan uusi `CheckBox`-olio ja lisätään se `VBox`-komponenttiin.
 Tällöin tapahtumakäsittelijästä tulee seuraavanlainen:
 

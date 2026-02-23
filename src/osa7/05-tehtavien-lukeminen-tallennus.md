@@ -298,7 +298,7 @@ IDEAssa sen jälkeen, kun suljet sovelluksen.
 > jälkeen `.gitignore`-tiedostoa.
 
 Luonnollisesti myös tehdyt tehtävät tulee tallentaa. Jotta koodia ei tarvitse
-toistaa, tehdään yllä olevasta koodista uusi metodi, `teeTehtavalista(VBox vbox)`, joka palauttaa VBox-parametrin lapsikomponenttien perusteella listan
+toistaa, tehdään yllä olevasta koodista uusi metodi, `haeTehtavat(VBox vbox)`, joka palauttaa VBox-parametrin lapsikomponenttien perusteella listan
 `Tehtava`-olioita. Sen jälkeen kerätään sekä tehdyt että tekemättömät tehtävät
 samaan listaan:
 
@@ -504,7 +504,7 @@ private void lataa() {
 }
 ```
 
-Toistaiseksi virheen sattuessa tulostamme vaan virheen konsoliin.
+Toistaiseksi virheen sattuessa tulostamme vain virheen konsoliin.
 Käsittelemme myöhemmässä osassa, miten virhetilanne voitaisiin ilmoittaa
 käyttäjälle tarkemmin. 
 Lisätään metodin kutsu `initialize()`-metodin alkuun:
