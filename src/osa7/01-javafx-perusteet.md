@@ -115,7 +115,7 @@ Tietojen täyttämisen jälkeen lomakkeen tulisi siten näyttää seuraavalta:
 
 Paina sen jälkeen *Create*. Tämä luo projektin ja lataa Maven-arkkityypin
 riippuvuudet. Tämä saattaa kestää hetken, joten odota rauhassa. Lopuksi
-*Run*-paneelissa pitäisi lukua `BUILD SUCCESS`-teksti onnistumisen merkiksi:
+*Run*-paneelissa pitäisi lukea `BUILD SUCCESS`-teksti onnistumisen merkiksi:
 
 <img src="images/intellij-archetype-done.png">
 
@@ -227,7 +227,7 @@ neljää päävaihetta (ks. numerot kommenteissa):
    voidaan esimerkiksi toteuttaa erilaisia näkymiä samaan sovellukseen (esim.
    sisäänkirjautumisnäkymä, sovellusnäkymä, jne.)
 
-3. **Ikkunan asetusten muuttaminen:** `Stage`-olio sisältää lukuisia metodia,
+3. **Ikkunan asetusten muuttaminen:** `Stage`-olio sisältää lukuisia metodeja,
    jolla sovelluksen ikkunan toimintaa voidaan muuttaa. Yleinen toiminto on
    esimerkiksi `setTitle()`-metodi, jolla voi muuttaa ikkunan otsikon.
 

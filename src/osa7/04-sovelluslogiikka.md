@@ -45,7 +45,7 @@ Valmistellaan ensiksi käyttöliittymä. Mene SceneBuilderiin ja poista siellä
 oleva `Label`-nimiökomponentti. Koska nimiössä ei ole oletuksena tekstiä, 
 sitä ei pysty klikkaamaan suunnittelunäkymässä.
 Sen sijaan valitse nimiö käyttäen vasemmalla puolella olevan Document-näkymän
-Hierrachy-paneelia:
+Hierarchy-paneelia:
 
 <video src="images/scenebuilder-hierarchy-panel-select.mp4"></video>
 
@@ -153,7 +153,7 @@ Kolmanneksi, tehtävän lisäämisen jälkeen joudumme klikkaamaan syöttökent�
 ennen kuin seuraavan tehtävän kirjoittamista. Tehdään tämä klikkaus
 ohjelmallisesti käyttäen `requestFocus()`-metodia, joka siirtää fokuksen eli
 ikään kuin simuloi komponentin valintaa. 
-Huomaa, että metodi on lisättävä kaikkin kohtiin, jossa tapahtumankäsittely
+Huomaa, että metodi on lisättävä kaikkiin kohtiin, jossa tapahtumankäsittely
 päättyy:
 
 ```java,ignore
@@ -285,7 +285,7 @@ Muutosten myötä sovellus on nyt hieman käytettävämpi:
 - Tehtävien lisääminen ei onnistu jos tekstikenttä on tyhjä
 - Tehtävän lisääminen tyhjentää tekstikentän ja palauttaa fokuksen siihen
   nopeampaa kirjoittamista varten
-- Tehtäviä vodaan lisätä myös painamalla <kbd>Enter</kbd>-painiketta
+- Tehtäviä voidaan lisätä myös painamalla <kbd>Enter</kbd>-painiketta
 
 <video src="images/todo-app-usability.mp4" controls></video>
 
@@ -312,7 +312,7 @@ private VBox tehdyt;
 Tehdään niin, että aina, kun valintaruutua klikataan, tehtävä siirtyy
 tekemättömästä tehdyksi ja samalla siirtyy ylemmästä alempaan
 `VBox`-komponenttiin.
-Huomaamme, että `CheckBox`-komponentti perii painikekomponentin `ButtonBase`,
+Huomaamme, että `CheckBox`-komponentti perii `ButtonBase`-luokan,
 jolloin `onAction`-tapahtuma laukeaa aina, kun valintaruutupainiketta klikataan
 (ks.
 [JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/CheckBox.html)).
@@ -375,7 +375,7 @@ java.lang.IllegalArgumentException: Children: duplicate children added: parent =
 Poikkeus kertoo, että yritämme lisätä
 samaa `CheckBox`-komponenttia uudestaan `tehdyt`-säiliöön, vaikka se on jo
 siellä. Muokataan logiikkaa niin, että jos tehtävä merkittiin tehdyksi,
-siirretään se tehtyihin ja jos tehtävä merkittii tekemättömäksi, siirretään se
+siirretään se tehtyihin ja jos tehtävä merkittiin tekemättömäksi, siirretään se
 takaisin tekemättömiin. 
 Voimme käyttää tässä `CheckBox`-komponentin `isSelected()`-metodia,
 joka kertoo, onko valintaruutu valittu tai ei (ks.

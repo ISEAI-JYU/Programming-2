@@ -64,7 +64,7 @@ Lisäksi mukana on `.gitignore`-tiedosto. Tämä tiedosto tuli valmiiksi
 projektipohjan mukana. Tiedosto kertoo
 Git-työkalulle, 
 mitä tiedostoja **ei** haluta koskaan lisätä mukaan commitiin. Näin
-varmistetaan, että esimerkiksi käännettyt `.class`-tiedostot tai IDEAn omat
+varmistetaan, että esimerkiksi käännetyt `.class`-tiedostot tai IDEAn omat
 asetustiedostot eivät päädy versionhallintaan. `.gitignore`-tiedostoa voi ja
 kannattaa muokata tarpeen mukaan, jos halutaan jättää pois muita
 tiedostoja versionhallinnasta.

@@ -15,7 +15,7 @@ tallentaa tiedostoihin käyttäen JSON-tiedostomuotoa.
 Suunnitellaan hieman tiedostomuotoa. Tällä hetkellä yksittäinen tehtävä
 voitaisiin mallintaa kahdella attribuutilla: tehtävän *teksti* merkkijonona sekä
 tieto, onko *tehtävä tehty* boolean-arvona.
-Tosin sanoen, yksittäistä tehtävää voidaan mallintaa JSON-oliona:
+Toisin sanoen, yksittäistä tehtävää voidaan mallintaa JSON-oliona:
 
 ```json
 {
@@ -69,14 +69,14 @@ public class Tehtava {
 
 Lisää järkevä toteutus itse. Jätämme `set`-asetusmetodit toistaiseksi
 lisäämättä, koska käytämme luokkaa toistaiseksi vain tehtävien lataamiseen ja
-tallentamiseen. Emme kuitetnkaan merkitse attribuutteja `final`-määreellä, jotta
+tallentamiseen. Emme kuitenkaan merkitse attribuutteja `final`-määreellä, jotta
 Jackson-kirjasto osaa asettaa arvoja attribuutteihin. Lisäämme vielä
 oletusmuodostajan, jota Jackson käyttää olioiden alustamiseen.
 
 <details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Tehtävä on tietue </summary>
 
 Jos luokan attribuutteja ei ole tarkoitettu muokattavaksi (eli
-kaikki attribuutit ovat `final`), luokka voidaan kirjoittaa tiivimmässä muodossa
+kaikki attribuutit ovat `final`), luokka voidaan kirjoittaa tiiviimmässä muodossa
 käyttäen Javan tietuesyntaksia:
 
 ```java
@@ -167,7 +167,7 @@ for (Node node : tekemattomat.getChildren()) {
 
 </details>
 
-<details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Mitä jos säiliössä on muitakin komponentteja?</summary>
+<details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Mitä jos säiliössä on muitakin kuin CheckBox-komponentteja?</summary>
 
 Tässä tapauksessa jätimme tyyppitarkistuksen pois, koska tiesimme, että
 `VBox`-säiliöt sisältävät vain valintaruutuja. Jos sen sijaan `VBox` sisältäisi
@@ -181,7 +181,7 @@ List<Tehtava> tekemattomatList = new ArrayList<>();
 
 for (Node node : tekemattomat.getChildren()) {
     // Periaatteessa kaikki lapsikomponentit pitäisi 
-    // olla CheckBoxeja, mutta varmuuden vuoksi tarkistetaan 
+    // olla CheckBox-komponentteja, mutta varmuuden vuoksi tarkistetaan 
     // tämä kuitenkin. 
     if (!(node instanceof CheckBox c)) {
         continue;
@@ -371,10 +371,10 @@ private void tallenna() {
 }
 ```
 
-Nyt voimme korvata `lisaaTehtava()`-metodin lopussa oleva koodi pelkällä
-`tallenna()`-metodin kutsulla. Lisäksi voimme kutsua `tallenna()`-metodi
+Nyt voimme korvata `lisaaTehtava()`-metodin lopussa olevan koodin pelkällä
+`tallenna()`-metodin kutsulla. Lisäksi voimme kutsua `tallenna()`-metodia
 valintaruudun omassa `onAction`-tapahtumakäsittelijässä, jolloin tallennus
-tehdään myös aina, kun jonkin valintaruuudun tila muuttuu:
+tehdään myös aina, kun jonkin valintaruudun tila muuttuu:
 
 ```java,ignore
 private void lisaaTehtava() {
@@ -527,7 +527,7 @@ Huomaamme, että lukemisessa, tai oikeastaan valintaruutujen luomisessa, on pien
 ongelma. Kun ohjelma käynnistetään uudelleen, tehtyjen tehtävien listassa
 valintaruudut eivät ole enää valittuna.
 Tämä johtuu siitä, että `luoCheckBox()`-metodi ei ota huomioon sitä, onko tehtävä tehty vai ei.
-Korjataan tämä lisäämällä metodille parametri, joka kertoo, onko valitaruutu
+Korjataan tämä lisäämällä metodille parametri, joka kertoo, onko valintaruutu
 luomisen yhteydessä valittu tai ei:
 
 ```java,ignore

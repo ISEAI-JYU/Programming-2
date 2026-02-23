@@ -49,7 +49,7 @@ Tutustutaan samalla SceneBuilderin käyttöliittymään:
 
 3. **Library-näkymä.** Löydät tästä kaikki käytettävissä olevat komponentit, kuten painikkeet,
    tekstikentät, layout-komponentit ja niin edelleen.
-   Saat lisättyä komponentit käyttölittymään raahamalla ne suunnittelunäkymään.
+   Saat lisättyä komponentit käyttöliittymään raahaamalla ne suunnittelunäkymään.
 
 4. **Document-näkymä.** Näet tässä sovelluksesi kaikki komponentit puurakenteessa.
    Voit käyttää tämän näkymän komponenttien tarkkaan valintaan, siirtämiseen ja poistamiseen.
@@ -109,7 +109,7 @@ painamalla <kbd>Ctrl</kbd>+<kbd>Z</kbd> tai <kbd>⌘</kbd>+<kbd>Z</kbd>)
 
 Tallenna muutokset (**File** <i class="bi bi-chevron-right"></i> **Save**)
 ja kokeile vielä käynnistää sovellus IDEA:ssa. Huomaat, että sovellukseen
-ilmestyi syöttökentä, johon voi kirjoittaa tekstiä.
+ilmestyi syöttökenttä, johon voi kirjoittaa tekstiä.
 
 <details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Missä käyttöliittymä on määritelty?</summary>
 
@@ -143,7 +143,7 @@ Vertaa tekstitiedostoa SceneBuilderissa olevaan hierarkiarakenteeseen:
 <img src="images/scenebuilder-hierarchy.png">
 
 SceneBuilder on siten yksinkertaisuudessaan sovellus, joka osaa lukea ja tuottaa
-FXML-käyttölittymätiedostoja.
+FXML-käyttöliittymätiedostoja.
 
 </details>
 
@@ -169,11 +169,11 @@ oleva Code-paneeli:
 Aseta tunnisteen eli *fx:id*-kentän arvoksi jokin uniikki komponenttia kuvaava
 nimi käyttäen `camelCase`-kirjoitustyyliä, esimerkiksi `uusiTehtavaNimi`.
 Vahvista muutos painamalla <kbd>Enter</kbd>.
-Toista sama painikkeelle ja anna sen tunnisteeksi `listaaUusiTehtavaPainike`,
+Toista sama painikkeelle ja anna sen tunnisteeksi `listaaUusiTehtavaPainike`.
 
 Tallenna lopuksi FXML-tiedosto.
 
-### Komponenttien määrittäminen komponentissa
+### Komponenttien määrittäminen kontrollerissa
 
 Saatoit huomata, että heti tunnisteen määrittämisen jälkeen SceneBuilder
 näyttää varoituksen "No injectable field found":
@@ -203,7 +203,7 @@ Korjaa mahdolliset import-määreiden puute lisäämällä `import`-määreet
 > [!TÄRKEÄÄ]
 > Muuttujan nimen on oltava täsmälleen sama kuin SceneBuilderissä määritellyn
 > *fx:id*-arvon. JavaFX yhdistää komponentit ja attribuutit toisiinsa käyttäen
-> tunnistetta. Jos tunnistet eivät täsmää, JavaFX ei osaa yhdistää niitä.
+> tunnistetta. Jos tunnisteet eivät täsmää, JavaFX ei osaa yhdistää niitä.
 
 Kokeile kääntää ja ajaa ohjelma uudestaan. Ohjelman pitäisi toimia kuten
 ennenkin.
@@ -218,7 +218,7 @@ Siispä `FXMLLoader` tekee puolestamme jotakuinkin seuraavaa:
 
 ```java,ignore
 // Älä kopioi.
-// FXMLLoader tekee tämän meidän puolestamme käyttäen attributtin nimeä ja
+// FXMLLoader tekee tämän meidän puolestamme käyttäen attribuutin nimeä ja
 // fx:id-asetuksen arvoa.
 this.uusiTehtavaNimi = (TextField)findComponentById("uusiTehtavaNimi");
 // Tämän jälkeen uusiTehtavaNimi sisältää näkymässä olevan TextField-komponentin olion.
@@ -226,12 +226,12 @@ this.uusiTehtavaNimi = (TextField)findComponentById("uusiTehtavaNimi");
 
 ## Kontrollerin elinkaari ja `initialize`-metodi
 
-Jos kontrolleri toteuttaa `Initializible`-rajapinnan, JavaFX kutsuu metodin
+Jos kontrolleri toteuttaa `Initializable`-rajapinnan, JavaFX kutsuu metodin
 automaattisesti, kun FXML-tiedosto on täysin ladattu ja kontrolleriluokassa
-olevat attribuutit ovat alustettu.
+olevat attribuutit on alustettu.
 Tämä on oikea paikka määritellä komponenttien käyttäytymiseen liittyviä toimintoja.
 
-Lisätään alkuun `initialize()`-metodiin seuraava rivi testatakseen, että
+Lisätään alkuun `initialize()`-metodiin seuraava rivi testataksemme, että
 syöttökentän olio on todellakin käytettävissä koodista.
 
 ```java,ignore
