@@ -268,11 +268,12 @@ jossa on puoliksi kirjoitettuja tiedostoja tai vanhentunutta dataa.
 
 ## Tallennuksen eriyttäminen abstraktion taakse: repository-suunnittelumalli
 
-Jotta pääsemme näistä ongelmista eroon tehdessämme yksikkötestejä, turvaudumme
-ohjelmistosuunnittelun klassiseen temppuun: erotamme tallennuspaikan
-(`tehtavat.json`-tallennus `ObjectMapper`-olion kautta) suorasta käytöstä. Hyvä
-suunnitteluperiaate ohjaa erottamaan tallennuksen omaksi kokonaisuudekseen, ja
-tähän käytetään usein niin kutsuttua *repository-suunnittelumallia*.
+Ratkaisu on erottaa tallennus omaksi kokonaisuudekseen. Tällöin
+`Tehtavakokoelma` ei enää itse lue tai kirjoita `tehtavat.json`-tiedostoa, vaan
+delegoi tallennuksen erilliselle luokalle. Tämä helpottaa yksikkötestausta,
+koska testit eivät ole suoraan sidoksissa oikeaan tiedostoon tai
+tiedostojärjestelmään. Tällaista ratkaisua toteutetaan usein niin kutsutulla
+*repository-suunnittelumallilla*.
 
 Repository-suunnittelumalli tarkoittaa sitä, että datan tallennus ja lataus
 piilotetaan oman rajapinnan tai luokan taakse. Tällöin muu ohjelma ei käsittele
