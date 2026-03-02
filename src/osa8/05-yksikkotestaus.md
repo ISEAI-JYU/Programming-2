@@ -282,9 +282,9 @@ repository-rajapinnan (esim. `TehtavaRepository`) tarjoamia metodeja.
 
 Katsotaan Todo-sovelluksessamme, miten tämä toteutaan käytännössä.
 
-**1. Luodaan rajapinta `TehtavaRepository`**. Tyypillistä on, että lataamiseen
-ja tallentamiseen liittyvät metodit määritellään pakkaukseen `persistence`.
-Tehdään mekin niin. 
+**1. Luodaan rajapinta `TehtavaRepository`**. Tyypillisesti lataamiseen ja
+tallentamiseen liittyvät metodit määritellään pakkaukseen `persistence`. Tehdään
+mekin niin. 
 
 ```java,ignore
 package fi.jyu.ohj2.nimi.todo.persistence;
@@ -300,6 +300,7 @@ public interface TehtavaRepository {
 
 Tehdään samalla erillinen luokka latausvirhettä kuvaavalle `RepositoryException`,
 sillä nyt tehtäviä voidaan ladata muullakin tavalla kuin tiedostosta.
+Sijoitetaan tämäkin `persistence`-pakkaukseen.
 
 ```java,ignore
 package fi.jyu.ohj2.nimi.persistence;
@@ -309,11 +310,10 @@ public class RepositoryException extends Exception {
         super(message);
     }
 }
-
 ```
 
-**2. Irroitetaan JSON-tallennuskoodi mallista omaan toteutukseensa
-`JsonTehtavaRepository`**. Tehdään tämä samaiseen `persistence`-pakkaukseen.
+**2. Irrotetaan JSON-tallennuskoodi mallista omaan toteutukseensa
+`JsonTehtavaRepository`** edelleen `persistence`-pakkaukseen.
 Kopioidaan lataamiseen ja tallentamiseen liittyvät koodit `Tehtavakokoelmasta`
 uuteen luokkaan, joka toteuttaa `TehtavaRepository`-rajapinnan. 
 
@@ -352,20 +352,26 @@ public class JsonTehtavaRepository implements TehtavaRepository {
 }
 ```
 
-**3. Päivitetään Tehtavakokoelma huolimaan kuka tahansa tallentaja**. Muokataan
-`Tehtavakokoelman` konstruktoria niin, että sille _annetaan_ jokin rajapinnan
-toteuttaja tiedostojumpan sijaan:
+**3. Päivitetään Tehtavakokoelma huolimaan mikä tahansa tallentaja**. Muokataan
+konstruktoria niin, että sille _annetaan_ jokin rajapinnan toteuttaja
+tiedostojumpan sijaan. Tällaista toimintamallia *dependency injection*
+-periaatteeksi. Dependency injection tarkoittaa sitä, että luokka ei itse luo
+riippuvuuksiaan, vaan ne annetaan sille ulkopuolelta. Erityisesti tässä
+tehtävässä `Tehtavakokoelma`-luokka ei enää luo `JsonTehtavaRepository`-oliota,
+vaan saa sen konstruktorin parametrina. Tämän hyöty tulee myöhemmin vielä
+paremmin esiin kun kirjoitamme konkreettisia testitapauksia. 
 
 ```java
 public class Tehtavakokoelma {   
-    // Riippuvuus tallennusmekanismista on nyt rajapinnan takana!
+    // Riippuvuus tallennusmekanismista on nyt rajapinnan takana
     private final TehtavaRepository repository;
 
-    // Konstruktoriin tungetaan haluttu tallennusväline sisältäpäin luomisen sijaan (Dependency Injection)
+    // Konstruktoriin annetaan haluttu tallennusväline 
+    // sisältäpäin luomisen sijaan (Dependency Injection)
     public Tehtavakokoelma(TehtavaRepository repository) {
         this.repository = repository;
         
-        this.tehtavat.addListener((javafx.collections.ListChangeListener<Tehtava>) change -> {
+        this.tehtavat.addListener((ListChangeListener<Tehtava>) change -> {
             tallenna();
         });
     }
