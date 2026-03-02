@@ -266,7 +266,7 @@ tuotantosovelluksessa testejä saatetaan ajaa satoja peräjälkeen, ja levy-IO
 epäonnistuvat tai keskeytyvät kesken, ne voivat jättää levylle sotkuisen tilan,
 jossa on puoliksi kirjoitettuja tiedostoja tai vanhentunutta dataa. 
 
-## Datatallennuksen eriyttäminen abstraktion taakse: repository-suunnittelumalli
+## Tallennuksen eriyttäminen abstraktion taakse: repository-suunnittelumalli
 
 Jotta pääsemme näistä ongelmista eroon tehdessämme yksikkötestejä, turvaudumme
 ohjelmistosuunnittelun klassiseen temppuun: erotamme tallennuspaikan
