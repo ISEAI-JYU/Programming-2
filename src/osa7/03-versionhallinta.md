@@ -18,7 +18,7 @@
 
 Tässä vaiheessa on hyvä hetki aloittaa versionhallinta. Käytämme
 Git-versionhallintaa, joka on laajasti käytetty työkalu ohjelmistokehityksessä.
-Tämän luvun jälkeen teet jokaisesta tutoriaalin tehtävästä oman Git-commitin, joka kuvaa
+Tämän osan jälkeen teet jokaisesta tutoriaalin tehtävästä oman Git-commitin, joka kuvaa
 tehtävän aikana tehtyjä muutoksia. 
 
 Gitin käyttämiseen on monenlaisia käyttöliittymiä &ndash; myös IDEAssa on
@@ -82,7 +82,7 @@ tehtävän aikana tekemiäsi muutoksia. Voit halutessasi tehdä useammankin
 commitin, jos haluat. 
 
 <task>
-  <task-title>Tehtävä 7.3: TODO-ohjelma, vaihe 3. <points>1 p.</points> </task-title>
+  <task-title>Tehtävä 7.3: Todo-sovellus, vaihe 3. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/7-3-todo-3/handout.md}}

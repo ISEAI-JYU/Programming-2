@@ -6,7 +6,7 @@ Toteutetaan vielä kaksi viimeistä toiminnallisuutta:
 * Tehtävät tallennetaan tiedostoon, jotta ne säilyvät sovelluksen sulkemisen jälkeen
 * Tehtävät haetaan tiedostosta sovelluksen käynnistyessä
 
-[Luvussa 6.5](../osa6/05-tiedostojen-kasittely.md) opimme, miten olioita voi
+[Osassa 6.5](../osa6/05-tiedostojen-kasittely.md) opimme, miten olioita voi
 tallentaa tiedostoihin käyttäen JSON-tiedostomuotoa.
 Suunnitellaan hieman tiedostomuotoa. Tällä hetkellä yksittäinen tehtävä
 voitaisiin mallintaa kahdella attribuutilla: tehtävän *teksti* merkkijonona sekä
@@ -69,7 +69,7 @@ tallentamiseen. Emme kuitenkaan merkitse attribuutteja `final`-määreellä, jot
 Jackson-kirjasto osaa asettaa arvoja attribuutteihin. Lisäämme vielä
 oletusmuodostajan, jota Jackson käyttää olioiden alustamiseen.
 
-<details><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Tehtävä on tietue </summary>
+<details><summary><i class="bi bi-stars jyu-gold"></i>Valinnaista lisätietoa: Tehtävä on tietue </summary>
 
 Jos luokan attribuutteja ei ole tarkoitettu muokattavaksi (eli
 kaikki attribuutit ovat `final`), luokka voidaan kirjoittaa tiiviimmässä muodossa
@@ -605,7 +605,7 @@ tehtyjen tehtävien valintaruudut merkataan "tehty"-tilaan oikein:
 <img src="images/todo-app-save-load-works.png">
 
 <task>
-  <task-title>Tehtävä 7.5: TODO-ohjelma, vaihe 5. <points>1 p.</points> </task-title>
+  <task-title>Tehtävä 7.5: Todo-sovellus, vaihe 5. <points>1 p.</points> </task-title>
   <handout>
 
 {{#include ../exercises/7-5-todo-5/handout.md}}

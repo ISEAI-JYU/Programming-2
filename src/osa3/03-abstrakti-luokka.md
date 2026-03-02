@@ -13,7 +13,7 @@ itsestään ei kuitenkaan ole mielekästä luoda ilmentymiä eli olioita.
 
 Ajatellaan vaikkapa *tuolia*. Vaikka sana tuoli varmasti herättää meissä mielikuvan jostain tietynlaisesta tuolista, niin todellisuudessa tuoleja on monenlaisia: on puutuoleja, keinutuoleja, työtuoleja ja niin edelleen. Jokainen näistä tuolityypeistä on omanlainen ja hieman erilainen. Voidaan argumentoida, että tuoli-käsite itsessään on abstraktio. Tuolihan on oikeastaan vain asia, joka mahdollistaa istumisen. Tarvitaan aina jokin erikoistava käsite, kuten työtuoli, joka todella kuvaa millaisesta konkreettisesta tuolista on kysymys, ja jollaisia lopulta voidaan valmistaa tuotantolinjalla. 
 
-Otetaan toinen esimerkki, joka on ehkä jo hieman lähempänä oikeaa koodia. Jatketaan edellisessä luvussa esitettyä `Muoto`-esimerkkiä. Voisimme periaatteessa luoda `Muoto`-luokan ilmentymän ja kutsua sen `laskeAla()`-metodia.
+Otetaan toinen esimerkki, joka on ehkä jo hieman lähempänä oikeaa koodia. Jatketaan edellisessä osassa esitettyä `Muoto`-esimerkkiä. Voisimme periaatteessa luoda `Muoto`-luokan ilmentymän ja kutsua sen `laskeAla()`-metodia.
 
 ```java,ignore
 Muoto muoto = new Muoto();
@@ -42,7 +42,7 @@ java: Muoto is abstract; cannot be instantiated
 *Abstrakti luokka* (engl. *abstract class*) on luokka, jonka avulla tällainen käsitteen piirre voidaan tehdä selväksi koodin tasolla luokkahierarkiassa. Abstraktista luokasta ei voi luoda suoria ilmentymiä, vaan se toimii ainoastaan pohjana muille luokille, jotka perivät sen. Abstrakti luokka voi sisältää sekä *abstrakteja metodeja* (ts. joilla ei ole toteutusta), että *konkreettisia metodeja* (ts. joilla on toteutus). Perivän luokan tulee sitten toteuttaa nuo abstraktit metodit, *ellei* perivä luokka ole myös abstrakti.
   
 > [!HUOMAUTUS]
-> Tässä kohtaa voi pysähtyä hetkeksi miettimään tarvitaanko [edellisen osion](02-polymorfismi.md) henkilötietojärjestelmässä laisinkaan henkilö-olioita, vai ovatko kaikki henkilöt jotain muutakin kuin henkilöitä, kuten opiskelijoita tai opettajia.
+> Tässä kohtaa voi pysähtyä hetkeksi miettimään tarvitaanko [edellisen osan](02-polymorfismi.md) henkilötietojärjestelmässä laisinkaan henkilö-olioita, vai ovatko kaikki henkilöt jotain muutakin kuin henkilöitä, kuten opiskelijoita tai opettajia.
 
 ## Esimerkki: Älykoti {#alykoti}
 
