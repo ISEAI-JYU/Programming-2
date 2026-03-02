@@ -32,20 +32,20 @@ tarjottujen lisäpalvelujen takia.
 
 4. Täytä projektin tiedot seuraavasti:
 
-    - **Project name**: Anna projektille nimi, esimerkiksi `TodoFX`.
-    - **Project URL**: Varmista, että `https://gitlab.jyu.fi/`-kentän perässä
-      olevassa alasvetovalikossa lukee oma käyttäjätunnus. Jos ei, klikkaa
-      alasvetovalikkoa ja kirjoita tunnus.
-    - **Project slug**: Sen pitäisi olla automaattisesti projektin nimi ilman
-      erikoiskirjaimia, esimerkiksi `todofx`.
-    - **Visibility level**: Valitse tässä projektissa Internal tai Public, jotta
-      muut ihmiset pääsevät näkemään projektin koodin.
-      Omissa projekteissa voi valita mielestään sopivan.
-    - **Project configuration**: Ota kaikki ruksit pois päältä. **Poista**
-      valinta erityisesti kohdasta *Initialize repository with a README*, sillä
-   meillä on jo lokaalisti olemassa oleva projekti. 
+  - **Project name**: Anna projektille nimi, esimerkiksi `TodoFX`.
+  - **Project URL**: Varmista, että `https://gitlab.jyu.fi/`-kentän perässä
+    olevassa alasvetovalikossa lukee oma käyttäjätunnus. Jos ei, klikkaa
+    alasvetovalikkoa ja kirjoita tunnus.
+  - **Project slug**: Sen pitäisi olla automaattisesti projektin nimi ilman
+    erikoiskirjaimia, esimerkiksi `todofx`.
+  - **Visibility level**: Valitse tässä projektissa Internal tai Public, jotta
+    muut ihmiset pääsevät näkemään projektin koodin.
+    Omissa projekteissa voi valita mielestään sopivan.
+  - **Project configuration**: Ota kaikki ruksit pois päältä. **Poista**
+    valinta erityisesti kohdasta *Initialize repository with a README*, sillä
+    meillä on jo lokaalisti olemassa oleva projekti. 
 
-    Lomakkeen pitäisi lopuksi näyttää täältä:
+  Lomakkeen pitäisi lopuksi näyttää täältä:
 
     <img src="images/gitlab-project-form.png">
 
@@ -62,17 +62,17 @@ tarjottujen lisäpalvelujen takia.
 
 3. Täytä etävaraston tiedot seuraavasti:
 
-    - **Repository name**: Anna projektille nimi, esimerkiksi `TodoFX`.
-    - **Description**: Voit jättää tyhjäksi tai keksiä lyhyen kuvauksen.
-    - **Choose visibility**: Valitse tässä tapauksessa Public. Omissa projekteissa voi valita mielestään sopivan.
-    - **Start with template**: No template
-    - **Add README**: Pois päältä (Off)
-    - **Add .gitignore**: No .gitignore
-    - **Add license**: No license
-  
-    Lopuksi lomakkeen pitäisi näyttää täältä:
+  - **Repository name**: Anna projektille nimi, esimerkiksi `TodoFX`.
+  - **Description**: Voit jättää tyhjäksi tai keksiä lyhyen kuvauksen.
+  - **Choose visibility**: Valitse tässä tapauksessa Public. Omissa projekteissa voi valita mielestään sopivan.
+  - **Start with template**: No template
+  - **Add README**: Pois päältä (Off)
+  - **Add .gitignore**: No .gitignore
+  - **Add license**: No license
 
-    <img src="images/github-project-form.png">
+Lopuksi lomakkeen pitäisi näyttää täältä:
+
+<img src="images/github-project-form.png">
 
 4. Paina lopuksi **Create repository**.
 
@@ -89,11 +89,10 @@ Valitse käytettävä etävarastopalvelu:
 
 ## Etävaraston yhdistäminen lokaaliin projektiin
 
-Avaa komentorivi ja siirry projektin juurikansioon. Juurikansio on se kansio, jossa on
-`src`-kansio ja `pom.xml`-tiedosto.
-Oikean kansion voi varmistaa suorittamalla `git
-status` -komennon, jolloin pitäisi näkyä git-varaston tila samalla tavalla kuin
-[osassa 7.3](../osa7/03-versionhallinta.md).
+Avaa komentorivi ja siirry projektin juurikansioon. Juurikansio on se kansio,
+jossa on `src`-kansio ja `pom.xml`-tiedosto. Oikean kansion voi varmistaa
+suorittamalla `git status` -komennon, jolloin pitäisi näkyä git-varaston tila
+samalla tavalla kuin [osassa 7.3](../osa7/03-versionhallinta.md).
 
 Lisäämme seuraavaksi etävaraston osoitteen paikalliseen varastoon. Tätä varten
 meidän ensin pitäisi tietää git-etävaraston osoite.
@@ -145,6 +144,7 @@ Kopioi etävaraston osoite ja lisää se paikalliseen varastoon `git remote add`
 <asciinema src="images/git-remote-add.cast" rows="4" poster="npt:10"></asciinema>
 
 `git remote add` -komento ottaa kaksi parametria: etävaraston nimen ja etävaraston osoitteen.
+
 Sana `origin` on Git-maailmassa vakiintunut nimitys projektin pääasialliselle etävarastolle.
 
 ## Koodin lähettäminen etävarastoon ensimmäistä kertaa
@@ -201,9 +201,9 @@ etävarastoon käyttäen `git push` -komentoa:
 Tämä komento tekee kaksi asiaa:
 
 1. `push` lähettää paikalliset commitit etävarastoon.
-2. `-u origin main` linkittää paikallisen `main`-haaran varaston
-   `main`-haaraan. Tämän avulla Git-työkalu jatkossa tietää, että `git
-   push` -komento ilman parametreja lähettää koodia aina `origin`-etävarastoon.
+2. `-u origin main` linkittää paikallisen `main`-haaran varaston `main`-haaraan.
+   Tämän avulla Git-työkalu jatkossa tietää, että `git push` -komento ilman
+   parametreja lähettää koodia aina `origin`-etävarastoon.
 
 Huomaa, että ensimmäisen koodin lähettämisen, eli ns. push-komennon yhteydessä,
 Git-työkalu voi kysyä tunnusta ja salasanaa. Tunnus- ja salasanadialogi eroaa
