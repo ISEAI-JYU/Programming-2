@@ -1,1 +1,1 @@
-Tee työllesi Git-etävarasto ja tallenna koodisi sinne.
+Tee työllesi julkinen Git-etävarasto ja tallenna koodisi sinne.
