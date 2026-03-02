@@ -1,19 +1,20 @@
 # Useita näkymiä ja tehtävän muokkaus
 
 On hyvin tavallista, että sovelluksessa on useampiakin näkymiä kuin vain
-pääikkuna.
-JavaFX sallii useiden näkymien lataamista ja näyttämistä kolmella tavalla.
-Ensiksi, pääikkunassa oleva näkymä voidaan korvata `stage.setScene()`-metodilla,
-kuten [osassa 7.1](../osa7/01-javafx-perusteet.md#javafx-sovelluksen-käynnistys-ja-ydinluokat) oli mainittu.
-Toiseksi, näkymä voidaan ladata ja lisätä toisen näkymän sisään ikään kuin
-erillisenä komponenttina. Esimerkiksi voisimme lisätä pääikkunaan välilehtiä,
-jossa jokainen välilehti olisi jaettu omaan näkymään.
+pääikkuna. JavaFX sallii useiden näkymien lataamista ja näyttämistä kolmella
+tavalla. Ensiksi, pääikkunassa oleva näkymä voidaan korvata
+`stage.setScene()`-metodilla, kuten mainitsimme 
+[osassa 7.1](../osa7/01-javafx-perusteet.md#javafx-sovelluksen-käynnistys-ja-ydinluokat).
+Toiseksi, näkymä voidaan ladata ja lisätä toisen näkymän sisään. Esimerkiksi
+voisimme lisätä pääikkunaan välilehtiä, jossa jokainen välilehti olisi jaettu
+omaan näkymään.
 
 Kolmanneksi, voimme luoda uusia ikkunoita, joissa näytetään haluttu näkymä.
-Ikkunat voivat toimia pääikkunan rinnalla tai voivat olla myös *modaalisia*, eli
-ikkunan ollessa auki pääikkunaa ei voi käyttää. 
-Modaalisilla ikkunoille voimme esimerkiksi toteuttaa dialogeja, joilla pyydetään
-käyttäjältä syötettä.
+Ikkunat voivat toimia pääikkunan rinnalla tai voivat olla myös *modaalisia*.
+Modaalinen komponentti vaatii käyttäjän huomion, eli sen ollessa auki pääikkunaa
+ei voi käyttää. Modaalisilla ikkunoille voimme esimerkiksi toteuttaa dialogeja,
+joilla pyydetään käyttäjältä syötettä, eikä käyttäjä voi jatkaa ennen kuin
+dialogi on suljettu.
 
 Tässä osassa tutustumme kolmesta tavasta viimeiseen. Teemme dialogin, jossa
 käyttäjä voi muokata yksittäisen tehtävän yksityiskohtaiset tiedot. Dialogi
@@ -21,7 +22,7 @@ avautuu, kun käyttäjä tuplaklikkaa tehtävää.
 
 ## Esivalmistelu: lisää tietoja tehtäviin
 
-Muokataan alkuun `Tehtava`-luokkaa lisäämällä siihen lisää tietoja. Haluaisimme,
+Muokataan aluksi `Tehtava`-luokkaa lisäämällä siihen lisää tietoja. Haluaisimme,
 että jatkossa tehtävällä olisi
 
 - Otsikko, joka näytetään taulukossa
@@ -29,14 +30,13 @@ että jatkossa tehtävällä olisi
 - Tarkempi kuvaus
 - Prioriteetti, jossa on kolme sallittua arvoa: matala, keski, korkea
 
-Ensimmäiset kaksi hoituvat nykyisillä tehtävän attribuuteilla; refaktoroimme
-vain `teksti`-attribuutin `otsikko`-attribuutiksi.
-Puolestaan tarkempi kuvaus voidaan mallintaa merkkijonona.
+Ensimmäiset kaksi hoituvat nykyisillä tehtävän attribuuteilla. Tarkempi kuvaus voidaan
+mallintaa merkkijonona.
 
 Prioriteetti voitaisiin mallintaa numerolla 0, 1 ja 2. Java kuitenkin tarjoaa
 tällaisille tapauksille erillisen *luetelmatyypin* (engl. enumeration, enum),
-jonka avulla voi mallintaa rajattu määrä arvovaihtoehtoja.
-Esimerkiksi prioriteetti voidaan mallintaa luetelmana seuraavasti:
+jonka avulla voi mallintaa olion, jolla on jokin rajattu määrä mahdollisia
+arvovaihtoehtoja. Esimerkiksi prioriteetti voidaan mallintaa luetelmana seuraavasti:
 
 ```java
 // Luetelmatyyppi Prioriteetti
@@ -53,23 +53,23 @@ void main() {
 ```
 
 Luetelmatyypin arvoja voidaan tallentaa attribuutteihin tai muuttujiin
-tavallisten olioiden tapaan, mutta luetelmatyypin arvona voi olla ainoastaan
-tyypissä ennalta mainitut arvot.
+tavallisten olioiden tapaan, mutta luetelmatyypin arvona voi olla täsmälleen
+yksi luetelmassa mainituista arvoista.
 
 Luo `model`-alipakkaukseen uusi tiedosto `Prioriteetti.java` ja määritä siihen
 luetelma:
 
 ```java,ignore
-package fi.jyu.ohj2.dezhidki.todo.model;
+package fi.jyu.ohj2.nimi.todo.model;
 
 public enum Prioriteetti {
     MATALA, KESKI, KORKEA
 }
 ```
 
-Tämän jälkeen laajenna `Tehtava`-luokkaa lisäämällä siihen uudet attribuutit
-kuvaukselle ja prioriteetille. Samalla refaktoroi `teksti`-attribuutti uudeksi
-`otsikko`-attribuutiksi: 
+Laajennetaan nyt `Tehtava`-luokkaa lisäämällä siihen uudet attribuutit
+kuvaukselle ja prioriteetille. Refaktoroidaan samalla `teksti`-attribuutti
+`otsikko`-nimiseksi: 
 
 ```java,ignore
 public class Tehtava {
@@ -121,8 +121,10 @@ public class Tehtava {
 }
 ```
 
-Huomaa, että `teksti`-attribuutin refaktorointi edellyttää, että refaktoroit
-myös `get`-, `set`- ja `property`-metodit sekä kontrollerissa olevat viitteet.
+Huomaa, että `teksti`-attribuutin refaktorointi edellyttää, että myös `get`-,
+`set`- ja `property`-metodit sekä kontrollerissa olevat viitteet päivitetään
+vastaamaan uutta nimeä. 
+
 Voit helposti muuttaa nimen siirtämällä kursorin uudelleennimettävän kohteen
 kohdalle, klikkaamalla hiiren toissijaisella painikkeella ja valitsemalla
 **Rename**. Tämän jälkeen anna attribuutille uusi nimi ja paina
@@ -144,7 +146,7 @@ turvallisen poiston ("Safe delete"), ota se pois päältä.
 ## Uuden muokkausnäkymän luominen
 
 Luodaan uusi näkymä tulevalle dialogille. Muistamme, että käyttöliittymää varten
-tarvitsemme näkymän eli FXML-tiedoston sekä kontrolleriluokan.
+tarvitsemme näkymän eli uuden FXML-tiedoston sekä uuden kontrolleriluokan.
 Aloitamme ensin näkymästä.
 
 Avaa SceneBuilder ja valitse etusivulta "New Project from Template" -kohdasta
@@ -154,7 +156,7 @@ Avaa SceneBuilder ja valitse etusivulta "New Project from Template" -kohdasta
 
 Tallenna uusi FXML-tiedosto saman tien. Valitse tallennuspaikaksi sama kansio,
 jossa projektisi `main.fxml` on, eli
-`src/main/resources/fi/jyu/ohj2/nimesi/todo`.
+`src/main/resources/fi/jyu/ohj2/nimi/todo`.
 Anna uuden tiedoston nimeksi esimerkiksi `tehtava-edit.fxml`.
 
 Tämän jälkeen luo SceneBuilderilla seuraava käyttöliittymä:
@@ -163,32 +165,32 @@ Tämän jälkeen luo SceneBuilderilla seuraava käyttöliittymä:
 
 Aseta komponenttien asetukset seuraavasti:
 
-- `VBox`-säiliö
+- VBox-säiliö
    - Spacing: `10`
    - Padding: `10` kaikkiin reunoihin
    - Pref Width: `400`
    - Pref Height: `300`
-- Kaikki `Label`-nimiöt
+- Kaikki Label-nimiöt
    - Min Width: `100`
    - Muut Width ja Height -arvot: `USE_COMPUTED_SIZE`
-- `HBox`-säiliöt otsikkokentälle, prioriteettikentälle sekä painikkeille
+- HBox-säiliöt otsikkokentälle, prioriteettikentälle sekä painikkeille
    - Vgrow: `NEVER`
-- `HBox`-säiliö kuvauskentälle
+- HBox-säiliö kuvauskentälle
    - Vgrow: `ALWAYS`
-- `HBox`-säiliö painikkeille
+- HBox-säiliö painikkeille
    - Alignment: `TOP_RIGHT` 
    - Spacing: `10` 
-- `TextField`, `ComboBox` ja `TextArea` -kentät:
+- TextField, ComboBox ja TextArea -kentät:
    - Hgrow: `ALWAYS`
    - Kaikki Width ja Height -arvot: `USE_COMPUTED_SIZE` 
 
 Anna myös kentille ja painikkeille sopivat fx:id-tunnisteet:
 
-- Otsikon `TextField`: `otsikkoKentta`
-- Prioriteetin `ComboBox`: `prioriteettiCombo`
-- Kuvauksen `TextArea`: `kuvausKentta`
-- Tallennuspainikkeen `Button`: `tallennaPainike`
-- Peruutuspainikkeen `Button`: `peruutaPainike`
+- Otsikon TextField: `otsikkoKentta`
+- Prioriteetin ComboBox: `prioriteettiCombo`
+- Kuvauksen TextArea: `kuvausKentta`
+- Tallennuspainikkeen Button: `tallennaPainike`
+- Peruutuspainikkeen Button: `peruutaPainike`
 
 Tallenna FXML-tiedosto.
 
@@ -242,10 +244,10 @@ Tallenna FXML-tiedosto.
 
 ## Kontrolleriluokan luominen
 
-Kun näkymä on valmis, tarvitaan myös kontrolleriluokka. 
-Luodaan uusi `TehtavaEditController`-luokka `controller`-alipakettiin.
-Muistamme toteuttaa `Initializable`-rajapinnan sekä näkymän oleelliset
-komponentit, joille annettiin fx:id-tunniste.
+Kun näkymä on valmis, tarvitaan myös kontrolleriluokka. Luodaan uusi
+`TehtavaEditController`-luokka `controller`-alipakkaukseen. Muistetaan, että
+luokan tulee toteuttaa `Initializable`-rajapinta. Lisätään myös attribuutit
+näkymän komponenteille, joille annettiin fx:id-tunniste.
 
 ```java,ignore
 package fi.jyu.ohj2.nimi.todo.controller;
@@ -280,7 +282,6 @@ public class TehtavaEditController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
 ```
@@ -291,18 +292,16 @@ syötekenttä; se toimii pitkälti kuten `TextField`, mutta sallii rivinvaihtoja
 alkioita alasvetovalikkona. 
 
 Vaikka kontrolleri on luotu, emme vielä kertoneet JavaFX:lle, että FXML-näkymä
-ja kontrolleriluokka liittyvät toisiinsa.
-Palaa takaisin SceneBuilderiin ja klikkaa oikean puolen Document-näkymästä
-alhaalla oleva Controller-paneeli auki:
+ja kontrolleriluokka liittyvät toisiinsa. Palataan takaisin SceneBuilderiin ja
+klikataan oikean puolen Document-näkymästä alhaalla oleva Controller-paneeli auki:
 
 <img src="images/scenebuilder-controller-panel.png">
 
 Paneelissa oleva *Controller class* -asetus määrittää, mikä kontrolleriluokka
-tulee ladata aina näkymän yhteydessä. Aseta asetuksen arvoksi 
+tulee ladata aina näkymän yhteydessä. Aseta asetuksen arvoksi
 `fi.jyu.ohj2.nimi.todo.controller.TehtavaEditController`, jossa
-`fi.jyu.ohj2.nimi.todo`
-on projektisi pääpaketti ja tunniste (korjaa oikeaksi!) ja
-`controller.TehtavaEditController` viittaa `controller`-alipaketissa olevaan
+`fi.jyu.ohj2.nimi.todo` on projektisi pääpaketti ja tunniste (korjaa oikeaksi!)
+ja `controller.TehtavaEditController` viittaa `controller`-alipaketissa olevaan
 `TehtavaEditController`-luokkaan.
 
 Tallenna FXML-tiedosto. Nyt aina, kun muokkausnäkymä näytetään, JavaFX lataa
@@ -315,8 +314,7 @@ kahdesti. Valitettavasti `TableView` ei tarjoa suoraan mitään tapahtumaa
 yksittäisen rivin klikkaamiselle. Sen sijaan rivin klikkaus aiheuttaa tapahtuman
 yksittäistä riviä mallintavalla `TableRow`-oliolle.
 
-Rivien muokkaamista varten `TableView` tarjoaa `setRowFactory()`-metodin (ks.
-[JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/TableView.html#setRowFactory(javafx.util.Callback))).
+Rivien muokkaamista varten `TableView` tarjoaa `setRowFactory()`-metodin ([JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/TableView.html#setRowFactory(javafx.util.Callback))).
 Metodille annetaan lambdalauseke, joka kutsutaan aina, kun tauluun lisätään uusi
 rivi. Lambdalausekkeen tulee luoda ja palauttaa `TableRow`-olio uudelle
 lisättävälle riville. Tämän kautta voimme samalla lisätä uusille riveille
@@ -349,8 +347,10 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
 
         // Lisätään uudelle riville tapahtumakäsittelijä klikkauksille
         row.setOnMouseClicked(event -> {
-            // Jos oli tuplaklikkaus eikä tyhjän rivialueen klikkaus, niin käsitellään tapahtuma
-            if (event.getClickCount() == 2 && !row.isEmpty()) {
+            // Jos oli hiiren ykkösnapin tuplaklikkaus, 
+            // eikä tyhjän rivialueen klikkaus, niin käsitellään tapahtuma
+            if (event.getButton().equals(MouseButton.PRIMARY) &&
+                event.getClickCount() == 2 && !row.isEmpty()) {
                 // Haetaan riviä vastaava Tehtava-olio
                 Tehtava tehtava = row.getItem();
                 // Avataan muokkausdialogi
@@ -380,7 +380,7 @@ private void avaaTehtavanMuokkaus(Tehtava tehtava) {
     /* 1 */ Scene scene = new Scene(root);
 
     /* 2 */ Stage dialogi = new Stage();
-    /* 2 */ dialogi.setScene(root);
+    /* 2 */ dialogi.setScene(scene);
 
     /* 3 */ dialogi.setTitle("Tehtävän muokkaus: " + tehtava.getOtsikko());
     /* 3 */ dialogi.setMinWidth(400);
@@ -426,9 +426,9 @@ Kokeile nyt ajaa sovellus. Nyt rivien klikkaaminen kahdesti avaa dialogin.
 ## Valitun tehtävän välittäminen dialogin kontrolleriluokalle
 
 Emme vielä pysty näyttämään tehtävän tietoja dialogissa, koska dialogilla ei ole
-mitään tietoa valitusta tehtävästä.
-Meidän tulee siis välittää valitun `Tehtava`-olion muokkausdialogin
-kontrollerille, jotta tehtävän tiedot voidaan näyttää.
+mitään tietoa valitusta tehtävästä. Meidän tulee siis välittää valitun
+`Tehtava`-olion muokkausdialogin kontrollerille, jotta tehtävän tiedot voidaan
+näyttää.
 
 Aivan alkuun, lisätään `TehtavaEditController`-luokkaan uusi attribuutti, johon
 tallennetaan dialogissa näytettävän tehtävän tiedot:
@@ -512,10 +512,11 @@ dialogin kentät täyttyvät tehtävän tiedoista:
 <img src="images/todo-app-dialog-data-pass.png">
 
 Huomaamme tässä vaiheessa pienen bugin: prioriteetti-alasvetolaatikossa ei vielä
-näy kaikkia prioriteettivaihtoehtoja. 
-Korjaamme tämän asettamalla `ComboBox`-komponenttiin näytettävät
-`Prioriteetti`-arvot käyttäen `setItems()`-metodia samankaltaisesti kuin
-aiemmin osassa esitellyssä `ListView`-komponentissa:
+näy kaikkia prioriteettivaihtoehtoja. Korjaamme tämän asettamalla
+`ComboBox`-komponenttiin näytettävät `Prioriteetti`-arvot käyttäen
+`setItems()`-metodia samankaltaisesti kuin aiemmin osassa esitellyssä
+`ListView`-komponentissa. Lisää `TehtavaEditController`-luokan
+`initialize()`-metodiin seuraava rivi:
 
 ```java,ignore
 public void initialize(URL location, ResourceBundle resources) {
@@ -585,15 +586,17 @@ vihjetekstinä (`Tooltip`):
 private boolean validoi() {
     // Nollataan mahdolliset aiemmat virhetyylit ja vihjetekstit
     otsikkoKentta.setStyle("");
-    otsikkoKentta.setTooltip(null);
+    otsikkoKentta.setPromptText("");
 
     String otsikko = otsikkoKentta.getText();
     if (otsikko == null || otsikko.isBlank()) {
         // Vaihdetaan reunus punaiseksi virheen merkiksi
-        otsikkoKentta.setStyle("-fx-border-color: red;");
+        otsikkoKentta.setStyle(
+                            "-fx-border-color: red; " +
+                            "-fx-background-color: #fdf2f2;");
         // Lisätään kenttään vihjeteksti, joka sisältää virheen
-        Tooltip virhe = new Tooltip("Tehtävän otsikko ei saa olla tyhjä!");
-        otsikkoKentta.setTooltip(virhe);
+        otsikkoKentta.clear();
+        otsikkoKentta.setPromptText("Otsikko puuttuu!");
         // Palautetaan false sen merkiksi, että validointi epäonnistui
         return false;
     }
@@ -630,7 +633,7 @@ public void initialize(URL location, ResourceBundle resources) {
 Kokeile nyt sovellusta taas. Nyt Tallenna- ja Peruuta-painikkeet toimivat.
 Lisäksi otsikkokentän jättäminen tyhjäksi näyttää virheen käyttäjälle.
 
-<video src="images/todo-app-dialog-works.mp4" controls></video>
+<!-- video src="images/todo-app-dialog-works.mp4" controls></video-->
 
 ## Tehtävien tallentaminen tietojen muutoksesta
 
@@ -642,7 +645,9 @@ listasta poistetaan tehtäviä, tai jos tehty-ominaisuus muuttuu, kuten
 ekstraktorissa on mainittu:
 
 ```java,ignore
-private final ObservableList<Tehtava> tehtavat = FXCollections.observableArrayList(tehtava -> new Observable[]{tehtava.tehtyProperty()});
+private final ObservableList<Tehtava> tehtavat = 
+    FXCollections.observableArrayList(
+        tehtava -> new Observable[]{tehtava.tehtyProperty()});
 ```
 
 Tallentaminen dialogin jälkeen voitaisiin hoitaa eri tavoin. Pidetään kuitenkin
@@ -664,15 +669,16 @@ Tällöin `tehtava`-lista ilmoittaa kaikista tehtävien ominaisuuksiin tehdyist�
 muutoksista. Toisin sanoen aina, kun jokin tehtävän ominaisuus muuttuu,
 `Tehtavakokoelma`-luokassa määritelty havaitsija tallentaa kaikki tehtävät.
 
-<details closed><summary><i class="bi bi-stars jyu-gold"></i>Bonus: Tallentaminen pienellä viiveellä</summary>
+<details closed><summary><i class="bi bi-stars jyu-gold"></i>Valinnaista lisätietoa: Tallentaminen pienellä viiveellä</summary>
+
 Yllä oleva ratkaisu ei ole ideaalinen: nyt jokainen tehtävän `set`-metodin kutsuminen
 aiheuttaa kaikkien tehtävien tallentumista. 
 
 Eräs tapa ratkaista tämä käyttäen JavaFXää on lisätä ns. rajoittaja- eli
 *debounce*-olio. Rajoittajaolio estää saman koodin suorittamista tietyn
 aikavälin sisällä. Esimerkiksi, voimme rajoittaa `tallenna()`-funktion kutsua
-niin, että funktio suoritetaan vain yhden kerran 500 millisekunnissa.
-JavaFX tarjoaa tätä varten `PauseTransition`-apuluokan, jota voidaan käyttää
+niin, että funktio suoritetaan vain yhden kerran 500 millisekunnissa. JavaFX
+tarjoaa tätä varten `PauseTransition`-apuluokan, jota voidaan käyttää
 seuraavasti:
 
 ```java,ignore
@@ -692,6 +698,7 @@ public Tehtavakokoelma() {
 
 Tämän muutoksen myötä monta peräkkäistä `set`-metodin kutsua aiheuttaa vain
 yhden `tallenna()`-metodin kutsua.
+
 </details>
 
 <task>

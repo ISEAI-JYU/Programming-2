@@ -142,10 +142,12 @@ fi.jyu.ohj2.nimi.todo
 ```
 
 Aloitetaan muuttamalla nykyinen `data`-alipakkaus `model`-alipakkaukseen.
-Avaa IntelliJ IDEA:n projektiselain ja klikkaa hiiren toissijaisella
-painikkeella `data`-alipakkauksesta. Valitse sitten **Rename** avautuneesta
-valikosta. Tämän jälkeen vaihda avautuneesta valikosta pakkauksen
-`data`-loppuosa `model`-loppuosaan ja paina **Refactor**:
+(Alipakkaus on siis pakkaus, joka sijaitsee toisen pakkauksen sisällä, kuten
+`data`-alipakkaus on `fi.jyu.ohj2.nimi.todo`-pakkauksen alipakkaus.) Avaa IDEAn
+projektiselain ja klikkaa hiiren toissijaisella painikkeella
+`data`-alipakkausta. Valitse sitten **Rename** avautuneesta valikosta. Tämän
+jälkeen muuta avautuneesta valikosta pakkauksen `data`-loppuosa
+`model`-loppuosaan ja paina **Refactor**:
 
 <video src="images/intellij-refactor-rename.mp4" controls></video>
 
@@ -175,9 +177,8 @@ Samalla teemme pari pientä refaktorointia: siirrämme tallennustiedoston
 sijainnin sekä `ObjectMapper`-olion kokoelman attribuutteihin, sillä kumpaakin
 käytetään latauksen ja tallennuksen yhteydessä.
 
-
 ```java,ignore
-package fi.jyu.ohj2.dezhidki.todo.model;
+package fi.jyu.ohj2.nimi.todo.model;
 
 //-import javafx.beans.Observable;
 //-import javafx.collections.FXCollections;

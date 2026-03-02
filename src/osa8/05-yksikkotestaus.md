@@ -299,7 +299,7 @@ Tehdään samalla erillinen luokka latausvirhettä kuvaavalle `RepositoryExcepti
 sillä nyt tehtäviä voidaan ladata muullakin tavalla kuin tiedostosta.
 
 ```java,ignore
-package fi.jyu.ohj2.dezhidki.nimi.persistence;
+package fi.jyu.ohj2.nimi.persistence;
 
 public class RepositoryException extends Exception {
     public RepositoryException(String message) {
