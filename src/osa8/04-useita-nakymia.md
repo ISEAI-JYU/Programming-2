@@ -579,8 +579,7 @@ varoitustekstin.
 Tehdään tätä varten apumetodi `validoi()`, joka tarkistaa otsikkokentän
 oikeellisuuden ja palauttaa `boolean`-arvona, onko kaikki kentät oikein (`true`)
 tai väärin (`false`). Lisäksi, jos otsikkokenttä ei sisällä mitään arvoa,
-väritetään kentän reunus punaisella ja lisätään syötekenttään virhe
-vihjetekstinä (`Tooltip`):
+väritetään kentän reunus punaisella ja lisätään syötekenttään virheteksti. 
 
 ```java,ignore
 private boolean validoi() {
