@@ -227,7 +227,7 @@ työnkulku on yksinkertainen:
   <task-title>Tehtävä 8.8: Git-etävarasto. <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/8-8-git-eta-varasto/handout.md}}
+{{#include ../exercises/8-8-git-etavarasto/handout.md}}
 
 </handout>
     <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa8/tehtava8">Tee tehtävä TIMissä</a></task-link>
