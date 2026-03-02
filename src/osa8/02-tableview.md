@@ -282,6 +282,108 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
 }
 ```
 
+<details>
+<summary><i class="bi bi-stars jyu-gold"></i>Valinnaista lisätietoa: 
+(1) Tehdasmetodi eli factory method -malli. 
+(2) "Luo ensin, konfiguroi sitten".</summary>
+
+Sana *factory* (esim. `setVellValueFactory`) viittaa tehdasmetodi-malliin, joka on olio-ohjelmoinnin
+suunnittelumalli. Tehdasmetodissa olioiden luominen on eriytetty erilliseen
+metodiin, joka toimii ikään kuin tehtaan tapaan. Tehdasmetodi tarjoaa tavan
+luoda olioita ilman, että kutsujan tarvitsee tietää tarkalleen, miten olio
+luodaan tai mitä parametreja tarvitaan.
+
+Yksinkertainen esimerkki:
+
+```java,ignore
+public class Car {
+    private static int carCount = 0;
+
+    private Car() {
+        // Yksityinen konstruktori estää suoran olioiden luomisen
+    }
+
+    public static Car createCar() {
+        carCount++;
+        return new Car();
+    }
+
+    public static int getCarCount() {
+        return carCount;
+    }
+}
+```
+
+Tällöin olioita luodaan näin:
+
+```java,ignore
+public class Main {
+    public static void main(String[] args) {
+        Car car1 = Car.createCar();
+        Car car2 = Car.createCar();
+        System.out.println("Total cars created: " + Car.getCarCount()); // Tulostaa: Total cars created: 2
+    }
+}
+```
+
+Tässä `createCar()` on tehdasmetodi: se luo auton ja voi samalla tehdä muuta
+hyödyllistä työtä, kuten kasvattaa laskuria.
+
+JavaFX:n `TableColumn`-tapauksessa kiinnostavampi ajatus ei kuitenkaan ole aivan
+tehdasmetodi, vaan API-suunnittelun malli, jossa olio luodaan ensin ja sitä
+konfiguroidaan vasta sen jälkeen erillisillä metodeilla.
+
+Tällainen malli ei ole aina hyvä tavallisille sovellusolioille, kuten autoille
+tai pankkitileille, koska niiden olisi usein hyvä olla heti konstruktorin
+jälkeen käyttökelpoisessa tilassa. Käyttöliittymäkirjastojen komponenteissa
+tilanne on toinen: ne ovat usein tarkoituksella vaiheittain konfiguroitavia
+olioita.
+
+Juuri tämä muistuttaa sitä, miten JavaFX:n `TableColumn`-API on suunniteltu.
+Ensin luodaan sarake:
+
+```java,ignore
+TableColumn<Tehtava, Boolean> tehtySarake = new TableColumn<>("Tehty");
+```
+
+Sen jälkeen sarakkeelle asetetaan erikseen sen toimintaan liittyviä asioita,
+kuten:
+
+- mistä solujen arvot haetaan (`setCellValueFactory()`)
+- miten solut piirretään (`setCellFactory()`)
+- voiko saraketta muokata
+- miten leveä sarake on
+- voiko saraketta lajitella
+- millaista tyyliä sarake käyttää
+
+Tämä on Java-kirjastoissa hyvin tavallinen tapa suunnitella rajapintoja:
+olio luodaan ensin, ja sen jälkeen sitä konfiguroidaan askel askeleelta.
+Ratkaisu tekee API:sta joustavan, koska kaikkia asetuksia ei tarvitse tunkea
+yhteen pitkään konstruktoriin. Jos `TableColumn`-konstruktorissa olisi jo
+otsikko, arvonhakija, solutehdas, leveys, lajittelu, muokattavuus ja muita
+asetuksia, siitä tulisi nopeasti raskas ja hankala käyttää.
+
+Juuri tästä syystä JavaFX erottaa nämä asiat toisistaan:
+
+- konstruktori luo sarakeolion
+- `setCellValueFactory()` kertoo, miten datamallista haetaan sarakkeen arvo
+- `setCellFactory()` kertoo, millainen käyttöliittymäsolu tuon arvon näyttää
+
+Siksi saraketta ei tässä API:ssa luoda muodossa
+`new TableColumn<>("Tehty", cd -> ...)`. Konstruktori ei ota vastuulleen
+arvonhakua, vaan se tehdään erikseen `setCellValueFactory()`-metodilla.
+
+On myös tärkeää erottaa `setCellValueFactory()` ja `setCellFactory()`
+toisistaan. `setCellValueFactory()` ei luo soluja, vaan määrittää, mistä kunkin
+rivin arvo haetaan. `setCellFactory()` puolestaan määrittää, millainen solu
+(esimerkiksi teksti, valintaruutu, kuva) sarakkeeseen luodaan ja miten se
+esittää arvonsa. Esimerkiksi `Boolean`-arvo voidaan näyttää tavallisena tekstinä
+(`true` tai `false`) tai kätevämpänä valintaruutuna. Vastaavasti `String`-arvo
+voidaan näyttää tavallisena tekstinä tai jossain villissä tapauksessa vaikkapa
+kuvana, joka kuvaa sanan merkitystä. 
+
+</details>
+
 Mainittakoon, että sarakkeet voidaan määritellä myös SceneBuilderissa FXML:ään.
 Monimutkaisemmissa taulukoissa voi olla kätevää määritellä sarakkeita etukäteen
 SceneBuilderissa ja ainoastaan käyttää kontrolleria sitoakseen data ja tietty
