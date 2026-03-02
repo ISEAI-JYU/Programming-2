@@ -8,19 +8,23 @@ arkkitehtuuria.
 kietoutuneet `MainController`-luokkaan. Tämä tekee kontrollerista nopeasti liian
 raskaan ylläpitää ja vaikean testata.  -->
 
-Sovelluksen arkkitehtuuri tarkoittaa sitä, miten ohjelman eri osat ja
-vastuualueet järjestetään järkeväksi kokonaisuudeksi. Hyvä arkkitehtuuri tekee
-koodista helpommin ymmärrettävää, laajennettavaa ja testattavaa. Tässä
-projektissa sille on tarvetta erityisesti siksi, että tehtävien käsittely,
-tallennus ja käyttöliittymä eivät kasautuisi yhteen samaan luokkaan.
+Sovelluksen arkkitehtuuri tarkoittaa ohjelman eri osien ja vastuualueet
+järjestämisestä muodostuvaa kokonaisuutta. Arkkitehtuuri muodostuu päätöksistä
+joiden kumoaminen, muuttaminen tai refaktorointi on erittäin vaikeaa. Hyvä
+arkkitehtuuri tekee koodista helpommin ymmärrettävää, laajennettavaa ja
+testattavaa. 
+
+Aivan minimaalisissa projekteissa arkkitehtuuria ei tietenkään tarvitse
+enemmälti pohtia. Tässä projektissa arkkitehtuurille on kuitenkin jo tarvetta
+erityisesti siksi, että tehtävien käsittely, tallennus ja käyttöliittymä eivät
+kasautuisi yhteen samaan luokkaan. 
 
 Arkkitehtuuria ei usein tarvitse miettiä nollasta, vaan on olemassa valmiita
-yleisesti hyväksi todettua artkkitehtuuriratkaisuja.
-Eräs ratkaisu sovelluksen arkkitehtuurin suunnitteluun on **MVC**
-(Model-View-Controller).
+yleisesti hyväksi todettua artkkitehtuuriratkaisuja. Eräs ratkaisu sovelluksen
+arkkitehtuurin suunnitteluun on **MVC** (engl. *Model-View-Controller*).
 
-MVC-arkkitehtuurissa sovellus jaetaan kolmeen osaan: malliin (Model),
-näkymään (View) ja ohjaimeen (Controller). Malli huolehtii datasta ja sen
+MVC-arkkitehtuurissa sovellus jaetaan kolmeen osaan: malliin (model),
+näkymään (view) ja ohjaimeen (controller). Malli huolehtii datasta ja sen
 käsittelystä, näkymä näyttää käyttöliittymän ja ohjain välittää käyttäjän
 toiminnot mallille sekä päivittää näkymää. Tässä projektissa MVC auttaa
 selkeyttämään rakennetta niin, että `MainController` ei vastaa enää yksin
@@ -39,8 +43,8 @@ loput datan hallinnan ja tallennuksen toimintoja kontrollerista omaan malliluokk
 
 ## MVC-arkkitehtuurin kerrokset ja vastuut
 
-Katsotaan tarkemmin, mitkä ovat kunkin kerroksen eli osan vastuut MVC-arkkitehtuurissa ja
-miten kukin kerros toteutetaan tässä projektissa.
+Katsotaan tarkemmin, mitkä ovat kunkin kerroksen eli osan vastuut
+MVC-arkkitehtuurissa ja miten kukin kerros toteutetaan tässä projektissa.
 
 ### Näkymä (view)
 
@@ -51,18 +55,15 @@ miten kukin kerros toteutetaan tässä projektissa.
 
 ### Malli (model)
 
-- **Vastuu:** Mitä dataa sovelluksessa on ja miten sitä käsitellään
-  (liiketoimintalogiikka).
-- **Toteutus Todo-sovelluksessa:** Olemme jo tehneet `Tehtava`-luokan mallintamaan yksittäistä
-  tehtävää. Tässä osassa luomme lisäksi `Tehtavakokoelma`-luokan, joka pitää sisällään
-  koko sovelluksen tilan (tehtävälistan) ja tarjoaa metodit tehtävien
-  lisäämiseen, poistamiseen ja tallentamiseen. 
-  <!-- Koska `Tehtava` on itsessään Jacksonin ymmärtämää muotoa (siinä on tyhjä 
-  konstruktori sekä setterit ja getterit), se voidaan myös sellaisenaan tallentaa tiedostoon. -->
+- **Vastuu:** Mitä dataa sovelluksessa on ja miten sitä käsitellään. Tästä
+  käytetään usein termejä sovelluslogiikka, liiketoimintalogiikka tai bisneslogiikka.
+- **Toteutus Todo-sovelluksessa:** Olemme jo tehneet `Tehtava`-luokan
+  mallintamaan yksittäistä tehtävää. Tässä osassa luomme lisäksi
+  `Tehtavakokoelma`-luokan, joka pitää sisällään tehtävälistan tilan ja tarjoaa
+  metodit tehtävien lisäämiseen, poistamiseen ja tallentamiseen. 
 - **Rajoitukset:** Ei tiedä mitään JavaFX-näkymästä (`TableView`, `TextField`),
   vaan luottaa observable-rakenteisiin kertoakseen muutoksista kiinnostuneille
   osapuolille.
-
 
 ### Ohjain (controller)
 
@@ -95,10 +96,10 @@ MVC-arkkitehtuuri tukee yhden vastuun periaatteen noudattamista, koska eri
 syistä muuttuvat asiat erotetaan lähtökohtaisesti eri kerroksiin.
 Tässä projektissa periaate näkyy esimerkiksi näin:
 
-- `Tehtava` ja `Tehtavakokoelma` kuuluvat malliin, koska niiden tehtävä on
-  kuvata sovelluksen dataa ja siihen liittyviä sääntöjä.
+- `Tehtava` (ja myöhemmin tässä osassa myös `Tehtavakokoelma`) kuuluvat malliin,
+  koska niiden tehtävä on kuvata sovelluksen dataa ja siihen liittyviä sääntöjä.
 - `MainController` ei tallenna tiedostoja itse, vaan delegoi sen mallille.
-- FXML-näkymä ei sisällä sovelluslogiikkaa, vaan vain käyttöliittymän rakenteen.
+- FXML-näkymä sisältää käyttöliittymän rakenteen, ei sovelluslogiikkaa.
 
 Jos `MainController` vastaisi samaan aikaan painikkeiden käsittelystä, syötteiden
 tarkistuksesta, tehtävien tallennuksesta ja tiedoston lukemisesta, luokalla
@@ -157,7 +158,7 @@ ja raahaa `MainController`-luokka uuteen pakkaukseen:
 Huomaa, että IDEA osaa automaattisesti refaktoroida luokkien sisällä olevia
 `package`-määreitä sekä FXML-tiedostossa olevan luokkaviitteen.
 
-## Tehtavakokoelma
+## Tehtäväkokoelma
 
 Siirrämme nyt sovelluksen sydämen, eli tehtävälistan hallinnan ja tietojen luku-
 ja tallennusoperaatiot, pois kontrollerista omaan luokkaansa.
@@ -166,10 +167,10 @@ joten tehtävälista ja sen hallinta kuuluu MVC-arkkitehtuurissa mallikerrokseen
 
 Luodaan `model`-pakkaukseen luokka `Tehtavakokoelma` ja siirretään siihen
 tehtävien hallintaan kuuluvat toiminnot: `tehtava`-lista, listaan liittyvä
-alustus, `lataa()`-metodi ja `tallenna()`-metodi.
-Seuraamme myös kapselointiperiaatetta: teemme `tehtavat`-listasta `private`
-ja temme apumetodit `getTehtavat()`. `lisaaTehtava()` sekä `poistaTehtava()`, joilla hoidetaan
-tehtävien lisääminen ja poistaminen sekä kytkentä käyttöliittymään.
+alustus, `lataa()`-metodi ja `tallenna()`-metodi. Seuraamme myös
+kapselointiperiaatetta: teemme `tehtavat`-listasta `private` ja teemme
+apumetodit `getTehtavat()`, `lisaaTehtava()` sekä `poistaTehtava()`, joilla
+hoidetaan tehtävien lisääminen ja poistaminen sekä kytkentä käyttöliittymään.
 Samalla teemme pari pientä refaktorointia: siirrämme tallennustiedoston
 sijainnin sekä `ObjectMapper`-olion kokoelman attribuutteihin, sillä kumpaakin
 käytetään latauksen ja tallennuksen yhteydessä.
@@ -247,15 +248,12 @@ lisätään tai ominaisuus muuttuu") asuvat nyt täällä malliluokassa!
 
 ## Kontrollerin uusi rooli
 
-Päivitetään lopuksi `MainController`. Kontrollerin rooli on nyt hyvin selkeä
-"virkailija" mallin ja näkymän välissä. Se ottaa kokoelmiin liittyvän logiikan
-pois harteiltaan ja vain viestii käyttöliittymän ja `Tehtavakokoelman` välillä.
-`Tehtavakokoelma` toimii tässä kontrollerin käyttämänä ylätason mallina: se
-omistaa tehtävälistan, huolehtii sen lataamisesta ja tallentamisesta sekä
-tarjoaa metodit tehtävien lisäämiseen ja poistamiseen. Se tarvittiin, jotta
-tehtäviin liittyvä data ja logiikka saatiin siirrettyä pois kontrollerista omaan
-luokkaansa, jolloin kontrollerin vastuuksi jäi vain käyttöliittymän ja mallin
-yhdistäminen.
+Päivitetään lopuksi `MainController`. Kontrollerin rooli on nyt selkeä
+"virkailija" mallin ja näkymän välissä. Sillä ei ole enää kokoelmiin liittyvän
+logiikan taakkaa, vaan se vain viestii käyttöliittymän ja `Tehtavakokoelman`
+välillä. `Tehtavakokoelma` toimii tässä ylätason mallina, jota kontrolleri
+käyttää: se omistaa tehtävälistan, huolehtii sen lataamisesta ja tallentamisesta
+sekä tarjoaa metodit tehtävien lisäämiseen ja poistamiseen. 
 
 Vaikka tässä vaiheessa tämä refaktorointi saattaa vaikuttaa vain koodin
 siirtämisestä paikasta toiseen, kysymys on enemmänkin vastuiden erottamisesta
@@ -363,7 +361,7 @@ public class MainController implements Initializable {
 }
 ```
 
-## Tehtävät
+## Tehtävät 
 
 <task>
   <task-title>Tehtävä 8.3: Todo-sovellus, vaihe 8. <points>1 p.</points> </task-title>
