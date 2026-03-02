@@ -1,8 +1,5 @@
 # JavaFX osa 2, MVC
 
-> [!VAROITUS]
-> Tämä osa julkaistaan 2. maaliskuuta 2026. {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 >
 > - Osaat erottaa datan, sovelluslogiikan ja käyttöliittymän toisistaan
@@ -15,7 +12,7 @@
 >   priorisointitieto.
 > - Osaat kirjoittaa yksikkötestejä Todo-sovelluksen mallille ja
 >   sovelluslogiikalle.
-> - Harjoitustyön vaihe 2 palautus TIMiin (ei tarvitse erikseen näyttää
+> - Tutoriaalin toisen vaiheen palautus TIMiin (ei tarvitse näyttää
 >   tuntiopettajalle).
 
 Osassa 7 teimme toimivan Todo-sovelluksen, jossa tehtävät mallinnettiin pitkälti

@@ -1,9 +1,5 @@
 # JavaFX osa 1, SceneBuilder
 
-> [!VAROITUS]
-> Tämä osa julkaistaan 23. helmikuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 > [!Osaamistavoitteet]
 > - Osaat tehdä JavaFX-projektin
 > - Ymmärrät käyttöliittymän luomisen periaatteet SceneBuilderia käyttäen
