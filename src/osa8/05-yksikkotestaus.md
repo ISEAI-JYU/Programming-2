@@ -40,7 +40,8 @@ projektin `pom.xml`-tiedostoon `junit-jupiter`-riippuvuus.
 
 Testit kirjoitetaan tavallisesti hakemistoon `src/test/java`.
 
-Kokeillaan tehdä pääluokkaamme ensin aliohjelma `Keskiarvo`, joka laskee
+Kokeillaan tehdä yksinkertainen testi käyttäen JUnitia. Tehdään uusi
+Maven-projekti. Lisätään pääluokkaamme aliohjelma `Keskiarvo`, joka laskee
 keskiarvon kuitenkin niin, jos listassa on `lopetusluku` tai sitä suurempi luku,
 kaikki sen jälkeen olevat luvut jätetään huomioimatta. 
 
@@ -63,8 +64,9 @@ public static double keskiarvo(List<Integer> luvut, int lopetusluku) {
 ```
 
 Tehdään sitten tälle metodille yksikkötesti. Tee `test/java`-kansioon uusi
-luokka `KeskiarvoTest` ja kirjoita siihen seuraavat kaksi testimetodia. Muuta
-ensimmäinen `import`-lause vastaamaan oman pääluokkasi nimeä.
+luokka `KeskiarvoTest` ja kirjoita siihen seuraavat kaksi testimetodia. Jos
+kopioit alla olevan koodin, muuta jälleen ensimmäinen `import`-lause vastaamaan
+oman pääluokkasi nimeä.
 
 ```java,ignore
 import fi.jyu.ohj2.Main;
