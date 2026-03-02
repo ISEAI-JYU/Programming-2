@@ -1,29 +1,28 @@
 # Versionhallinnan etäkäyttö 
 
-Tähän asti olemme käyttäneet versiohallintaa vain omalla koneella. Jotta koodi 
-on turvassa kiintolevyn rikkoutumiselta ja jotta sen voi jakaa muille, 
-koodi pitää yleensä viedä **etävarastoon** (engl. *remote repository*).
-Etävarasto voi olla vaikkapa toinen verkossa oleva tietokone, mutta nykyään on
-yleisempää käyttää jotakin julkista etävarastopalvelua, kuten GitHub- tai
-GitLab-palveluita. Kummatkin palvelut toimivat etävarastona sekä tarjoavat
-projektihallintaan hyödyllisiä lisäominaisuuksia, kuten
-tehtävähallintatyökaluja, keskustelupalstoja ja muita yhteistyötä helpottavia
-työkaluja. 
-
+Tähän asti olemme käyttäneet versiohallintaa vain omalla koneella. Jotta koodi
+on turvassa kiintolevyn rikkoutumiselta ja jotta sen voi jakaa muille, koodi
+pitää yleensä viedä **etävarastoon** (engl. *remote repository*). Etävarasto voi
+olla vaikkapa toinen verkossa oleva tietokone, mutta nykyään on yleisempää
+käyttää jotakin julkista etävarastopalvelua, kuten GitHub- tai
+GitLab-palveluita. Nämä, kuten monet muut vastaavat Git-etävarastopalvelut
+tarjoavat myös muita projektihallinnassa hyödyllisiä lisäominaisuuksia, kuten
+tehtävähallintaa, keskustelupalstoja ja muita yhteistyötä helpottavia
+työkaluja. Nämä lisätyökalut eivät sinänsä ole Git-työkaluja, mutta ne tekevät etävarastopalveluista monipuolisia yhteistyöalustoja.
 
 Tässä osassa siirrämme paikallisen projektin GitLab- tai GitHub-palveluun.
-Jyväskylän yliopiston opiskelijoilla on käytössään Jyväskylän yliopiston
-GitLab-palvelin. Muussa tapauksessa koodin voi ladata GitHub-palveluun.
+Jyväskylän yliopiston opiskelijoilla on käytössään JY:n oma GitLab-palvelin.
+Muut opiskelijat voivat ladata koodin esimerkiksi GitHub-palveluun.
 
 ## Etävaraston luominen
 
-Jotta git-varaston voi ladata etävarastopalveluun, palvelussa tulee ensin luoda
+Jotta Git-varasto voidaan ladata etävarastopalveluun, palvelussa tulee ensin alustaa
 etävarasto. Etävarastopalvelut kutsuvat etävarastoja usein myös projekteiksi
 tarjottujen lisäpalvelujen takia.
 
-### [GitLab (JYU)](#tab/gitlab)
+### [GitLab (JY)](#tab/gitlab)
 
-1. Kirjaudu sisään [JYU:n GitLabiin](https://gitlab.jyu.fi/) yliopiston
+1. Kirjaudu sisään [Jyväskylän yliopiston GitLab-palveluun](https://gitlab.jyu.fi/) yliopiston
    tunnuksilla. Kirjoita tunnus muodossa `tunnus` **ilman** `@jyu.fi`-päätettä.
 2. Paina oikeassa yläpalkissa olevaa `+`-painiketta ja valitse **New project/repository**:
 
@@ -44,7 +43,7 @@ tarjottujen lisäpalvelujen takia.
       Omissa projekteissa voi valita mielestään sopivan.
     - **Project configuration**: Ota kaikki ruksit pois päältä. **Poista**
       valinta erityisesti kohdasta *Initialize repository with a README*, sillä
-   meillä on jo lokaalisti olemassa oleva projekti.
+   meillä on jo lokaalisti olemassa oleva projekti. 
 
     Lomakkeen pitäisi lopuksi näyttää täältä:
 
@@ -154,7 +153,7 @@ Voimme nyt lähettää koodin etävarastoon.
 Ennen koodin lähettämistä meidän tulee vielä selvittää etävaraston käyttäjätunnus ja
 salasana. Nämä riippuvat palvelusta.
 
-### [GitLab (JYU)](#tab/gitlab)
+### [GitLab (JY)](#tab/gitlab)
 
 Etävarastoon lähettämisen yhteydessä käyttäjätunnus on aina yliopiston tunnus
 ilman `@jyu.fi`-päätettä. Salasanana toimii yliopiston salasana.
@@ -189,7 +188,7 @@ erillinen pääsyavain (engl. Personal Access Token, PAT):
 
 Valitse käytettävä etävarastopalvelu:
 
-- **Jyväskylän yliopiston opiskelijat**: valitse GitLab (JYU). Halutessaan voi vaihtoehtoisesti käyttää GitHubia.
+- **Jyväskylän yliopiston opiskelijat**: valitse GitLab (JY). Halutessasi voit vaihtoehtoisesti käyttää GitHubia.
 - **Muussa tapauksessa**, valitse GitHub.
 
 ***
@@ -203,11 +202,11 @@ Tämä komento tekee kaksi asiaa:
 
 1. `push` lähettää paikalliset commitit etävarastoon.
 2. `-u origin main` linkittää paikallisen `main`-haaran varaston
-   `main`-haaraan. Tämän avulla git-työkalu jatkossa tietää, että `git
+   `main`-haaraan. Tämän avulla Git-työkalu jatkossa tietää, että `git
    push` -komento ilman parametreja lähettää koodia aina `origin`-etävarastoon.
 
 Huomaa, että ensimmäisen koodin lähettämisen, eli ns. push-komennon yhteydessä,
-git-työkalu voi kysyä tunnusta ja salasanaa. Tunnus- ja salasanadialogi eroaa
+Git-työkalu voi kysyä tunnusta ja salasanaa. Tunnus- ja salasanadialogi eroaa
 käyttöjärjestelmästä toiseen, mutta periaate on sama: anna yllä olevien ohjeiden
 mukainen tunnus ja salasana.
 
@@ -217,11 +216,12 @@ Kun etävarasto on kerran määritelty ja ensimmäinen push on tehty, jatkossa
 työnkulku on yksinkertainen:
 
 1. Tee muutoksia koodiin.
-2. `git add .`, joka lisää muutokset git-työkalun "käsittelyjonoon".
+2. `git add .`, joka lisää muutokset Git-työkalun "käsittelyjonoon".
 3. `git commit -m "Lisätty muokkausikkuna"`, joka tekee jonossa olevista
    muutoksista commitin.
 4. `git push`, joka lähettää kaikki tähän mennessä tehdyt commitit etävarastoon talteen.
 
+## Tehtävät
 
 <task>
   <task-title>Tehtävä 8.8: Git-etävarasto. <points>1 p.</points> </task-title>
