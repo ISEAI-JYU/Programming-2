@@ -20,30 +20,28 @@ näyttää, kuten otsikko, prioriteetti ja se, onko tehtävä tehty vai ei.
 ## Esivalmistelu: Tehtävä-luokka havaittavaksi
 
 JavaFX:n `TableView` osaa reagoida olioiden määrän muutosten lisäksi olioiden
-attribuuttien muutoksiin. Esimerkiksi jos jonkun tehtävän otsikkoa muutetaan
-käyttöliittymässä, `TableView` osaa havaita muutoksen automaattisesti. Tätä
-varten kuitenkaan pelkästään `ObservableList`-listan käyttö ei riitä, koska se
-osaa ilmoittaa kuuntelijoille vain tehtävien lisäämistä ja poistamista. Sen
-sijaan meidän tulee tehdä itse tehtävä-olio ja myös sen ominaisuudet havaittaviksi.
+sisällä tapahtuneeseen muutokseen. Esimerkiksi jos jonkun tehtävän otsikkoa
+muutetaan, `TableView` osaa havaita muutoksen automaattisesti. Tätä varten
+kuitenkaan pelkästään `ObservableList`-listan käyttö ei riitä, koska se osaa
+ilmoittaa kuuntelijoille vain tehtävien lisäämistä ja poistamista. Sen sijaan
+meidän tulee tehdä itse tehtävä-olio ja myös sen ominaisuudet havaittaviksi.
 
 Olion yksittäisiä ominaisuuksia voidaan muuttaa havaittaviksi käyttäen JavaFX:n
 niin kutsuttuja property-tyyppejä. Property-tyypit "käärivät" tavalliset arvot,
 kuten `Boolean` tai `String`, ja tarjoavat mekanismin ilmoittaa, kun niiden arvo
 muuttuu. Esimerkiksi `StringProperty` on havaittava versio `String`-tyypistä,
-`BooleanProperty` vastaavasti `Boolean`-tyypistä ja niin edelleen. Havaittavat
+`BooleanProperty` vastaavasti `Boolean`-tyypistä ja niin edelleen. 
+<!--Havaittavat
 tyypit mahdollistavat sen, että olion yksittäisten attribuuttien arvojen
 muutoksia voidaan havaita samalla tavalla kuin `ObservableList`-listassa voidaan
-havaita olioiden lisäämistä ja poistoa.
+havaita olioiden lisäämistä ja poistoa. -->
 
 Tarvitsemme `Tehtava`-luokkaamme siis merkkijono- ja totuusarvotyyppien
-havaittavat versiot. Näille löytyy JavaFX:stä valmiit toteutukset:
-`SimpleStringProperty` ja `SimpleBooleanProperty`.
-
-Päivitetään `Tehtava`-mallimme käyttämään `Property`-kääreitä, jotta tehtävän
-kaikki tiedot ovat havaittavia. Yksinkertaisesti sanottuna, kun aiemmin
-tehtävällä oli tavallinen `boolean tehty` -muuttuja, joka oli piilotettu
-ohjelman uumeniin, muutamme sen nyt _observable_-tyyppiseksi, `BooleanProperty
-tehty`-muuttujaksi:
+havaittavat versiot. Kun aiemmin tehtävällä oli tavallinen `boolean tehty`
+-muuttuja, joka oli piilotettu ohjelman uumeniin, muutamme sen nyt
+_observable_-tyyppiseksi. Vastaava muutos tehdään myös tehtävän tekstille.
+Näille löytyy JavaFX:stä valmiit toteutukset: `SimpleStringProperty` ja
+`SimpleBooleanProperty`. 
 
 ```java,ignore
 import javafx.beans.property.*;
@@ -83,10 +81,10 @@ public class Tehtava {
 ```
 
 Nyt yksittäisen tehtävän ominaisuudet ovat *observable* eli havaittavia. Tämä
-mahdollistaa käyttöliittymän näkymän *sitomisen* (engl. binding) dataan. Näkymä
-voi kuunnella tehtävien ominaisuuksien muutoksia. Näkymä päivittyy heti kun arvo
-muuttuu datassa. Kun käyttäjä muuttaa arvoa näkymässä, muutos päivittyy samaan
-propertyyn. Palaamme tähän ajatukseen seuraavaksi tarkemmin.
+mahdollistaa käyttöliittymän näkymän *sitomisen* (engl. binding) dataan, ja
+näkymä päivittyy kun arvo muuttuu datassa. Toisaalta kun käyttäjä muuttaa arvoa
+käyttöliitymässä, muutos päivittyy samaan propertyyn. Palaamme tähän ajatukseen
+seuraavaksi tarkemmin.
 
 ## TableView-komponentin lisääminen ja käyttöliittymän siistiminen
 
@@ -310,12 +308,12 @@ näyttäminen.
 ## Tehty-sarake valintaruuduksi
 
 Oletuksena taulukossa näytetään arvojen merkkijonoesityksiä, minkä takia
-tehty-tila näytetään `false` ja `true` -teksteinä. Olisi kuitenkin mukavaa, jos
-tehtävän tila olisi edelleen valintaruutu, joka voisi merkata tehdyksi.
+tehty-tila näytetään `false` ja `true` -teksteinä. On kuitenkin aika oleellista,
+että tehtävän tila olisi edelleen valintaruutu, joka voisi merkata tehdyksi.
 
 Tätä varten taulukkojen `TableColumn`-sarakekomponenteissa on olemassa
 `setCellFactory()`-metodi, jonka avulla sarakkeessa näytetävien solujen ulkoasua
-voi muuttaa. Lisäksi JavaFX tarjoaa valmiita rakentajia yleisimille
+voi muuttaa. Lisäksi JavaFX tarjoaa valmiita rakentajia yleisimmille
 saraketyypeille. Esimerkiksi valintaruutuja voi luoda käyttäen
 `CheckBoxTableCell`-luokkaa ([JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.controls/javafx/scene/control/cell/CheckBoxTableCell.html)).
 Luokassa oleva `forTableColumn`-luokkametodi palauttaa oikeanmuotoisen
@@ -382,13 +380,12 @@ private CheckBox luoCheckBox(Tehtava t) {
 ```
 
 Kuitenkin huomaamme nopeasti ongelman: valintaruudun klikkaaminen ei enää
-tallenna muuttunutta tilaa tiedostoon. 
-Tämä on osin odotettua: vanhassa toteutuksessa valintaruudun klikkaaminen
-pakotti muutoksen `tehtavat`-listaan käyttäen `remove()` ja `add()`-metodeja,
-jotka puolestaan ilmoittivat muutoksesta `initialize()`-metodissa olevalla
-havaitsijalle.
-Valintaruutu ainoastaan muuttaa datan arvoa, jolloin `tehtavat`-lista ei muutu
-eikä listan havaitsijassa olevaa `tallenna()`-metodia ikinä suoriteta.
+tallenna muuttunutta tilaa tiedostoon. Tämä on osin odotettua: vanhassa
+toteutuksessa valintaruudun klikkaaminen pakotti muutoksen `tehtavat`-listaan
+käyttäen `remove()` ja `add()`-metodeja, jotka puolestaan ilmoittivat
+muutoksesta `initialize()`-metodissa olevalla havaitsijalle. Valintaruutu
+ainoastaan muuttaa datan arvoa, jolloin `tehtavat`-lista ei muutu eikä listan
+havaitsijassa olevaa `tallenna()`-metodia ikinä suoriteta.
 
 ## Tallennus tehtävän tilan muutoksesta
 
@@ -530,7 +527,7 @@ Tämä periaatteessa onnistuu jo nyt käyttöliittymästä, sillä `TableView` t
 lajittelua klikkaamalla sarakkeen otsikosta. Tehdään kuitenkin tämä
 kontrollerissa, jotta käyttäjän ei tarvitse kytkeä lajittelua päälle käsin.
 
-JavaFX tarjoaa useamman tavan hoitaa lajittelu. Eräs tapa tehdä *pysyvä*
+JavaFX tarjoaa useamman tavan hoitaa lajittelu. Eräs tapa tehdä pysyvä
 lajittelu on käyttää `ObservableList`-listan `sorted()`-metodia, joka
 ottaa parametriksi `Comparator`-vertailijan ja palauttaa `SortedList`-listan
 (ks.

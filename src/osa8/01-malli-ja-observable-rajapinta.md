@@ -255,12 +255,13 @@ kuuntelijan. Kun listassa tapahtuu muutos, JavaFX ilmoittaa siitä kaikille
 kuuntelijoille yksi kerrallaan. Yksi havaitsija voi esimerkiksi päivittää
 käyttöliittymää, toinen voi kirjoittaa lokia ja kolmas voi tehdä validointia.
 
-Huomionarvoista on, että `ObservableList`-olion kuuntelija reagoi vain listan
-rakenteen muutoksiin (lisäys, poisto, jne.), ei alkioiden sisällön muutoksiin.
-Niinpä `ObservableList`-olion kuuntelijaa *ei* kutsuta silloin, kun listan
-yksittäinen alkio muuttuu, esimerkiksi jos `nimet`-listan ensimmäinen alkio
-muuttuu "Denis" -> "Antti-Jussi". Palaamme tähän seikkaan [osassa
-8.2](./02-tableview.md), kun käsittelemme property-tyyppejä.
+Huomionarvoista on, että `ObservableList`-olion kuuntelija reagoi
+oletusarvoisesti vain listan rakenteen muutoksiin (lisäys, poisto, jne.), ei
+alkioiden sisällön muutoksiin. Niinpä `ObservableList`-olion kuuntelijaa *ei*
+kutsuta silloin, kun listan yksittäinen alkio muuttuu, esimerkiksi jos
+`nimet`-listan ensimmäinen alkio muuttuu "Denis" -> "Antti-Jussi". Palaamme
+tähän seikkaan [osassa 8.2](./02-tableview.md), kun käsittelemme
+property-tyyppejä.
 
 <details><summary> Valinnaista lisätietoa: Miksi lambdalausekkeessa tarvitaan tyyppimuunnos? </summary>
 
