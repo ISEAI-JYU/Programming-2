@@ -221,6 +221,10 @@ lähtötilanne, sitten kutsutaan testattavaa metodia ja lopuksi tarkistetaan, et
 kokoelman tila muuttui oikein. Tämä on juuri sellaista bisneslogiikan testausta,
 jota MVC:n mukainen rakenne meille mahdollistaa.
 
+Lisää `.gitignore`-tiedostoon rivi `testitehtavat.json`, jotta testitiedosto ei päädy
+versiohallintaan. Jos ehdit jo lisäämään sen versiohallintaan, poista se sieltä
+komennolla `git rm --cached testitehtavat.json` ja tee uusi commit.
+
 <task>
   <task-title>Tehtävä 8.6: bisneslogiikan testaaminen.<points>1 p.</points></task-title> 
   <handout>
