@@ -482,11 +482,11 @@ välimuistiin.
 public class MockTehtavaRepository implements TehtavaRepository {
 
     // Keskusmuistissa oleva data "tiedoston" sijaan testejä varten
-    private List<Tehtava> tallennetutData = new ArrayList<>();
+    private List<Tehtava> tallennetutTehtavat = new ArrayList<>();
 
     @Override
     public List<Tehtava> lataa() {
-        return tallennetutData; 
+        return tallennetutTehtavat; 
     }
 
     @Override
@@ -504,8 +504,8 @@ public class MockTehtavaRepository implements TehtavaRepository {
         }
     }
     
-    public List<Tehtava> haeTallennetut() {
-        return this.tallennetutData;
+    public List<Tehtava> getTallennetutTehtavat() {
+        return this.tallennetutTehtavat;
     }
 }
 ```
@@ -532,7 +532,7 @@ class TehtavakokoelmaTest {
         assertEquals("Käy kaupassa", malli.getTehtavat().get(0).getOtsikko(), "Otsikon pitäisi täsmätä");
         
         // 4. Assert 2: Varmistetaan mock-luokan avulla, että kokoelma laukaisi tallennuksen tapahtuman yhteydessä
-        assertEquals(1, mockRepo.haeTallennetut().size(), "Data olisi pitänyt tallentaa rajapinnan läpi!");
+        assertEquals(1, mockRepo.getTallennetutTehtavat().size(), "Data olisi pitänyt tallentaa rajapinnan läpi!");
     }
 
     @Test
