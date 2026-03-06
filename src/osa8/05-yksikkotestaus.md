@@ -25,9 +25,8 @@ Java-maailmassa yksikkötestejä tehdään usein **JUnit**-kirjastolla. JUnit an
 valmiit työkalut testimetodien kirjoittamiseen sekä odotettujen tulosten
 tarkistamiseen. 
 
-Kirjoitushetkellä ajantasainen JUnit-version on 6.0.3, joka tunnetaan myös
-nimellä JUnit Jupiter. JUnit otetaan käyttöön lisäämällä sen riippuvuus
-projektin `pom.xml`-tiedostoon `junit-jupiter`-riippuvuus.
+Kirjoitushetkellä ajantasainen JUnit-versio on 6.0.3, joka tunnetaan myös
+nimellä JUnit Jupiter. Lisätään `junit-jupiter`-riippuvuus `pom.xml`-tiedostoon. 
 
 ```xml
 <dependency>
@@ -37,8 +36,6 @@ projektin `pom.xml`-tiedostoon `junit-jupiter`-riippuvuus.
     <scope>test</scope>
 </dependency>
 ```
-
-Testit kirjoitetaan tavallisesti hakemistoon `src/test/java`.
 
 Kokeillaan tehdä yksinkertainen testi käyttäen JUnitia. Tehdään uusi
 Maven-projekti. Lisätään pääluokkaamme aliohjelma `Keskiarvo`, joka laskee
@@ -63,10 +60,13 @@ public static double keskiarvo(List<Integer> luvut, int lopetusluku) {
 }
 ```
 
-Tehdään sitten tälle metodille yksikkötesti. Tee `test/java`-kansioon uusi
-luokka `KeskiarvoTest` ja kirjoita siihen seuraavat kaksi testimetodia. Jos
-kopioit alla olevan koodin, muuta jälleen ensimmäinen `import`-lause vastaamaan
-oman pääluokkasi nimeä.
+Tehdään sitten tälle metodille yksikkötesti. Testit kirjoitetaan tavallisesti
+hakemistoon `src/test/java`. Kun IDEAssa klikkaa `src`-kansion päältä New
+directory, Maven-projektihallinta osaa automaattisesti tarjota
+`src/test/java`-hakemiston luomista. Tee `test/java`-kansio ja sinne uusi luokka
+`KeskiarvoTest`. Kirjoita seuraavat kaksi testimetodia. Jos kopioit alla olevan
+koodin, muuta jälleen ensimmäinen `import`-lause vastaamaan oman pääluokkasi
+nimeä.
 
 ```java,ignore
 import fi.jyu.ohj2.Main;
@@ -103,7 +103,10 @@ mikä meni pieleen.
 Meiltä puuttuu yksi tärkeä testi: mitä tapahtuu, jos yhtään validia lukua ei
 ole? Sovitaan tässä, että aliohjelmamme tulisi heittää
 `IllegalArgumentException`- poikkeus. Kirjoitetaan vielä testi, joka varmistaa,
-että tämä tapahtuu:
+että tämä tapahtuu.
+
+Poikkeuksen odottaminen JUnitissa onnistuu `assertThrows`-metodilla. Se ottaa
+parametrina odotetun poikkeusluokan ja lambda-lausekkeen, joka sisältää testattavan koodin.
 
 ```java,ignore
 @Test
