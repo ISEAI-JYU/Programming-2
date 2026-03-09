@@ -83,6 +83,18 @@ details {
     margin-block: 1em;
 } 
 
+details {
+    h1, h2, h3, h4, h5, h6 {
+        &:first-child {
+            display: inline;
+
+            a {
+                pointer-events: none;
+            }
+        }
+    }
+}
+
 details summary {
     user-select: none;
 }
@@ -406,4 +418,20 @@ svg.svgbob text {
   font-variant-ligatures: none;
   font-feature-settings: "kern" 0, "liga" 0, "calt" 0;
   letter-spacing: 0;
+}
+
+div.ht-reqs {
+    counter-reset: section;
+    .req {
+        counter-increment: section;
+        
+        ol {
+            padding-inline-start: 1.5em;
+        }
+
+        ol > li::marker {
+            content: counter(section) "." counter(list-item) " ";
+            font-weight: bold;
+        }
+    }
 }
