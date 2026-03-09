@@ -1,9 +1,5 @@
 # Harjoitustyö, vaihe 1
 
-> [!VAROITUS]
-> Tämä osa julkaistaan 9. maaliskuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 Tässä osassa aloitetaan oman harjoitustyön toteutus. Harjoitustyö toteutetaan
 vaiheittain osissa 9-12, ja viimeistään osan 12 loppuun mennessä harjoitustyö
 tulee palauttaa ja hyväksyttää tuntiopettajalla etä- tai lähiohjauksessa. Lue
