@@ -18,6 +18,22 @@ tehdyn Todo-sovelluksen. Saat siitä merkittävästi apua harjoitustyön toteutu
 tuntiopettajalle ennen osan 12 palautusta etä- tai lähiohjauksessa.** Kun
 tuntiopettaja on hyväksynyt työsi, hän tekee siitä merkinnän TIMissä.
 
+## Parityöt
+
+Harjoitustyön voi tehdä yksin tai parin kanssa. Sovelluksessa tulee olla
+vähintään kolme mallinnettavaa kohdetta (yksilötöissä kaksi; vaatimus 1.1), sekä
+kolme näkymää (yksilötöissä kaksi; vaatimus 4.1). Muut vaatimukset ovat samat
+kuin yksilötyössäkin.
+
+Parityössä kummankin tulee osallistua mahdollisimman tasapuolisesti työn
+edistämiseen. Harjoitustyön palauttamisen yhteydessä kummankin tekijän tulee
+pystyä osoittamaan ohjaajalle, että pystyy itse toteuttamaan harjoitustyön
+vaatimukset. Ei voi siis olla esimerkiksi niin, että toinen tekijä keskittyy
+yhteen osa-alueeseen, esimerkiksi käyttöliittymään, ja toinen tekijä hoitaa
+koodin ja tietomallin toteutuksen. 
+
+Yli kahden hengen ryhmiä ei sallita. 
+
 ## Aihe
 
 Voit valita valmiin aiheen alla olevista vaihtoehdoista, tai keksiä oman aiheen,

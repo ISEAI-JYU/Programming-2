@@ -14,3 +14,8 @@ oleellisista mallinnettavista kohteista.
 Voit ottaa mallia valmiiden aiheiden kuvauksista.
 Palautuksen jälkeen näytä suunnitelma ohjaajalle lähi- tai etäohjauksessa ennen
 kuin aloitat muiden vaiheiden suorittamista.
+
+**Paritöissä** sovelluksessa tulee olla vähintään kolme mallinnettavaa kohdetta
+(yksilötöissä kaksi; vaatimus 1.1), sekä kolme näkymää (yksilötöissä kaksi;
+vaatimus 4.1). Tästä syystä parityön suunnitelma tulee aina tarkastuttaa
+ohjaajalla ennen seuraaviin vaiheisiin etenemistä. 
