@@ -5,4 +5,5 @@
 > {{#include ../ei-julkaistu.md}}
 
 > [!Osaamistavoitteet]
-> - Harjoitustyön tarkastus
+> - Harjoitustyön tarkastus ma 13.4.2026 mennessä. Näytä harjoitustyösi
+>   ohjaajalle joko etä- tai lähiohjauksessa.
