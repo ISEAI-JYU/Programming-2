@@ -692,9 +692,14 @@ silloin, kun ne liittyvät käyttöliittymän ja datan kytkemiseen.**
 
 ### Vaatimus 8: Koodin laatu
 
-1. **IntelliJ IDEA:n ei tule raportoida mitään virheitä tai varoituksia Java-lähdekoodissa.**
+1. **IntelliJ IDEAssa ei saa näkyä mitään virheitä tai varoituksia Java-lähdekoodissa.**
 
-    IntelliJ IDEA merkitsee varoitukset keltaisella ja virheet punaisella.
+    Käännösvirheet ja varoitukset tarkistetaan käyttäen IDEAn Java-kielen
+    oletusasetuksia. IDEA merkitsee varoitukset keltaisella ja virheet
+    punaisella. Jos on *perusteltu* syy sallia jokin varoitus, siitä on
+    mainittava koodissa SuppressWarnings-kommentilla ja lyhyellä perustelulla,
+    miksi kyseinen varoitus on sallittu. 
+    
     Kielen tarkistukseen liittyvät varoitukset (vihreällä) sallitaan.
     Vastaavasti `.fxml`-tiedostossa olevia virhemerkintöjä sallitaan.
 
