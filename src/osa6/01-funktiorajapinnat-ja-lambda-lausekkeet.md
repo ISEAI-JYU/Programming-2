@@ -865,11 +865,10 @@ DZ: IMO tämä myöhempään osaan, ehkä osa 7?
 
 ## Parametri, jota ei käytetä
 
-Varsinkin käyttöliittymäkoodissa on usein tilanteita, joissa aliohjelman
-määrittely vaatii parametrin määrittämisen, mutta aliohjelman toteutus ei
-tarvitse sitä. Yksinkertainen esimerkki tästä on tapahtumankuuntelija, joka
-toteuttaa käyttöliittymäkomponentin tapahtuman käsittelevän rajapinnan, mutta ei
-tarvitse itse tapahtumatietoja.
+Käyttöliittymäkoodissa tulee usein vastaan tilanteita, joissa aliohjelman
+määrittely vaatii parametrin, mutta toteutus ei tarvitse sitä. Tyypillinen
+esimerkki on tapahtumankuuntelija: rajapinta edellyttää tapahtumaolion
+vastaanottamista, vaikka itse tapahtumatietoa ei käytettäisi.
 
 ```java,ignore
 button.addActionListener(event -> {
@@ -877,14 +876,14 @@ button.addActionListener(event -> {
 });
 ```
 
-Pieneksi ongelmaksi muodostuu tässä se, että ohjelmointiympäristö antaa
-varoituksen käyttämättömästä `event`-parametrista ("parameter 'event' is never
-used"). Varoitus on hyödyllinen, mutta juuri tässä tapauksessa ei kuitenkaan ole
-oikeasti ongelmaa.
+Tästä voi tulla ohjelmointiympäristössä varoitus käyttämättömästä
+`event`-parametrista. Varoitus on yleensä hyödyllinen, mutta tässä tapauksessa
+kyse ei ole virheestä.
 
-Koska parametria ei voi jättää kirjoittamatta, tällaisissa tilanteissa voidaan
-"hylätä" (*discard*) se jättämällä se nimeämättä. Javassa tämä tehdään
-kirjoittamalla nimen kohdalle pelkkä `_` (alaviiva). 
+Koska parametria ei voi jättää kokonaan pois, Javassa sille voidaan antaa
+nimeämätön muoto kirjoittamalla nimen paikalle `_`. Java 22:sta alkaen tämä on
+virallinen kielen ominaisuus, jota kutsutaan nimeämättömäksi muuttujaksi
+(*unnamed variable*).
 
 ```java,ignore
 button.addActionListener(_ -> {
@@ -894,12 +893,10 @@ button.addActionListener(_ -> {
 });
 ```
 
-Vastaava käytäntö on joissain muissakin kielissä, kuten
-C#:ssa.
+Tällöin ilmaistaan suoraan, että parametrin arvoa ei tarvita. Alaviivalla
+määriteltyyn parametriin ei voi viitata myöhemmin koodissa, ja mahdollinen
+"parameter is never used" -varoitus jää pois.
 
-On syytä huomata, että vaikka alaviivan käyttö on historiallisesti ollut monessa
-kielessä vain konventio, uudemmissa Javan versioissa (versiosta 22 alkaen)
-alaviiva-merkki on virallinen kielen ominaisuus (*unnamed variable*). Tämän
-seurauksena kääntäjä ymmärtää muuttujan olevan tarkoituksella hylätty:
-parametriin ei voi enää viitata koodissa (se aiheuttaa käännösvirheen), eikä
-kääntäjä tai ohjelmointiympäristö varoita sen käyttämättömyydestä.
+Vastaavanlainen käytäntö on käytössä myös joissakin muissa kielissä, kuten
+C#:ssa. Javassa kyse ei kuitenkaan ole enää pelkästä konventiosta, vaan
+virallisesta kieliominaisuudesta.
