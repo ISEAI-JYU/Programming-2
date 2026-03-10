@@ -185,10 +185,13 @@ valittuna. Tämä onnistuu esimerkiksi näin.
 comboBox.disableProperty().bind(checkBox.selectedProperty().not());
 ```
 
-Tämä rivi vaatinee hieman selitystä. Tässä `comboBox`-komponentti sidotaan
-`checkBox`-komponentin `selected`-ominaisuuden käänteiseen arvoon. Tämä
-tarkoittaa, että `comboBox` on käytössä vain silloin, kun `checkBox` on
-valittuna. Tämä `selectedProperty` on olemassa `CheckBox`-komponentissa
+Tämä rivi vaatinee hieman selitystä. Tässä `comboBox`-komponentin sitominen
+*disabloidaan* `checkBox`-komponentin `selected`-ominaisuuden käänteisen arvon
+mukaisesti. Toisin sanoen, kun `checkBox` on valittuna, `comboBox`-komponenttia
+"ei disabloida". JavaFX:ssä ei ole `enableProperty()`-metodia, joten meidän on
+käytettävä `disableProperty()`-metodia ja käännettävä sen arvo.
+
+Tämä `selectedProperty` on olemassa `CheckBox`-komponentissa
 valmiina, joten sitä ei tarvitse erikseen määritellä.
 
 Lopputulos näyttää vaikkapa tältä:
