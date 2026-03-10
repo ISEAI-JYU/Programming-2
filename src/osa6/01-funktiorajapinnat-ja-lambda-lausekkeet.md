@@ -862,3 +862,44 @@ DZ: IMO tämä myöhempään osaan, ehkä osa 7?
 
 - Miksi Javassa on haluttu tehdä tietue muuttumattomaksi?
 - Mitä hyötyä ja mahdollista harmia tästä on? -->
+
+## Parametri, jota ei käytetä
+
+Varsinkin käyttöliittymäkoodissa on usein tilanteita, joissa aliohjelman
+määrittely vaatii parametrin määrittämisen, mutta aliohjelman toteutus ei
+tarvitse sitä. Yksinkertainen esimerkki tästä on tapahtumankuuntelija, joka
+toteuttaa käyttöliittymäkomponentin tapahtuman käsittelevän rajapinnan, mutta ei
+tarvitse itse tapahtumatietoja.
+
+```java,ignore
+button.addActionListener(event -> {
+    IO.println("Nappia painettu!");
+});
+```
+
+Pieneksi ongelmaksi muodostuu tässä se, että ohjelmointiympäristö antaa
+varoituksen käyttämättömästä `event`-parametrista ("parameter 'event' is never
+used"). Varoitus on hyödyllinen, mutta juuri tässä tapauksessa ei kuitenkaan ole
+oikeasti ongelmaa.
+
+Koska parametria ei voi jättää kirjoittamatta, tällaisissa tilanteissa voidaan
+"hylätä" (*discard*) se jättämällä se nimeämättä. Javassa tämä tehdään
+kirjoittamalla nimen kohdalle pelkkä `_` (alaviiva). 
+
+```java,ignore
+button.addActionListener(_ -> {
+    // Tämä tapahtumankuuntelija ei tarvitse tapahtumatietoja, joten
+    // parametri voidaan hylätä nimellä "_"
+    IO.println("Nappia painettu!");
+});
+```
+
+Vastaava käytäntö on joissain muissakin kielissä, kuten
+C#:ssa.
+
+On syytä huomata, että vaikka alaviivan käyttö on historiallisesti ollut monessa
+kielessä vain konventio, uudemmissa Javan versioissa (versiosta 22 alkaen)
+alaviiva-merkki on virallinen kielen ominaisuus (*unnamed variable*). Tämän
+seurauksena kääntäjä ymmärtää muuttujan olevan tarkoituksella hylätty:
+parametriin ei voi enää viitata koodissa (se aiheuttaa käännösvirheen), eikä
+kääntäjä tai ohjelmointiympäristö varoita sen käyttämättömyydestä.
