@@ -871,7 +871,7 @@ esimerkki on tapahtumankuuntelija: rajapinta edellyttää tapahtumaolion
 vastaanottamista, vaikka itse tapahtumatietoa ei käytettäisi.
 
 ```java,ignore
-button.addActionListener(event -> {
+button.setOnAction(event -> {
     IO.println("Nappia painettu!");
 });
 ```
@@ -886,7 +886,7 @@ virallinen kielen ominaisuus, jota kutsutaan nimeämättömäksi muuttujaksi
 (*unnamed variable*).
 
 ```java,ignore
-button.addActionListener(_ -> {
+button.setOnAction(_ -> {
     // Tämä tapahtumankuuntelija ei tarvitse tapahtumatietoja, joten
     // parametri voidaan hylätä nimellä "_"
     IO.println("Nappia painettu!");
