@@ -169,6 +169,10 @@ Tässä sovelluksessa käyttäjä voi hallita tuotteita ja tehdä ostostapahtumi
  * Sovelluksessa voi olla eri näkymät tuotteille (yksi TableView) tai sekä
    tuotelista että ostostapahtumalista samassa näkymässä (kaksi TableViewia
    samassa Scenessä). 
+ * Tuotteita ja ostorivejä pitää pystyä muokkaamaan, mutta ostostapahtumia ei
+   tarvitse muuttaa ostotapahtuman jälkeen. Tässä kannattanee tehdä niin, että
+   ostotapahtuman yhteydessä tuotteen hinta kiinnitetään ostotapahtuman
+   tietoihin, jolloin tuotteen muokkaaminen ei vaikuta vanhoihin ostotapahtumiin.
  * <i class="bi bi-stars jyu-gold"></i> Rivialennus tai ostostapahtumakohtainen alennus
 
 ```plantuml
