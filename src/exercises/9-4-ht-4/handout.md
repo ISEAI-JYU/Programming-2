@@ -1,4 +1,4 @@
-Suosittelemme, että näytät käyttöliittymäsuunnitelmasi ohjaajalle suunnitelmasi,
+Suosittelemme, että näytät käyttöliittymäsuunnitelmasi ohjaajalle,
 valitsitpa valmiin aiheen tai oman aiheen. Näin saat varmistettua, että olet
 oikeilla jäljillä ja saat hyödyllistä palautetta, joka auttaa sinua toteuttamaan
 harjoitustyön onnistuneesti. 
