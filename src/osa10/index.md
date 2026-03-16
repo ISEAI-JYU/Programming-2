@@ -1,9 +1,5 @@
 # Harjoitustyö, vaihe 2
 
-> [!VAROITUS]
-> Tämä osa julkaistaan 16. maaliskuuta 2026.
-> {{#include ../ei-julkaistu.md}}
-
 Jatketaan oman harjoitustyön tekemistä luomalla harjoitustyön käyttöliittymälle
 interaktiivinen prototyyppi. Prototyypin ei vielä tarvitse sisältää varsinaista
 toiminnallisuutta, mutta se antaa kuvan siitä, miltä sovellus tulee näyttämään.
