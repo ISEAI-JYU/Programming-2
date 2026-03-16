@@ -1,4 +1,4 @@
-# Harjoitustyö, vaihe 2
+# Harjoitustyö, vaihe 2 
 
 Jatketaan oman harjoitustyön tekemistä luomalla harjoitustyön käyttöliittymälle
 interaktiivinen prototyyppi. Prototyypin ei vielä tarvitse sisältää varsinaista
