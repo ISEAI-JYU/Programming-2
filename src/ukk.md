@@ -11,7 +11,7 @@ materiaaleja päivitettiin merkittävästi keväällä 2026.
 
 ## Voinko korottaa aiempaa suoritustani?
 
-Jo hyväksyttyä arvosanaa voi korottaa enintään kolmen vuoden kuluessa hyväksytyn
+Hyväksyttyä arvosanaa voi korottaa enintään kolmen vuoden kuluessa hyväksytyn
 arvosanan saamisesta. Korottaminen tapahtuu tekemällä kuluvan toteutuksen
 harjoitustehtävät ja tentti. Arvosana lasketaan [Suoritustavan
 1](./suorittaminen.md) mukaisesti. Aiemmin (enintään kolme vuotta sitten
