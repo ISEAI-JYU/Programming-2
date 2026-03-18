@@ -95,9 +95,9 @@ public class MainController implements Initializable {
                     setStyle("");
                 } else {
                     setText(item);
-                    Kategoria k = kategoriat.stream().filter(ka -> ka.getNimi().equals(item)).findFirst().orElse(null);
-                    if (k != null && k.isPoistettu()) {
-                        setStyle("-fx-text-fill: red; -fx-font-style: italic;");
+                    Tehtava tehtava = getTableRow().getItem();
+                    if (tehtava != null && tehtava.getKategoria().isPoistettu()) {
+                        setStyle("-fx-text-fill: red;");
                     } else {
                         setStyle("");
                     }
