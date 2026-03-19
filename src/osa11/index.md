@@ -31,7 +31,7 @@ hash-arvo on suoraan URL-osoitteessa.
 **Commit hash -osoitteen esimerkki GitLabissa**
 
  1. Kirjaudu GitLabiin ja avaa projektisi.
- 2. Klikkaa vasemmalta Code <i class="bi bi-arrow-right"></i> Commits.
+ 2. Klikkaa vasemmalta Code <i class="bi bi-chevron-right"></i> Commits.
  3. Näet listan commiteista. Valitse se commit, joka liittyy tehtävän palautukseen. Klikkaa sitä.
  4. Osoiterivillä näkyy URL-osoite, joka sisältää commit hash -arvon. Kopioi tämä URL-osoite ja liitä se tehtävän palautukseen.
 
