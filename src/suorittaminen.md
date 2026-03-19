@@ -103,7 +103,7 @@ kiellettyä.
 
 Generatiivista tekoälyä voi käyttää apuvälineenä esimerkiksi käsitteiden
 selittämiseen, tehtävänantojen ymmärtämiseen, virheilmoitusten tulkintaan,
-materiaalissa annettujen esimerkkien selittämiseen tai uusi esimerkkien
+materiaalissa annettujen esimerkkien selittämiseen tai uusien esimerkkien
 luomiseen. Tekoälytyökalulle annettavassa kehotteessa tulee huomioida, että
 työkalut ovat hyvin herkkiä tuottamaan suoria vastauksia tehtäviin. Tästä syystä
 kehotteessa tulee tyypillisesti ilmaista selkeästi, että haluat ymmärtää asian
