@@ -4,7 +4,7 @@ Aikaisempien osien perusteella sinulla pitäisi olla sovelluksen runko valmiina.
 Tässä vaiheessa toteutetaan harjoitustyön toiminnallisuudet, eli kytketään
 tietomalli käyttöliittymään. 
 
-Tässä vaiheessa palautetaan kunkin tehtävän kohdalle kyseiseen tehtävään
+Tässä vaiheessa kunkin tehtävän kohdalle palautetaan kyseiseen tehtävään
 liittyvä URL-osoite, joka sisältää niin sanotun *commit hashin*. Tällä tavalla
 ohjaaja pääsee tarvittaessa tarkastelemaan juuri tiettyyn vaiheeseen liittyvää
 koodia.
