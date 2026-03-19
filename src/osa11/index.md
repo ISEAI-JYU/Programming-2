@@ -4,6 +4,46 @@ Aikaisempien osien perusteella sinulla pitäisi olla sovelluksen runko valmiina.
 Tässä vaiheessa toteutetaan harjoitustyön toiminnallisuudet, eli kytketään
 tietomalli käyttöliittymään. 
 
+Tässä vaiheessa palautetaan kunkin tehtävän kohdalle kyseiseen tehtävään
+liittyvä URL-osoite, joka sisältää niin sanotun *commit hashin*. Tällä tavalla
+ohjaaja pääsee tarvittaessa tarkastelemaan juuri tiettyyn vaiheeseen liittyvää
+koodia.
+
+## Commit hash
+
+Commit hash on Gitin muodostama yksilöllinen tunniste yksittäiselle commitille.
+Se näyttää yleensä pitkältä merkkijonolta, kuten `a1b2c3d4...`, ja sen avulla
+voidaan viitata täsmällisesti juuri tiettyyn projektin tilaan.
+
+Commitin tarkoitus on tallentaa yksi versio projektista versionhallintaan.
+Commit hash taas kertoo, *mikä* näistä tallennetuista versioista on kyseessä.
+Kun tehtävän palautuksessa annetaan commit hash, ohjaaja voi avata juuri sen
+hetken koodin, jossa tehtävä on ollut valmiina.
+
+Commit hash ei edusta vain yksittäistä tiedostoa tai muutosta, vaan
+commit-oliota, joka sisältää metatietoa yhdestä commitista: Näitä ovat
+esimerkiksi viesti ("message"), tekijä ("author"), viittaus projektin
+hakemistorakenteeseen ("tree") sekä viittaus edelliseen commitiin ("parent"). 
+
+GitLab- ja GitHub-palveluissa on mahdollisuus tarkastella committeja siten, että
+hash-arvo on suoraan URL-osoitteessa.
+
+**Commit hash -osoitteen esimerkki GitLabissa**
+
+ 1. Kirjaudu GitLabiin ja avaa projektisi.
+ 2. Klikkaa vasemmalta Code <i class="bi bi-arrow-right"></i> Commits.
+ 3. Näet listan commiteista. Valitse se commit, joka liittyy tehtävän palautukseen. Klikkaa sitä.
+ 4. Osoiterivillä näkyy URL-osoite, joka sisältää commit hash -arvon. Kopioi tämä URL-osoite ja liitä se tehtävän palautukseen.
+
+**Commit hash -osoitteen esimerkki GitHubissa**
+
+ 1. Kirjaudu GitHubiin ja avaa projektisi.
+ 2. Klikkaa vihreän Code-kuvakkeen alta **NNN Commits**, jossa NNN on committien määrä.
+ 3. Näet listan commiteista. Valitse se commit, joka liittyy tehtävän palautukseen. Klikkaa sitä.
+ 4. Osoiterivillä näkyy URL-osoite, joka sisältää commit hash -arvon. Kopioi tämä URL-osoite ja liitä se tehtävän palautukseen.
+
+## Tehtävät
+
 <task>
   <task-title>Tehtävä 11.1: Tiedon lisääminen. <points>1 p.</points> </task-title>
   <handout>
