@@ -1,0 +1,1 @@
+Toteuta tietomallille yksikkötestejä JUnitilla.

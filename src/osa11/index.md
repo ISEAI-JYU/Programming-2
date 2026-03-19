@@ -48,9 +48,7 @@ hash-arvo on suoraan URL-osoitteessa.
   <task-title>Tehtävä 11.1: Tiedon lisääminen. <points>1 p.</points> </task-title>
   <handout>
 
-Toteuta tiedon lisääminen. Lisäämisen jälkeen ohjelman tulee näyttää lisätty
-tieto sovelluksen käyttöliittymässä. Validointia ei tarvitse vielä tehdä. Tässä
-kohden riittää, että dataa syntyy sovellukseen. 
+{{#include ../exercises/11-1-ht-9/handout.md}}
 
 </handout>
     <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa11/tehtava1">Tee tehtävä TIMissä</a></task-link>
@@ -61,15 +59,7 @@ kohden riittää, että dataa syntyy sovellukseen.
     <task-title>Tehtävä 11.2: Poistaminen. <points>1 p.</points></task-title>
 <handout>
 
-Toteuta tiedon poistaminen. Poistamisessa tulee huomioida ja käsitellä myös muut
-mahdolliset oliot, jotka viittaavat poistettuun olioon. Esimerkiksi, jos poistat
-Kategoria-olion
-[Kulujenseuranta-sovelluksessa](https://ohjelmointi2.it.jyu.fi/harjoitustyo.html#aihe),
-pitää poistaa (asettaa null-arvioon tai Optional.empty()-arvoon) kategoria
-kaikilta niiltä Tapahtuma-olioilta, jotka siihen viittaavat. Poistamisessa on
-myös hyvä olla varmistusdialogi esimerkiksi [Alert-luokan
-avulla](https://code.makery.ch/blog/javafx-dialogs-official/), jotta vahingossa
-tapahtuneet klikkaukset eivät tuhoa dataa.
+{{#include ../exercises/11-2-ht-10/handout.md}}
 
 </handout>
     <task-link><a
@@ -82,7 +72,7 @@ tapahtuneet klikkaukset eivät tuhoa dataa.
 
 <handout>
 
-Toteuta tiedon tallentaminen ja lukeminen tiedostosta.
+{{#include ../exercises/11-3-ht-11/handout.md}}
 
 </handout>
     <task-link><a
@@ -94,9 +84,7 @@ Toteuta tiedon tallentaminen ja lukeminen tiedostosta.
     <task-title>Tehtävä 11.4: Tiedon muokkaaminen. <points>1 p.</points></task-title>
 <handout>
 
-Toteuta tiedon muokkaaminen. Muokkauksen tulee tallentua välittömästi sekä
-tietomalliin että tiedostoon. Kuten poistamisessa, myös muokkaamisessa tulee
-huomioida muokattuun olioon viittaavat oliot.
+{{#include ../exercises/11-4-ht-12/handout.md}}
 
 </handout>
     <task-link><a
@@ -108,8 +96,7 @@ huomioida muokattuun olioon viittaavat oliot.
 <task-title>Tehtävä 11.5: Validointi. <points>1 p.</points></task-title>
 <handout>
 
-Toteuta tiedon validointi. Sovelluksessa ei saa olla mahdollista syöttää
-selkeästi virheellistä tietoa. 
+{{#include ../exercises/11-5-ht-13/handout.md}}
 
 </handout>
     <task-link><a
@@ -121,7 +108,7 @@ selkeästi virheellistä tietoa.
     <task-title>Tehtävä 11.6: Yksikkötestit. <points>1 p.</points></task-title>
     <handout>
 
-Toteuta tietomallille yksikkötestejä JUnitilla.
+{{#include ../exercises/11-6-ht-14/handout.md}}
 
 </handout>
     <task-link><a
@@ -133,9 +120,7 @@ Toteuta tietomallille yksikkötestejä JUnitilla.
     <task-title>Tehtävä 11.7: README-tiedosto. <points>1 p.</points></task-title>
 <handout>
 
-Täydennä README-tiedosto. Lisää siihen kuvaus toteuttamistasi
-toiminnallisuuksista sekä ohjeet sovelluksen käyttämiseen. Ota kuvakaappaukset
-eri näkymistä ja selitä, miten eri toiminnot toimivat. 
+{{#include ../exercises/11-7-ht-15/handout.md}}
 
 </handout>
     <task-link><a
@@ -148,7 +133,7 @@ eri näkymistä ja selitä, miten eri toiminnot toimivat.
 
 <handout>
 
-Näytä vaihe ohjaajalle.
+{{#include ../exercises/11-8-ht-16/handout.md}}
 
 </handout>
     <task-link><a
