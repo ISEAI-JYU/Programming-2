@@ -106,8 +106,8 @@ selittämiseen, tehtävänantojen ymmärtämiseen, virheilmoitusten tulkintaan,
 materiaalissa annettujen esimerkkien selittämiseen tai uusi esimerkkien
 luomiseen. Tekoälytyökalulle annettavassa kehotteessa tulee huomioida, että
 työkalut ovat hyvin herkkiä tuottamaan suoria vastauksia tehtäviin. Tästä syystä
-kehotteessa tulee tyypillisesti ilmaista selkeästi, että *et* halua suoraa
-ratkaisua.
+kehotteessa tulee tyypillisesti ilmaista selkeästi, että haluat ymmärtää asian
+*etkä* halua suoraa ratkaisua.
 
 Jos käytät tekoälyä, Microsoft 365 Copilot lienee tässä suositeltavin työkalu,
 koska [JY:llä on sopimus sen
@@ -133,10 +133,6 @@ vasemmalta.  -->
    ratkaisemista?*
 
 </details>
-
-Kehotteen perään voi olla hyvä liittää tarkentavia ohjeistuksia, kuten "haluan
-ymmärtää asian juurta jaksain" tai "älä anna suoraa ratkaisua, vaan selitä miten
-voisin lähestyä ongelmaa". 
 
 <details> <summary>Esimerkkejä kielletyistä kehotteista</summary>
 
