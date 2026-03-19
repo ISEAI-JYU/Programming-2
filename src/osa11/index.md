@@ -44,6 +44,11 @@ hash-arvo on suoraan URL-osoitteessa.
 
 ## Tehtävät
 
+Kuhunkin tehtävään palautetaan URL-osoite, joka vie commitiin etävarastossasi.
+Jos olet tehnyt omaa työtäsi hieman eri rytmissä kuin tässä vaiheistuksessa on
+esitetty, palauta URL-osoite siihen commitiin joka parhaiten edustaa kyseisen
+tehtävän vaatimuksia.
+
 <task>
   <task-title>Tehtävä 11.1: Tiedon lisääminen. <points>1 p.</points> </task-title>
   <handout>
