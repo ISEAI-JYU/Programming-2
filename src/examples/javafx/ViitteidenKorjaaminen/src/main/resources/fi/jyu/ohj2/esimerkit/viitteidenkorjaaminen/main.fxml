@@ -20,6 +20,11 @@
                <children>
                   <Label text="Tehtävät" />
                   <TableView fx:id="tehtavatTableView" prefHeight="200.0" />
+                  <HBox alignment="TOP_RIGHT">
+                     <children>
+                        <Button fx:id="muokkaaTehtavaButton" mnemonicParsing="false" onAction="#kasitteleMuokkaaTehtava" text="Muokkaa" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -27,7 +32,12 @@
                <children>
                   <Label text="Kategoriat" />
                   <ListView fx:id="kategoriatListView" prefHeight="200.0" prefWidth="200.0" />
-                  <Button fx:id="poistaKategoriaButton" mnemonicParsing="false" onAction="#kasittelePoistaKategoria" text="Poista / Palauta" />
+                  <HBox alignment="TOP_RIGHT" spacing="20.0">
+                     <children>
+                        <Button fx:id="muokkaaKategoriaButton" mnemonicParsing="false" onAction="#kasitteleMuokkaaKategoria" text="Muokkaa" />
+                        <Button mnemonicParsing="false" onAction="#kasittelePoistaKategoria" text="Poista" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
