@@ -1,9 +1,7 @@
 package fi.jyu.ohj2.esimerkit.viitteidenkorjaaminen;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.property.BooleanProperty;
 
 public class Kategoria {
 

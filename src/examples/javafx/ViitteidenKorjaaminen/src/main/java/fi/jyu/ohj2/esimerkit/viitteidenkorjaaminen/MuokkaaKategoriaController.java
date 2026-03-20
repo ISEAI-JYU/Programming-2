@@ -23,11 +23,6 @@ public class MuokkaaKategoriaController implements Initializable {
 
     private Optional<Kategoria> palautettavaKategoria = Optional.empty();
 
-    public MuokkaaKategoriaController(Kategoria kategoria) {
-        this.kategoria = kategoria;
-        kategoriaNimiTextField = new TextField(kategoria.getNimi());
-    }
-    
     public MuokkaaKategoriaController(Kategoria kategoria, ObservableList<Kategoria> kategoriat) {
         this.kategoria = kategoria;
     }

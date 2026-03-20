@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class MainController implements Initializable {
             }
             tehtavat.setAll(t);
 
-        } catch (Exception e) {
+        } catch (JacksonException e) {
             e.printStackTrace();
         }
 

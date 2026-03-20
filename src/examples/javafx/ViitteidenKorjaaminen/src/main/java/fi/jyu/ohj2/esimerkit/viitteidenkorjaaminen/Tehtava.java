@@ -11,7 +11,6 @@ public class Tehtava {
     private final ObjectProperty<Kategoria> kategoria = new SimpleObjectProperty<>();
 
     public Tehtava() {
-        // Tarvitaan Jacksonille
     }
 
     public Tehtava(String otsikko, Kategoria kategoria) {
