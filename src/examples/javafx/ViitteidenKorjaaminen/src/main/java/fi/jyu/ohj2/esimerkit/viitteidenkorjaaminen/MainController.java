@@ -1,6 +1,5 @@
 package fi.jyu.ohj2.esimerkit.viitteidenkorjaaminen;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,12 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tools.jackson.databind.ObjectMapper;
@@ -30,12 +34,10 @@ public class MainController implements Initializable {
 
     private static final Kategoria TYHJA_KATEGORIA = new Kategoria("");
 
-    private final ObservableList<Kategoria> kategoriat = FXCollections.observableArrayList(k-> 
-        new Observable[] {
+    private final ObservableList<Kategoria> kategoriat = FXCollections.observableArrayList(k -> new Observable[] {
             k.nimiProperty(),
             k.poistettuProperty()
-        }
-    );
+    });
 
     private final ObservableList<Tehtava> tehtavat = FXCollections.observableArrayList();
 
@@ -53,6 +55,12 @@ public class MainController implements Initializable {
 
     @FXML
     private Button muokkaaTehtavaButton;
+
+    @FXML
+    private Button lisaaKategoriaButton;
+
+    @FXML
+    private Button poistaKategoriaButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,18 +86,25 @@ public class MainController implements Initializable {
         TableColumn<Tehtava, String> otsikkoColumn = new TableColumn<>("Otsikko");
         otsikkoColumn.setCellValueFactory(cellData -> cellData.getValue().otsikkoProperty());
         TableColumn<Tehtava, String> kategoriaColumn = new TableColumn<>("Kategoria");
-        kategoriaColumn.setCellValueFactory(cellData ->
-                Bindings.selectString(cellData.getValue().kategoriaProperty(), "nimi"));
+        // flatMap seuraa dynaamista ketjua
+        // Tehtava.kategoriaProperty() -> Kategoria.nimiProperty().
+        // Jos tehtävän kategoria vaihtuu, sidonta siirtyy automaattisesti seuraamaan
+        // uuden kategorian nimiPropertya. Jos taas saman kategorian nimi muuttuu,
+        // taulukon solu päivittyy myös silloin. null-kategoria tuottaa null-arvon
+        // ilman poikkeusta.
+        kategoriaColumn.setCellValueFactory(
+                cellData -> cellData.getValue().kategoriaProperty().flatMap(kategoria -> kategoria.nimiProperty()));
 
         tehtavatTableView.setRowFactory(tv -> {
             TableRow<Tehtava> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
                     valittuTehtava = Optional.of(row.getItem());
-                    muokkaaTehtavaButton.setDisable(false);
+                    muokkaaTehtavaButton.setDisable(false);                    
                 } else {
                     valittuTehtava = Optional.empty();
                     muokkaaTehtavaButton.setDisable(true);
+                    tehtavatTableView.getSelectionModel().clearSelection();
                 }
             });
             return row;
@@ -98,29 +113,49 @@ public class MainController implements Initializable {
         tehtavatTableView.getColumns().addAll(otsikkoColumn, kategoriaColumn);
         tehtavatTableView.setItems(tehtavat);
 
-        kategoriatListView.setCellFactory(cell -> new ListCell<Kategoria>() {
-            @Override
-            protected void updateItem(Kategoria item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setStyle("");
-                } else {
-                    setText(item.getNimi());
-                    if (item.isPoistettu()) {
-                        setStyle("-fx-text-fill: red;");
+        kategoriatListView.setCellFactory(listView -> {
+            ListCell<Kategoria> cell = new ListCell<>() {
+                @Override
+                protected void updateItem(Kategoria item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        setText(null);
+                        setGraphic(null);
+                        setStyle("");
+                    } else if (item.isPoistettu()) {
+                        Text poistettuTeksti = new Text(item.getNimi());
+                        poistettuTeksti.setFill(Color.RED);
+                        poistettuTeksti.setStrikethrough(true);
+                        setText(null);
+                        setGraphic(poistettuTeksti);
+                        setStyle("");
                     } else {
+                        setText(item.getNimi());
+                        setGraphic(null);
                         setStyle("");
                     }
                 }
-            }
-        });
-        kategoriatListView.getSelectionModel().selectedItemProperty().addListener((obs, vanha, uusi) -> {
-            valittuKategoria = Optional.ofNullable(uusi);
-            muokkaaKategoriaButton.setDisable(uusi == null);
+            };
+
+            cell.setOnMouseClicked(event -> {
+                if (!cell.isEmpty()) {
+                    valittuKategoria = Optional.of(cell.getItem());
+                    muokkaaKategoriaButton.setDisable(false);
+                    poistaKategoriaButton.setDisable(false);
+                } else {
+                    valittuKategoria = Optional.empty();
+                    muokkaaKategoriaButton.setDisable(true);
+                    poistaKategoriaButton.setDisable(true);
+                    kategoriatListView.getSelectionModel().clearSelection();
+                }
+            });
+
+            return cell;
         });
         kategoriatListView.setItems(kategoriat);
+        muokkaaKategoriaButton.setDisable(true);
         muokkaaTehtavaButton.setDisable(true);
+        poistaKategoriaButton.setDisable(true);
     }
 
     @FXML
@@ -136,6 +171,41 @@ public class MainController implements Initializable {
                 tehtava.setKategoria(TYHJA_KATEGORIA);
             }
         }
+    }
+
+    @FXML
+    void kasitteleLisaaKategoria(ActionEvent event) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Uusi kategoria");
+        dialog.setHeaderText("Luo uusi kategoria");
+        dialog.setContentText("Anna kategorian nimi:");
+
+        // Jos tätä _ei_ tehdä, dialog sulkeutuu ennen kuin ehtii näyttää
+        // virheilmoituksen
+        Button okButton = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
+        okButton.addEventFilter(ActionEvent.ACTION, e -> {
+            String nimi = dialog.getEditor().getText();
+            if (nimi.isBlank()) {
+                // Näytä tekstikentässä vihje, että nimi ei saa olla tyhjä
+                dialog.getEditor().setText("");
+                dialog.getEditor().setPromptText("Nimi ei saa olla tyhjä");
+                e.consume(); // Estä dialogin sulkeutuminen
+            } else if (kategoriat.stream().anyMatch(k -> k.getNimi().equals(nimi) && !k.isPoistettu())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Virhe");
+                alert.setHeaderText("Kategoria nimeltä '" + nimi + "' on jo olemassa");
+                alert.showAndWait();
+                e.consume(); // Estä dialogin sulkeutuminen
+            }
+        });
+
+        // Tässä kohden tarvitsee enää käsitellä vain onnistuneet tapaukset,
+        // koska epäonnistuneet on estetty tapahtumasta
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(nimi -> {
+            Kategoria uusiKategoria = new Kategoria(nimi);
+            kategoriat.add(uusiKategoria);
+        });
     }
 
     @FXML

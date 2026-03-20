@@ -32,10 +32,11 @@
                <children>
                   <Label text="Kategoriat" />
                   <ListView fx:id="kategoriatListView" prefHeight="200.0" prefWidth="200.0" />
-                  <HBox alignment="TOP_RIGHT" spacing="20.0">
+                  <HBox alignment="TOP_RIGHT" spacing="10.0">
                      <children>
+                        <Button fx:id="lisaaKategoriaButton" mnemonicParsing="false" onAction="#kasitteleLisaaKategoria" text="Lisää" />
                         <Button fx:id="muokkaaKategoriaButton" mnemonicParsing="false" onAction="#kasitteleMuokkaaKategoria" text="Muokkaa" />
-                        <Button mnemonicParsing="false" onAction="#kasittelePoistaKategoria" text="Poista" />
+                        <Button fx:id="poistaKategoriaButton" mnemonicParsing="false" onAction="#kasittelePoistaKategoria" text="Poista" />
                      </children>
                   </HBox>
                </children>
