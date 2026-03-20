@@ -35,8 +35,7 @@ public class MainController implements Initializable {
     private static final Kategoria TYHJA_KATEGORIA = new Kategoria("");
 
     private final ObservableList<Kategoria> kategoriat = FXCollections.observableArrayList(k -> new Observable[] {
-            k.nimiProperty(),
-            k.poistettuProperty()
+            k.nimiProperty()
     });
 
     private final ObservableList<Tehtava> tehtavat = FXCollections.observableArrayList();
@@ -100,7 +99,7 @@ public class MainController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
                     valittuTehtava = Optional.of(row.getItem());
-                    muokkaaTehtavaButton.setDisable(false);                    
+                    muokkaaTehtavaButton.setDisable(false);
                 } else {
                     valittuTehtava = Optional.empty();
                     muokkaaTehtavaButton.setDisable(true);
@@ -113,6 +112,7 @@ public class MainController implements Initializable {
         tehtavatTableView.getColumns().addAll(otsikkoColumn, kategoriaColumn);
         tehtavatTableView.setItems(tehtavat);
 
+        kategoriatListView.setItems(kategoriat);
         kategoriatListView.setCellFactory(listView -> {
             ListCell<Kategoria> cell = new ListCell<>() {
                 @Override
@@ -122,13 +122,6 @@ public class MainController implements Initializable {
                         setText(null);
                         setGraphic(null);
                         setStyle("");
-                    } else if (item.isPoistettu()) {
-                        Text poistettuTeksti = new Text(item.getNimi());
-                        poistettuTeksti.setFill(Color.RED);
-                        poistettuTeksti.setStrikethrough(true);
-                        setText(null);
-                        setGraphic(poistettuTeksti);
-                        setStyle("");
                     } else {
                         setText(item.getNimi());
                         setGraphic(null);
@@ -136,7 +129,6 @@ public class MainController implements Initializable {
                     }
                 }
             };
-
             cell.setOnMouseClicked(event -> {
                 if (!cell.isEmpty()) {
                     valittuKategoria = Optional.of(cell.getItem());
@@ -149,10 +141,8 @@ public class MainController implements Initializable {
                     kategoriatListView.getSelectionModel().clearSelection();
                 }
             });
-
             return cell;
-        });
-        kategoriatListView.setItems(kategoriat);
+        }); 
         muokkaaKategoriaButton.setDisable(true);
         muokkaaTehtavaButton.setDisable(true);
         poistaKategoriaButton.setDisable(true);
@@ -161,11 +151,12 @@ public class MainController implements Initializable {
     @FXML
     void kasittelePoistaKategoria() {
         Kategoria valittu = kategoriatListView.getSelectionModel().getSelectedItem();
-        if (valittu == null || valittu.isPoistettu()) {
+        if (valittu == null) {
             return;
         }
 
-        valittu.setPoistettu(true);
+        kategoriat.remove(valittu);
+
         for (Tehtava tehtava : tehtavat) {
             if (tehtava.getKategoria() == valittu) {
                 tehtava.setKategoria(TYHJA_KATEGORIA);
@@ -190,7 +181,7 @@ public class MainController implements Initializable {
                 dialog.getEditor().setText("");
                 dialog.getEditor().setPromptText("Nimi ei saa olla tyhjä");
                 e.consume(); // Estä dialogin sulkeutuminen
-            } else if (kategoriat.stream().anyMatch(k -> k.getNimi().equals(nimi) && !k.isPoistettu())) {
+            } else if (kategoriat.stream().anyMatch(k -> k.getNimi().equals(nimi))) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Virhe");
                 alert.setHeaderText("Kategoria nimeltä '" + nimi + "' on jo olemassa");
@@ -269,10 +260,7 @@ public class MainController implements Initializable {
 
         for (Kategoria ehdokas : kategoriat) {
             if (ehdokas.getNimi().equals(nimi)) {
-                if (!ehdokas.isPoistettu()) {
-                    return ehdokas;
-                }
-                return TYHJA_KATEGORIA;
+                return ehdokas;
             }
         }
         return TYHJA_KATEGORIA;

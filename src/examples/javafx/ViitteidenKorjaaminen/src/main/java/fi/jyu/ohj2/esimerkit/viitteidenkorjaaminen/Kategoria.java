@@ -7,8 +7,7 @@ import javafx.beans.property.BooleanProperty;
 
 public class Kategoria {
 
-    private final StringProperty nimi = new SimpleStringProperty();
-    private final BooleanProperty poistettu = new SimpleBooleanProperty();
+    private final StringProperty nimi = new SimpleStringProperty();    
 
     public Kategoria() {
         // Tarvitaan Jacksonille
@@ -33,18 +32,5 @@ public class Kategoria {
 
     public String toString() {
         return getNimi();
-    }
-
-    // Poistettu
-    public void setPoistettu(boolean poistettu) {
-        this.poistettu.set(poistettu);
-    }
-
-    public boolean isPoistettu() {
-        return poistettu.get();
-    }
-
-    public BooleanProperty poistettuProperty() {
-        return poistettu;
     }
 }

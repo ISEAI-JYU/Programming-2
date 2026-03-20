@@ -43,7 +43,7 @@ public class MuokkaaTehtavaController implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle rb) {        
-        kategoriaComboBox.getItems().addAll(kategoriat.stream().filter(k -> !k.isPoistettu()).toList());
+        kategoriaComboBox.getItems().addAll(kategoriat);
         tehtavaLabel.setText(tehtava.getOtsikko());
         kategoriaComboBox.getSelectionModel().select(tehtava.getKategoria());
     }
