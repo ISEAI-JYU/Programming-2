@@ -80,3 +80,4 @@
   - [Ulkoiset UI-kirjastot](./javafx/ui-kirjastot.md)
   - [Johdettujen Observable-arvojen laskeminen](./javafx/observable-bindings.md)
   - [Validointi](./javafx/validointi.md)
+  - [Viitteiden hallinta](./javafx/viitteiden-hallinta.md)
