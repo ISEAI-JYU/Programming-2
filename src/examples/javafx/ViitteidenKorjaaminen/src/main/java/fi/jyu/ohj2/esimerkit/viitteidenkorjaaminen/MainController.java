@@ -95,26 +95,27 @@ public class MainController implements Initializable {
         kategoriaColumn.setCellValueFactory(
                 cellData -> cellData.getValue().kategoriaProperty().flatMap(kategoria -> kategoria.nimiProperty()));
 
-        tehtavatTableView.setRowFactory(tv -> {
-            TableRow<Tehtava> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (!row.isEmpty()) {
-                    valittuTehtava = Optional.of(row.getItem());
-                    muokkaaTehtavaButton.setDisable(false);
-                } else {
-                    valittuTehtava = Optional.empty();
-                    muokkaaTehtavaButton.setDisable(true);
-                    tehtavatTableView.getSelectionModel().clearSelection();
-                }
-            });
-            return row;
-        });
-
         tehtavatTableView.getColumns().addAll(otsikkoColumn, kategoriaColumn);
+        tehtavatTableView.getSelectionModel().selectedItemProperty().addListener((obs, vanha, uusi) -> {
+            valittuTehtava = Optional.ofNullable(uusi);
+        });
         tehtavatTableView.setItems(tehtavat);
-
+        
+        kategoriatListView.getSelectionModel().selectedItemProperty().addListener((obs, vanha, uusi) -> {
+            valittuKategoria = Optional.ofNullable(uusi);
+        });
         kategoriatListView.setItems(kategoriat);
-        kategoriatListView.setCellFactory(listView -> {
+        
+        // UX-hifistelyä: 
+        poistaValintaTyhjanRivinKlikkauksessa(tehtavatTableView);
+        poistaValintaTyhjanRivinKlikkauksessa(kategoriatListView);
+        muokkaaKategoriaButton.setDisable(true);
+        muokkaaTehtavaButton.setDisable(true);
+        poistaKategoriaButton.setDisable(true);
+    }
+
+    private void poistaValintaTyhjanRivinKlikkauksessa(ListView<Kategoria> listView) {
+        listView.setCellFactory(_ -> {
             ListCell<Kategoria> cell = new ListCell<>() {
                 @Override
                 protected void updateItem(Kategoria item, boolean empty) {
@@ -143,23 +144,36 @@ public class MainController implements Initializable {
                 }
             });
             return cell;
-        }); 
-        muokkaaKategoriaButton.setDisable(true);
-        muokkaaTehtavaButton.setDisable(true);
-        poistaKategoriaButton.setDisable(true);
+        });
+    }
+
+    private void poistaValintaTyhjanRivinKlikkauksessa(TableView<Tehtava> tableView) {
+        tableView.setRowFactory(tv -> {
+            TableRow<Tehtava> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty()) {
+                    valittuTehtava = Optional.of(row.getItem());
+                    muokkaaTehtavaButton.setDisable(false);
+                } else {
+                    valittuTehtava = Optional.empty();
+                    muokkaaTehtavaButton.setDisable(true);
+                    tehtavatTableView.getSelectionModel().clearSelection();
+                }
+            });
+            return row;
+        });
     }
 
     @FXML
-    void kasittelePoistaKategoria() {
-        Kategoria valittu = kategoriatListView.getSelectionModel().getSelectedItem();
-        if (valittu == null) {
+    void kasittelePoistaKategoria() {        
+        if (valittuKategoria.isEmpty()) {
             return;
         }
 
-        kategoriat.remove(valittu);
+        kategoriat.remove(valittuKategoria.get());
 
         for (Tehtava tehtava : tehtavat) {
-            if (tehtava.getKategoria() == valittu) {
+            if (tehtava.getKategoria() == valittuKategoria.get()) {
                 tehtava.setKategoria(TYHJA_KATEGORIA);
             }
         }
