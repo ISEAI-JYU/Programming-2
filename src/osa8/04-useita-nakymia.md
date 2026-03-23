@@ -467,8 +467,8 @@ public void setTehtava(Tehtava tehtava) {
 > Jos tekisimme näin, jokainen näppäimen painallus muuttaisi tehtävän
 > otsikon välittömästi taustalla.
 > Sen sijaan haluamme tässä antaa käyttäjälle mahdollisuuden peruuttaa muutokset
-Peruuta-painikkeen painalluksella. Siksi datan sidonnan sijaan
-kopioimme arvot tehtävästä kenttiin ja kentistä tehtäviin käsin.
+> Peruuta-painikkeen painalluksella. Siksi datan sidonnan sijaan
+> kopioimme arvot tehtävästä kenttiin ja kentistä tehtäviin käsin.
 
 Palataan `MainController`-luokan `avaaTehtavanMuokkaus()`-metodiin. 
 Nyt ennen ikkunan luomista voimme hakea `TehtavaEditController`-luokasta luotu
