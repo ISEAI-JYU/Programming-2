@@ -1,5 +1,7 @@
 # Viitteiden hallinta
 
+Löydät tämän esimerkin koodit kokonaisuudessaan [GitHubista](https://github.com/ohj-perus-jy/ohj2/tree/main/src/examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen).
+
 Usein olion on tarpeen viitata toiseen olioon, jotta se voi käyttää toisen olion
 tietoja tai toimintoja. 
 
@@ -26,22 +28,22 @@ Sovelluksessa riippuvuus voisi näyttää esimerkiksi seuraavalta.
 
 <img src="images/references-1.png" width="400px">
 
-Toisin sanoen, jokaisella `Tehtava`-oliolla on viite `Kategoria`-olioon, joka
-kertoo, mihin kategoriaan tehtävä kuuluu. Tällöin `Tehtava`-olion on tarpeen
-tallentaa viite `Kategoria`-olioon, jotta se voi käyttää `Kategoria`-olion
-tietoja, kuten sen nimeä, ja mahdollisia muita tietoja, joita `Kategoria`-olioon
-on tallennettu.
+Tehdään `Tehtava`-luokkaan `StringProperty otsikko` ja
+`ObjectProperty<Kategoria> kategoria` -kentät, jotka vastaavat yllä esitettyjä
+JSON-kenttiä. Vastaavasti `Kategoria`-luokkaan tehdään `StringProperty nimi`
+-kenttä.
 
-Jos kategorian nimeä muutetaan, on loogista, että kaikki tehtävät, jotka
-viittaavat tähän kategoriaan, saavat automaattisesti päivitetyn kategorian
-nimen, koska ne viittaavat samaan `Kategoria`-olioon. 
+```java,ignore
+// FILE: Tehtava.java
+{{#include ../examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen/Tehtava.java}}
+// FILE_END
+// FILE: Kategoria.java
+{{#include ../examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen/Kategoria.java}}
+// FILE_END
+```
 
-<video controls width="400px">
-  <source src="images/references-2.mp4" type="video/mp4">
-</video>
 
-Ongelmaksi muodostuu nyt se, että tallennetut tehtävät näyttävät
-JSON-tiedostossa suurin piirtein tältä:
+Tehtävät näyttävät JSON-tiedostossa suurin piirtein tältä:
 
 ```json
 [
@@ -78,130 +80,189 @@ Vastaavasti kategoriat näyttäisivät tältä:
 ]
 ```
 
-Tehtävän sisällä kategoria on tosiasiallisesti vain merkkijono, joka toimii
-kategorian tunnisteena, ei viite `Kategoria`-olioon. Mitä tahansa kategorialle
-tapahtuukaan, muutos ei näy tehtävissä ilman manuaalista päivitystä. Tämä on
-ongelmallista, koska se rikkoo olioiden välisen yhteyden ja tekee sovelluksesta
-vaikeammin ylläpidettävän.
+Jos kategorian nimeä muutetaan, olisi loogista, että kaikki tehtävät, jotka
+viittaavat tähän kategoriaan, saavat automaattisesti päivitetyn kategorian
+nimen, koska ne viittaavat samaan `Kategoria`-olioon. Alla on kuvattuna
+tavoitetila, miten haluaisimme, että sovelluksemme toimii: 
 
-Ratkaisu tähän ongelmaan tallentaa `Tehtava`-olion sisällä viite
-`Kategoria`-olioon sovelluksen käynnistämisen jälkeen. 
+<video controls width="400px">
+  <source src="images/references-2.mp4" type="video/mp4">
+</video>
 
-Tehdään `Tehtava`-luokkaan `StringProperty otsikko` ja
-`ObjectProperty<Kategoria> kategoria` -kentät, jotka vastaavat yllä esitettyjä JSON-kenttiä. Vastaavasti `Kategoria`-luokkaan
-tehdään `StringProperty nimi` -kenttä.
+
+JSON-tiedostossa tehtävän sisällä kategoria on kuitenkin vain merkkijono, joka
+toimii kategorian tunnisteena. Kun tuon merkkijonon perusteella aikanaan
+kontrolleriessa luodaan `Tehtava`-olio, luodaan uusi `Kategoria`-olio, joka
+sisältää saman kategorian nimen, kuin `Kategoria`-olio, joka luetaan
+`kategoriat.json`-tiedostosta. Nämä ovat kaksi eri oliota. Näin ollen mitä
+tahansa kategorialle tapahtuukaan, muutos ei näy tehtävissä ilman manuaalista
+päivitystä. Tämä on ongelmallista, koska se rikkoo olioiden välisen yhteyden ja
+tekee sovelluksesta vaikeammin ylläpidettävän.
+
+Jotta kategorian nimi saadaan päivittymään tehtävälistauksessa ilman manuaalista
+päivitystä, on 
+
+ 1. tehtävä-oliossa viitattava oikeaan kategoria-olioon, ja 
+ 2. TableView-olion kategoria-sarakkeen on kuunneltava kategorian nimen
+    muutoksia `setCellValueFactory`-metodissa käyttäen `flatMap`-metodia (ks.
+    [JavaDoc](https://openjfx.io/javadoc/23/javafx.base/javafx/beans/value/ObservableValue.html#flatMap(java.util.function.Function))). Esimerkki tästä on:
 
 ```java,ignore
-// FILE: Tehtava.java
-{{#include ../examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen/Tehtava.java}}
-// FILE_END
-// FILE: Kategoria.java
-{{#include ../examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen/Kategoria.java}}
-// FILE_END
+kategoriaColumn.setCellValueFactory(cellData -> 
+                 cellData
+                .getValue()
+                .kategoriaProperty()
+                .flatMap(kategoria -> kategoria.nimiProperty()));
 ```
 
-Luetaan JSON-tiedostot `Tehtava`- ja `Kategoria`-olioiksi, ja näytetään ne
-JavaFX-käyttöliittymässä. Lukeminen tehdään tässä kontrollerin
-`initialize`-metodissa yksinkertaisuuden vuoksi. 
+Katsotaan tätä tarkemmin vaihe vaiheelta. 
+
+Korjataan aluksi `Tehtava`-oliossa olevat `Kategoria`-olioiden viitteet oikeaksi
+sovelluksen käynnistämisen jälkeen.
+
+Oletetaan, että meillä on `MainController`-luokassa attribuutit tehtäville ja
+kategorioille ja niitä vastaavat GUI-oliot. 
+
+```java,ignore
+public class MainController implements Initializable {
+    // ...
+    @FXML
+    private TableView<Tehtava> tehtavatTable;
+
+    @FXML
+    private TableView<Kategoria> kategoriatTable;
+
+    private ObservableList<Tehtava> tehtavat = FXCollections.observableArrayList();
+    private ObservableList<Kategoria> kategoriat = FXCollections.observableArrayList();
+    // ...
+}
+```
+
+Luetaan JSON-tiedostosta kategoriat ja tehtävät.
 
 ```java,ignore
 public void initialize(URL url, ResourceBundle resourceBundle) {
-
     Path tehtavatPolku = Path.of("tehtavat.json");
     Path kategoriatPolku = Path.of("kategoriat.json");
-
     ObjectMapper mapper = new ObjectMapper();
     try {
         Kategoria[] k = mapper.readValue(kategoriatPolku.toFile(), Kategoria[].class);
         Tehtava[] t = mapper.readValue(tehtavatPolku.toFile(), Tehtava[].class);
-
         kategoriat.setAll(k);
         tehtavat.setAll(t);
-
     } catch (JacksonException e) {
         e.printStackTrace();
     }
+}
+```
 
+Lisätään vielä tehtävät ja kategoriat UI-olioihin.
+
+```java,ignore
+public void initialize(URL url, ResourceBundle resourceBundle) {
+    // ...
     TableColumn<Tehtava, String> otsikkoColumn = new TableColumn<>("Otsikko");
     otsikkoColumn.setCellValueFactory(cellData -> cellData.getValue().otsikkoProperty());
     TableColumn<Tehtava, String> kategoriaColumn = new TableColumn<>("Kategoria");
-    kategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().kategoriaProperty().get().nimiProperty());
-
+    kategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().kategoriaProperty().asString());
     tehtavatTable.getColumns().addAll(otsikkoColumn, kategoriaColumn);
-    tehtavatTable.setItems(tehtavat);
 
     TableColumn<Kategoria, String> nimiColumn = new TableColumn<>("Nimi");
     nimiColumn.setCellValueFactory(cellData -> cellData.getValue().nimiProperty());
     kategoriatTable.getColumns().add(nimiColumn);
-    kategoriatTable.setItems(kategoriat);
 }
-```
+``` 
 
-Lisätään vielä mahdollisuus muuttaa kategorian nimeä. Importit ja package-koodit
-on jätetty pois tilan säästämiseksi. Muokkausnäkymä on yksinkertainen;
-FXML-tiedostoa voit katsoa [GitHubista]().
+ Nyt jos muokkaamme kategorian nimeä, se ei päivity tehtävään.
+
+<video controls width="400px">
+  <source src="images/references-3.mp4" type="video/mp4">
+</video>
+
+
+Korjataan viitteet oikeiksi tiedostojen lukemisen jälkeen.
 
 ```java,ignore
-// FILE: MainController.java
-@FXML
-void kasitteleMuokkaaKategoria(ActionEvent event) {
-    try {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("muokkaaKategoria.fxml"));
-        loader.setControllerFactory(_ -> new MuokkaaKategoriaController(valittuKategoria.get(), kategoriat));
+ObjectMapper mapper = new ObjectMapper();
+try {
+    Kategoria[] k = mapper.readValue(kategoriatPolku.toFile(), Kategoria[].class);
+    Tehtava[] t = mapper.readValue(tehtavatPolku.toFile(), Tehtava[].class);
 
-        Parent root = loader.load();
-        Stage muokkaaKategoriaDialogi = new Stage();
-        muokkaaKategoriaDialogi.setScene(new Scene(root));
-        muokkaaKategoriaDialogi.setTitle("Muokkaa kategoriaa");
-        muokkaaKategoriaDialogi.initModality(Modality.APPLICATION_MODAL);
-        muokkaaKategoriaDialogi.showAndWait();
-        MuokkaaKategoriaController controller = loader.getController();
-        if (controller.getKategoria().isPresent()) {
-            Kategoria muokattuKategoria = controller.getKategoria().get();
-            valittuKategoria.get().setNimi(muokattuKategoria.getNimi());
-        }
-
-    } catch (IOException ioe) {
-        IO.println("Kategorian muokkaaminen epäonnistui: " + ioe.getMessage());
+    kategoriat.setAll(k);
+    // HIGHLIGHT_GREEN_BEGIN
+    for (Tehtava tehtava : t) {
+        Kategoria jsonistaLuettuKategoria = tehtava.getKategoria();
+        tehtava.setKategoria(asetaKategoriaViite(jsonistaLuettuKategoria.getNimi()));
     }
+    // HIGHLIGHT_GREEN_END
+    tehtavat.setAll(t);
+
+} catch (JacksonException e) {
+    e.printStackTrace();
 }
-// FILE_END
-// FILE: MuokkaaKategoriaController.java
-public class MuokkaaKategoriaController implements Initializable {
 
-    @FXML
-    private TextField kategoriaNimiTextField;
+// Jos tehtävällä ei ole kategoriaa, palautetaan uusi kategoria, 
+// joka on vain tyhjä merkkijono.
+// HIGHLIGHT_GREEN_BEGIN
+private static final Kategoria TYHJA_KATEGORIA = new Kategoria("");
 
-    @FXML
-    private Button tallennaButton;
-
-    private Kategoria kategoria;
-
-    private Optional<Kategoria> palautettavaKategoria = Optional.empty();
-
-    public MuokkaaKategoriaController(Kategoria kategoria, ObservableList<Kategoria> kategoriat) {
-        this.kategoria = kategoria;
-    }
-    
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        kategoriaNimiTextField.setText(kategoria.getNimi());
-    }
-
-    @FXML
-    void kasitteleTallenna(ActionEvent event) {
-        String uusiNimi = kategoriaNimiTextField.getText();
-        if (uusiNimi != null && !uusiNimi.isBlank()) {
-            kategoria.setNimi(uusiNimi);
-            palautettavaKategoria = Optional.of(kategoria);
+private Kategoria asetaKategoriaViite(String nimi) {
+    for (Kategoria ehdokas : kategoriat) {
+        if (ehdokas.getNimi().equals(nimi)) {
+            return ehdokas;
         }
-        tallennaButton.getScene().getWindow().hide();
     }
-
-    public Optional<Kategoria> getKategoria() {
-        return palautettavaKategoria;
-    }
+    return TYHJA_KATEGORIA;
+// HIGHLIGHT_GREEN_END
+    /* Tai stream-tyyliin:
+     * return kategoriat.stream()
+     * .filter(ehdokas -> ehdokas.getNimi().equals(kategoria.getNimi()))
+     * .findFirst()
+     * .orElse(TYHJA_KATEGORIA); 
+     */
+// HIGHLIGHT_GREEN_BEGIN
 }
+// HIGHLIGHT_GREEN_END
 ```
 
-KESKEN...
+Nyt kategoriatieto kyllä päivittyy tehtäviin, mutta muutos ei näy heti
+TableView-oliossa, koska kategoria-sarake kuuntelee vain kategorian viitteen
+muutoksia. 
+
+<video controls width="400px">
+  <source src="images/references-4.mp4" type="video/mp4">
+</video>
+
+Ensimmäinen ajatus voisi olla, että lisätään `tehtavat`-listan ekstraktoriin
+`nimiProperty()`-kuuntelija
+(`tehtava.kategoriaProperty().get().nimiProperty()`). Valitettavasti tämä ei
+toimi, koska `kategoriaProperty()`-kuuntelee kategorian viitteen muutoksia, eikä
+nimen muuttaminen tuota uutta kategoria-oliota. 
+
+Ratkaisu on käyttää `flatMap`-metodia, joka mahdollistaa sisäkkäisten
+property-olioiden kuuntelemisen. Lisää oheinen rivi `initialize()`-metodiin. 
+
+```java,ignore
+
+TableColumn<Tehtava, String> otsikkoColumn = new TableColumn<>("Otsikko");
+otsikkoColumn.setCellValueFactory(cellData -> cellData.getValue().otsikkoProperty());
+TableColumn<Tehtava, String> kategoriaColumn = new TableColumn<>("Kategoria");
+// HIGHLIGHT_GREEN_BEGIN
+kategoriaColumn.setCellValueFactory(
+            cellData -> cellData.getValue().kategoriaProperty().flatMap(kategoria -> kategoria.nimiProperty()));
+// HIGHLIGHT_GREEN_END
+// HIGHLIGHT_RED_BEGIN
+kategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().kategoriaProperty().asString());
+// HIGHLIGHT_RED_END
+tehtavatTableView.getColumns().addAll(otsikkoColumn, kategoriaColumn);
+
+Tässä `flatMap`-metodi litistää sisäkkäisen
+property-rakenteen (`Tehtava` → `Kategoria` → `nimi`) yhdeksi kuunneltavaksi
+property-olioksi, jolloin kategoria-sarake pystyy kuuntelemaan kategorian nimen
+muutoksia, eikä vain kategorian viitteen muutoksia.
+
+
+
+Tehdään `MainController`-luokkaan kuuntelijat tehtävän ja kategorian
+valitsemiseen.  
+
