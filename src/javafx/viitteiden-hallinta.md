@@ -1,4 +1,4 @@
-# Viitteiden hallinta
+# Viitteiden hallinta ja sisäkkäisten property-olioiden kuunteleminen
 
 Löydät tämän esimerkin koodit kokonaisuudessaan [GitHubista](https://github.com/ohj-perus-jy/ohj2/tree/main/src/examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen).
 
@@ -41,7 +41,6 @@ JSON-kenttiä. Vastaavasti `Kategoria`-luokkaan tehdään `StringProperty nimi`
 {{#include ../examples/javafx/ViitteidenKorjaaminen/src/main/java/fi/jyu/ohj2/esimerkit/viitteidenkorjaaminen/Kategoria.java}}
 // FILE_END
 ```
-
 
 Tehtävät näyttävät JSON-tiedostossa suurin piirtein tältä:
 
@@ -243,7 +242,6 @@ Ratkaisu on käyttää `flatMap`-metodia, joka mahdollistaa sisäkkäisten
 property-olioiden kuuntelemisen. Lisää oheinen rivi `initialize()`-metodiin. 
 
 ```java,ignore
-
 TableColumn<Tehtava, String> otsikkoColumn = new TableColumn<>("Otsikko");
 otsikkoColumn.setCellValueFactory(cellData -> cellData.getValue().otsikkoProperty());
 TableColumn<Tehtava, String> kategoriaColumn = new TableColumn<>("Kategoria");
@@ -255,14 +253,42 @@ kategoriaColumn.setCellValueFactory(
 kategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().kategoriaProperty().asString());
 // HIGHLIGHT_RED_END
 tehtavatTableView.getColumns().addAll(otsikkoColumn, kategoriaColumn);
+```
 
-Tässä `flatMap`-metodi litistää sisäkkäisen
-property-rakenteen (`Tehtava` → `Kategoria` → `nimi`) yhdeksi kuunneltavaksi
-property-olioksi, jolloin kategoria-sarake pystyy kuuntelemaan kategorian nimen
-muutoksia, eikä vain kategorian viitteen muutoksia.
+Ilman `flatMap`-metodia meillä on kaksi erillistä property-tasoa sisäkkäin:
 
+```text
+kategoriaProperty()  →  ObjectProperty<Kategoria>
+                              ↓
+                        nimiProperty()  →  StringProperty
+```
 
+Kumpaakin näistä tasoista halutaan kuunnella (kategorian muutos, kategorian
+nimen muutos), koska haluamme näyttää koko ajan TableView-sarakkeessa
+ajantasaisen kategorian nimen.
 
-Tehdään `MainController`-luokkaan kuuntelijat tehtävän ja kategorian
-valitsemiseen.  
+`flatMap` yhdistää nämä kaksi tasoa yhdeksi `ObservableValue<String>`-olioksi,
+joka reagoi **molemmilla** tasoilla tapahtuviin muutoksiin. Tätä yhdistämistä
+kutsutaan "litistämiseksi" (*flatten*), koska kaksi sisäkkäistä kerrosta
+muuttuu yhdeksi tasaiseksi kerrokseksi.
 
+Nimi `flatMap` koostuu kahdesta osasta:
+
+- **Map** — muuntaa ulomman propertyn arvon (`Kategoria`) sisemmäksi propertyksi
+  annetulla funktiolla (`kategoria -> kategoria.nimiProperty()`).
+- **Flat** — litistää tuloksen niin, ettei synny "property propertyn sisällä"
+  -rakennetta, vaan yksi tasainen `ObservableValue`.
+
+Sama nimeämiskäytäntö esiintyy myös esimerkiksi `Stream.flatMap`- ja
+`Optional.flatMap`-metodeissa.
+
+Käytännössä `flatMap` toimii tässä seuraavasti:
+
+1. Se kuuntelee ulompaa propertyä (`kategoriaProperty()`).
+2. Kun ulomman propertyn arvo on olemassa, se kutsuu annettua funktiota
+   (`kategoria -> kategoria.nimiProperty()`) ja alkaa kuunnella palautettua
+   sisempää propertyä.
+3. Jos ulompi arvo vaihtuu, `flatMap` lopettaa vanhan sisemmän propertyn
+   kuuntelun ja alkaa kuunnella uuden arvon sisempää propertyä.
+4. Tuloksena on yksi `ObservableValue<String>`, joka päivittyy aina kun
+   kategorian nimi muuttuu **tai** kun koko kategoriaviite vaihtuu.
