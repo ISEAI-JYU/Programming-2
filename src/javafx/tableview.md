@@ -306,8 +306,7 @@ private void paivitaSuodatus() {
 Poistettujen kategorioiden valintapainike kannattaa disabloida, kun muu suodatus
 on käytössä. 
 
-```
-java,ignore
+```java,ignore
 naytaMyosPoistetutCheckBox.disableProperty().bind(suodataCheckBox.selectedProperty());
 ```
 
