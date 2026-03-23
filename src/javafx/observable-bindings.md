@@ -2,14 +2,15 @@
 
 Käyttöliittymässä haluamme usein näyttää varsinaisen tiedon lisäksi tiedoista
 laskettuja arvoja, kuten arvojen summaa, keskiarvoa, yhdistelmää tai vastaavaa.
-Voimme laskea johdettuja arvoja suoraan, kuten:
+
+Esimerkiksi henkilön koko nimi voidaan laskea etunimen ja sukunimen yhdistelmänä:
 
 ```java,ignore
-String henkilonNimiSukunimi = ihminen.getNimi() + ihminen.getSukunimi();
+String kokonimi = henkilo.getEtunimi() + henkilo.getSukunimi();
 ```
 
-Kuitenkin näin laskettu arvo ei päivity automaattisesti, jos ihmisen nimi tai
-sukunimi muuttuu.
+Näin laskettu arvo ei kuitenkaan päivity automaattisesti käyttöliittymässä, jos
+etunimi tai sukunimi muuttuu.
 
 ## Esimerkki
 
@@ -124,13 +125,13 @@ Tässä esimerkissä näemme kaksi ongelmaa:
 
 <video src="images/bindings-1.mp4" controls></video>
 
-## `Observable`-arvon muuttaminen toiseksi arvoksi
+## Observable-arvon muuttaminen toiseksi arvoksi
 
 Kaikki `ObservableValue`-arvot, kuten `StringProperty`, `IntegerProperty`,
 `FloatProperty`, jne. sisältävät `map()`-apumetodin (ks.
 [JavaDoc](https://download.java.net/java/GA/javafx25/docs/api/javafx.base/javafx/beans/value/ObservableValue.html#map(java.util.function.Function))),
 jonka avulla arvolle voi suorittaa laskutoimituksia.
-Esimerkiksi pelaajan iän saa laskettua syntymävuodesta seuraavasti:
+Esimerkiksi pelaajan ikä saadaan laskettua syntymävuodesta seuraavasti:
 
 ```java,ignore
 ObservableValue<Number> ika = pelaaja.syntymavuosiProperty().map(vuosi -> LocalDate.now().getYear() - vuosi.intValue());
@@ -138,8 +139,7 @@ ObservableValue<Number> ika = pelaaja.syntymavuosiProperty().map(vuosi -> LocalD
 
 Tällöin `ika`-muuttujan sisältämä arvo lasketaan syntymävuodesta kaavalla
 `LocalDate.now().getYear() - vuosi.intValue()` aina, kun pelaajan syntymävuosi
-muuttuu.
-Koska `ObservableValue` on havaittava arvo, voimme käyttää sitä
+muuttuu. Koska `ObservableValue` on havaittava arvo, voimme käyttää sitä
 `setCellValueFactory`-metodissa:
 
 ```java,ignore
@@ -167,7 +167,7 @@ public void initialize(URL url, ResourceBundle resourceBundle) {
 }
 ```
 
-## Funktion muuttaminen `Observable`-arvoksi
+## Funktion muuttaminen Observable-arvoksi
 
 Pelaajien lukumäärä saadaan kutsumalla `pelaajat.size()`.
 `size()`-metodi ei kuitenkaan palauta havaittavaa arvoa, eikä `pelaajat`-lista
