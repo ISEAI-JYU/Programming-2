@@ -3,8 +3,7 @@
 ## Näkymän vaihtaminen samassa ikkunassa
 
 Näkymän vaihtaminen samassa ikkunassa on tärkeä osa monen JavaFX-sovelluksen
-toimintaa. Tämä mahdollistaa käyttäjälle sujuvan kokemuksen, kun hän voi siirtyä
-eri näkymien välillä ilman, että uusi ikkuna avautuu.
+toimintaa. Näkymien välillä voi siirtyä ilman uuden ikkunan avaamista. 
 
 Alla yksinkertainen esimerkki, jossa on kaksi näkymää: `MainView` ja
 `SecondaryView`. Painikkeella pääsee toiselle näkymälle, ja toisella
