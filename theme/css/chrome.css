@@ -638,7 +638,7 @@ html:not(.sidebar-resizing) .sidebar {
     scrollbar-gutter: stable;
     transition: scrollbar-color linear 0.1s;
     top: 0;
-    bottom: 5px;
+    bottom: 0;
     left: 0;
     right: 0;
     padding: 10px 10px;
@@ -823,7 +823,7 @@ html:not(.sidebar-resizing) .sidebar {
 }
 
 .sidebar .sidebar-scrollbox {
-    min-height: calc(100% - 5px);
+    min-height: calc(100%-10px);
 }
 
 html.toc-ready .sidebar .sidebar-scrollbox {
