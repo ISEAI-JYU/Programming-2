@@ -46,7 +46,17 @@
             else if (hljs.highlightBlock) hljs.highlightBlock(code);
         }
 
-        /* ---- 3. Wrap highlighted lines ---- */
+        /* ---- 3. Handle horizontal overflow ---- */
+        var pre = code.parentElement;
+        if (pre.scrollWidth > pre.clientWidth) {
+            /* Content overflows: make <code> inline-block so that its
+               block-level .hl-line children inherit the full content
+               width rather than just the visible width. */
+            code.style.display  = 'inline-block';
+            code.style.minWidth = '100%';
+        }
+
+        /* ---- 4. Wrap highlighted lines ---- */
         var htmlLines = code.innerHTML.split('\n');
         var result = [];
         var openTags = [];  // stack of opening <span …> strings
