@@ -25,8 +25,8 @@ tentteihin [yksilöllisenä
 järjestelynä](https://www.jyu.fi/fi/opiskelijalle/kandi-ja-maisteriopiskelijan-ohjeet/opintojen-suunnittelu-ja-ohjaus/yksilolliset-jarjestelyt-opinnoissa-esteettomyys-ja-saavutettavuus).
 
 Ennen kuin ilmoittaudut tenttiin, lue huolellisesti (i) [Jyväskylän yliopiston
-ohjeet verkkotenttien suorittamiseen](./tenttiohjeet.md) ja (ii) [Tarkentavat
-ohjeet opintojakson Ohjelmointi 1 (ITKP102) -tenttiin](./tenttiohjeet.md) ennen
+ohjeet verkkotenttien suorittamiseen](./tenttiohjeet.md#jy-tenttiohjeet) ja (ii) [Tarkentavat
+ohjeet opintojakson Ohjelmointi 2 (TIEP111) -tenttiin](./tenttiohjeet.md#ohj2-tenttiohjeet) ennen
 tenttiin ilmoittautumista. Jos yliopiston ohjeiden ja opintojakson tarkentavien
 ohjeiden välillä on ristiriita, opintojakson ohjeet pätevät.
 
