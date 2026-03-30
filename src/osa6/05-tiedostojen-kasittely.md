@@ -194,8 +194,9 @@ import java.util.Scanner;
 public class TiedostonLukija {
 
     public static void main(String[] args) {
+        Scanner scanner = null;
         try {
-            Scanner scanner = new Scanner(new File("data.csv"));
+            scanner = new Scanner(new File("data.csv"));
             // Ohitetaan otsikkorivi
             if (scanner.hasNextLine()) {
                 scanner.nextLine();
@@ -208,12 +209,13 @@ public class TiedostonLukija {
                 int ika = Integer.parseInt(parts[1]); // Toinen sarake on ikä, parsitaan intiksi
                 IO.println("Nimi: " + nimi + ", Ikä: " + ika);
             }
-            scanner.close();
         } catch (FileNotFoundException e) {
             IO.println("Tiedostoa ei löydy: " + e.getMessage());
         } finally {
             // Suljetaan scanner
-            scanner.close();
+            if (scanner != null) {
+                scanner.close();
+            }
         }
     }
 }
