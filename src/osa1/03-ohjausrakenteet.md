@@ -148,7 +148,7 @@ switch (valinta) {
 
 Yksinkertaisissa "joko-tai"-tilanteissa, joissa halutaan sijoittaa arvo
 muuttujaan ehdon perusteella, voidaan käyttää kolmiarvoista operaattoria
-(*ternary operator*) `?.` Se tiivistää koodia merkittävästi.
+(*ternary operator*) `?:`.
 
 Syntaksi: `(ehto) ? arvo_jos_tosi : arvo_jos_epätosi;`
 
