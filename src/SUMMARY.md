@@ -71,7 +71,7 @@
 - [Harjoitustyö, vaihe 1](./osa9/index.md)
 - [Harjoitustyö, vaihe 2](./osa10/index.md)
 - [Harjoitustyö, vaihe 3](./osa11/index.md)
-- [Osa 12](./osa12/index.md)
+- [Harjoitustyön palautus](./osa12/index.md)
 
 --- 
 
