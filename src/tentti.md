@@ -4,7 +4,7 @@ Lukuvuonna 2025-2026 tenttejä järjestetään seuraavasti
 
 | Tentti  | Päivämäärä   | Aika      | Paikka                   | Ilmoittautumislinkki |
 | ------- | ------------ | --------- | ------------------------ | -------------------- |
-| Kevät 1 | ke 22.4.2026 | klo 10-14 | Agora Auditorio 1 / Zoom | Ilmoittaudu          |
+| Kevät 1 | ke 22.4.2026 | klo 10-14 | Agora Auditorio 1 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-04-22-10-00)          |
 | Kevät 2 | ke 6.5.2026  | klo 12-16 | Agora Auditorio 2 / Zoom | Ilmoittaudu          |
 | Kevät 3 | ke 27.5.2026 | klo 12-16 | Agora Auditorio 2 / Zoom | Ilmoittaudu          |
 | Kesä 1  | 18.6.2026    | klo 12-16 | Agora / Zoom             | Ilmoittaudu          |
