@@ -62,6 +62,8 @@ Tässä sovelluksessa käyttäjä voi seurata omia kulujaan ja menojaan.
  * Käyttäjä voi katsoa tapahtumat tietyltä aikaväliltä (kaksi päivämäärää).
  * Käyttäjä voi muokata tapahtumia ja kategorioita.
  * Kategorian nimen vaihtaminen siirtää kaikki kyseiseen kategoriaan liittyvät tapahtumat uuteen kategoriaan.
+ * Kategorian poistaminen poistaa kyseisen kategorian kaikista tapahtumista.
+   Tapahtumia ei poisteta. 
  * <i class="bi bi-stars jyu-gold"></i> Kulukategoria voi olla *pakollinen*, mikä tarkoittaa välttämätöntä
    menoa, kuten vuokra tai sähkölasku. 
  * <i class="bi bi-stars jyu-gold"></i> Käyttäjä voi valita useita kategorioita
