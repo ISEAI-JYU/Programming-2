@@ -36,7 +36,7 @@ Jos tentin aikana ilmenee ongelmia, käytä jotakin seuraavista
 yhteydenottotavoista:
 
  - **Salissa:** Nosta kätesi ylös ja odota, että valvoja tulee luoksesi.
- - **Etänä:** Jätä avunpyyntö lomakkeella: Avunpyyntö etätentissä (linkki tulee tähän hyvissä ajoin ennen tenttiä)
+ - **Etänä:** Jätä [avunpyyntö lomakkeella](https://forms.gle/sYchXqaGd6nfRZmE7)
     - Vaihtoehtoisesti laita sähköpostia osoitteeseen
       `ohj2-opet@jyu.onmicrosoft.com`.
     - Vaihtoehtoisesti soita numeroon 040 805 3276 (Antti-Jussi Lakanen). Ei
