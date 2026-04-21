@@ -19,10 +19,10 @@
 
 
 Yllä olevat ohjelmat löytyvät valmiiksi asennettuna [Agoran
-mikroluokissa](https://navi.jyu.fi/space/m118987) (Alban puoleinen pääty, 1. ja
-1. kerros). Jos sinulla on oma tietokone, suosittelemme vahvasti, että asennat
-ohjelmat myös siihen. Erityisesti harjoitustyön tekeminen on helpompaa, kun
-kaikki tarvittavat ohjelmat on myös omalla tietokoneella.
+mikroluokissa](https://navi.jyu.fi/space/m118987) (Alban puoleinen pääty,
+ensimmäinen ja toinen kerros). Jos sinulla on oma tietokone, suosittelemme
+vahvasti, että asennat ohjelmat myös siihen. Erityisesti harjoitustyön tekeminen
+on helpompaa, kun kaikki tarvittavat ohjelmat on myös omalla tietokoneella.
 
 > [!TÄRKEÄÄ]
 >
