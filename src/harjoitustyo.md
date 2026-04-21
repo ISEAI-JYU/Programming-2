@@ -52,7 +52,7 @@ Tässä sovelluksessa käyttäjä voi seurata omia kulujaan ja menojaan.
 
 **Toiminnalliset vaatimukset**
 
- * Käyttäjä voi syöttää kuluja ja menoja ("tapahtuma").
+ * Käyttäjä voi syöttää tuloja ja menoja ("tapahtuma").
  * Käyttäjä näkee kaikki tapahtumat taulukossa, jossa on ainakin tapahtuman nimi,
    summa ja päivämäärä. 
  * Käyttäjä voi määrittää kulukategorioita. 
@@ -62,8 +62,7 @@ Tässä sovelluksessa käyttäjä voi seurata omia kulujaan ja menojaan.
  * Käyttäjä voi katsoa tapahtumat tietyltä aikaväliltä (kaksi päivämäärää).
  * Käyttäjä voi muokata tapahtumia ja kategorioita.
  * Kategorian nimen vaihtaminen siirtää kaikki kyseiseen kategoriaan liittyvät tapahtumat uuteen kategoriaan.
- * Kategorian poistaminen poistaa kyseisen kategorian kaikista tapahtumista.
-   Tapahtumia ei poisteta. 
+ * Kategorian poistaminen poistaa kyseisen kategorian kaikista tapahtumista, mutta tapahtumia ei poisteta. 
  * <i class="bi bi-stars jyu-gold"></i> Kulukategoria voi olla *pakollinen*, mikä tarkoittaa välttämätöntä
    menoa, kuten vuokra tai sähkölasku. 
  * <i class="bi bi-stars jyu-gold"></i> Käyttäjä voi valita useita kategorioita
