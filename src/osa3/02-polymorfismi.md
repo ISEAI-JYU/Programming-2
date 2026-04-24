@@ -55,6 +55,12 @@ public class Piano extends Soitin {
 ```
 
 Nyt meillä on kyllä yhtenäinen tapa kutsumista varten, mutta jos kutsuisimme nyt `Kitara`- tai `Piano`-olion `soita()`-metodia, ne molemmat suorittaisivat yliluokan (`Soitin`) oletustoteutuksen: *"Tuntematon soitin soi."* Tämä ei riitä! Haluamme, että kukin soitin soi itselleen ominaisella tavalla. Tätä varten aliluokassa voidaan korvata (engl. *override*) yliluokan `soita()`-metodi omalla, spesifillä toteutuksellaan.
+Korvaaminen merkitään koodissa `@Override`-annotaatiolla, joka on eräänlainen
+merkintä siitä, että kyseessä on korvaus. Vaikka annotaation kirjoittaminen ei
+Javan syntaksissa olekaan pakollista, se on erittäin suositeltavaa, koska se
+auttaa sekä ohjelmoijaa että IDEä havaitsemaan, että kyseessä on todellakin
+korvattu metodi. Tämän opintojakson tehtävissä vaaditaan, että
+`@Override`-annotaatio on merkitty. 
 
 ```java,ignore
 public class Kitara extends Soitin {
