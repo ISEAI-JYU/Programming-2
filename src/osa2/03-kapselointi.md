@@ -22,12 +22,12 @@ tarkoittaa, että ne ovat näkyvissä vain samassa pakkauksessa oleville luokill
 Alla olevassa taulukossa on yhteenveto eri näkyvyysmääreiden vaikutuksista;
 Oletus-rivi viittaa `package-private`-näkyvyyteen. 
 
-|             | Luokka | Pakkaus | Aliluokka | Muu maailma |
-| ----------- | ------ | ------- | --------- | ----------- |
-| `public`    | Kyllä  | Kyllä   | Kyllä     | Kyllä       |
-| `protected` | Kyllä  | Kyllä   | Kyllä     | Ei          |
-| *oletus*    | Kyllä  | Kyllä   | Ei        | Ei          |
-| `private`   | Kyllä  | Ei      | Ei        | Ei          |
+|             | Merkitys    | Luokka | Pakkaus | Aliluokka | Muu maailma |
+| ----------- | ----------- | ------ | ------- | --------- | ----------- |
+| `public`    | julkinen    | Kyllä  | Kyllä   | Kyllä     | Kyllä       |
+| `protected` | suojattu    | Kyllä  | Kyllä   | Kyllä     | Ei          |
+| *oletus*    | –           | Kyllä  | Kyllä   | Ei        | Ei          |
+| `private`   | yksityinen  | Kyllä  | Ei      | Ei        | Ei          |
 
 Ensimmäinen sarake ("luokka") ilmaisee, onko luokan oliolla itsellään pääsy
 määritellyn näkyvyystason jäseneen. Kuten näet, oliolla on aina pääsy omiin
