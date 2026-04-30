@@ -27,6 +27,27 @@ Tarkemmat tiedot löydät opintojakson
 
 ## Uutiset
 
+<details><summary>Kesän 2026 toteutuksen aikataulu</summary>
+
+Kesätoteutus alkaa 1.6.2026. Ilmoittaudu Sisussa. 
+
+DL-BONUS-pisteiden takarajat ovat seuraavat:
+
+ * Osa 1: ma 8.6.2026 klo 11:59 (keskipäivä)
+ * Osa 2: ma 15.6.2026 klo 11:59 (keskipäivä)
+ * Osa 3: ma 22.6.2026 klo 11:59 (keskipäivä)
+ * Osa 4: ma 29.6.2026 klo 11:59 (keskipäivä)
+ * Osa 5: ma 6.7.2026 klo 11:59 (keskipäivä)
+ * Osa 6: ma 13.7.2026 klo 11:59 (keskipäivä)
+
+Harjoitustyön palautuksen takaraja pe 14.8.2026
+
+Takarajat ilmaantuvat myös materiaaliin näkyville pian. 
+
+Aikataulu on hieman tiukempi kuin kevään 2026 toteutuksessa.
+
+</details>
+
 <details><summary>1. tammikuuta 2026: Kurssimateriaalia uudistetaan keväällä 2026</summary>
 
 Teemme kokonaisvaltaisen uudistuksen oppimateriaaliin sekä tehtäviin kevään 2026
