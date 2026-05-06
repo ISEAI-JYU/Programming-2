@@ -93,7 +93,8 @@ public class MainController implements Initializable {
         // taulukon solu päivittyy myös silloin. null-kategoria tuottaa null-arvon
         // ilman poikkeusta.
         kategoriaColumn.setCellValueFactory(
-                cellData -> cellData.getValue().kategoriaProperty().flatMap(kategoria -> kategoria.nimiProperty()));
+                 cellData -> cellData.getValue().kategoriaProperty().flatMap(kategoria -> kategoria.nimiProperty()));
+        // kategoriaColumn.setCellValueFactory(cellData -> cellData.getValue().kategoriaProperty().asString());
 
         tehtavatTableView.getColumns().addAll(otsikkoColumn, kategoriaColumn);
         tehtavatTableView.getSelectionModel().selectedItemProperty().addListener((obs, vanha, uusi) -> {
