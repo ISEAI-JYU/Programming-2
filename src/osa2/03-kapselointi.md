@@ -17,10 +17,11 @@ Java tarjoaa kolme pääasiallista näkyvyysmäärettä: `public`, `protected` j
 `private`. Näkyvyysmääreet määrittelevät, mistä luokan jäseniin voidaan päästä
 käsiksi.  
 
-Javassa oletuksena luokan jäsenet ovat ns. `package-private`-näkyvyydellä, mikä
-tarkoittaa, että ne ovat näkyvissä vain samassa pakkauksessa oleville luokille.
-Alla olevassa taulukossa on yhteenveto eri näkyvyysmääreiden vaikutuksista;
-Oletus-rivi viittaa `package-private`-näkyvyyteen. 
+Mikäli jäsenelle ei anneta näkyvyysmäärettä eksplisiittisesti, se saa  
+ns. `package-private`-näkyvyyden. Tämä tarkoittaa, että jäsen on näkyvissä vain
+samassa pakkauksessa oleville luokille. Alla on yhteenveto
+eri näkyvyysmääreiden vaikutuksista; Oletus-rivi viittaa
+`package-private`-näkyvyyteen. 
 
 |             | Merkitys    | Luokka | Pakkaus | Aliluokka | Muu maailma |
 | ----------- | ----------- | ------ | ------- | --------- | ----------- |
