@@ -84,18 +84,17 @@ tavallisesti julkisista metodeista koostuvan rajapinnan, mikä parantaa ohjelman
 muokattavuutta ja laajennettavuutta vähentämällä luokan sisäisistä muutoksista
 johtuvia sivuvaikutuksia.
 
-Yhteen kuuluvan tiedon ja toiminnallisuuden sijoittaminen saman rakenteen
-sisälle on kapseloinnin ensimmäinen periaate. Olemmekin jo tehneet näin
-määritellessämme luokkia ja niille sopivia attribuutteja ja metodeja. Luokan
-koheesio (engl. *cohesion*) kuvastaa sitä, kuinka *hyvin* luokan attribuutit ja
+Kapseloinnin ensimmäinen periaate on *yhteen kuuluvan tiedon ja toiminnallisuuden
+sijoittaminen saman rakenteen sisälle*. Olemmekin jo tehneet näin
+määritellessämme luokkia ja niille sopivia attribuutteja ja metodeja. 
+
+Koheesio (engl. *cohesion*) kuvastaa sitä, kuinka *hyvin* luokan attribuutit ja
 metodit sopivat yhteen luokan tarkoituksen kanssa. Luokkien suunnittelun
 tavoitteena on mahdollisimman korkea koheesio; luokan jäsenten tulisi olla
-sopivia sen tarkoitukseen. 
-
-Jos tekisimme esimerkiksi luokan kuvaamaan autoa, ei ehkä olisi kovin järkevää
-lisätä tähän luokkaan jäseneksi auton omistajan nimeä, osoitetta,
-puhelinnumeroa, jne. Omistajan tiedot ja niihin liittyvät toiminnallisuudet voi
-olla parempi laittaa omaan luokkaan. 
+sopivia sen tarkoitukseen. Jos tekisimme esimerkiksi luokan kuvaamaan autoa, ei
+ehkä olisi kovin järkevää lisätä tähän luokkaan jäseneksi auton omistajan nimeä,
+osoitetta, puhelinnumeroa, jne. Omistajan tiedot ja niihin liittyvät
+toiminnallisuudet voi olla parempi laittaa omaan luokkaan. 
 
 Tehdään nyt luokka `Auto`, johon voimme soveltaa kapseloinnin periaatteita.
 Lisätään aluksi vain attribuutit ja yksinkertaiset muodostajat. 
