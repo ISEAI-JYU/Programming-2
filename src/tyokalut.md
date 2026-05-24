@@ -482,6 +482,30 @@ Valmis!
 
 ***
 
+## IDEAn tekoälyasetusten kytkeminen pois päältä {#idea-ai}
+
+IDEAssa on parikin erilaista tekoälypohjainen täydennysominaisuutta: *AI
+Asisstant* ja *Inline Completion*. Näiden avulla ympäristö yrittää täydentää
+kirjoitettua koodia. 
+
+Voit kytkeä nämä ominaisuudet pois päältä seuraavasti.
+
+1. AI Assistantin kytkeminen pois
+   - Settings <i class="bi bi-chevron-right"></i> Plugins
+   - Valitse Installed-välilehti
+   - Etsi *JetBrainsAI Assistant* ja poista plugin käytöstä (Disable) tai poista se kokonaan (Uninstall)
+2. Inline Completion -täydennyksen kytkeminen pois
+   - Avaa IntelliJ IDEA *Welcome to IntelliJ IDEA* -näkymään
+   - Valitse vasemmasta alalalaidasta Configure <i class="bi bi-chevron-right"></i> Settings
+   - Mene asetuksissa kohtaan Editor <i class="bi bi-chevron-right"></i> General
+     <i class="bi bi-chevron-right"></i> Code Completion <i class="bi bi-chevron-right"></i> Inline 
+   - Ota ruksi **pois** kohdasta *Enable inline completion using language models*
+   - Tallenna asetukset *Save*-painikkeella
+
+
+
+
+
 ### [Valitse](#tab/default)
 
 Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
