@@ -1,8 +1,8 @@
 # Osan kaikki tehtävät
 
 > [!HUOMAUTUS]
-> Jos palautat tehtävät ennen osan takarajaa ({{#include ../takarajat.md:1}}), voit saada DL-BONUS-pisteitä
-> harjoitustehtäviin. Lue lisää
+> Jos palautat tehtävät ennen osan takarajaa (ks. [toteutuksesi takarajat](../index.md#uutiset)), voit saada DL-BONUS-pisteitä
+> harjoitustehtäviin. Lue DL-BONUS-pisteistä lisää
 > [suorittaminen-sivulta](../suorittaminen.md#suoritustapa-1).
 
 Ennen kuin aloitat tehtävien tekemisen, on syytä tutustua [opintojakson eettisiin ohjeisiin](../suorittaminen.md#eettiset-ohjeet).

@@ -1,10 +1,10 @@
 # Osan kaikki tehtävät
 
 > [!HUOMAUTUS]
-> Jos palautat tehtävät ennen osan takarajaa ({{#include ../takarajat.md:3}}), voit saada DL-BONUS-pisteitä
-> harjoitustehtäviin. Lue lisää
+> Jos palautat tehtävät ennen osan takarajaa (ks. [toteutuksesi takarajat](../index.md#uutiset)), voit saada DL-BONUS-pisteitä
+> harjoitustehtäviin. Lue DL-BONUS-pisteistä lisää
 > [suorittaminen-sivulta](../suorittaminen.md#suoritustapa-1).
-> 
+ 
 <task>
   <task-title>Tehtävä 3.1: Luokkahierarkia, osa 1. <points>1 p.</points> </task-title>
   <handout>
