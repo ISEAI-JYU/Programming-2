@@ -410,8 +410,8 @@ JSON voi sisältää seuraavan tyyppisiä arvoja:
  * luku (`25`)
  * totuusarvo (`true` / `false`)
  * tyhjä arvo (`null`)
- * taulukko (`[...]`)
- * olio (`{...}`)
+ * taulukko (`\[ ... ]`)
+ * olio (`{ ... }`)
 
 Esimerkiksi tiedosto `henkilot.json` voi näyttää tältä:
 
@@ -664,4 +664,3 @@ aiemmin määritetty perinteinen luokka.
   </handout>
   <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/tiep111/tehtavat/osa6/tehtava12">Tee tehtävä TIMissä</a></task-link>
 </task>
-
