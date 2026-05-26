@@ -482,7 +482,13 @@ Valmis!
 
 ***
 
-## IDEAn tekoälyasetusten kytkeminen pois päältä {#idea-ai}
+### [Valitse](#tab/default)
+
+Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
+
+***
+
+## IDEAn tekoälyavustusten kytkeminen pois päältä {#idea-ai}
 
 IDEAssa on parikin erilaista tekoälypohjainen täydennysominaisuutta: *AI
 Asisstant* ja *Inline Completion*. Näiden avulla ympäristö yrittää täydentää
@@ -501,16 +507,6 @@ Voit kytkeä nämä ominaisuudet pois päältä seuraavasti.
      <i class="bi bi-chevron-right"></i> Code Completion <i class="bi bi-chevron-right"></i> Inline 
    - Ota ruksi **pois** kohdasta *Enable inline completion using language models*
    - Tallenna asetukset *Save*-painikkeella
-
-
-
-
-
-### [Valitse](#tab/default)
-
-Valitse käyttöjärjestelmäsi yllä olevista vaihtoehdoista.
-
-***
 
 ## Java Development Kit (JDK) {#jdk}
 
