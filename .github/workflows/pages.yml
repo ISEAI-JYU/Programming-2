@@ -34,7 +34,7 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with mdBook
-        run: docker run --rm -it -v .:/workspace -w /workspace ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main mdbook build
+        run: docker run --rm -v .:/workspace -w /workspace ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main mdbook build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
