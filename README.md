@@ -10,19 +10,37 @@ Tehtävien palauttaminen vaatii opintojaksolle
 
 ## Materiaalin kehittäminen omalla koneella
 
-- Asenna Rust ja Cargo (esim. rustup) TAI käytä mukana olevaa DevContaineria
-- Aja ´update-mdbook.sh´ asentaakseen tarvittavat laajennokset
+- Käytä mukana olevaa DevContaineria. Se käyttää valmista mdBook-työkalukuvaa,
+  joka sisältää tarvittavat laajennokset.
+- Käynnistä esikatselu DevContainerin sisällä:
 
 ```bash
 bash ./start.sh
 ```
 
-tai
+Jos et käytä DevContaineria, voit asentaa työkalut käsin fallback-skriptillä:
 
 ```bash
 bash ./update-mdbook.sh
-mdbook serve --hostname 0.0.0.0 --port 3000 --open
+bash ./start.sh
 ```
+
+### mdBook-työkalukuvan päivittäminen
+
+DevContainer käyttää valmista GHCR-kuvaa
+`ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main`. Jos mdBook-työkaluja tai
+esikäsittelijöitä pitää päivittää, tee muutokset repossa
+`ohj-perus-jy/ohj-mdbook-tooling` ja pushaa ne `main`-haaraan. Tämän seurauksena
+rakentaminen ja julkaisu tapahtuvat automaattisesti.
+
+Huomaa, että `:main` on liikkuva tagi: jo käynnissä oleva DevContainer ei päivity
+automaattisesti. Päivitetty kuva otetaan käyttöön ajamalla esimerkiksi:
+
+```bash
+docker pull ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main
+```
+
+tai VS Codessa komennolla `Dev Containers: Rebuild and Reopen in Container`.
 
 ## Pikaohje mdBookin syntaksiin
 
