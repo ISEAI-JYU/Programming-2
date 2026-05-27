@@ -1,6 +1,6 @@
 {
 	"name": "Ohj2 mdBook",
-	"image": "ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main",
+	"image": "ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:devcontainer-latest",
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
