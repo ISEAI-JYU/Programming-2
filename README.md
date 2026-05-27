@@ -18,26 +18,38 @@ Tehtävien palauttaminen vaatii opintojaksolle
 bash ./start.sh
 ```
 
-Jos et käytä DevContaineria, voit asentaa työkalut käsin fallback-skriptillä:
+- Jos et halua käyttää DevContaineria (esimerkiksi nopeita muokkauksia tai et halua
+  ladata isoa DevContainer-kuvaa),
+  voit sen sijaan käyttää pelkästään mdbook-työkalua ja sen laajennoksia
+  sisältävän Docker-kuvaa. Esimerkiksi materiaalin koko rakentaminen yhdellä komennolla:
 
-```bash
-bash ./update-mdbook.sh
-bash ./start.sh
-```
+  ```bash
+  docker run --rm -v .:/workspace \
+    ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:runner-latest \
+    build
+  ```
+
+  Vastaavasti materiaalin avaaminen paikallisesti:
+
+  ```bash
+  docker run --rm -it -v .:/workspace -p 3000:3000 \
+    ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:runner-latest \
+    serve --hostname 0.0.0.0 --port 3000
+  ```
 
 ### mdBook-työkalukuvan päivittäminen
 
 DevContainer käyttää valmista GHCR-kuvaa
-`ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main`. Jos mdBook-työkaluja tai
+`ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:devcontainer-latest`. Jos mdBook-työkaluja tai
 esikäsittelijöitä pitää päivittää, tee muutokset repossa
 `ohj-perus-jy/ohj-mdbook-tooling` ja pushaa ne `main`-haaraan. Tämän seurauksena
 rakentaminen ja julkaisu tapahtuvat automaattisesti.
 
-Huomaa, että `:main` on liikkuva tagi: jo käynnissä oleva DevContainer ei päivity
+Huomaa, että `:devcontainer-latest` on liikkuva tagi: jo käynnissä oleva DevContainer ei päivity
 automaattisesti. Päivitetty kuva otetaan käyttöön ajamalla esimerkiksi:
 
 ```bash
-docker pull ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:main
+docker pull ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:devcontainer-latest
 ```
 
 tai VS Codessa komennolla `Dev Containers: Rebuild and Reopen in Container`.
