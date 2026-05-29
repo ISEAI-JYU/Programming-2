@@ -244,10 +244,7 @@ opintojaksoa edelleen! Voit antaa palautetta ja kehitysehdotuksia opintojaksosta
 kolmella tavalla:
 
  1. Jyväskylän yliopiston **tutkinto-opiskelijat** voivat antaa jatkuvaa palautetta
-    opintojakson aikana
-    [Norppa-järjestelmässä](https://norppa.jyu.fi/targets/7840/feedback). Nyt,
-    kun olemme kehittämässä opintojakson sisältöjä ja toteutusta, tämä jatkuva
-    palaute on erityisen tärkeää. 
+    opintojakson aikana Norppa-järjestelmässä. 
 
  2. **Kaikki opiskelijat** voivat ilmoittaa havaitsemistaan virheistä,
     epäselvyyksistä, tai muista ongelmista tässä oppimateriaalissa. Raportoi
