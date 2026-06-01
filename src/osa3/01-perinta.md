@@ -293,9 +293,10 @@ class Opiskelija extends Henkilo {
 }
 ```
 
-Huomaa, että järjestys on oltava nimen omaan tämä: `super`-kutsu tulee
-ensimmäisenä muodostajan rungossa. Vasta sen jälkeen voidaan tehdä muita
-alustuksia.
+Huomaa, että `super(...)`-kutsu on yleensä muodostajan ensimmäinen lause.
+Tietyin rajoituksin ennen `super(...)`-kutsu voi olla myös muualla muodostajan
+rungossa (ks. [JEP 513: Flexible Constructor
+Bodies](https://openjdk.org/jeps/513).
 
 Tee vastaava muutos myös `Opettaja`-luokkaan.
 
