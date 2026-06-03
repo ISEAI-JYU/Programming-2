@@ -9,9 +9,30 @@ Lukuvuonna 2025-2026 tenttejä järjestetään seuraavasti
 | Kevät 3 | ke 27.5.2026 | klo 12-16 | Ruusupuisto Juho D101    | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-05-27-12-00) |
 | Kesä 1  | 18.6.2026    | klo 12-16 | Agora Auditorio 3 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-06-18-12-00) |
 | Kesä 2  | 5.8.2026     | klo 12-16 | Agora / Zoom             | Ilmoittaudu                                                                                       |
-| Syksy 1 | pp.kk.2026   | klo xx-xx | Agora / Zoom             | Ilmoittaudu                                                                                       |
-| Syksy 2 | pp.kk.2026   | klo xx-xx | Agora / Zoom             | Ilmoittaudu                                                                                       |
-| Syksy 3 | pp.kk.2026   | klo xx-xx | Agora / Zoom             | Ilmoittaudu                                                                                       |
+
+Lukuvuonna 2026-2027 tenttejä järjestetään seuraavasti. **Tentin kesto tulee
+olemaan 3 tuntia. Alla näkyy tentin kestona 4 tuntia, johon sisältyy mahdollinen yksilöllisen järjestelyn mukainen lisäaika.**
+
+<!--
+* Syksy 1: to 17.12.2026 klo 10–14 (myös Ohj1), Auditorio 3
+* Kevät 1: to 15.4.2027 klo 16-20, Agora Auditorio 2
+* Kevät 2: ke 28.4.2027 klo 16–20 (myös Ohj1), Agora Auditorio 3 (huom. tentti alkaa 16:30, tilaan pääsee vasta 16:00)
+* Kevät 3: ti 25.5.2027 klo 10–14 (myös Ohj1), Agora Auditorio 2
+* Kesä 1: to 17.6.2027 klo 12–16 (myös Ohj1), Agora Auditorio 3
+* Kesä 2: ke 4.8.2027 klo 12–16 (myös Ohj1), Agora Auditorio 3
+* Kesä 3: to 9.9.2027 klo 16-20 (myös Ohj1), Auditorio 3
+-->
+
+| Tentti  | Päivämäärä   | Aika      | Paikka                   | Ilmoittaudu | Muuta | 
+| ------- | ------------ | --------- | ------------------------ | ----------- | ----- |
+| Syksy 1 | pp.kk.2026   | klo xx-xx | Agora / Zoom             | Ilmoittaudu |  |
+| Syksy 2 | to 17.12.2026 | klo 10–14 | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
+| Kevät 1 | to 15.4.2027 | klo 16-20 | Ag Aud 2 / Zoom | Ilmoittaudu | |
+| Kevät 2 | ke 28.4.2027 | klo 16:30–20:30 | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
+| Kevät 3 | ti 25.5.2027 | klo 10–14 | Ag Aud 2 / Zoom | Ilmoittaudu | Myös Ohj1 |
+| Kesä 1  | to 17.6.2027 | klo 12–16 | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
+| Kesä 2  | ke 4.8.2027  | klo 12–16 | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
+| Kesä 3  | to 9.9.2027  | klo 16-20 | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
 
 Voit osallistua tenttiin joko Agoran luentosalissa tai etänä Zoomin kautta. 
 
