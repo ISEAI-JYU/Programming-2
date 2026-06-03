@@ -15,7 +15,7 @@ olemaan 3 tuntia. Alla näkyy tentin kestona 4 tuntia, johon sisältyy mahdollin
 
 | Tentti  | Päivämäärä    | Aika            | Paikka          | Ilmoittaudu | Muuta     |
 | ------- | ------------- | --------------- | --------------- | ----------- | --------- |
-| Kesä 3  | 10.9.2026     | klo 16-20       | Agora / Zoom    | Ilmoittaudu | Myös Ohj1 |
+| Kesä 3  | 10.9.2026     | klo 16-20       | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
 | Syksy 1 | to 17.12.2026 | klo 10–14       | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
 | Kevät 1 | to 15.4.2027  | klo 16-20       | Ag Aud 2 / Zoom | Ilmoittaudu |           |
 | Kevät 2 | ke 28.4.2027  | klo 16:30–20:30 | Ag Aud 3 / Zoom | Ilmoittaudu | Myös Ohj1 |
