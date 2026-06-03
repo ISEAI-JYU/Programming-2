@@ -1,6 +1,6 @@
 {
     "dev.containers.reopenOnFolderWithDevcontainer": "always", 
-    "rewrap.autoWrap.enabled": true,
+    "rewrap.autoWrap.enabled": false,
     "editor.rulers": [80],
     "[markdown]": {
         "editor.formatOnType": false
@@ -9,8 +9,8 @@
         "**/node_modules/*/**": true,
         "**/tmp/**": true
     },
-    "remote.extensionKind": {
-        "yzhang.markdown-all-in-one": ["ui"],
-        "davidanson.vscode-markdownlint": ["ui"]
+     "remote.extensionKind": {
+         "yzhang.markdown-all-in-one": ["workspace"],
+         "davidanson.vscode-markdownlint": ["ui"]
     }
 }
