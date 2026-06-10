@@ -67,6 +67,8 @@ Ajalla 1.6.-31.7. ohjausta on saatavana seuraavasti:
 | Etäohjaus                                            | tiistaista torstaihin klo 15-17 | [Ohjelmointi 2 Teams-kanva](#teams)                                                                                            |
 | Sähköposti | Rajoitetusti kesäaikana      | ohj2-opet@jyu.onmicrosoft.com                                                                                                   |
 
+[Tenttipäivinä](tentti.md) ei kuitenkaan pidetä ohjauksia. 
+
 Ohjaukset ovat yhteisiä TIEP111 Ohjelmointi 2, ITKP102 Ohjelmointi 1- ja
 ITKA2004 Tietokannat ja tiedonhallinta -opintojaksojen kanssa. Ohjaajat auttavat
 kaikkien kolmen kurssin opiskelijoita.
