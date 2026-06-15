@@ -54,7 +54,7 @@ docker pull ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:devcontainer-latest
 
 tai VS Codessa komennolla `Dev Containers: Rebuild and Reopen in Container`.
 
-## Pikaohje mdBookin syntaksiin
+## Pikaohje kirjoittamiseen
 
 Koodiesimerkit voivat sisältää useita tiedostoja. Käytä `// FILE: filename`- ja 
 `// FILE_END`-merkintöjä erottaaksesi eri tiedostot.
