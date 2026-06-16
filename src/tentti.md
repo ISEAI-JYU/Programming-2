@@ -7,8 +7,8 @@ Lukuvuonna 2025-2026 tenttejä järjestetään seuraavasti
 | Kevät 1 | ke 22.4.2026 | klo 10-14 | Agora Auditorio 1 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-04-22-10-00) |
 | Kevät 2 | ke 6.5.2026  | klo 12-16 | Agora Auditorio 2 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-05-06-12-00) |
 | Kevät 3 | ke 27.5.2026 | klo 12-16 | Ruusupuisto Juho D101    | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-05-27-12-00) |
-| Kesä 1  | 18.6.2026    | klo 12-16 | Agora Auditorio 3 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-06-18-12-00) |
-| Kesä 2  | 5.8.2026     | klo 12-16 | Agora / Zoom             | Ilmoittaudu                                                                                       |
+| Kesä 1  | 18.6.2026    | klo 12-16 | Ag Aud 3 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-06-18-12-00) |
+| Kesä 2  | 5.8.2026     | klo 12-16 | Ag Aud 3 / Zoom | [Ilmoittaudu](https://tim.jyu.fi/view/kurssit/tie/tiep111/tentti/tentti-aloitus-2026-08-05-12-00) |
 
 Lukuvuonna 2026-2027 tenttejä järjestetään seuraavasti. **Tentin kesto tulee
 olemaan 3 tuntia. Alla näkyy tentin kestona 4 tuntia, johon sisältyy mahdollinen yksilöllisen järjestelyn mukainen lisäaika.**
