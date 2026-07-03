@@ -20,6 +20,7 @@
   - [Hello, java!](./part1/01-hello-java.md)
   - [Variables and Data types](./part1/02-variables-and-types.md)
   - [Control sctuctures](./part1/03-control-structures.md)
+  - [Subroutines](./part1/04-subroutines.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
