@@ -573,3 +573,337 @@ An array can be printed using `Arrays.toString()`
     IO.println( "Array contents: " + Arrays.toString(grades));
 //-}
 ```
+
+
+### Multidimensional Arrays
+
+Unlike languages such as C#, Java does not provide a separate multidimensional array type.
+Instead, Java allows arrays whose elements are themselves arrays. In other words, a two-dimensional array has the type 
+`Type[][]`:
+
+```java
+//-void main() {
+int[][] array2D = new int[][] {
+    new int[] {1, 2, 3},
+    new int[] {4, 5, 6, 7},
+    new int[] {8, 9, 0},
+};
+
+// The length of the array is the number of arrays it contains,
+// that is, the number of "rows".
+IO.println( "The array contains " + array2D.length + " arrays.");
+
+// Indexing works as normal -> each element is now an entire array
+IO.println( "array2D[0] is an array: " + Arrays.toString(array2D[0]));
+IO.println( "array2D[1] is an array: " + Arrays.toString(array2D[1]));
+IO.println( "array2D[2] is an array: " + Arrays.toString(array2D[2]));
+
+// Indexing individual elements also works normally,
+// but do note the syntax!
+int firstElement = array2D[0][0];
+IO.println( "The first element of the first row: " + firstElement);
+
+IO.println( "The third element (index 2) of row 2 (index 1) is: " + array2D[1][2]);
+//-}
+```
+
+Notice that in the example above, `array2D[0][0]` refers to
+the first arrays (`array2D[0]`) first element within that array
+`(array2D[0])[0]`
+The structure can be visualized as follows:
+
+```bob
+                    [0]                [1]                [2]
+
+              +------------------+------------------+------------------+
+              | array2D[0][0]    | array2D[0][1]    | array2D[0][2]    |
+array2D[0]    |                  |                  |                  |
+              |        1         |        2         |        3         |
+              +------------------+------------------+------------------+
+
+              +------------------+------------------+------------------+------------------+
+              | array2D[1][0]    | array2D[1][1]    | array2D[1][2]    | array2D[1][3]    |
+array2D[1]    |                  |                  |                  |                  |
+              |        4         |        5         |        6         |        7         |
+              +------------------+------------------+------------------+------------------+
+
+              +------------------+------------------+------------------+
+              | array2D[2][0]    | array2D[2][1]    | array2D[2][2]    |
+array2D[2]    |                  |                  |                  |
+              |        8         |        9         |        0         |
+              +------------------+------------------+------------------+
+```
+
+Notice especially that the "row arrays" do **not** need to have the same length.
+
+### Constants
+
+A variable whose value can only be assigned during initialization is declared using the `final` keyword.
+According to Java coding conventions, `final` variables are written using uppercase letters with words separated by underscores.
+
+Java allows `final` to be used with both primitive and reference types.
+However, when used with a reference type, `final` means that the reference itself cannot be changed to point to a different object. The data referenced by the variable may still be modified if the type allows it.
+
+```java,ignore
+final int DAYS_IN_WEEK = 7;
+
+final int[] DAYS_PER_MONTH_LEAP_YEAR = new int[] {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+// DAYS_IN_WEEK = 8; // This would cause a compilation error
+DAYS_PER_MONTH_LEAP_YEAR[0] = 30; // This is allowed
+```
+
+Constants are used, among other things, to improve code readability, reduce code duplication, increase reliability, and improve performance.
+
+
+## Lists
+
+A list is a data structure that can grow and shrink as needed.
+Like an array, a list can contain only elements of a single type.
+Unlike arrays, the size of a list is not fixed, making lists more flexible when the number of elements is not known beforehand. Java lists correspond roughly to arrays in JavaScript.
+
+The most commonly used list implementation in Java is `ArrayList<T>`, where `T` represents the type of elements stored in the list.  To use lists, the appropriate classes must first be imported:
+
+```java,ignore
+import java.util.*;
+
+// Program code
+void main() ...
+```
+
+The `import` statement tells the compiler that the program uses types from the `java.util` package.
+Briefly, a package is Java's way of organizing related classes.
+
+If you have previously used Python, Java packages can be thought of equivalent of a Python package.
+`import java.util.ArrayList;` is conceptually similiar to `from collections import deque` in Python.
+Packages will be discussed in greater detail later. For now, it is sufficient to know that the compiler may not be aware of certain types unless they are imported.
+
+Once the `java.util` package has been imported, lists can be initialized as follows:
+
+```java
+import java.util.*;
+
+void main() {
+    // Method 1: Empty list without elements
+    List<Integer> grades = new ArrayList<Integer>();
+
+    // Add the elements one by one.
+    grades.add(4);
+    grades.add(2);
+    grades.add(2);
+    grades.add(5);
+    //-IO.println("grades = " + grades);
+
+    // Method 2: Initialized list where the elements are given
+    List<Integer> predefinedGrades = new ArrayList<Integer>( List.of(4, 2, 2, 5));
+    //-IO.println( "predefinedGrades = " + predefinedGrades);
+}
+```
+
+Because of limitations in Java's generic type system, the element type of a list must always be a reference type.
+Therefore, the following is **not allowed**:
+
+```java,ignore
+List<int> list = new ArrayList<int>();
+```
+```
+error: unexpected type
+List<int> lista = new ArrayList<int>();
+     ^
+  required: reference
+  found:    int
+```
+
+If you need a list containing primitive values, use the corresponding [wrapper classes](#wrapper-classes), 
+which works the same as the primitive values, but are reference type. In other words
+`ArrayList<Integer>` is allowed, whereas
+`ArrayList<int>` is not.
+Likewise,
+`ArrayList<String>`
+is valid because `String` is a reference type.
+
+> [!NOTE]
+> According to Java coding conventions, variables should generally be declared using the interface type `List<T>`, while the actual object is created using a more specific implementation such as `ArrayList<T>`.
+> 
+> Thus, although the following is allowed:
+> 
+> ```java
+>
+> 
+> //-void main() {
+> ArrayList<String> names = new ArrayList<String>(List.of("Matti", "Teppo"));
+> //-IO.println("names = " + names);
+> //-}
+> ```
+> 
+> the more common style is:
+> 
+> ```java
+>
+> 
+> //-void main() {
+> List<String> names = new ArrayList<String>(List.of("Matti", "Teppo"));
+> //-IO.println("names = " + names);
+> //-}
+> ```
+> 
+> Furthermore, when the compiler can infer the element type from the declaration, the type argument can often be omitted:
+> 
+> ```java
+> //-void main() {
+> // The compiler infers that ArrayList<> must be ArraList<String>
+> // based on the declared variable type
+> List<String> names = new ArrayList<>(List.of("Matti", "Teppo"));
+> //-IO.println("names = " + names);
+> //-}
+> ```
+> 
+> We will examine the differences between `List<T>` and `ArrayList<T>` in more detail in Part 5.
+> For now, it is enough to think of `List<T>` as the general concept of a list, and `ArrayList<T>` as one concrete implementation provided by Java.
+
+Let's now look at some useful methods provided by lists.
+
+| Method | Description |
+|----------|-------------|
+| `size()` | Returns the number of elements in the list. |
+| `add(element)` | Adds an element to the end of the list. |
+| `add(index, element)` | Inserts an element at the specified index and shifts subsequent elements one position forward. |
+| `get(index)` | Returns the element at the specified index. |
+| `remove(element)` | Removes the first occurrence of the specified element from the list and shifts remaining elements one position backward. |
+| `remove(index)` | Removes the element at the specified index. |
+
+Additional methods can be found in the JavaDocs documentation (see 
+[Class `ArrayList<E>`](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/ArrayList.html)).
+
+
+```java
+import java.util.*;
+
+void main() {
+    // Create an empty list of strings
+    List<String> names = new ArrayList<>();
+    // Add elements to the list
+    names.add("Matti");
+    names.add("Teppo");
+    names.add("Liisa");
+
+    // Print the size of the list
+    IO.println("List size: " + names.size());
+    IO.println("------");
+    // Retrieve the element at index 1 (the second element)
+    String second = names.get(1);
+    IO.println("Second element: " + second);
+    IO.println("------");
+
+    // Remove the element at index 0 (the first element)
+    names.remove(0);
+    IO.println("Removed the first element.");
+    IO.println("------");
+    // Print all elements
+    IO.println("names = " + names);
+    IO.println("------");
+
+    // Print the size of the list
+    IO.println("List size: " + names.size());
+
+    // Two examples of creating lists with predefined contents
+    List<String> animals = new ArrayList<>(List.of("dog", "cat", "fish"));
+    List<String> colors = Arrays.asList("red", "blue", "yellow");
+    IO.println("animals = " + animals);
+    IO.println("colors = " + colors);
+}
+```
+
+Notice at least the following differences between Java, C#, and Python when working with lists.
+The variable `i` refers to a list index.
+
+| Operation                              | Java                                   | C#                 | Python                             |
+| -------------------------------------- | -------------------------------------- | ------------------ | ---------------------------------- |
+| Read an element at a specific position | `list.get(i)`                          | `list[i]`          | `list[i]`                          |
+| List size                              | `list.size()`                          | `list.Count`       | `len(list)`                        |
+| Remove an element                      | `list.remove(i)`                       | `list.RemoveAt(i)` | `list.pop(i)`                      |
+| Is the list empty?                     | `list.isEmpty()` or `list.size() == 0` | `list.Count == 0`  | `if not list:` or `len(list) == 0` |
+
+## Java's Type System
+
+Java is a **statically typed** language, which means that variable types are determined at compile time rather than during program execution.
+If you attempt to assign a value of the wrong type to a variable, the program will fail to compile and the compiler will report an error.
+
+In practice, different data types cannot generally be used interchangeably unless Java explicitly allows it.
+For example a boolean value cannot be used as a numeric value 
+and a reference value cannot be treated as an integer.
+If a programmer attempts to violate these rules, a compilation error occurs.
+
+```java
+void main() {
+    boolean truthValue = false;
+    truthValue = 1;
+}
+```
+```
+error: incompatible types: int cannot be converted to boolean
+    truthValue = 1;
+                 ^
+1 error
+```
+
+The compiler error above indicates that an integer (`int`) cannot be converted into a boolean (`boolean`).
+This is a clear difference compared to dynamically typed languages such as Python and JavaScript, where a variable's type is determined at runtime and variables may store values of different types during execution.
+
+For example, the following code is valid in JavaScript:
+
+```javascript
+let truthValue = true;
+//-console.log(`truthValue = ${truthValue}`);
+truthValue = 1;
+//-console.log(`truthValue = ${truthValue}`);
+```
+
+However, it is inevitable that programs must work with values of different types.
+To support this, Java provides a number of automatic conversion rules that allow the compiler to perform *implicit type conversions* in assignments and expressions.
+
+For example:
+
+- An integer (`int`) can be automatically converted into a floating-point number (`double`).
+- Smaller integer types (such as 8-bit `byte`) can be automatically widened into larger integer types (such as 32-bit `int`).
+
+There are many such conversion rules.
+As a general principle, if a conversion does not result in information loss, Java usually provides an implicit conversion for it.
+
+```java
+void main() {
+    int integerValue = 23;
+    //-IO.println("integerValue = " + integerValue);
+    double decimalValue = integerValue; // OK: implicit int -> double conversion
+    //-IO.println( "decimalValue = " + decimalValue);
+
+    // NOTICE:
+    // division is int / int => decimal part lost
+    double halfIncorrect = 1 / 2;
+    //-IO.println( "halfIncorrect = " + halfIncorrect);
+
+    // CORRECT:
+    // division int / double => double division
+    double halfCorrect = 1 / 2.0;
+    //-IO.println( "halfCorrect = " + halfCorrect);
+}
+```
+
+In addition, the programmer may explicitly force a conversion using the syntax 
+`(newType)variable`.
+This is known as an *explicit type conversion* or *cast*.
+Explicit conversions are used when the desired conversion is not allowed implicitly.
+
+```java
+void main() {
+    long hugeNumber = 40000000000L; // long = 64-bit integer
+    IO.println("Large long value: " + hugeNumber);
+
+    // long -> int is not implicit, but can be done explicitly
+    int truncated = (int) hugeNumber; // int = 32-bit integer
+    IO.println("int after explicit conversion: " + truncated);
+}
+```
+
+In practice, static typing means that Java attempts to prevent type-related errors before the program is executed.
+The compiler acts as a safety net that ensures values, variables, and operations are compatible with one another before the program is run.
