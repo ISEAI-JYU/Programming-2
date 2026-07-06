@@ -23,6 +23,7 @@
   - [Subroutines](./part1/04-subroutines.md)
 - [Basics of Object-Oriented programming](./part2/index.md)
   - [Towards Object-Oriented programming](./part2/01-towards-object-oriented-programming.md)
+  - [Class and Object](./part2/02-class-and-object.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
