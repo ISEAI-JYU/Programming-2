@@ -27,6 +27,7 @@
   - [Encapsulation](./part2/03-encapsulation.md)
 - [Inheritance and Polymorhpism](./part3/index.md)
   - [Inheritance](./part3/01-inheritance.md)
+  - [Polymorphism](./part3/02-polymorphism.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
