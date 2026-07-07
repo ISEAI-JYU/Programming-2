@@ -32,6 +32,7 @@
 - [Interfaces and Generic Types](./part4/index.md)
   - [Interfaces](./part4/01-interfaces.md)
   - [Comparable Interface](./part4/02-comparable.md)
+  - [Inheritance and Interfaces in Object Collaboration](./part4/03-inheritance-and-interfaces.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
