@@ -274,7 +274,7 @@ void main() {
 ```
 
 `Comparable` is a so-called *generic interface*, meaning that the interface itself does not specify what type of objects are being compared.
-We will cover generic programming in more detail in [Part 4.4](./04-type-paramateres-and-genericity.md).
+We will cover generic programming in more detail in [Part 4.4](./04-type-parameters-and-generics.md).
 Because of this, when implementing the `Comparable` interface, we must explicitly specify the type for which the natural ordering is being defined.
 In this case, we are defining an ordering for collectible cards, which is why we write:
 `implements Comparable<CollectibleCard>`.
