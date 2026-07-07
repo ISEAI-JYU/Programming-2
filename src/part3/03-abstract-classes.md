@@ -697,7 +697,6 @@ public class Main {
 ```
 
 `performUpdate()` now acts as a predefined recipe that subclasses cannot modify because it is declared `final`.
-
 The subclasses instead customize the recipe by implementing the abstract methods required by the process.
 
 🤔 Something to think about: In what situations would you want to prevent a subclass from overriding a particular method?

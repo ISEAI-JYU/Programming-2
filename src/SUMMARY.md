@@ -29,6 +29,8 @@
   - [Inheritance](./part3/01-inheritance.md)
   - [Polymorphism](./part3/02-polymorphism.md)
   - [Abstract Classes](./part3/03-abstract-classes.md)
+- [Interfaces and Generic Types](./part4/index.md)
+  - [Interfaces](./part4/01-interfaces.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
