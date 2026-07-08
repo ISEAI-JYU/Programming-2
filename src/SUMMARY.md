@@ -36,6 +36,7 @@
   - [Type Parameters and Generics](./part4/04-type-parameters-and-generics.md)
 - [Data Structures and Algorithms](./part5/index.md)
   - [Collections](./part5/01-collections.md)
+  - [List Structures](./part5/02-list-data-structures.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
