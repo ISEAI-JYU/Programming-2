@@ -38,6 +38,8 @@
   - [Collections](./part5/01-collections.md)
   - [List Structures](./part5/02-list-data-structures.md)
   - [Map Structures](./part5/03-map-structures.md)
+  - [Set and Queue Structures](./part5/04-sets-and-queue-structures.md)
+  - [Recursion](./part5/05-recursion.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
