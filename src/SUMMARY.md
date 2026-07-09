@@ -42,6 +42,7 @@
   - [Recursion](./part5/05-recursion.md)
 - [Useful Techniques in Java](./part6/index.md)
   - [Functional Interfaces and Lambda Expressions](./part6/01-functional-interfaces-and-lambda-expressions.md)
+  - [Processing Collections: Stream API](./part6/02-processing-collections-stream-api.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
