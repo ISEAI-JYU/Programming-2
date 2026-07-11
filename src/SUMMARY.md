@@ -45,6 +45,7 @@
   - [Processing Collections: Stream API](./part6/02-processing-collections-stream-api.md)
   - [Exception Handling](./part6/03-exception-handling.md)
   - [External Libraries and Java Project Management](./part6/04-external-libraries-and-java-project-management-tools.md)
+  - [File Handling](./part6/05-file-handling.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
