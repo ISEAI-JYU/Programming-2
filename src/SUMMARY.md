@@ -48,6 +48,7 @@
   - [File Handling](./part6/05-file-handling.md)
 - [JavaFX part1: SceneBuilder](./part7/index.md)
   - [JavaFX Fundamentals](./part7/01-javafx-fundamentals.md)
+  - [Scenebuilder Fundamentals](./part7/02-scenebuilder.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
