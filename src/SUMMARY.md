@@ -51,6 +51,7 @@
   - [Scenebuilder Fundamentals](./part7/02-scenebuilder.md)
   - [Version Control](./part7/03-version-control.md)
   - [Application Logic and the User Inteface](./part7/04-application-logic-and-ui.md)
+  - [Reading and Writing Tasks to a File](./part7/05-reading-and-writing-tasks-to-file.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
