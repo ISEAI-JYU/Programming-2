@@ -68,6 +68,8 @@
 - [JavaFX tips](./javafx-eng/index.md)
   - [Views](./javafx-eng/01-views.md)
   - [TableView](./javafx-eng/02-tableview.md)
+  - [Using UI Libraries](./javafx-eng/03-using-ui-libraries.md)
+  - [Derived Observable Values](./javafx-eng/04-derived-observable-values.md)
 ---
 
 - [Java-kielen perusteet](./osa1/index.md)
