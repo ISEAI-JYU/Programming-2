@@ -483,7 +483,7 @@ class TaskCollectionTest {
 We can actually go even further and verify that tasks are saved whenever either the collection or a task changes.
 Let's create dedicated tests specifically for saving behavior:
 
-```java
+```java,ignore
 @Test
 void taskCollectionSavesAfterAddAndRemove() {
     // Act and Assert steps can be repeated
