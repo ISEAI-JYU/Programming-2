@@ -63,6 +63,13 @@
   - [MVC architecture](./part8/03-mvc-architecture.md)
   - [Task Editing](./part8/04-multiple-views.md)
   - [Unit Testing](./part8/05-unit-testing.md)
+
+--- 
+- [JavaFX tips](./javafx-eng/index.md)
+  - [Views](./javafx-eng/01-views.md)
+  - [TableView](./javafx-eng/02-tableview.md)
+---
+
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
