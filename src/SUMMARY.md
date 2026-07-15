@@ -58,6 +58,7 @@
   - [TableView and Data binding](./part8/02-tableview.md)
   - [MVC architecture](./part8/03-mvc-architecture.md)
   - [Task Editing](./part8/04-multiple-views.md)
+  - [Unit Testing](./part8/05-unit-testing.md)
 - [Java-kielen perusteet](./osa1/index.md)
   - [Hei, Java!](./osa1/01-hei-java.md)
   - [Muuttujat ja tietotyypit](./osa1/02-muuttujat-ja-tietotyypit.md)
