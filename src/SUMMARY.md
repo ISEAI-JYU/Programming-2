@@ -71,6 +71,7 @@
   - [Using UI Libraries](./javafx-eng/03-using-ui-libraries.md)
   - [Derived Observable Values](./javafx-eng/04-derived-observable-values.md)
   - [Data Validation](./javafx-eng/05-validation.md)
+  - [Reference Management](./javafx-eng/06-reference-management.md)
 ---
 
 - [Java-kielen perusteet](./osa1/index.md)
