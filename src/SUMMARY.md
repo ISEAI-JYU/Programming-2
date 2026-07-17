@@ -63,6 +63,10 @@
   - [MVC architecture](./part8/03-mvc-architecture.md)
   - [Task Editing](./part8/04-multiple-views.md)
   - [Unit Testing](./part8/05-unit-testing.md)
+- [Project Assignment, Phase 1](./part9/index.md)
+- [Project Assignment, Phase 2](./part10/index.md)
+- [Project Assignment, Phase 3](./part11/index.md)
+- [Project Assignment Submission](./part12/index.md)
 
 --- 
 - [JavaFX tips](./javafx-eng/index.md)
