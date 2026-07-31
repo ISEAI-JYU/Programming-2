@@ -1,21 +1,18 @@
-Muuta esimerkin `Henkilo`-luokkaa niin, että jokainen luotu henkilö saa
-*automaattisesti* oman järjestysnumeron, joka on kokonaisluku. 
-Ensimmäiseksi luodun henkilön numero on 1, seuraava saa numeroksi 2, jne.
+Modify the example `Person` class so that every created person is *automatically* assigned a unique identification number, which is an integer.
+The first person created should receive the number 1, the next person should receive the number 2, and so on.
 
-Numeroa ei saa antaa henkilölle sen ulkopuolelta esimerkiksi kutsumalla sen 
-metodia.
+The number must not be assigned from outside the object, for example by calling one of its methods.
 
-Toteuta luokkaan myös metodi `annaNumero`, joka palauttaa tietyn olion numeron
-kokonaislukuna. Muita metodeja ei tarvitse lisätä.
+Also implement a method called `getNumber` that returns the identification number of a particular object as an integer. No other methods need to be added.
 
-<details><summary>Vinkki</summary>
+<details><summary>Tip</summary>
 
-Tarvitset tässä tehtävässä staattisia luokan jäseniä.
+You will need static class members in this exercise.
 
-Mieti aluksi seuraavia kysymyksiä: 
+Before you begin, consider the following questions:
 
-- Milloin olio saa numeron? 
-- Mistä olio tietää, mikä sen numeron pitäisi olla?
-- Mikä tieto on jaettua olioiden kesken ja mikä on oliokohtaista?
-  
+- When does an object receive its number?
+- How does an object know what its number should be?
+- What information is shared among all objects, and what information is specific to each object?
+
 </details>

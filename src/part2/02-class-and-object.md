@@ -418,6 +418,36 @@ public class Building {
 
 ***
 
+<task>
+<task-title>Exercise 2.1: Clock <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-1-clock/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 2.2: Timer <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-2-timer/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 2.3: Own class <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-3-own-class/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
+
 ## Static
 
 Class members can be defined as belonging to the **class itself** rather than to individual objects by using the `static` modifier. Such members are called *class attributes* and *class methods*.
@@ -533,7 +563,16 @@ One example of a static method that we use frequently is `IO.println()`.
 This is a static method of [`IO` class](https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/io/IO.html)
 and it is convenient because we do not need to create a separate object every time we want to print something.
 
-<!-- ================================================== -->
+<task>
+<task-title>Exercise 2.4: Static <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-4-static/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise4">Complete this exercise in TIM</a></task-link>
+</task>
+
 ## Object Lifecycle
 
 During program execution, instances of classes are created; these instances are called *objects*.
@@ -694,3 +733,24 @@ class Person {
 We will not study Java's garbage collector or memory management in great detail in this course.
 For the purposes of this course, it is sufficient to understand *when an object becomes garbage and can be destroyed*. Once no references to an object exist, it becomes eligible for garbage collection, and Java may later reclaim the memory it occupies. 
 If you would like to explore the topic in more detail, you can start by reading more about heap memory and memory allocation [here](https://www.geeksforgeeks.org/java/jvm-heap-area/), and about Java garbage collection from [here](https://www.geeksforgeeks.org/java/garbage-collection-in-java/), both of which provide relatively accessible introductions to the subject.
+
+<task>
+<task-title>Exercise 2.5: Phone  <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-5-phone/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title> Exercise 2.6: Library
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-6-library/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise6">Complete this exercise in TIM</a></task-link>
+</task>

@@ -692,3 +692,44 @@ We can now use the `Building` class without needing to know anything about how r
 Similarly, the `Building` class does not depend directly on how the `Room` class stores reservation information.
 
 At this point, we are still missing some of the most important tools of object-oriented programming: *inheritance*, *polymorphism*, and *interfaces*. We will explore these concepts in the next chapter.
+
+<task>
+<task-title>Exercise 2.7: Door
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-7-door/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise7">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title> Exercise 2.8: Piggy bank <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-8-piggy-bank/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise8">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title><i class="bi bi-stars jyu-gold"></i> Exercise 2.9: Electric grid <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-9-electric-grid/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise9">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title><i class="bi bi-stars jyu-gold"></i> Exercise 2.10: Reservations <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/2-10-reservations/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part2/exercise10">Complete this exercise in TIM</a></task-link>
+</task>
