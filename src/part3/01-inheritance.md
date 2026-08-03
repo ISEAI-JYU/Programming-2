@@ -466,3 +466,35 @@ We will not explore multiple inheritance in detail here, but it is worth mention
 
 You may sometimes read that Java's *interfaces* provide functionality somewhat similar to multiple inheritance. While there are similarities, interfaces are fundamentally a different concept and serve a different purpose.
 Interfaces will be covered later in the course.
+
+## Exercises 
+
+<task>
+<task-title>Exercise 3.1: Class Hieracrhy, Part 1 <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-1-online-store-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 3.2: Class Hieracrhy, Part 2 <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-2-online-store-2/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 3.3: Class Hieracrhy, Part 3 <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-3-online-store-3/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise3">Complete this exercise in TIM</a></task-link>
+</task>

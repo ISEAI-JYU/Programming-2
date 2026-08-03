@@ -702,3 +702,45 @@ The subclasses instead customize the recipe by implementing the abstract methods
 🤔 Something to think about: In what situations would you want to prevent a subclass from overriding a particular method?
 
 ***
+
+## Exercises
+<task>
+<task-title>Exercise 3.7: Messages
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-7-messages/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise7">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 3.8: Abstract vehicle  <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-8-abstract-vehicle/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise8">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 3.9: Communication channels <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-9-communication-channels/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise9">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title><i class="bi bi-stars jyu-gold"></i> Exercise 3.10: Messaging service <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-10-messaging-service/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise10">Complete this exercise in TIM</a></task-link>
+</task>

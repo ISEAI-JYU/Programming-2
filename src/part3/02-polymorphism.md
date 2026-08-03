@@ -620,3 +620,35 @@ Similarly, when a method is declared with the `final` keyword, it cannot be over
 Somewhat confusingly, the `final` keyword can also be used with variables. In that context, it means that the value of the variable cannot be changed after initialization. However, that usage is unrelated to inheritance.
 
 ***
+
+## Exercises 
+<task>
+<task-title>Exercise 3.4: Class Hieracrhy, Part 4 <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-4-online-store-4/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise4">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 3.5: Replacement, Part 1  <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-5-replacement-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title> Exercise 3.6: Replacement, Part 2
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/3-6-replacement-2/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part3/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
