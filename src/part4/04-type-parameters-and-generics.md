@@ -634,3 +634,62 @@ Important concepts introduced in this chapter include:
 * Generic type invariance
 
 Generics and polymorphism solve different problems, but together they provide a powerful way to build flexible and type-safe software. -->
+
+
+## Exercises
+<task>
+<task-title>Exercise 4.8: Find the Largest
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-8-find-the-largest/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise8">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 4.9: Container
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-9-container/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise9">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title><i class="bi bi-stars jyu-gold"></i> Exercise 4.10: Large Container
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-10-large-container/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise10">Complete this exercise in TIM</a></task-link>
+</task>
+
+
+<task>
+<task-title>Exercise 4.11: Type Restrictions, Part1
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-11-type-restrictions-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise11">Complete this exercise in TIM</a></task-link>
+</task>
+
+
+<task>
+<task-title>Exercise 4.12: Type Restrictions, Part2
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-12-type-restrictions-2/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise12">Complete this exercise in TIM</a></task-link>
+</task>

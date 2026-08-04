@@ -606,9 +606,34 @@ C <|.. D
 
 ## Notes
 
-<i class="bi bi-stars jyu-gold"></i> Optional additional information:
+<details><summary><i class="bi bi-stars jyu-gold"></i>Optional additional information: default method implementations</summary>
+
 Starting with Java 8, interfaces can also contain *default method implementations*.
 This feature can be useful when adding a new method to an existing interface without breaking older implementations.
 Read more about this in [Java documentation](https://docs.oracle.com/javase/tutorial/java/IandI/defaultmethods.html)
 
+</details>
+
 ***
+
+## Exercises
+
+<task>
+<task-title>Exercise 4.1: Converter <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-1-converter/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 4.2: Encryption <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-2-encryption/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise2">Complete this exercise in TIM</a></task-link>
+</task>

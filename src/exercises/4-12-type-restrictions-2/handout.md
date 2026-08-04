@@ -1,0 +1,1 @@
+Create a generic function that copies all elements of type `T` from one list to another list, whose type may be `T` or a superclass of `T`.

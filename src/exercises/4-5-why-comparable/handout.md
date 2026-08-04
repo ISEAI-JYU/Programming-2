@@ -1,0 +1,1 @@
+Study the Java documentation. Answer the questions about the `Comparable` interface.

@@ -494,3 +494,24 @@ The table below summarizes the key differences between abstract classes and inte
 | Primary purpose                         | Shared structure and partial implementation | Shared behavioral contract                       |
 
 ***
+
+## Exercises
+<task>
+<task-title>Exercise 4.3: Adventure Game <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-3-adventure-game/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 4.4: Household Robot <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-4-household-robot/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise4">Complete this exercise in TIM</a></task-link>
+</task>

@@ -115,6 +115,17 @@ By combining Java's collection interfaces and element interfaces, it becomes pos
 
 ***
 
+<task>
+<task-title>Exercise 4.5: Why Comparable  <points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-5-why-comparable/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
+
 ## Implementing the `Comparable` Interface Yourself
 
 Let's try implementing the `Comparable` interface for one of our own classes.
@@ -394,3 +405,27 @@ void main() {
 ```
 
 ***
+
+## Exercises
+
+<task>
+<task-title> Exercise 4.6: Sorting People, Part 1
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-6-sorting-people-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 4.7: Sorting People, Part 2
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/4-7-sorting-people-2/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part4/exercise7">Complete this exercise in TIM</a></task-link>
+</task>
