@@ -428,3 +428,40 @@ The appropriate choice therefore depends on the requirements of the application.
 `HashMap` is usually the best choice when the primary goal is the fastest possible key-based lookup and element ordering is irrelevant.
 `LinkedHashMap` is useful when insertion order must be preserved.
 `TreeMap` is somewhat slower, but it is the correct choice when keys must remain continuously sorted and ordering-based queries are required.
+
+---
+
+## Exercises
+
+<task>
+<task-title>Exercise 5.5: Words
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-5-words/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title> Exercise 5.6: Reservations
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-6-reservations/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 5.7: Hash Table
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-7-hash-table/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise7">Complete this exercise in TIM</a></task-link>
+</task>

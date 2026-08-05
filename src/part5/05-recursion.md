@@ -381,10 +381,16 @@ void main() {
 }
 ```
 
-> ![TODO]
-> Tähän tehtävä
-<!-- {{#include ../exercises/5-11-sum-with-stack/handout.md}} -->
-<!-- ``` -->
+<task>
+<task-title>Exercise 5.11: Sum with a Stack
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-11-sum-with-stack/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise11">Complete this exercise in TIM</a></task-link>
+</task>
 
 For both the factorial function and the tree-height calculation, no additional state information was required.
 In the factorial example, only numbers were stored on the stack.
@@ -489,3 +495,14 @@ void printPostorder(Node root) {
 In this way, the loop and stack precisely imitate the behavior of recursion:
 first work is created for the subtrees, and only during the return phase is the node itself processed.
 The code follows the definition of postorder traversal directly, but without using recursive method calls.
+
+<task>
+<task-title>Exercise 5.12: Tree Sum with a Stack
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-12-tree-sum-with-stack/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise12">Complete this exercise in TIM</a></task-link>
+</task>

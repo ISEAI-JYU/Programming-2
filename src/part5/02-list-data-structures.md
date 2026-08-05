@@ -163,6 +163,17 @@ You should now be able to inspect the `list` object and its `elements` array.
 The added names should appear at the beginning of the array.
 By default, IntelliJ IDEA hides the trailing `null` values in arrays. To display them, right-click the array, select "Customize Data View", and disable "Hide Null Elements".
 
+<task>
+<task-title>Exercise 5.1: List, Part 1
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-1-list-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
 ***
 
 Next, let's implement a method `get(int index)` that returns the element at a specified index, and a method `set(int index, T element)` that replaces the element at a particular index.
@@ -205,8 +216,17 @@ If there is still room in the array—that is, if `size` is smaller than the arr
 If the array is full, the usual approach is to create a new array, typically twice as large, copy all elements from the old array into the new one, and then add the new element to the new array.
 This process ensures that the list can continue growing whenever necessary.
 
-> [!TODO]
-> Tähän tehtävä taulukkoon lisäyksestä.
+<task>
+<task-title>Exercise 5.2: Dynamic List, Part 1
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-2-dynamic-list-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
+
 
 
 Removing elements is slightly more complicated, because removing an element leaves an empty slot in the array.
@@ -218,9 +238,16 @@ This would be quite inefficient because every removal would require copying the 
 A more common approach is to shift all elements after the removed element one position toward the beginning of the array.
 This keeps the list compact and avoids allocating a new array.
 
-```text
+<task>
+<task-title>Exercise 5.3: Dynamic List, Part 2
+<points>1 p.</points> </task-title>
+<handout>
+
 {{#include ../exercises/5-3-dynamic-list-2/handout.md}}
-```
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
 
 Elements can also be removed based on value.
 In that case, the first element equal to the specified value is located and removed.
@@ -384,6 +411,13 @@ Once this requirement is satisfied, removal can be implemented reliably by trave
 If the list contains multiple equal elements, this implementation removes only the first one found.
 Removing all matching elements would require additional traversals.
 
-```text
+<task>
+<task-title>Exercise 5.4: Dynamic List, Part 3
+<points>1 p.</points> </task-title>
+<handout>
+
 {{#include ../exercises/5-4-dynamic-list-3/handout.md}}
-```
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise4">Complete this exercise in TIM</a></task-link>
+</task>

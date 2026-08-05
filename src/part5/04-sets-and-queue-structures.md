@@ -451,3 +451,38 @@ Insertion and removal both have time complexity $O(\log n)$.
 Requesting the smallest element, however, is very efficient and occurs in constant time $O(1)$.
 
 ***
+
+## Exercises 
+
+<task>
+<task-title>Exercise 5.8: Sets
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-8-sets/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise8">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 5.9: Task List
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-9-task-list/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise9">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title><i class="bi bi-stars jyu-gold"></i> Exercise 5.10: Parentheses
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/5-10-parentheses/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part5/exercise10">Complete this exercise in TIM</a></task-link>
+</task>
