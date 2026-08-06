@@ -1,9 +1,10 @@
-Palauta osan 8.4 perusteella edistetty projekti. Kertaus tämän osan vaiheista:
+Return the project refactored in Exercise 8.4.
+Recap of the steps in this part:
 
-- Avaa tehtävän muokkausnäkymä, kun käyttäjä tuplaklikkaa tehtävää.
-- Lisää tehtävälle vähintään kuvaus ja prioriteetti.
-- Lisää syötteille validointi (esim. tehtävän otsikko ei saa olla tyhjä).
-- Tallenna muokkaukset takaisin tehtävään ja päivitä näkymä.
+- Open the task editing view when the user double-clicks a task.
+- Add at least a description and a priority to the task.
+- Add validation for user input (for example, the task title must not be empty).
+- Save the changes back to the task and update the view.
 
-Kun vaihe on valmis, tee `git add` muuttuneille tiedostoille ja `git commit`.
-Palauta projektisi tiedostot.
+When the phase is complete, run `git add` for the modified files and create a `git commit`.
+Return your project files.

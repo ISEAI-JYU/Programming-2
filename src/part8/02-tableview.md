@@ -600,3 +600,14 @@ Its visibility could then be controlled through `setVisible()`, which correspond
 The implementation would be otherwise identical, except that the calls to `setDisable()` would be replaced with `setVisible()`.
 
 </details>
+
+<task>
+<task-title>Exercise 8.2: Todo Application, Part 8
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-2-todo-8/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise2">Complete this exercise in TIM</a></task-link>
+</task>

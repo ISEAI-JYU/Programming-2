@@ -579,3 +579,14 @@ public TaskCollection() {
 With this change, multiple consecutive setter calls cause only a single execution of the `save()` method.
 
 </details>
+
+<task>
+<task-title>Exercise 8.4: Todo Application, Part 10
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-4-todo-10/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise4">Complete this exercise in TIM</a></task-link>
+</task>

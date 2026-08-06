@@ -282,3 +282,14 @@ public class MainController implements Initializable {
     // HIGHLIGHT_RED_END
 }
 ```
+
+<task>
+<task-title>Exercise 8.3: Todo Application, Part 9
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-3-todo-9/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise3">Complete this exercise in TIM</a></task-link>
+</task>

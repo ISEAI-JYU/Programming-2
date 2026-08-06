@@ -70,6 +70,7 @@
   - [MVC architecture](./part8/03-mvc-architecture.md)
   - [Task Editing](./part8/04-multiple-views.md)
   - [Unit Testing](./part8/05-unit-testing.md)
+  - [Remote Version Control](./part8/06-remote-version-control.md)
   - [All Exercises in This Part](./part8/07-exercises.md)
 - [Project Assignment, Phase 1](./part9/index.md)
 - [Project Assignment, Phase 2](./part10/index.md)

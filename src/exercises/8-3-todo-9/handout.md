@@ -1,9 +1,9 @@
-Palauta osan 8.3 perusteella edistetty projekti. Kertaus tämän osan vaiheista:
+Return the project refactored in Exercise 8.3.
+Recap of the steps in this part:
 
-- Jäsennä projekti kerroksiin (vähintään malli + käyttöliittymälogiikka).
-- Siirrä tiedoston luku- ja kirjoituslogiikka pois kontrollerista
-  `Tehtavakokoelma`-luokkaan.
-- Muuta `MainController`-luokka delegoimaan tallennus- ja latausoperaatiot mallille.
+- Organize the project into layers (at minimum: model + UI logic).
+- Move the file reading and writing logic from the controller into a `TaskCollection` class.
+- Modify the `MainController` class so that it delegates save and load operations to the model.
 
-Kun vaihe on valmis, tee `git add` muuttuneille tiedostoille ja `git commit`.
-Palauta projektisi tiedostot.
+When the phase is complete, run `git add` for the modified files and create a `git commit`.
+Return your project files.

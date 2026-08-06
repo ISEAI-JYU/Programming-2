@@ -122,6 +122,17 @@ public static double average(List<Integer> numbers, int stopNumber) {
 
 Now all tests pass!
 
+<task>
+<task-title>Exercise 8.5: Testing
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-5-testing/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
 ## Testing the Todo Application
 
 When testing the Todo application, everything does not need to go through the user interface.
@@ -197,6 +208,17 @@ to `.gitignore` so that test files are not added to version control.
 If the file was already committed, remove it with:
 `git rm --cached testtasks.json`
 and create a new commit.
+
+<task>
+<task-title> Exercise 8.6: Testing Business Logic
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-6-testing/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
 
 ## Unit Testing and MVC Architecture
 
@@ -545,3 +567,14 @@ Data Provider (TaskRepository)
 Automated UI testing is difficult.
 Automated testing of the real data provider (writing to disk) is typically slow and fragile.
 However, isolated business logic, the actual heart of the application, can be executed as pure logic code in fractions of a second by using interface-based mock objects to replace surrounding complex systems during testing.
+
+<task>
+<task-title>Exercise 8.7: Todo Application, Part 11
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-7-todo-11/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise7">Complete this exercise in TIM</a></task-link>
+</task>

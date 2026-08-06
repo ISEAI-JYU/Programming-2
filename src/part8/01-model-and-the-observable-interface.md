@@ -555,3 +555,14 @@ In other words, `updateView()` is called twice every time a checkbox is clicked.
 This is somewhat wasteful, but it works because `ObservableList` notices both changes and updates the view automatically.
 
 Nevertheless, we have achieved our primary goal: modeling the application's state and state changes has been moved into the responsibility of the `tasks` list and `Task` objects.
+
+<task>
+<task-title>Exercise 8.1: Todo Application, Part 7
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/8-1-todo-7/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part8/exercise1">Complete this exercise in TIM</a></task-link>
+</task>

@@ -1,12 +1,10 @@
-Palauta osan 8.5 perusteella edistetty projekti. Kertaus tämän osan vaiheista:
+Return the project refactored in Exercise 8.5.
+Recap of the steps in this part:
 
-- Lisää projektiin yksikkötestit.
-- Eriytä tehtävien tallennus ja lataus erilliseen luokkaan, joka toteuttaa `TehtavaRepository`-rajapinnan.
-- Tee testipakkaukseen mock-luokka, joka toteuttaa `TehtavaRepository`-rajapinnan, mutta tallentaa datan vain muistissa.
-- Testaa tiedoston tallennus/lataus.
+- Add unit tests to the project.
+- Separate task saving and loading into a dedicated class that implements the `TaskRepository` interface.
+- Create a mock class in the test package that implements the `TaskRepository` interface but stores data only in memory.
+- Test file saving and loading.
 
-Kun vaihe on valmis, tee `git add` muuttuneille tiedostoille ja `git commit`.
-
-Palauta `TehtavaRepository`-rajapinta sekä `JsonTehtavaRepository`, 
-`MockTehtavaRepository` ja `TehtavakokoelmaTest`-luokat. Muita luokkia tai 
-FXML-tiedostoja ei tarvitse palauttaa.
+When the phase is complete, run `git add` for the modified files and create a `git commit`.
+Return the `TaskRepository` interface as well as the `JsonTaskRepository`, `MockTaskRepository`, and `TaskCollectionTest` classes. No other classes or FXML files need to be returned.
