@@ -354,3 +354,14 @@ Then add another `Label` above the completed-tasks container and set its text to
 `DONE`
 
 Save the FXML file and run the application again from IDEA to verify that everything still works correctly.
+
+<task>
+<task-title>Exercise 7.4: Todo Application, Part 4
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/7-4-todo-4/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part7/exercise4">Complete this exercise in TIM</a></task-link>
+</task>

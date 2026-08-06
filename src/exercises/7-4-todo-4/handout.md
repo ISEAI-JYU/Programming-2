@@ -1,20 +1,16 @@
-Palauta tässä osan 7.4 perusteella edistetty projekti.
+Return the project you advanced in Exercise 7.4.
 
-Kertaus tämän osan vaiheista:
+Recap of the steps in this part:
 
-- Tee kaksi `VBox`-komponenttia tekemättömille ja tehdyille tehtäville.
-- Kun käyttäjä syöttää tehtävän, lisää se tekemättömien tehtävien
-  `VBox`-säiliöön `CheckBox`-komponenttina.
-- Kun käyttäjä merkitsee tehtävän tehdyksi klikkaamalla valintaruudusta, siirrä se tekemättömien `VBox`-säiliöstä tehtyjen säiliöön.
-- Kun käyttäjä merkitsee tehdyn tehtävän tekemättömäksi klikkaamalla
-  valintaruudusta, siirrä se tehtyjen säiliöstä tekemättömien säiliöön.
-- Kun käyttäjä lisää tehtävän, fokuksen tulee palautua syöttökenttään. 
-- Käyttäjän ei pidä pystyä lisäämään tehtävää ilman tekstiä tai tehtävää, jonka tekstinä on pelkästään välilyöntejä.
-- Käyttäjän tulee pystyä lisäämän tehtävän myös painamalla
-  <kbd>Enter</kbd>-painiketta, kun fokus on syöttökentässä.
+- Create two `VBox` components for incomplete and completed tasks.
+- When the user enters a task, add it to the incomplete tasks `VBox` as a `CheckBox` component.
+- When the user marks a task as completed by clicking the check box, move it from the incomplete tasks `VBox` container to the completed tasks container.
+- When the user marks a completed task as incomplete by clicking the check box, move it from the completed tasks container back to the incomplete tasks container.
+- When the user adds a task, focus should return to the input field.
+- The user should not be able to add a task without text or a task whose text consists only of whitespace characters.
+- The user should also be able to add a task by pressing the <kbd>Enter</kdbd> key while the input field has focus.
 
-Kun vaihe on valmis,  muista tehdä `git add` muuttuneille tiedostoille ja `git
-commit`. Palauta projektisi tiedostot. Ei haittaa jos TIMissä tulee jokin
-varoitus tai jopa käännösvirhe. TIMissä ei välttämättä ole kaikkia tehtävissä
-vaadittavia riippuvuuksia, eikä siten JavaFX-projekti välttämättä edes käänny.
-Pääasia on, että olet saanut projektin toimimaan paikallisessa ympäristössäsi. 
+When the phase is complete, remember to run `git add` for the modified files and create a `git commit`.
+Return your project files.
+It does not matter if TIM shows a warning or even a compilation error. TIM may not contain all the dependencies required by the exercises, and therefore the JavaFX project may not even compile there.
+The important thing is that you have the project working correctly in your local environment.

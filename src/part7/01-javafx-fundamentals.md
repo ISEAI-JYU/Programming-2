@@ -220,3 +220,14 @@ flowchart TD
         VBox --- Button
     end
 ```
+
+<task>
+<task-title>Exercise 7.1: Todo Application, Part 1
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/7-1-todo-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part7/exercise1">Complete this exercise in TIM</a></task-link>
+</task>

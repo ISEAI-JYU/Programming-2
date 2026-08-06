@@ -69,3 +69,14 @@ Git will display a list of files whose current state has been successfully store
 
 From this point onward, create a new commit after each exercise and describe the changes made during that exercise.
 You may also create multiple commits for a single exercise if you wish.
+
+<task>
+<task-title>Exercise 7.3: Todo Application, Part 3
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/7-3-todo-3/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part7/exercise3">Complete this exercise in TIM</a></task-link>
+</task>

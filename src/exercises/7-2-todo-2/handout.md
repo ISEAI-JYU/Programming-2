@@ -1,10 +1,9 @@
-Palauta tässä osan 7.2 perusteella edistetty projekti.
+Return the project you advanced in Exercise 7.2.
 
-Kertaus tämän osan vaiheista:
+Recap of the steps in this part:
 
-- Lisää SceneBuilderissa FXML-tiedostoon oma TextField-komponentti VBoxin sisään.
-- Lisää painikkeelle `onAction`-tapahtumankäsittelijä, joka lisää tekstikenttään
-  kirjoitetun tekstin `Label`-komponenttiin. 
-- Näytä `Label`-komponentissa kaikki tehtävät erottamalla ne toisistaan rivinvaihdolla. 
+- In SceneBuilder, add your own `TextField` component inside the `VBox` in the FXML file.
+- Add an `onAction` event handler to the button that adds the text entered into the text field to the `Label` component.
+- Display all tasks in the `Label` component, separating them with line breaks.
 
-Palauta projektisi tiedostot.
+Return your project files.

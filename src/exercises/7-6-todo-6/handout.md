@@ -1,12 +1,13 @@
-Palauta tässä osan 7.6 perusteella edistetty projekti.
+Return the project you advanced in Exercise 7.6.
 
-Kertaus tämän osan vaiheista:
+Recap of the steps in this part:
 
-- Aseta näkymän ja ikkunan minimikooksi 400x400 pikseliä.
-- Aseta valintaruutujen väliin hieman tyhjää tilaa spacing-asetuksella.
-- Aseta tehtyjen ja tekemättömien tehtävien listat kasvamaan, kun tehtäviä tulee paljon.
-- Laita painike ja tekstikenttä samalle riville `HBox`-säiliön avulla.
-- Tasaa nimiöt vasemmalle.
+- Set the minimum size of the view and window to 400×400 pixels.
+- Add a small amount of empty space between the check boxes using the `spacing` property.
+- Make the completed and incomplete task lists grow when many tasks are added.
+- Place the button and text field on the same row using an `HBox` container.
+- Align the labels to the left.
 
-Kun vaihe on valmis, tee `git add` muuttuneille tiedostoille ja `git
-commit`. Palauta projektisi tiedostot.
+When the phase is complete, run `git add` for the modified files and create a `git commit`.
+
+Return your project files.

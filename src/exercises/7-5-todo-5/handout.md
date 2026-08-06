@@ -1,26 +1,22 @@
-Palauta tässä osan 7.5 perusteella edistetty projekti.
+Return the project you advanced in Exercise 7.5.
 
-Kertaus tämän osan vaiheista:
+Recap of the steps in this part:
+- Save the tasks to a JSON file whenever the user adds a task or changes a task's status.
 
-- Tallenna tehtävät JSON-tiedostoon aina, kun käyttäjä lisää tehtävän tai
-  muuttaa tehtävän tilaa.
-- Lue tehtävät JSON-tiedostosta ohjelman käynnistyessä (jos tiedosto on
-  olemassa). JSON-tiedoston tulisi näyttää suunnilleen seuraavalta (pois lukien
-  luettavuutta varten lisätyt rivinvaihdot ja sisennykset):
+- Read the tasks from the JSON file when the program starts (if the file exists). The JSON file should look approximately as follows (excluding the line breaks and indentation added for readability):
 
-    ```json
-    [
-      {
-        "tehtava": "Osta maitoa",
-        "tehty": false
-      },
-      {
-        "tehtava": "Vie roskat",
-        "tehty": true
-      }
-    ]
-    ```
+```json
+[
+  {
+    "task": "Buy milk",
+    "done": false
+  },
+  {
+    "task": "Take out the trash",
+    "done": true
+  }
+]
+```
 
-
-Kun vaihe on valmis,  muista tehdä `git add` muuttuneille tiedostoille ja `git
-commit`. Palauta projektisi tiedostot.
+When the phase is complete, remember to run `git add` for the modified files and create a `git commit`.
+Return your project files.

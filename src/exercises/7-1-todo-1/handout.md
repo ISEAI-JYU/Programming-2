@@ -1,9 +1,8 @@
-Palauta tässä osan 7.1 perusteella luotu projekti.
+Return the project you created in Exercise 7.1.
 
-Kertaus tämän osan vaiheista:
+Recap of the steps in this part:
 
-- Tee `io.github.ohj-perus-jy:javafx-fxml-template`-archetypen pohjalta
-JavaFX-projekti. 
-- Käynnistä ohjelma, ja varmista, että saat JavaFX-sovelluksen ikkunan näkyviin.
+- Create a JavaFX project based on the `io.github.ohj-perus-jy:javafx-fxml-template-archetype`.
+- Run the program and verify that the JavaFX application window appears.
 
-Palauta projektisi tiedostot.
+Return your project files.

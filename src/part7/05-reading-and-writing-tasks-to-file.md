@@ -492,3 +492,14 @@ private void addTask() {
 
 Save and run the application again.
 Now completed tasks are correctly restored as selected when the application starts.
+
+<task>
+<task-title>Exercise 7.5: Todo Application, Part 5
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/7-5-todo-5/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part7/exercise5">Complete this exercise in TIM</a></task-link>
+</task>

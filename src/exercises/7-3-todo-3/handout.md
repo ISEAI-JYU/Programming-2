@@ -1,5 +1,3 @@
-Tee projektillesi Git-varasto, ja tee siihen ensimmäinen
-commit.
+Create a Git repository for your project and make the first commit.
 
-Aja sen jälkeen komentorivillä `git status` -komento ja palauta
-sen tuloste tämän tehtävän palautuslaatikkoon.
+After that, run the `git status` command in the command line and submit its output to the submission box for this exercise.

@@ -340,3 +340,14 @@ Now clicking the button adds the entered text to the label above the text field,
 
 You may notice that adding a second line is not visible unless the window is enlarged.
 We will address layout and window-sizing issues later in this tutorial.
+
+<task>
+<task-title>Exercise 7.2: Todo Application, Part 2
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/7-2-todo-2/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part7/exercise2">Complete this exercise in TIM</a></task-link>
+</task>

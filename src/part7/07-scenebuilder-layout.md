@@ -167,3 +167,14 @@ Save and run the application.
 Verify that everything still works correctly and that the components adapt nicely when the window is resized.
 
 <video src="images/todo-app-final-product.mp4" controls></video>
+
+<task>
+<task-title> Exercise 7.6: Todo Application, Part 6
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/7-6-todo-6/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part7/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
