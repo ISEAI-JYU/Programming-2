@@ -57,6 +57,18 @@ an appropriate controller class would be:
 > `EnterTaskController`
 > the IDE will not be able to find the class.
 
+<task>
+<task-title>Exercise 10.1: Views in SceneBuilder
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/10-1-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part10/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
+
 ## Creating Controller Classes
 
 Create a separate controller class for each view.
@@ -65,9 +77,44 @@ Select:
 `View → Show Sample Controller Skeleton`
 Fill in the appropriate types in place of the `?` placeholders.
 
+
+<task>
+<task-title>Exercise 10.2: Controllers
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/10-2-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part10/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
+
 ## Navigating Between Views
 
 Users must be able to move between views.
 Write the necessary code in the event handlers so that navigation between views is possible.
 All other interactive elements, such as buttons, should also perform some action, even if that action is simply printing a message to the console.
 This gives you a good foundation upon which actual functionality can later be added.
+
+
+<task>
+<task-title>Exercise 10.3: Navigating Between Views
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/10-3-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part10/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 10.4: Presenting the Phase to the Instructor
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/10-4-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part10/exercise4">Complete this exercise in TIM</a></task-link>
+</task>
