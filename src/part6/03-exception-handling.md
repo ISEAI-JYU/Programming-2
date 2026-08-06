@@ -509,3 +509,38 @@ For example:
 * [Rust](https://doc.rust-lang.org/std/result/) does not have exceptions at all; instead, error situations are handled through the `Result` type, which forces programmers to explicitly deal with possible failures.
 
 *Parts of this chapter are based on the [Java documentation](https://dev.java/learn/exceptions/) on exceptions.*
+
+## Exercises
+
+<task>
+<task-title>Exercise 6.5: Exceptions, Part 1
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-5-exceptions-1/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title> Exercise 6.6: Exceptions, Part 2
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-6-exceptions-2/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 6.7: Exceptions, Part 3
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-7-exceptions-3/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise7">Complete this exercise in TIM</a></task-link>
+</task>

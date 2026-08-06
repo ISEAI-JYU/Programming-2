@@ -1,26 +1,20 @@
-EDIT 23.2.2026: Jackson-kirjaston riippuvuuksia ja esimerkkejä päivitetty
-materiaalissa. Pahoittelut virheistä. 
+Create a program that reads the file 
+[`people.csv`](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-11-csv-json/henkilot.csv)
+(format: `name,age,city`) and writes a similar JSON file `people.json` as the one provided in the previous exercise. If a row is invalid (for example, the age is not a number), skip the row and continue processing.
 
-Tee ohjelma, joka lukee tiedoston
-[henkilot.csv](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-11-csv-json/henkilot.csv)
-(muoto `nimi,ika,kaupunki`) ja kirjoittaa siitä saman tapainen JSON-tiedoston
-`henkilot.json` kuin edellisessä tehtävässä oli annettu valmiiksi. Jos rivi on
-virheellinen (esim. ikä ei ole numero), ohita rivi ja jatka käsittelyä.
-
-Tulostiedoston pitäisi näyttää tältä. Ei haittaa, jos sisennykset tai
-rivinvaihdot eivät ole täsmälleen samanlaisia. 
+The output file should look like this. It does not matter if the indentation or line breaks are not exactly the same.
 
 ```json
 [
   {
-    "nimi": "Maija Laine",
-    "ika": 25,
-    "kaupunki": "Jyväskylä"
+    "name": "Maija Laine",
+    "age": 25,
+    "city": "Jyväskylä"
   },
   {
-    "nimi": "Matti Virtanen",
-    "ika": 30,
-    "kaupunki": "Tampere"
+    "name": "Matti Virtanen",
+    "age": 30,
+    "city": "Tampere"
   },
   ...
 ]

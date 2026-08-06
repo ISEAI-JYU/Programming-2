@@ -464,6 +464,18 @@ grades.forEach( (name, grade) -> IO.println(name + " => " + grade));
 //-}
 ```
 
+<task>
+<task-title>Exercise 6.1: Calculator
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-1-calculator/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
+
 ***
 
 ## The Comparator Interface
@@ -813,9 +825,16 @@ IO.println(names);
 //-}
 ```
 
-```text
+<task>
+<task-title>Exercise 6.2: Comparison Rarity
+<points>1 p.</points> </task-title>
+<handout>
+
 {{#include ../exercises/6-2-comparison-rarity/handout.md}}
-```
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
 
 ***
 

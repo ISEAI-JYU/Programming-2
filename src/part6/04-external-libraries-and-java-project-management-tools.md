@@ -416,3 +416,16 @@ When creating a new project:
 IDEA will automatically create the correct directory structure and place `Main.java` into the package you specified.
 
 ***
+
+## Exercises
+
+<task>
+<task-title>Exercise 6.8: Dependencies
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-8-dependencies/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise8">Complete this exercise in TIM</a></task-link>
+</task>

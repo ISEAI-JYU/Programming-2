@@ -1,38 +1,33 @@
-EDIT 23.2.2026: Jackson-kirjaston riippuvuuksia ja esimerkkejä päivitetty
-materiaalissa. Pahoittelut virheistä. 
+- Create a new Maven project that uses the Jackson library for processing JSON files.
+- Add the required dependency to your `pom.xml` file.
+- Download [`people.json`](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-10-json-1/henkilot.json) and save it in the same folder as your code.
+- Create a `Person` class or an equivalent record with the fields `String name`, `int age`, and `String city`.
+- Read the file `people.json` and convert it into a list of `Person` objects.
+- Filter the list so that only people aged 18 or older are included.
+- Print their name, age, and city.
 
- 1. Tee uusi Maven-projekti, joka käyttää Jackson-kirjastoa JSON-tiedostojen
-   käsittelyyn. 
- 2. Lisää `pom.xml`-tiedostoosi tarvittava riippuvuus.
- 3. Lataa [henkilot.json](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-10-json-1/henkilot.json) ja tallenna se projektiisi samaan kansioon kuin
-      missä koodisi on. 
- 4. `Henkilo`-luokka tai vastaava record, jolla on kentät `String nimi`, `int
-    ika`, `String kaupunki`.
- 5. Lue tiedosto `henkilot.json` ja muuta se listaksi `Henkilo`-olioita.
- 6. Suodata mukaan vain vähintään 18-vuotiaat.
- 7. Tulosta heidän nimensä, ikänsä ja kaupunkinsa.
+Remember to save `people.json` in the same folder as your code. Then check your run configuration and make sure that the working directory is the same as the folder containing your code so that the file can be found.
 
-Muista varmistaa, että tallennat `henkilot.json`-tiedoston samaan kansioon kuin
-missä koodisi sijaitsee. Tarkista sitten ajokonfiguraatiostasi, että
-työskentelyhakemisto on sama kuin koodisi kansio, jotta tiedosto löytyy.
-
-Saat henkilöiden tiedot tarvittaessa auki tästä: 
+You can access the contents of `people.json` here if necessary:
 
 <details>
-  <summary>henkilot.json</summary>
+<summary>people.json</summary>
 
+```json
 [
-  { "nimi": "Maija Laine", "ika": 25, "kaupunki": "Jyväskylä" },
-  { "nimi": "Matti Virtanen", "ika": 30, "kaupunki": "Tampere" },
-  { "nimi": "Liisa Niemi", "ika": 17, "kaupunki": "Helsinki" },
-  { "nimi": "Pekka Korhonen", "ika": 41, "kaupunki": "Oulu" },
-  { "nimi": "Aino Salmi", "ika": 22, "kaupunki": "Turku" },
-  { "nimi": "Jari Heikkinen", "ika": 19, "kaupunki": "Kuopio" },
-  { "nimi": "Sari Lehto", "ika": 16, "kaupunki": "Lahti" },
-  { "nimi": "Oskari Mäkinen", "ika": 28, "kaupunki": "Espoo" },
-  { "nimi": "Emilia Ranta", "ika": 33, "kaupunki": "Vantaa" },
-  { "nimi": "Teemu Koski", "ika": 45, "kaupunki": "Pori" },
-  { "nimi": "Noora Aalto", "ika": 18, "kaupunki": "Joensuu" },
-  { "nimi": "Kalle Hämäläinen", "ika": 52, "kaupunki": "Rovaniemi" }
+  { "name": "Maija Laine", "age": 25, "city": "Jyväskylä" },
+  { "name": "Matti Virtanen", "age": 30, "city": "Tampere" },
+  { "name": "Liisa Niemi", "age": 17, "city": "Helsinki" },
+  { "name": "Pekka Korhonen", "age": 41, "city": "Oulu" },
+  { "name": "Aino Salmi", "age": 22, "city": "Turku" },
+  { "name": "Jari Heikkinen", "age": 19, "city": "Kuopio" },
+  { "name": "Sari Lehto", "age": 16, "city": "Lahti" },
+  { "name": "Oskari Mäkinen", "age": 28, "city": "Espoo" },
+  { "name": "Emilia Ranta", "age": 33, "city": "Vantaa" },
+  { "name": "Teemu Koski", "age": 45, "city": "Pori" },
+  { "name": "Noora Aalto", "age": 18, "city": "Joensuu" },
+  { "name": "Kalle Hämäläinen", "age": 52, "city": "Rovaniemi" }
 ]
+```
+
 </details>

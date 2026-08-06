@@ -664,3 +664,27 @@ IntStream numbers = new Random().ints(20, 0, 100);
 IO.println(numbers.summaryStatistics());
 //-}
 ```
+
+## Exercises 
+
+<task>
+<task-title>Exercise 6.3: Music Playlist
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-3-music-playlist/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 6.4: Average with threshold values
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/6-4-rainfall/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part6/exercise4">Complete this exercise in TIM</a></task-link>
+</task>
