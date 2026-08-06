@@ -1,0 +1,3 @@
+We recommend that you present your user interface design plan to an instructor, regardless of whether you selected one of the predefined topics or your own project idea. This helps ensure that you are on the right track and allows you to receive useful feedback that will help you successfully complete the project.
+
+After you have presented your plan to an instructor during a remote or in-person supervision session, you may mark this task as completed yourself. The instructor may add comments below the submission box if necessary.

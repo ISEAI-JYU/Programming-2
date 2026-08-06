@@ -16,6 +16,17 @@ You can find ready-made project topics in the project [assignment instructions](
 
 After selecting a topic, report it through the task below.
 
+<task>
+<task-title>Exercise 9.1: Assignment, topic
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/9-1-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part9/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
 ## Initializing the Project
 
 Once you have selected a topic, you can create a new JavaFX project.
@@ -63,6 +74,17 @@ If you are using one of the predefined topics, you may copy the project descript
 
 Once you have created the `README.md` and `.gitignore` files, make your first commit.
 Finally, create a remote repository and upload your local repository there using the [instructions](../part8/06-remote-version-control.md) for remote Git usage.
+
+<task>
+<task-title>Exercise 9.1: Assignment, Git Remote Repository
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/9-2-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part9/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
 
 ## Implementing the Data Model
 
@@ -173,3 +195,25 @@ In the plan, describe what is displayed in each view and how users can interact 
 Doing so helps ensure that you remember all required create, read, update, and delete operations for your data model.
 
 Once the user-interface plan is complete, create another commit and push the changes to the remote repository.
+
+<task>
+<task-title>Exercise 9.3: User Interface Design Plan
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/9-3-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part9/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 9.4: Presenting the Phase to the Instructor
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/9-4-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part9/exercise4">Complete this exercise in TIM</a></task-link>
+</task>
