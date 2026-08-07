@@ -33,9 +33,96 @@ and a reference to the previous commit ("parent").
 * You will see a list of commits. Select the commit associated with the assignment submission and click it.
 * The browser address bar will display a URL containing the commit hash. Copy this URL and submit it with the assignment.
 
-## Tasks
+## Exercises
 
-For each task, submit a URL that points to the corresponding commit in your remote repository.
+For each exercise, submit a URL that points to the corresponding commit in your remote repository.
 
-If you have completed your project work in a slightly different order than the phase structure presented here, submit the URL of the commit that best represents the requirements of the corresponding task.
+If you have completed your project work in a slightly different order than the phase structure presented here, submit the URL of the commit that best represents the requirements of the corresponding exercise.
 
+<task>
+<task-title>Exercise 11.1: Adding Data
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-1-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise1">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.2: Deleting Data
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-2-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise2">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.3: Saving and Loading from a File
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-3-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise3">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.4: Editing Data
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-4-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise4">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.5: Validation
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-5-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise5">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.6: Unit Tests
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-6-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise6">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.7: README file
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-7-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise7">Complete this exercise in TIM</a></task-link>
+</task>
+
+<task>
+<task-title>Exercise 11.8: Presenting the Phase to the Instructor
+<points>1 p.</points> </task-title>
+<handout>
+
+{{#include ../exercises/11-8-assignment/handout.md}}
+
+</handout>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part11/exercise10">Complete this exercise in TIM</a></task-link>
+</task>
