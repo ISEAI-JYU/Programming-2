@@ -1,0 +1,43 @@
+/* Tooltip styling */
+.question-tooltip {
+  color: #6c757d;         /* Gray text color */
+  cursor: pointer;
+  text-decoration: underline dotted;
+  position: relative;
+}
+
+.question-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 280px;
+  background-color: #f8f9fa;    /* Light gray background */
+  color: #495057;               /* Darker gray text */
+  text-align: left;
+  border-radius: 6px;
+  padding: 12px;
+  position: absolute;
+  z-index: 100;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 0.9em;
+  transition: opacity 0.2s ease;
+  border: 1px solid #dee2e6;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #f8f9fa transparent transparent transparent;
+}

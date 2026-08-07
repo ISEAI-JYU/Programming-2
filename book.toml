@@ -20,6 +20,7 @@ additional-css = [
   "theme/code-highlights.css",
   "theme/tasks.css",
   "theme/asciinema-player.css",
+  "theme/questions.css",
 ]
 default-theme = "jyu-light"
 preferred-dark-theme = "jyu-dark"
