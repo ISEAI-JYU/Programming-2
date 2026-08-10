@@ -1,142 +1,134 @@
-# Ohjelmointi 2 (Jyväskylän yliopisto)
+# ISEAI Programming 2 (University of Jyväskylä)
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-Tämä on Jyväskylän yliopiston Ohjelmointi 2 -kurssin oppimateriaali.
-Materiaali on katseltavissa osoitteessa <https://ohjelmointi2.it.jyu.fi>. 
 
-Tehtävien palauttaminen vaatii opintojaksolle
-[ilmoittautumisen](https://opinto-opas.jyu.fi/2025/fi/opintojakso/tiep111/). 
+This repository contains the course material for the University of Jyväskylä's Programming 2 course in ISEAI program.
+The material is available online.
 
-## Materiaalin kehittäminen omalla koneella
+## Developing the Material Locally
 
-- Käytä mukana olevaa DevContaineria. Se käyttää valmista mdBook-työkalukuvaa,
-  joka sisältää tarvittavat laajennokset.
-- Käynnistä esikatselu DevContainerin sisällä:
+- Use the included DevContainer. It utilizes a prebuilt mdBook tooling image that already contains the required extensions.
+- Start the preview server inside the DevContainer:
 
 ```bash
 bash ./start.sh
 ```
 
-- Jos et halua käyttää DevContaineria (esimerkiksi nopeita muokkauksia tai et halua
-  ladata isoa DevContainer-kuvaa),
-  voit sen sijaan käyttää pelkästään mdbook-työkalua ja sen laajennoksia
-  sisältävän Docker-kuvaa. Esimerkiksi materiaalin koko rakentaminen yhdellä komennolla:
-
-  ```bash
-  docker run --rm -v .:/workspace \
-    ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:runner-latest \
-    build
-  ```
-
-  Vastaavasti materiaalin avaaminen paikallisesti:
-
-  ```bash
-  docker run --rm -it -v .:/workspace -p 3000:3000 \
-    ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:runner-latest \
-    serve --hostname 0.0.0.0 --port 3000
-  ```
-
-### mdBook-työkalukuvan päivittäminen
-
-DevContainer käyttää valmista GHCR-kuvaa
-`ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:devcontainer-latest`. Jos mdBook-työkaluja tai
-esikäsittelijöitä pitää päivittää, tee muutokset repossa
-`ohj-perus-jy/ohj-mdbook-tooling` ja pushaa ne `main`-haaraan. Tämän seurauksena
-rakentaminen ja julkaisu tapahtuvat automaattisesti.
-
-Huomaa, että `:devcontainer-latest` on liikkuva tagi: jo käynnissä oleva DevContainer ei päivity
-automaattisesti. Päivitetty kuva otetaan käyttöön ajamalla esimerkiksi:
+- If you do not want to use the DevContainer (for example, for quick edits or to avoid downloading a large DevContainer image), you can instead use the Docker image that contains the mdBook tool and its extensions.
+For example, to build the entire material with a single command:
 
 ```bash
-docker pull ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:devcontainer-latest
+docker run --rm -v .:/workspace \
+  ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:runner-latest \
+  build
 ```
 
-tai VS Codessa komennolla `Dev Containers: Rebuild and Reopen in Container`.
+To serve the material locally:
 
-## Pikaohje kirjoittamiseen
+```bash
+docker run --rm -it -v .:/workspace -p 3000:3000 \
+  ghcr.io/ohj-perus-jy/ohj-mdbook-tooling:runner-latest \
+  serve --hostname 0.0.0.0 --port 3000
+```
 
-Koodiesimerkit voivat sisältää useita tiedostoja. Käytä `// FILE: filename`- ja 
-`// FILE_END`-merkintöjä erottaaksesi eri tiedostot.
+
+## Quick Writing Guide
+
+Code examples may contain multiple files. Use `// FILE: filename` and `// FILE_END` markers to separate files.
 
 ```java
-// FILE: main.java
-public class Ohjelma {
+// FILE: Main.java
+public class Program {
     public static void main() {
-        Kissa k = new Kissa("Snowball");
-        IO.println(k.getAani());
+        Cat cat = new Cat("Snowball");
+        IO.println(cat.getSound());
     }
 }
 // FILE_END
-// FILE: Kissa.java
-public class Kissa {
+// FILE: Cat.java
+public class Cat {
     private String name;
 
-    public Kissa(String name) {
+    public Cat(String name) {
         this.name = name;
     }
 
-    public String getAani() {
-        return "Miau!";
+    public String getSound() {
+        return "Meow!";
     }
 }
 // FILE_END
 ```
 
-Koodin korostuksiin voit käyttää merkintöjä `// HIGHLIGHT_COLOR_BEGIN` ja 
-`// HIGHLIGHT_COLOR_END`, jossa `COLOR` on jokin seuraavista: `GREEN`, `YELLOW`,
-`RED`, `BLUE`.
+For code highlighting, use the markers, 
+`// HIGHLIGHT_COLOR_BEGIN` and
+`// HIGHLIGHT_COLOR_END`
+where `COLOR` is one of:
+`GREEN`,
+`YELLOW`
+`RED`
+`BLUE`.
+
+Example:
 
 ```java
-public class Kissa {
-  private String name; 
+public class Cat {
+    private String name;
 
-  // HIGHLIGHT_GREEN_BEGIN
-  public Kissa(String name) {
-    this.name = name;
-  }
-// HIGHLIGHT_GREEN_END
+    // HIGHLIGHT_GREEN_BEGIN
+    public Cat(String name) {
+        this.name = name;
+    }
+    // HIGHLIGHT_GREEN_END
 
-// HIGHLIGHT_RED_BEGIN
-  public String getAani() { 
-// HIGHLIGHT_RED_END
-// HIGHLIGHT_YELLOW_BEGIN
-    return "Miau!";
-// HIGHLIGHT_YELLOW_END
-  } 
+    // HIGHLIGHT_RED_BEGIN
+    public String getSound() {
+    // HIGHLIGHT_RED_END
+    // HIGHLIGHT_YELLOW_BEGIN
+        return "Meow!";
+    // HIGHLIGHT_YELLOW_END
+    }
 }
-```  
+```
 
 ![](src/images/highlight.png)
 
-### Tehtävälohko
 
-Tehtäviä varten on oma `task`-elementti, joka sisältää tehtävän otsikon,
-tehtävänannon ja linkin TIM-tehtävään.
+### Task Block
 
-````md
+Tasks have a dedicated `task` element containing the task title, assignment text, and a link to the TIM assignment.
+
+```md
 <task>
-  <task-title>Ydintehtävä: Tulostaminen <points>1 p.</points> </task-title>
+  <task-title> Core Task: Printing <points>1 p.</points> </task-title>
   <handout>
 
-{{#include ../exercises/1-1-1-tulostaminen/handout.md}}
+{{#include ../exercises/1-1-1-printing/handout.md}}
 
   </handout>
-  <task-link><a href="https://tim.jyu.fi/view/kurssit/tie/itkp102/demot/demo1#tehtava_tulostaminen_header">Tee tehtävä TIMissa</a></task-link>
+
+  <task-link>
+    https://tim.jyu.fi/..." Complete the Task in TIM
+    </a>
+  </task-link>
 </task>
-````
+```
 
-`include`-makro kannattaa kirjoittaa ihan vasempaan reunaan Markdown-ladonnan ongelmien ehkäisemiseksi. 
+To avoid Markdown formatting issues, the `include` macro should be written at the leftmost margin.
 
-### Katso myös
+### See Also
 
-- [mdBook-ohjeet](https://rust-lang.github.io/mdBook/index.html)
-- [KaTeX-ohjeet](https://katex.org/docs/supported)
+- [mdBook Documentation](https://rust-lang.github.io/mdBook/index.html)
+- [KaTeX Documentation](https://katex.org/docs/supported)
+
+## Acknowledgements
+
+This project is based on the [Programming 2](https://github.com/ohj-perus-jy/ohj2) course material originally created by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski, and Karri Sormunen. Their work served as the foundation and inspiration for this translated version.
 
 ## License
 
-Ohjelmointi 2 oppimateriaali © 2025 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski, Karri Sormunen is licensed under
-[Creative Commons Attribution-ShareAlike 4.0 International][cc-by-sa].
+Programming 2 course material © 2025 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski, Karri Sormunen and Ville Rantala is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
 
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
 
@@ -144,4 +136,3 @@ Ohjelmointi 2 oppimateriaali © 2025 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi 
 [cc-by-sa-image]: https://licensebuttons.net/l/by-sa/4.0/88x31.png
 
 [cc-by-sa-shield]: https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg
-
