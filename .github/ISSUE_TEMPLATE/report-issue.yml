@@ -1,0 +1,28 @@
+name: Report an Issue
+description: Report an error or problem in the course materials
+title: "[Issue]: "
+labels: ["bug"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please fill in the fields below as accurately as possible.
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL or Path
+      description: Copy the URL or path of the page where the issue occurs
+      placeholder: "https://programming2.it.jyu.fi/..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Issue
+      description: Describe the issue as accurately as possible.
+      placeholder: Explain in detail what the issue is...
+    validations:
+      required: true

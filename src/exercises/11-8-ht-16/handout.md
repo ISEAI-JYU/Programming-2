@@ -1,1 +1,0 @@
-Näytä vaihe ohjaajalle.

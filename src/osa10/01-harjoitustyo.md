@@ -1,1 +1,0 @@
-# Harjoitustyö, vaihe 2

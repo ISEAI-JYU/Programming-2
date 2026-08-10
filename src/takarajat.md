@@ -1,6 +1,0 @@
-ma 8.6.2026 klo 11:59 (keskipäivä)
-ma 15.6.2026 klo 11:59 (keskipäivä)
-ma 22.6.2026 klo 11:59 (keskipäivä)
-ma 29.6.2026 klo 11:59 (keskipäivä)
-ma 6.7.2026 klo 11:59 (keskipäivä)
-ma 13.7.2026 klo 11:59 (keskipäivä)
