@@ -16,6 +16,7 @@
 
 --- 
 
+[Tool Installation](./tool-instructions.md)
 [Project Assignment](./project-assignment.md)
 
 ---

@@ -1,8 +1,8 @@
 [book]
 authors = ["JYU"]
-language = "fi"
+language = "en"
 src = "src"
-title = "Ohjelmointi 2"
+title = "Programming 2"
 
 [build]
 create-missing = false
