@@ -1,6 +1,6 @@
 # Basic Principles of Java Programming language
 
-### Learning Objectives
+## Learning objectives
 
 - Get familiar with the syntax, variables and control-structures 
 - Lean how Java differs from Python

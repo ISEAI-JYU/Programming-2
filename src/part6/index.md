@@ -1,6 +1,6 @@
 # Useful Techniques in Java
 
-## Learning Objectives
+## Learning objectives
 
 - Use lambda expressions and method references to write more concise code.
 - Process collections declaratively using the Stream API.

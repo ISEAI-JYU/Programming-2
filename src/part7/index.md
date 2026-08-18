@@ -1,6 +1,6 @@
 # JavaFX Part 1: SceneBuilder
 
-### Learning Objectives
+## Learning objectives
 
 * Be able to create a JavaFX project.
 * Understand the principles of building user interfaces using SceneBuilder.

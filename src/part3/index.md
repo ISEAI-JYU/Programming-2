@@ -1,6 +1,7 @@
 # Inheritance and Polymorphism
 
-## Learning Objective
+## Learning objectives
+
 - You can create a class hierarchy using inheritance.
 - You can override the functionality of a base class.
 - You understand the difference between concrete and abstract classes.

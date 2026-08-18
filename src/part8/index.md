@@ -1,6 +1,6 @@
 # JavaFX Part 2: MVC
 
-### Learning Objectives
+## Learning objectives
 
 * Be able to separate data, application logic, and the user interface in a JavaFX project.
 * Be able to use types based on JavaFX's `Observable` interface so that the user interface updates automatically when data changes.

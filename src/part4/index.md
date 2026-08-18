@@ -1,6 +1,6 @@
 # Basics of Interfaces and Generic Types
 
-## Learning Objectives
+## Learning objectives
 
 - You can use interfaces to define a contract that specifies the behavior of a class.
 - You can implement the `Comparable` interface, which enables objects to be ordered and sorted.
