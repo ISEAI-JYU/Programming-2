@@ -27,7 +27,7 @@ Let's begin with the traditional "Hello, world!" example in Java:
 
 Let's examine the program line by line:
 
-1. Execution of a Java program begins from a method named `main`. The keyword `void` means that the method does not return any value. Since the main program does not take parameters, the parentheses following the word `main` can be left empty. The method body begins with an opening brace `{`.
+1. Execution of a Java program begins from a method named `main`. The keyword `void` means that the method does not return any value. Since this main program does not take parameters, the parentheses following the word `main` can be left empty. The method body begins with an opening brace `{`.
 
 2. Printing text to the command-line window is done using the `IO.println` method. In Java, statements usually end with a semicolon `;`, as in this example.
 
@@ -36,10 +36,103 @@ Let's examine the program line by line:
 Although the program is very simple, it is still a fully valid Java program.
 Throughout the course, we will write many programs that output to and read from the command-line window. In the latter half of the course, the focus shifts toward graphical user interfaces.
 
+<details>
+<summary>Optional additional information: Back to the 1990s and older Java</summary>
+
+Before the introduction of *compact source files* in Java 25, even the traditional "Hello, world!" program required significantly more boilerplate code.
+
+The program would typically look like this:
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+Although this program may currently look somewhat intimidating, by the end of the course you will understand the purpose of every keyword and structure used in it.
+
+The newer compact source-file format allows us to focus on the essentials of programming before introducing the more advanced features of the language. Later in the course we will revisit this older style and see how it relates to the compact programs used in the first chapters.
+
+</details>
+
+## Differences Between Java and Python
+
+We can already observe several important differences between Java and Python. Some of these differences are syntactic, while others are related to the languages' semantics and type systems.
+
+### Syntactic Differences
+
+In Python, *indentation* is used to mark the bodies of functions, loops, conditional statements and other control structures.
+
+```python
+def weird(n: int) -> list:
+    # The function body is indented using four spaces.
+    sequence = [n]
+
+    while n != 1:
+        if n % 2 == 0:
+            # The body of the if-statement is indented further.
+            n /= 2
+        else:
+            # The body of the else-statement is indented further.
+            n = n * 3 + 1
+
+        # The body of the while-loop is indented using eight spaces.
+        sequence.append(n)
+
+    return sequence
+```
+
+In Java, code blocks are enclosed within curly braces `{` and `}`. These braces mark the beginning and end of method bodies, loops, conditional statements and other language constructs.
+
+Although indentation is not required by the Java compiler, it is still used to improve readability and make program structure easier for humans to understand.
+
+Another notable difference is that Java statements are typically terminated with a semicolon `;`.
+
+### Typing System
+
+As you learned in Programming 1, Python supports *type hints*, which can make programs easier to read and understand.
+
+```python
+def square(n: float) -> float:
+    return n * n
+```
+
+However, Python is a dynamically typed language, meaning that type hints are optional and are generally not enforced by the interpreter.
+
+Java, on the other hand, is a [statically typed language](./02-variables-and-types.md#javas-type-system). As a result, type information is required when defining methods and variables.
+
+The equivalent Java method would be:
+
+```java
+double square(double n) {
+    return n * n;
+}
+
+void main() {
+    IO.println(square(10));
+}
+```
+
+In Java, we must explicitly specify the return type of the method, which in this example is `double`. We must also specify the type of each parameter. Here the method has a single parameter named `n`, whose type is also `double`.
+
+Static typing allows the compiler to detect many programming errors before the program is executed.
+
+In the next [section](./02-variables-and-types.md), we will examine Java's primitive data types in more detail.
+
+### Methods and Functions
+
+In Python, reusable pieces of code are usually called functions.
+
+In Java, similar constructs are typically called methods, because they are usually associated with a class. Since we have not yet introduced classes, we may occasionally use the terms *function* and *method* interchangeably in the first chapters.
+
+Later in the course, we will see why Java programmers usually prefer the term *method*.
+
 ## Java Coding Conventions
 
 Most programming languages have a set of coding conventions established for that language. Java is no exception.
-We will become familiar with various conventions as this material progresses. It is worth mentioning that Java coding conventions differ slightly from those used in C#, particularly in naming and code formatting.
+We will become familiar with various conventions as this material progresses. It is worth mentioning that Java coding conventions differ slightly from those used in Python, particularly in naming and code formatting.
 
 The most important Java conventions to keep in mind at this stage are:
 
