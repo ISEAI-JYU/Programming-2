@@ -1,6 +1,7 @@
 # Summary
 
 [Home](./index.md)
+[Completing the Course](./completing-the-course.md)
 [Tool Installation](./tool-instructions.md)
 [Project Assignment](./project-assignment.md)
 

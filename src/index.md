@@ -1,6 +1,9 @@
-# ISEAI Programming 2
+# ISEP1002 Programming 2
 
-This is the course material for **ISEAI Programming 2**, a course offered by the University of Jyväskylä.
+This is the course material for **ISEP1002 Programming 2**, a course offered by the University of Jyväskylä in the Immersive Software Engineering and AI programme.
+
+This course is **not** open for other students.
+If you are not enrolled in the Immersive Software Engineering and AI programme, you are probably looking for the course [TIEP111 Ohjelmointi 2](https://tim.jyu.fi/view/kurssit/tie/tiep111/koti).
 
 ## About the Course
 
@@ -11,6 +14,8 @@ In this course, you will learn:
 - graphical user interface design and development,
 - software testing,
 - various programming tools and techniques.
+
+The course is completed by doing the exercises, the pair project assignment, the C++ part and a final reflection. The grade is based on weekly oral exams about your own code and on the project. See [Completing the Course](./completing-the-course.md) for the requirements and for how the grade is determined. You can follow your progress (exercise points, oral grades and C++ approval) in TIM.
 
 ## News
 

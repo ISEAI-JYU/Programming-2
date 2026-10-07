@@ -30,6 +30,6 @@ In Part 7, we will implement the following features:
 By the end of this part, our application will function as follows:
 <video src="images/todo-app-final-product.mp4" controls></video>
 
-As before, you must complete at least **50%** of the exercises in this part.
+As in every part, you must complete at least **50%** of the core exercise points in this part to pass the course; the grade itself comes from the Friday oral exams about your own code (see [Completing the Course](../completing-the-course.md)).
 However, for Parts 7 and 8 we strongly recommend completing **all** exercises, as this will make developing the course project much easier.
 The bonus exercises remain completely optional.

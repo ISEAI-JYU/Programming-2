@@ -1,11 +1,13 @@
 # Project Assignment, Phase 1
 
 In this chapter, you will begin implementing your own project assignment.
-The project is completed incrementally during Parts 9–12, and no later than the end of Part 12 the finished project must be submitted and approved by a course instructor during remote or in-person guidance.
+The project is done **in pairs** and completed incrementally during Parts 9–12 (weeks 5–7 of the course).
+On the Fridays of weeks 5 and 6, each pair has a checkpoint with the teacher: feedback only, no grade.
+Week 7 ends with the handoff and a final oral, from which the project receives its grade (see [Completing the Course](../completing-the-course.md#project-assignment)).
 Read the [project requirements](../project-assignment.md) carefully before you begin.
 
 Parts 9–12 contain guidance intended to help you make progress with the project. Likewise, Parts 9–12 contain exercises whose purpose is to support the project's gradual development.
-As before, you must complete at least 50% of the exercises.
+As in every part, you must complete at least 50% of the core exercise points in each of Parts 9–11 to pass the course (see [Completing the Course](../completing-the-course.md)).
 
 We recommend implementing the project using the phased approach described in these chapters.
 

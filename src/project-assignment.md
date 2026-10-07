@@ -1,21 +1,18 @@
 # Project Assignment
 
-The course includes a project assignment in which you implement a graphical Java application using the JavaFX library. The exact assessment requirements for the project are listed below.
+[The course includes a project assignment](./completing-the-course.md) in which you implement a graphical Java application in a pair using the JavaFX library. The technical requirements for the project are listed below.
 
 You may either implement one of the predefined project specifications or come up with your own topic. Descriptions and requirements for all topics are provided below.
 
-The project is completed incrementally during Parts 9–12. Each part contains guidance intended to help you progress, but you may also implement the requirements in another way as long as they are fulfilled.
+The project is completed incrementally during Parts 9–12 (weeks 5–7 of the course). Each part contains guidance intended to help you progress, but you may also implement the requirements in another way as long as they are fulfilled. On the Fridays of weeks 5 and 6, each pair has a checkpoint with the teacher: feedback only, no grade. Week 7 ends with the handoff and a final oral, described under [Assessment](#technical-requirements-and-assessment) below.
 
 We strongly recommend completing and studying the Todo application developed in Parts 7–8 before starting the project. It will provide significant assistance when implementing your own application.
 
-**You must demonstrate your final project, meeting all requirements, to your course instructor before submitting Part 12, either remotely or during in-person guidance.** Once the instructor has approved the work, they will record the approval in TIM.
-
 ## Pair Projects
 
-The project may be completed individually or as a pair.
-In pair projects, the application must contain at least three domain entities (individual projects require two; Requirement 1.1) and three views (individual projects require two; Requirement 4.1). All other requirements remain the same as for individual work.
+The project is completed **in pairs**. The application must contain at least three domain entities (Requirement 1.1) and three views (Requirement 4.1).
 
-Both students must participate as equally as possible in the development of the project. When presenting the assignment, both students must be able to demonstrate to the instructor that they personally know how to implement the project requirements.
+Both students must participate as equally as possible in the development of the project. In the final oral, each student must be able to explain and change the pair's code on their own.
 For example, it is not acceptable for one student to focus solely on the user interface while the other handles all coding and data-model implementation.
 
 Groups larger than two students are not permitted.
@@ -442,20 +439,29 @@ The instructor may request changes if the scope does not meet the expected requi
 If you decide to extend the Todo application, the project requirements apply to your extension.
 For example:
 
-* Requirement 1.1 ("The application contains at least two modeled domain entities") means that you must define two new domain entities in addition to the existing `Task` model.
-* Requirement 4.1 means that you must either add two new views or significantly expand the existing views in such a way that the extension could reasonably be considered its own view.
+* Requirement 1.1 ("The application contains at least three modeled domain entities") means that you must define three new domain entities in addition to the existing `Task` model.
+* Requirement 4.1 means that you must add three new views or significantly expand the existing views in such a way that the extensions could reasonably be considered their own views.
 
 </details>
 
 ## Technical Requirements and Assessment
 
-The requirements below are used when evaluating the project.
-The project is graded on a pass/fail basis.
-A failed project may be revised based on feedback from the instructor.
+The project gets **one grade, 0–5**, which counts three times in the final course grade (see [Completing the Course](./completing-the-course.md#project-assignment)). The grade comes from three questions:
+
+| Question | Who is judged | Shown by |
+| -------- | ------------- | -------- |
+| Does it work? | The pair | The finished application and the technical requirements below |
+| Could another pair build in it? | The pair | The week-7 handoff: another pair adds one feature to your code and writes half a page on how easy it was |
+| Can you explain and change it? | Each student individually | The final oral in week 7 |
+
+Because the third question is individual, partners can end up one grade apart.
+
+The requirements below define the baseline for "does it work".
+A project that does not yet meet them can be revised based on the teacher's feedback before the final oral.
 
 In principle, the project must satisfy all of the requirements below. Individual requirements may be interpreted more flexibly if the project is otherwise particularly extensive or well executed, or if the project topic specifically requires it.
 
-The final decision is made by the instructor on a case-by-case basis.
+The final decision is made by the teacher on a case-by-case basis.
 
 <div class="ht-reqs">
 
@@ -463,7 +469,7 @@ The final decision is made by the instructor on a case-by-case basis.
 
 ### Requirement 1: Data Model
 
-1. **The application must contain at least two modeled domain entities.**  
+1. **The application must contain at least three modeled domain entities.**  
 
     Examples include tasks, transactions, books, customers, workouts, games, recipes, or similar concepts. Each modeled entity must contain attributes or properties that are meaningful within the application's domain. In the Parts 7–8 example application there was one modeled entity: `Task`. In the flashcard application they could be `Card` and `Deck`. In the expense-tracking application they could be `Transaction` and `Category`.
 
@@ -522,9 +528,9 @@ The final decision is made by the instructor on a case-by-case basis.
 
 ### Requirement 4: User Interface
 
-1. **The application must contain a graphical user interface with at least two views.**  
+1. **The application must contain a graphical user interface with at least three views.**  
 
-    The views may consist, for example, of a main view (listing) and an editing view (dialog).
+    The views may consist, for example, of a main view (listing), an editing view (dialog) and a filtered or statistics view.
 
 2. **The user interface must be structured and usable.**  
 

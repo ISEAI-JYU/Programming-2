@@ -20,4 +20,4 @@ The plan must include:
 You may use the descriptions of the predefined topics as examples.
 After submitting, present the plan to an instructor in person or through remote supervision before starting the remaining project phases.
 
-**For pair projects**, the application must contain at least three modeled entities (individual projects require two; requirement 1.1) and three views (individual projects require two; requirement 4.1). For this reason, pair project plans must always be reviewed by an instructor before proceeding to the next phases.
+Remember that the application must contain at least three modeled entities (requirement 1.1) and three views (requirement 4.1). For this reason, project plans must always be reviewed by the teacher before proceeding to the next phases.
