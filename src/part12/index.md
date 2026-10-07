@@ -9,13 +9,13 @@ Before the handoff, make sure that you have addressed all [project requirements]
 Your pair receives another pair's repository and adds **one small feature** to it. Afterwards, you write about half a page on how easy the code was to work in. The write-up you receive from the other pair is part of the evidence for your project grade: it shows whether another pair could build in your code.
 
 <task>
-<task-title>Exercise 12.2: Handoff</task-title>
+<task-title>Exercise 12.1: Handoff</task-title>
 <handout>
 
-{{#include ../exercises/12-2-handoff/handout.md}}
+{{#include ../exercises/12-1-handoff/handout.md}}
 
 </handout>
-<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part12/exercise2">Complete this exercise in TIM</a></task-link>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part12/exercise1">Complete this exercise in TIM</a></task-link>
 </task>
 
 ## Final Oral
@@ -29,11 +29,11 @@ The project gets one grade, 0–5, from three questions: does it work, could ano
 Finally, write a short individual reflection on your work. The reflection is required for completing the course and is assessed on a pass/fail basis; see [Completing the Course](../completing-the-course.md#reflection) for details. Each member of the pair submits their own reflection.
 
 <task>
-<task-title>Exercise 12.1: Reflection</task-title>
+<task-title>Exercise 12.2: Reflection</task-title>
 <handout>
 
-{{#include ../exercises/12-1-reflection/handout.md}}
+{{#include ../exercises/12-2-reflection/handout.md}}
 
 </handout>
-<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part12/exercise1">Complete this exercise in TIM</a></task-link>
+<task-link><a href="https://tim.jyu.fi/view/kurssit/it/iseai/26-27/programming2/exercises/part12/exercise2">Complete this exercise in TIM</a></task-link>
 </task>
