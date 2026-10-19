@@ -134,8 +134,6 @@ At the end of the project (Part 12) you write a short, individual reflection on 
 
 The reflection is submitted in TIM as plain text.
 
-{{#include ./exercises/12-1-reflection/handout.md}}
-
 ## Academic Integrity and the Use of AI
 
 You are responsible for all the work you submit. Copying, or presenting someone else's work as your own, is prohibited. Working together is allowed, but every member of the group must contribute, understand what they have done and be able to explain it. Any part of a submission produced as group work must be clearly marked, for example in code comments.
