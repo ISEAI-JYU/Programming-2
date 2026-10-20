@@ -29,7 +29,7 @@ Here are a few quick tips for navigating this course material.
 
 ## Authors and License
 
-Programming 2 course material © 2025 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski, Karri Sormunen and Ville Rantala.
+Programming 2 course material © 2026 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi Lakanen, Rauli Ruokokoski, Karri Sormunen and Ville Rantala.
 
 Special thanks to Jonne Itkonen for feedback and improvement suggestions.
 
