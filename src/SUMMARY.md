@@ -7,6 +7,7 @@
 
 ---
 
+[Prelude](./prelude.md)
 - [The basics of Java](./part1/index.md)
   - [Hello, java!](./part1/01-hello-java.md)
   - [Variables and Data types](./part1/02-variables-and-types.md)
