@@ -33,4 +33,4 @@ Programming 2 course material © 2026 by Denis Zhidkikh, Sami Sarsa, Antti-Jussi
 
 Special thanks to Jonne Itkonen for feedback and improvement suggestions.
 
-This material is published under the CC BY-SA 4.0 license. For more information, see the material's GitHub page.
+This material is published under the CC BY-SA 4.0 license. For more information, see the material's [GitHub page](https://github.com/ISEAI-JYU/Programming-2).
