@@ -362,7 +362,7 @@ JSON can contain the following types of values:
 * Number (`25`)
 * Boolean (`true` / `false`)
 * Null (`null`)
-* Array (`[ ... ]`)
+* Array (`\[ ... ]`)
 * Object (`{ ... }`)
 
 For example, the file `people.json` could look like this:
