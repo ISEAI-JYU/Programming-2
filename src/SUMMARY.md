@@ -19,7 +19,7 @@
   - [Class and Object](./part2/02-class-and-object.md)
   - [Encapsulation](./part2/03-encapsulation.md)
   - [All Exercises in This Part](./part2/04-exercises.md)
-- [Inheritance and Polymorhpism](./part3/index.md)
+<!-- - [Inheritance and Polymorhpism](./part3/index.md)
   - [Inheritance](./part3/01-inheritance.md)
   - [Polymorphism](./part3/02-polymorphism.md)
   - [Abstract Classes](./part3/03-abstract-classes.md)
@@ -63,7 +63,7 @@
 - [Project Assignment, Phase 1](./part9/index.md)
 - [Project Assignment, Phase 2](./part10/index.md)
 - [Project Assignment, Phase 3](./part11/index.md)
-- [Project Assignment Submission](./part12/index.md)
+- [Project Assignment Submission](./part12/index.md) -->
 
 --- 
 - [JavaFX tips](./javafx-eng/index.md)
