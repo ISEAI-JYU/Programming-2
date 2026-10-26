@@ -372,11 +372,9 @@ To modify the value stored in a string variable, you must assign the new string 
 ```java
 //-void main() {
 String immutable = "This string is immutable.";
-//-IO.Printlnt("immutable = " + immutable);
+//-IO.println("immutable = " + immutable);
 
-// HIGHLIGHT_GREEN_BEGIN
 immutable = immutable.concat(" Or is it?");
-// HIGHLIGHT_GREEN_END
 //- IO.println("immutable = " + immutable);
 //-}
 ```

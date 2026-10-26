@@ -2,6 +2,13 @@ Create a program that reads non-negative integers from the user, one line at a t
 Store these numbers in a list.
 
 Then write the methods `sum`, `average`, `smallest`, and `largest`, which calculate the smallest number in the list, the largest number in the list, the sum of the numbers, and the average of the numbers. Print the values returned by these methods to the user.
+Use the following wording and format in your answer
+```
+Sum of numbers = ...
+Average = ...
+Smallest number = ...
+Largest number = ...
+```
 Add appropriate handling for empty lists to the methods and document them.
 
 You may assume that the user enters only non-negative integers as input. If a method receives an empty list as input, it must return the value `-1`.
