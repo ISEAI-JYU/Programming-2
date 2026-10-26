@@ -82,26 +82,26 @@ You must earn **at least 50% of the core points in every part** from Part 1 to P
 
 The per-part minimum ensures that you cover every topic of the course, including the JavaFX parts and the project milestones in Parts 9–11, all of which you will need for the project assignment.
 
-### Points per Part
-
-The number of exercise points in each part (autumn 2026):
-
-| Part      | Core points | Bonus points | Minimum (50%) |
-| --------- | ----------- | ------------ | ------------- |
-| 1         | 6           | 3            | 3             |
-| 2         | 8           | 2            | 4             |
-| 3         | 9           | 1            | 5             |
-| 4         | 11          | 1            | 6             |
-| 5         | 11          | 1            | 6             |
-| 6         | 11          | 1            | 6             |
-| 7         | 6           | 0            | 3             |
-| 8         | 8           | 0            | 4             |
-| 9         | 4           | 0            | 2             |
-| 10        | 4           | 0            | 2             |
-| 11        | 8           | 0            | 4             |
-| **Total** | **86**      | **9**        |               |
-
-You can follow your progress on the course's TIM page. It shows your points and percentage for each part.
+<!-- ### Points per Part -->
+<!--  -->
+<!-- The number of exercise points in each part (autumn 2026): -->
+<!--  -->
+<!-- | Part      | Core points | Bonus points | Minimum (50%) | -->
+<!-- | --------- | ----------- | ------------ | ------------- | -->
+<!-- | 1         | 6           | 3            | 3             | -->
+<!-- | 2         | 8           | 2            | 4             | -->
+<!-- | 3         | 9           | 1            | 5             | -->
+<!-- | 4         | 11          | 1            | 6             | -->
+<!-- | 5         | 11          | 1            | 6             | -->
+<!-- | 6         | 11          | 1            | 6             | -->
+<!-- | 7         | 6           | 0            | 3             | -->
+<!-- | 8         | 8           | 0            | 4             | -->
+<!-- | 9         | 4           | 0            | 2             | -->
+<!-- | 10        | 4           | 0            | 2             | -->
+<!-- | 11        | 8           | 0            | 4             | -->
+<!-- | **Total** | **86**      | **9**        |               | -->
+<!--  -->
+<!-- You can follow your progress on the course's TIM page. It shows your points and percentage for each part. -->
 
 ## Project Assignment
 
