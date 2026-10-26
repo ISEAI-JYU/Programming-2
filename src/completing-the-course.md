@@ -4,12 +4,11 @@ This page describes what is required to pass **ISEP1002 Programming 2** and how 
 
 ## Requirements in Brief
 
-To pass the course, you must complete **all four** of the following:
+To pass the course, you must complete **all three** of the following:
 
 1. **Exercises:** earn at least 50% of the core exercise points in **every** part (Parts 1–11).
 2. **Project assignment:** complete the [project assignment](./project-assignment.md) (Parts 9–12) in a pair.
-3. **C++ part:** complete the C++ part of the course and have it approved.
-4. **Reflection:** submit the individual reflection at the end of the project (Part 12).
+3. **Reflection:** submit the individual reflection at the end of the project (Part 12).
 
 These are all assessed on a pass/fail basis; they are required for passing, but they do not determine the grade.
 
@@ -28,7 +27,6 @@ The final deadline for completing all of the above is announced on the [front pa
 | 5 | Project: data model and tests (Parts 9–10) | Pair checkpoint | No, feedback only |
 | 6 | Project: UI and saving data (Parts 10–11) | Pair checkpoint | No, feedback only |
 | 7 | Project: handoff (Part 12) | Final project oral | Yes |
-| 8 | C++ | – | Pass/fail |
 
 ## The Friday Oral
 
@@ -103,7 +101,7 @@ The number of exercise points in each part (autumn 2026):
 | 11        | 8           | 0            | 4             |
 | **Total** | **86**      | **9**        |               |
 
-You can follow your progress on the course's TIM page. It shows your points and percentage for each part as well as the instructor's approval marks for the C++ part.
+You can follow your progress on the course's TIM page. It shows your points and percentage for each part.
 
 ## Project Assignment
 
@@ -123,10 +121,6 @@ The project gets **one grade, 0–5**, from three questions:
 Because the third question is individual, partners can end up one grade apart.
 
 The [technical requirements](./project-assignment.md#technical-requirements-and-assessment) on the project page define the baseline for "does it work". A project that does not yet meet them can be revised based on the teacher's feedback before the final oral.
-
-## C++ Part
-
-The course also includes a C++ part, which is taught and assessed separately. It is graded on a pass/fail basis by the teacher of that part, and its approval is recorded in TIM. See the C++ part's own instructions for its contents and requirements.
 
 ## Reflection
 

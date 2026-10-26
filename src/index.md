@@ -15,7 +15,7 @@ In this course, you will learn:
 - software testing,
 - various programming tools and techniques.
 
-The course is completed by doing the exercises, the pair project assignment, the C++ part and a final reflection. The grade is based on weekly oral exams about your own code and on the project. See [Completing the Course](./completing-the-course.md) for the requirements and for how the grade is determined. You can follow your progress (exercise points, oral grades and C++ approval) in TIM.
+The course is completed by doing the exercises, the pair project assignment and a final reflection. The grade is based on weekly oral exams about your own code and on the project. See [Completing the Course](./completing-the-course.md) for the requirements and for how the grade is determined. You can follow your progress (exercise points and oral grades) in TIM.
 
 ## News
 
