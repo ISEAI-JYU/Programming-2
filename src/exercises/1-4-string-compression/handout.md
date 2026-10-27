@@ -16,7 +16,7 @@ at least one usage example to the `main()` method.
 <details>
 <summary>Tip 1</summary>
 
-Use a [`StringBuilder`](https://humppabyte.github.io/Programming-2/part1/02-variables-and-types.html#stringbuilder) and its methods to construct the resulting string.
+Use a [`StringBuilder`](https://programming2.it.jyu.fi/part1/02-variables-and-types.html#stringbuilder) and its methods to construct the resulting string.
 
 </details>
 
