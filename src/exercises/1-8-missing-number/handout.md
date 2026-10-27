@@ -1,7 +1,7 @@
 Create a function
 `int missingNumber(int[] array)`
 The function is given an array as a parameter that contains the numbers
-1 through N in random order, but one of the numbers is missing.
+1 through N in random order, but **one of the numbers** is missing.
 The function must return the missing number.
 The function must not cause any side effects.
 
@@ -11,6 +11,8 @@ Examples:
 - `missingNumber(new int[] { 8, 2, 4, 1, 3, 5, 6 })` returns 7
 - `missingNumber(new int[] { })` returns 1
 - `missingNumber(new int[] { 2 })` returns 1
+- `missingNumber(new int[] { 2, 3, 4})` returns 1
+- `missingNumber(new int[] { 1, 2, 3})` returns 4
 
 You can use the helper function below to generate a random array:
 
