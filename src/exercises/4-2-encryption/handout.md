@@ -15,7 +15,7 @@ String decrypt(String encryptedMessage);
         Hint: You can use the `reverse()` method of the `StringBuilder` class or a loop that processes the string from end to beginning.
 
     * Hacker ("Leet Speak")
-        Replaces certain letters with numbers or symbols.
+        Converts the message to lowercase and then replaces certain letters with numbers or symbols.
         "Agent" &rarr; "@g3nt"
 
 ```

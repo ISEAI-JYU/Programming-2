@@ -1,4 +1,4 @@
-The exercise is based on a `Person` class in its own file and a `sortPeople` method in `main.java`. However, the method does not work because it uses Java's built-in `Collections.sort` method, and the `Person` class does not provide the required support for it.
+The exercise is based on a `Person` class in its own file and a main program (`Main.java`) that sorts a list of people. However, the main program does not compile, because it uses Java's built-in `Collections.sort` method and the `Person` class does not provide the required support for it.
 
 Modify the `Person` class so that lists of type `List<Person>` can be sorted alphabetically by a person's name using the `Collections.sort` method.
 
