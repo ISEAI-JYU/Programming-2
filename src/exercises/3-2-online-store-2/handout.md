@@ -12,8 +12,9 @@ each subclass:
 
 - Food: attribute `String bestBefore` (e.g., "31.01.2026"), and a method
   `void eat()` that prints:
-  "You consume food whose expiration date is DD.MM.YYYY."
-  (replace DD.MM.YYYY with the value of `bestBefore`).
+  "You consume NAME whose expiration date is DD.MM.YYYY."
+  (replace NAME with the product's `name` and DD.MM.YYYY with the value of
+  `bestBefore`, e.g. "You consume Rye Bread whose expiration date is 31.01.2026.").
 
 Note that the constructors of the subclasses must now call the superclass
 constructor with the correct values and also initialize their own attributes.

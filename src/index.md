@@ -19,6 +19,12 @@ The course is completed by doing the exercises, the pair project assignment and 
 
 ## News
 
+`Assesment is on Thursdays and Fridays and it will take 20 minutes!`
+
+`You can prepare for assesment by going through the learning goals of each part.`
+
+`On Thursday 04.11 and Friday 05.11 will be assesment of parts 1 & 2.`
+
 ## Navigating This Material
 
 Here are a few quick tips for navigating this course material.

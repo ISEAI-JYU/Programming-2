@@ -1,4 +1,4 @@
-Extend the online store class hierarchy you created earlier according to the UML diagram below.
+Extend the online store class hierarchy you created in the previous exercises according to the UML diagram below. The `Product`, `Electronics`, `Clothing` and `Food` classes stay as they were (for example, `eat()` still prints "You consume NAME whose expiration date is DD.MM.YYYY.").
 
 A main program has been provided on the exercise page, which you can use to test your classes. You can also view the sample output produced by the program.
 
@@ -21,8 +21,7 @@ Test 2: Trying it on a user who wears size L:
 Trying on the clothing item Dulce & Käppänä Winter Jacket...
 Great! Size L fits you perfectly!
 
-Eating Reissurähjä Rye Bread.
-The best-before date was 20.12.2024. Hopefully it's still good.
+You consume Reissurähjä Rye Bread whose expiration date is 20.12.2024.
 
 Warranty remaining: 19 months.
 
@@ -35,8 +34,7 @@ Calling from Orange (4G) to 0401122330
 Pea Bag: 0.99 €
 You thawed the frozen food Pea Bag for 10 minutes.
 Recommended storage temperature is -18 °C.
-Eating Pea Bag.
-The best-before date was 31.5.2026. Hopefully it's still good.
+You consume Pea Bag whose expiration date is 31.5.2026.
 ```
 
 </details>
@@ -55,7 +53,7 @@ Below is a description of the new classes and their required features. The same 
     - Add the methods:
       - `public void call(String number)`. The method prints, for example: `Calling from Orange (4G) to 0401122330`
       - `public void printPhoneDetails(int monthsElapsed)`.
-        The method should first call the inherited method (`printDetails()`), and then print additional phone-related information(remaining warranty, operating system and 5G support)
+        The method should first call the inherited method (`printDetails()`), and then print additional phone-related information (remaining warranty, operating system and 5G support)
 
 2. `FrozenFood` (inherits from `Food`)
    - Add the attribute:
@@ -63,9 +61,9 @@ Below is a description of the new classes and their required features. The same 
 
     - Add the method:
       - `private void thaw(int minutes)` (note the `private` modifier)
-        When called, the method prints, for example:
-        `You thaw the frozen food for 10 minutes.
-        Recommended storage temperature: -18 °C.`
+        When called, the method prints two lines, for example:
+        `You thawed the frozen food Pea Bag for 10 minutes.`
+        `Recommended storage temperature is -18 °C.`
     - Add the method:
       - `public void thawAndEnjoy(int minutes)`
       - The method first calls `thaw(minutes)` and then the inherited `eat()` method.
