@@ -444,10 +444,10 @@ Done!
 
 Installation methods vary by distribution:
 
-- Arch Linux [`intellij-idea-community-edition`](https://archlinux.org/packages/extra/x86_64/intellij-idea-community-edition/):
+- Arch Linux [`intellij-idea-oss`](https://archlinux.org/packages/extra/x86_64/intellij-idea-oss/):
 
 ```text
-pacman -S intellij-idea-community-edition
+pacman -S intellij-idea-oss
 ```
 
 - Other distributions (recommended [IDEA snap](https://snapcraft.io/intellij-idea-community) package):
@@ -458,7 +458,7 @@ snap install intellij-idea-community --classic
 
 Alternatively, follow the official IntelliJ IDEA installation [instructions](https://www.jetbrains.com/help/idea/installation-guide.html#standalone_linux).
 
-3. Start IntelliJ IDEA.
+1. Start IntelliJ IDEA.
 
 Accept license agreements if prompted.
 
