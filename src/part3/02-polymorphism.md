@@ -595,12 +595,11 @@ class Vector3D {
     public double getZ() {
         return z;
     }
-    // HIGHLIGHT_GREEN_BEGIN
+
     @Override
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
-    // HIGHLIGHT_GREEN_END
 }
 // FILE_END
 ```
