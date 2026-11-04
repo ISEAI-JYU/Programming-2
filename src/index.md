@@ -23,7 +23,7 @@ The course is completed by doing the exercises, the pair project assignment and 
 
 `You can prepare for assesment by going through the learning goals of each part.`
 
-`On Thursday 04.11 and Friday 05.11 will be assesment of parts 1 & 2.`
+`On Thursday 05.11 and Friday 06.11 will be assesment of parts 1 & 2.`
 
 ## Navigating This Material
 
