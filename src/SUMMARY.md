@@ -30,7 +30,6 @@
   - [Inheritance and Interfaces in Object Collaboration](./part4/03-inheritance-and-interfaces.md)
   - [Type Parameters and Generics](./part4/04-type-parameters-and-generics.md)
   - [All Exercises in This Part](./part4/05-exercises.md)
-<!-- 
 - [Data Structures and Algorithms](./part5/index.md)
   - [Collections](./part5/01-collections.md)
   - [List Structures](./part5/02-list-data-structures.md)
@@ -38,6 +37,7 @@
   - [Set and Queue Structures](./part5/04-sets-and-queue-structures.md)
   - [Recursion](./part5/05-recursion.md)
   - [All Exercises in This Part](./part5/06-exercises.md)
+<!-- 
 - [Useful Techniques in Java](./part6/index.md)
   - [Functional Interfaces and Lambda Expressions](./part6/01-functional-interfaces-and-lambda-expressions.md)
   - [Processing Collections: Stream API](./part6/02-processing-collections-stream-api.md)
