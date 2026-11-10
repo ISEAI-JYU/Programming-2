@@ -19,6 +19,9 @@ The course is completed by doing the exercises, the pair project assignment and 
 
 ## News
 
+
+## Old News
+
 `Assesment is on Thursdays and Fridays and it will take 20 minutes!`
 
 `You can prepare for assesment by going through the learning goals of each part.`

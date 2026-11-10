@@ -1,4 +1,4 @@
-Download the dataset: [words.txt](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-9-sanat/sanat.txt)
+Download the dataset: [words.txt](https://raw.githubusercontent.com/ISEAI-JYU/Programming-2/refs/heads/main/src/exercises/6-9-words/words.txt)
 
 Save the file in your project's working directory as `words.txt`.
 
