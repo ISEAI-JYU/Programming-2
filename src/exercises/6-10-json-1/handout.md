@@ -1,6 +1,6 @@
 - Create a new Maven project that uses the Jackson library for processing JSON files.
 - Add the required dependency to your `pom.xml` file.
-- Download [`people.json`](https://raw.githubusercontent.com/ohj-perus-jy/ohj2/refs/heads/main/src/exercises/6-10-json-1/henkilot.json) and save it in the same folder as your code.
+- Download [`people.json`](https://raw.githubusercontent.com/ISEAI-JYU/Programming-2/refs/heads/main/src/exercises/6-10-json-1/people.json) and save it in the same folder as your code.
 - Create a `Person` class or an equivalent record with the fields `String name`, `int age`, and `String city`.
 - Read the file `people.json` and convert it into a list of `Person` objects.
 - Filter the list so that only people aged 18 or older are included.
