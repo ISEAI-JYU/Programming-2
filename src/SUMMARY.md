@@ -37,7 +37,6 @@
   - [Set and Queue Structures](./part5/04-sets-and-queue-structures.md)
   - [Recursion](./part5/05-recursion.md)
   - [All Exercises in This Part](./part5/06-exercises.md)
-<!-- 
 - [Useful Techniques in Java](./part6/index.md)
   - [Functional Interfaces and Lambda Expressions](./part6/01-functional-interfaces-and-lambda-expressions.md)
   - [Processing Collections: Stream API](./part6/02-processing-collections-stream-api.md)
@@ -45,6 +44,7 @@
   - [External Libraries and Java Project Management](./part6/04-external-libraries-and-java-project-management-tools.md)
   - [File Handling](./part6/05-file-handling.md)
   - [All Exercises in This Part](./part6/06-exercises.md)
+<!--
 - [JavaFX part 1: SceneBuilder](./part7/index.md)
   - [JavaFX Fundamentals](./part7/01-javafx-fundamentals.md)
   - [Scenebuilder Fundamentals](./part7/02-scenebuilder.md)
