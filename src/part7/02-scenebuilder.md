@@ -9,7 +9,7 @@
 >
 > From this chapter onward, you will need the SceneBuilder tool.
 >
-> Install it by following the ../tyokalut.md#scenebuilder.
+> Install it by following the [Scene Builder installation instructions](../tool-instructions.md#scenebuilder).
 
 SceneBuilder is a visual tool that makes creating JavaFX user interfaces easier. It provides a drag-and-drop interface that allows you to create and modify the user interface defined in an FXML file without writing FXML by hand.
 With SceneBuilder, you can easily add components, configure their properties, and arrange them as desired. It is particularly useful if you are not yet comfortable writing FXML directly or if you want to speed up the user-interface design process.
@@ -189,8 +189,7 @@ In other words, `FXMLLoader` effectively performs something similar to:
 // FXMLLoader does this automatically using
 // the field name and fx:id value.
 
-this.newTaskName =
-    (TextField)findComponentById("newTaskName");
+this.newTaskName = (TextField)findComponentById("newTaskName");
 
 // After this assignment, newTaskName refers
 // to the TextField object defined in the view.
@@ -204,17 +203,18 @@ This is the correct place to define component behavior.
 Let's add the following line to `initialize()` to verify that the text-field object is available:
 
 ```java,ignore
-newTaskName.requestFocus();
+newTaskName.setText("Hello!");
 ```
 
 Run the program again.
-Immediately after startup, the text field should become active and receive the keyboard focus, as if it had been clicked.
+<!-- Immediately after startup, the text field should become active and receive the keyboard focus, as if it had been clicked. -->
+Immediately after startup, the text field should containt the text "Hello!".
 
 ***
 
 ## Handling Events
 
-Setting focus is not particularly exciting.
+Setting text is not particularly exciting.
 Let's add functionality so that clicking the button prints the text field contents to the console.
 
 In JavaFX, all interactions with components produce *events*.
