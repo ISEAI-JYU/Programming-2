@@ -295,7 +295,7 @@ Open SceneBuilder and select the `Label` component currently displaying
 In the Inspector's Properties panel, remove all text from the **Text** property.
 The label should become empty.
 
-img src="images/scenebuilder-label-cleanup.png">
+<img src="images/scenebuilder-label-cleanup.png">
 
 Next, assign an `fx:id` value in the Code panel.
 For example

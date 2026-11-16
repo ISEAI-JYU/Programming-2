@@ -12,7 +12,7 @@ Similarly, using Git from the command line assumes that you are already somewhat
 If necessary, revisit the command-line materials from earlier courses.
 
 At this point, it is a good idea to begin using version control.
-We will use Git* which is one of the most widely used version-control tools in software development.
+We will use **Git** which is one of the most widely used version-control tools in software development.
 After this section, you should create a separate Git commit for each tutorial exercise, describing the changes made during that exercise.
 
 Git can be used through many different interfaces—including one built into IDEA—but we will use the command line because it is a common approach that works the same way in practically every environment.
@@ -38,7 +38,7 @@ This adds all files in the current directory and its subdirectories to the next 
 Note that the command itself usually produces no output.
 
 Let's verify which files will be included by running 
-`git status:
+`git status`:
 
 <asciinema src="images/git-status.cast" rows="19" poster="npt:10"></asciinema>
 
