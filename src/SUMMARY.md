@@ -44,7 +44,6 @@
   - [External Libraries and Java Project Management](./part6/04-external-libraries-and-java-project-management-tools.md)
   - [File Handling](./part6/05-file-handling.md)
   - [All Exercises in This Part](./part6/06-exercises.md)
-<!--
 - [JavaFX part 1: SceneBuilder](./part7/index.md)
   - [JavaFX Fundamentals](./part7/01-javafx-fundamentals.md)
   - [Scenebuilder Fundamentals](./part7/02-scenebuilder.md)
@@ -53,6 +52,7 @@
   - [Reading and Writing Tasks to a File](./part7/05-reading-and-writing-tasks-to-file.md)
   - [Component Layout](./part7/07-scenebuilder-layout.md)
   - [All Exercises in This Part](./part7/08-exercises.md)
+<!--
 - [JavaFX part 2: MVC](./part8/index.md)
   - [Observable Interface](./part8/01-model-and-the-observable-interface.md)
   - [TableView and Data binding](./part8/02-tableview.md)
