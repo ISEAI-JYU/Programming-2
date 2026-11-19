@@ -52,7 +52,6 @@
   - [Reading and Writing Tasks to a File](./part7/05-reading-and-writing-tasks-to-file.md)
   - [Component Layout](./part7/07-scenebuilder-layout.md)
   - [All Exercises in This Part](./part7/08-exercises.md)
-<!--
 - [JavaFX part 2: MVC](./part8/index.md)
   - [Observable Interface](./part8/01-model-and-the-observable-interface.md)
   - [TableView and Data binding](./part8/02-tableview.md)
@@ -61,6 +60,7 @@
   - [Unit Testing](./part8/05-unit-testing.md)
   - [Remote Version Control](./part8/06-remote-version-control.md)
   - [All Exercises in This Part](./part8/07-exercises.md)
+<!--
 - [Project Assignment, Phase 1](./part9/index.md)
 - [Project Assignment, Phase 2](./part10/index.md)
 - [Project Assignment, Phase 3](./part11/index.md)
