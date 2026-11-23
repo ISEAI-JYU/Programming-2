@@ -3,7 +3,7 @@
 [Home](./index.md)
 [Completing the Course](./completing-the-course.md)
 [Tool Installation](./tool-instructions.md)
-<!-- [Project Assignment](./project-assignment.md) -->
+[Project Assignment](./project-assignment.md)
 
 ---
 
@@ -60,11 +60,10 @@
   - [Unit Testing](./part8/05-unit-testing.md)
   - [Remote Version Control](./part8/06-remote-version-control.md)
   - [All Exercises in This Part](./part8/07-exercises.md)
-<!--
 - [Project Assignment, Phase 1](./part9/index.md)
 - [Project Assignment, Phase 2](./part10/index.md)
 - [Project Assignment, Phase 3](./part11/index.md)
-- [Project Assignment Submission](./part12/index.md) -->
+- [Project Assignment Submission](./part12/index.md)
 
 --- 
 - [JavaFX tips](./javafx-eng/index.md)
