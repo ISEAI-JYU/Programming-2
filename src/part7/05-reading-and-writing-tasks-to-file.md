@@ -257,12 +257,14 @@ To avoid code duplication, let's create a helper method `getTasks(VBox container
 After that, we combine both task lists:
 
 ```java,ignore
+// HIGHLIGHT_GREEN_BEGIN
 private List<Task> getTasks(VBox container) {
     return container.getChildren().stream()
             .map(n -> (CheckBox)n)
             .map(cb -> new Task(cb.getText(), cb.isSelected()))
             .toList();
 }
+// HIGHLIGHT_GREEN_END
 
 private void addTask() {
 
@@ -281,7 +283,9 @@ private void addTask() {
     tasks.addAll(getTasks(completedTasks));
     // HIGHLIGHT_GREEN_END
     ObjectMapper mapper = new ObjectMapper();
+    // HIGHLIGHT_YELLOW_BEGIN
     mapper.writeValue(Path.of("tasks.json").toFile(), tasks);
+    // HIGHLIGHT_YELLOW_END
 }
 ```
 
